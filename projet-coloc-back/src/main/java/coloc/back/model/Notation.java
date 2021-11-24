@@ -8,8 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonView;
 
+@Entity
+@JsonView(Views.ViewCommon.class)
 public class Notation {
 	
 	@Id

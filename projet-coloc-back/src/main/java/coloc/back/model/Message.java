@@ -8,7 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
+@JsonView(Views.ViewCommon.class)
 public class Message {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

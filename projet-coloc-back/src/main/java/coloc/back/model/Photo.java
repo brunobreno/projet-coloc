@@ -6,8 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonView;
 
+@Entity
+@JsonView(Views.ViewCommon.class)
 public class Photo {
 
 	@Id
