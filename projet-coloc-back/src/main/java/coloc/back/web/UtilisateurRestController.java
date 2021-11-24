@@ -23,7 +23,7 @@ import coloc.back.repository.IUtilisateurRepository;
 
 
 @RestController
-@RequestMapping("/regles")
+@RequestMapping("/utilisateurs")
 @CrossOrigin("*")
 public class UtilisateurRestController {
 
