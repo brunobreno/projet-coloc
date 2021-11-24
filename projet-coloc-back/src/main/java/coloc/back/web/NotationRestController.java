@@ -24,7 +24,7 @@ import coloc.back.repository.INotationRepository;
 
 
 @RestController
-@RequestMapping("/notation")
+@RequestMapping("/notations")
 @CrossOrigin("*")
 public class NotationRestController {
 
@@ -39,7 +39,7 @@ public class NotationRestController {
 		return notations;
 	}
 
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 //	@JsonView(Views.ViewNotation.class)
 	public Notation find(@PathVariable Long id) {
 		Optional<Notation> optNotation = notationRepo.findById(id);

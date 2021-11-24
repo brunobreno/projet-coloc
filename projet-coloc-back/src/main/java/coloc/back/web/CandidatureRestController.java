@@ -34,7 +34,7 @@ public class CandidatureRestController {
 		return candidatures;
 	}
 
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 	public Candidature findById(@PathVariable Long id) {
 		Optional<Candidature> optCandidature = candidatureRepo.findById(id);
 

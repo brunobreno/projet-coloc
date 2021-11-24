@@ -18,67 +18,67 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 
-import coloc.back.model.Photo;
-import coloc.back.repository.IPhotoRepository;
+import coloc.back.model.Regle;
+import coloc.back.repository.IRegleRepository;
 
 
 @RestController
-@RequestMapping("/photos")
+@RequestMapping("/regles")
 @CrossOrigin("*")
-public class PhotoRestController {
+public class RegleRestController {
 
 	@Autowired
-	private IPhotoRepository photoRepo;
+	private IRegleRepository regleRepo;
 
 	@GetMapping("")
 //	@JsonView(Views.ViewPhoto.class)
-	public List<Photo> findAll() {
-		List<Photo> photos = photoRepo.findAll();
+	public List<Regle> findAll() {
+		List<Regle> regles = regleRepo.findAll();
 
-		return photos;
+		return regles;
 	}
 
 	@GetMapping("/{id}")
 //	@JsonView(Views.ViewPhoto.class)
-	public Photo find(@PathVariable Long id) {
-		Optional<Photo> optPhoto = photoRepo.findById(id);
+	public Regle findById(@PathVariable Long id) {
+		Optional<Regle> optRegle = regleRepo.findById(id);
 
-		if (optPhoto.isPresent()) {
-			return optPhoto.get();
+		if (optRegle.isPresent()) {
+			return optRegle.get();
 		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Photo non trouvée");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Regle non trouvée");
 		}
 	}
 	
 
 	@PostMapping("")
 //	@JsonView(Views.ViewPhoto.class)
-	public Photo create(@RequestBody Photo photo) {
-		photo = photoRepo.save(photo);
+	public Regle create(@RequestBody Regle regle) {
+		regle = regleRepo.save(regle);
 
-		return photo;
+		return regle;
 	}
 
 	@PutMapping("/{id}")
 	//@JsonView(Views.ViewPhoto.class)
-	public Photo update(@PathVariable Long id, @RequestBody Photo photo) {
-		if (!photoRepo.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Photo non trouvée");
+	public Regle update(@PathVariable Long id, @RequestBody Regle regle) {
+		if (!regleRepo.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Regle non trouvée");
 		}
 
-		photo = photoRepo.save(photo);
+		regle = regleRepo.save(regle);
 
-		return photo;
+		return regle;
 	}
 
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		if (!photoRepo.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Photo non trouvée");
+		if (!regleRepo.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Regle non trouvée");
 		}
 		
-		photoRepo.deleteById(id);
+		regleRepo.deleteById(id);
 	}
 
 }

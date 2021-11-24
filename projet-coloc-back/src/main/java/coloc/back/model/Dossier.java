@@ -2,7 +2,10 @@ package coloc.back.model;
 
 import javax.persistence.Embeddable;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Embeddable
+@JsonView(Views.ViewCommon.class)
 public class Dossier {
 	
 	private Double revenu;
