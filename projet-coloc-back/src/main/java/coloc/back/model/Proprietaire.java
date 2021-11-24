@@ -6,11 +6,15 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @DiscriminatorValue("proprio")
+@JsonView(Views.ViewCommon.class)
 public class Proprietaire extends Utilisateur {
 	
 	@OneToMany(mappedBy = "proprietaire" )
+	@JsonView(Views.ViewProprietaireDetail.class)
 	private List<Logement> logements;
 	
 	public Proprietaire() {
