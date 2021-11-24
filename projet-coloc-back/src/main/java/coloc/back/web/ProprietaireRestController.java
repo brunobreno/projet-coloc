@@ -23,7 +23,7 @@ import coloc.back.repository.IProprietaireRepository;
 
 
 @RestController
-@RequestMapping("/proprietaire")
+@RequestMapping("/proprietaires")
 @CrossOrigin("*")
 public class ProprietaireRestController {
 
@@ -38,7 +38,7 @@ public class ProprietaireRestController {
 		return proprietaires;
 	}
 
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 //	@JsonView(Views.ViewProprietaire.class)
 	public Proprietaire find(@PathVariable Long id) {
 		Optional<Proprietaire> optProprietaire = proprietaireRepo.findById(id);
