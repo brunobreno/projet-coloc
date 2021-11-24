@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="profil_proprietaire.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+
+  <!-- lightslider pour multi item carousel -->
+  <link type="text/css" rel="stylesheet" href="css/lightslider.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="js/lightslider.js"></script>
+
+</head>
+
+
+<body class="container-fluid">
+  <header>
+    <div class="header-wrap">
+      <div class="header-main-container">
+        <div class="header-left-container">
+          <a target="_blank" href="../page_accueil/colocFP.html"><div class="header-logo-main-container"></div></a>
+          <div class="header-research-main-container"></div>
+        </div>
+        <div class="header-account-main-container">
+          <a target="_blank" href="../ajout_logement/nouveauLogement.html">
+            <button type=button class="header-button-account button1 first-button">+ Logement</button></a>
+          <button type=button class="header-button-account button1 ">Messages</button>
+          <button type=button class="header-button-account button1 last-button" onclick="alert('On parle pas anglais déso')"><i class="bi-globe"></i></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <content>
+    <!-- 1E Logement !-->
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class="titre-info">Mon profil Propriétaire</p>
+    <div class="container logement">
+      <div class="row nomLogement">
+        <div class="col-10 titreLogement">Logement n°1</div>
+        <div class="showHideLogement col-2 align-right">
+          <button type="button" class="showLogement btn btn-outline-dark" id="showLogement1" onClick="AfficheLogement(1)"><i class="bi bi-arrows-angle-expand"></i></button>
+          <button class="hideLogement btn btn-outline-dark" id="hideLogement1" onClick="HideLogement(1)"><i class="bi bi-arrows-angle-contract"></i></button>
+        </div>
+      </div>
+      <div class="afficheLogement" id="afficheLogement1">
+        <div class="row">
+          <div class="col-8">
+            <div class="detailChambres">
+              <div class="chambre">
+                Chambre 1 :
+                <input type="radio" name="dispo1-1" value="disponible"> Disponible </input>
+                <input type="radio" name="dispo1-1" value="indisponible"> Indisponible </input>
+
+                <button class="detailChambre+ btn btn-outline-dark" id="boutonAfficherDetailChambre1-1" onClick="ShowDetail(1,1)"><i class="bi bi-arrows-angle-expand"></i></button>
+                <button class="detailChambre+ btn btn-outline-dark" id="boutonCacherDetailChambre1-1" onClick="HideDetail(1,1)" style="display: none"><i class="bi bi-arrows-angle-contract"></i></button>
+              </div>
+              <div class="detailChambre" id="detailChambre1-1">Details de la chambre 1</div>
+              <div class="chambre">
+                Chambre 2 :
+                <input type="radio" name="dispo2-1" value="disponible"> Disponible </input>
+                <input type="radio" name="dispo2-1" value="indisponible"> Indisponible </input>
+
+                <button class="detailChambre+  btn btn-outline-dark" id="boutonAfficherDetailChambre2-1" onClick="ShowDetail(2,1)"><i class="bi bi-arrows-angle-expand"></i></button>
+                <button class="detailChambre+  btn btn-outline-dark" id="boutonCacherDetailChambre2-1" onClick="HideDetail(2,1)" style="display: none"><i class="bi bi-arrows-angle-contract"></i></button>
+              </div>
+              <div class="detailChambre" id="detailChambre2-1">Details de la chambre 2</div>
+              <div class="chambre">
+                Chambre 3 :
+                <input type="radio" name="dispo3-1" value="disponible"> Disponible </input>
+                <input type="radio" name="dispo3-1" value="indisponible"> Indisponible </input>
+
+                <button class="detailChambre+  btn btn-outline-dark" id="boutonAfficherDetailChambre3-1" onClick="ShowDetail(3,1)"><i class="bi bi-arrows-angle-expand"></i></button>
+                <button class="detailChambre+  btn btn-outline-dark" id="boutonCacherDetailChambre3-1" onClick="HideDetail(3,1)" style="display: none"><i class="bi bi-arrows-angle-contract"></i></button>
+              </div>
+              <div class="detailChambre" id="detailChambre3-1">Details de la chambre 3</div>
+            </div>
+            <div id="btnAddPhoto">
+              <button class="btn btn-outline-dark" onclick="alert('Pouet')">Ajouter photo</button>
+            </div>
+
+          </div>
+          <div class="caracteristiques col-4">Autres caractéristiques</div>
+        </div>
+      </div>
+      <div class="carrousel row">
+        <ul id="carousel1">
+          <li>
+            <img class="carousel-image" src="../img/logements/imgb6.jpg">
+          </li>
+          <li>
+            <img class="carousel-image" src="../img/logements/img5.jpg">
+          </li>
+          <li>
+            <img class="carousel-image" src="../img/logements/img6.jpg">
+          </li>
+          <li>
+            <img class="carousel-image" src="../img/logements/imgb6.jpg">
+          </li>
+          <li>
+            <img class="carousel-image" src="../img/logements/img5.jpg">
+          </li>
+          <li>
+            <img class="carousel-image" src="../img/logements/img6.jpg">
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- 2E Logement !-->
+
+    <div class="container logement">
+      <div class="row nomLogement">
+        <div class=" col-10 titreLogement">Logement n°2</div>
+        <div class="showHideLogement col-2">
+          <button class="showLogement btn btn-outline-dark" id="showLogement2" onClick="AfficheLogement(2)"><i class="bi bi-arrows-angle-expand"></i></button>
+          <button class="hideLogement btn btn-outline-dark" id="hideLogement2" onClick="HideLogement(2)"><i class="bi bi-arrows-angle-contract"></i></button>
+        </div>
+      </div>
+      <div class="afficheLogement" id="afficheLogement2">
+        <div class="row">
+          <div class="col-8">
+            <div class="detailChambres">
+              <div class="chambre">
+                Chambre 1 :
+                <input type="radio" name="dispo1-2" value="disponible"> Disponible </input>
+                <input type="radio" name="dispo1-2" value="indisponible"> Indisponible </input>
+
+                <button class="detailChambre+ btn btn-outline-dark" id="boutonAfficherDetailChambre1-2" onClick="ShowDetail(1,2)"><i class="bi bi-arrows-angle-expand"></i></button>
+                <button class="detailChambre+ btn btn-outline-dark" id="boutonCacherDetailChambre1-2" onClick="HideDetail(1,2)" style="display: none"><i class="bi bi-arrows-angle-contract"></i></button>
+              </div>
+              <div class="detailChambre" id="detailChambre1-2">Detail de la chambre 1</div>
+              <div class="chambre">
+                Chambre 2 :
+                <input type="radio" name="dispo2-2" value="disponible"> Disponible </input>
+                <input type="radio" name="dispo2-2" value="indisponible"> Indisponible </input>
+
+                <button class="detailChambre+ btn btn-outline-dark" id="boutonAfficherDetailChambre2-2" onClick="ShowDetail(2,2)"><i class="bi bi-arrows-angle-expand"></i></button>
+                <button class="detailChambre+ btn btn-outline-dark" id="boutonCacherDetailChambre2-2" onClick="HideDetail(2,2)" style="display: none"><i class="bi bi-arrows-angle-contract"></i></button>
+              </div>
+              <div class="detailChambre" id="detailChambre2-2">Detail de la chambre 2</div>
+              <div class="chambre">
+                Chambre 3 :
+                <input type="radio" name="dispo3-2" value="disponible"> Disponible </input>
+                <input type="radio" name="dispo3-2" value="indisponible"> Indisponible </input>
+
+                <button class="detailChambre+ btn btn-outline-dark" id="boutonAfficherDetailChambre3-2" onClick="ShowDetail(3,2)"><i class="bi bi-arrows-angle-expand"></i></button>
+                <button class="detailChambre+ btn btn-outline-dark" id="boutonCacherDetailChambre3-2" onClick="HideDetail(3,2)" style="display: none"><i class="bi bi-arrows-angle-contract"></i></button>
+              </div>
+              <div class="detailChambre" id="detailChambre3-2">Detail de la chambre 3</div>
+            </div>
+            <div id="btnAddPhoto">
+              <button class="btn btn-outline-dark" onclick="alert('Pouet')">Ajouter photo</button>
+            </div>
+
+          </div>
+          <div class="caracteristiques col-4">Autres caractéristiques</div>
+        </div>
+      </div>
+      <div class="carrousel row">
+        <ul id="carousel2">
+          <li>
+            <img class="carousel-image" src="../img/logements/imgb6.jpg">
+          </li>
+          <li>
+            <img class="carousel-image" src="../img/logements/img5.jpg">
+          </li>
+          <li>
+            <img class="carousel-image" src="../img/logements/img6.jpg">
+          </li>
+          <li>
+            <img class="carousel-image" src="../img/logements/imgb6.jpg">
+          </li>
+          <li>
+            <img class="carousel-image" src="../img/logements/img5.jpg">
+          </li>
+          <li>
+            <img class="carousel-image" src="../img/logements/img6.jpg">
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Infos perso !-->
+    <p class="titre-info">Informations personnelles</p>
+    <div class="container">
+      <div class="row nomLogement">
+        <div class=" col-10">Nom et prénom</div>
+        <div class="showHideLogement col-2">
+          <button class="showLogement btn btn-outline-dark" id="boutonAfficher-nomprenom" onClick="afficherElement('nomprenom')" type="button">Modifier</button>
+          <button class="hideLogement btn btn-outline-dark" id="boutonCacher-nomprenom" onClick="cacherElement('nomprenom')" type="button"><i class="bi bi-arrows-angle-contract"></i></button>
+        </div>
+      </div>
+      <div class="cache" id="nomprenom">
+        <div class="row">
+          <form>
+            <div class="mb-3">
+              <label for="Nom" class="form-label">Nom</label>
+              <input type="nom" class="form-control" id="Nom" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="Prenom" class="form-label">Prénom</label>
+              <input type="prenom" class="form-control" id="Prenom">
+            </div>
+            <button onclick="alert('pouet')" type="submit" class="btn btn-primary">Modifier</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="row nomLogement">
+        <div class=" col-10">Mail & Mot de Passe</div>
+        <div class="showHideLogement col-2">
+          <button class="showLogement btn btn-outline-dark" id="boutonAfficher-mailmdp" onClick="afficherElement('mailmdp')" type="button">Modifier</button>
+          <button class="hideLogement btn btn-outline-dark" id="boutonCacher-mailmdp" onClick="cacherElement('mailmdp')" type="button"><i class="bi bi-arrows-angle-contract"></i></button>
+        </div>
+      </div>
+      <div class="cache" id="mailmdp">
+        <div class="row">
+          <form>
+            <div class="mb-3">
+              <label for="mail" class="form-label">Mail</label>
+              <input type="email" class="form-control" id="mail" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="mdp" class="form-label">Mot de passe</label>
+              <input type="password" class="form-control" id="mdp">
+            </div>
+            <button onclick="alert('pouet')" type="submit" class="btn btn-primary">Modifier</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="row nomLogement">
+        <div class=" col-10">Coordonnées</div>
+        <div class="showHideLogement col-2">
+          <button class="showLogement btn btn-outline-dark" id="boutonAfficher-coord" onClick="afficherElement('coord')" type="button">Modifier</button>
+          <button class="hideLogement btn btn-outline-dark" id="boutonCacher-coord" onClick="cacherElement('coord')" type="button"><i class="bi bi-arrows-angle-contract"></i></button>
+        </div>
+      </div>
+      <div class="cache" id="coord">
+        <div class="row">
+          <form>
+            <div class="mb-3">
+              <label for="num" class="form-label">Numéro de téléphone</label>
+              <input type="num" class="form-control" id="num" aria-describedby="emailHelp">
+            </div>
+            <button onclick="alert('pouet')" type="submit" class="btn btn-primary">Modifier</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </content>
+
+  <footer>
+    <div class="fContent">
+      <div class="fLeft">
+        <img src="../img/logo/logoRoofBlack.svg" alt="logo LaColoc">
+        <p>&copy; 2021, LaColoc</p>
+      </div>
+
+      <div class="fRight">
+        <a target="_blank" href="https://facebook.com/"><img src="../img/reseauxSociaux/facebookBlack.svg" alt=""></a>
+        <a target="_blank" href="https://twitter.com/"> <img src="../img/reseauxSociaux/twitterBlack.svg" alt=""></a>
+        <a target="_blank" href="https://www.instagram.com/"><img src="../img/reseauxSociaux/instagramBlack.svg" alt=""></a>
+      </div>
+    </div>
+
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
+
+<script>
+  function AfficheLogement(idLogement) {
+    document.getElementById("afficheLogement" + idLogement).style.display = "block";
+    document.getElementById("showLogement" + idLogement).style.display = "none";
+    document.getElementById("hideLogement" + idLogement).style.display = "block";
+
+
+  }
+
+  function HideLogement(idLogement) {
+    document.getElementById("afficheLogement" + idLogement).style.display = "none";
+    document.getElementById("showLogement" + idLogement).style.display = "block";
+    document.getElementById("hideLogement" + idLogement).style.display = "none";
+  }
+
+  function ShowDetail(idChambre, idLogement) {
+    document.getElementById("detailChambre" + idChambre + "-" + idLogement).style.display = "inline-block";
+    document.getElementById("boutonAfficherDetailChambre" + idChambre + "-" + idLogement).style.display = "none";
+    document.getElementById("boutonCacherDetailChambre" + idChambre + "-" + idLogement).style.display = "inline-block";
+  }
+
+  function HideDetail(idChambre, idLogement) {
+    document.getElementById("detailChambre" + idChambre + "-" + idLogement).style.display = "none";
+    document.getElementById("boutonAfficherDetailChambre" + idChambre + "-" + idLogement).style.display = "inline-block";
+    document.getElementById("boutonCacherDetailChambre" + idChambre + "-" + idLogement).style.display = "none";
+  }
+
+  function afficherElement(id) {
+    document.getElementById(id).style.display = "block";
+    document.getElementById("boutonAfficher-" + id).style.display = "none";
+    document.getElementById("boutonCacher-" + id).style.display = "block";
+  }
+
+  function cacherElement(id) {
+    document.getElementById(id).style.display = "none";
+    document.getElementById("boutonAfficher-" + id).style.display = "block";
+    document.getElementById("boutonCacher-" + id).style.display = "none";
+  }
+</script>
+
+<script type="text/javascript">
+  $("#carousel1").lightSlider({
+    item: 4,
+    pager: true,
+    autoWidth: false,
+    slideMargin: 0
+  });
+
+  $("#carousel2").lightSlider({
+    item: 4,
+    pager: true,
+    autoWidth: false,
+    slideMargin: 0
+  });
+</script>

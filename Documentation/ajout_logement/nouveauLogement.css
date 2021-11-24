@@ -1,0 +1,275 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
+    box-sizing:border-box;
+}
+
+
+html * {
+    font-family: 'Open Sans', sans-serif;
+    font-size:15px;
+    box-sizing: border-box ;
+    text-decoration: none;
+
+}
+
+.container-fluid{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border : solid 1px black; */
+    margin:0;
+    padding:0;
+}
+
+
+
+.content{
+    width:70%;
+    /* border:solid 1px black; */
+    display:flex;
+    flex-direction: column;
+    margin: 75px auto 0 auto;
+    
+}
+
+.titre{
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top:30px;
+}
+
+.categorie{
+    margin-top:40px;
+}
+.titre-categorie{
+    font-size:1.2rem;
+    padding-bottom: 5px;
+    border-bottom:solid 1px rgb(131, 131, 131);
+}
+
+#categorie-typeLogement{
+    margin-top:20px;
+    display:flex;
+    flex-direction: row;
+}
+
+.categorie-logement{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right:20px;
+    border:solid 1px gray;
+    border-radius:8px;
+    width:15%;
+}
+
+.categorie-logement:hover{
+    opacity:0.3;
+}
+
+.btn.btn-secondary{
+    width:100%;
+    height:100%;
+    background-color:transparent;
+    color:black;
+    border:none;
+    outline:none;
+    box-shadow: none;
+}
+
+.categorie-localisation,.categorie-caracteristique{
+    display:flex;
+    flex-direction: column;
+    width:20%;
+    margin-top:20px;
+    margin-right:30px;
+}
+
+.categorie-commodite{
+    width:fit-content;
+    margin-top:20px;
+    margin-right: 45px;
+}
+
+#ville-cp,#voie-numero{
+    display:flex;
+    flex-direction: row;
+}
+
+.input-localisation,.input-caracteristique,input-commodite{
+    padding:5px 8px;
+    border-radius:8px;
+    margin-top:5px;
+    box-shadow : none;
+    border:solid 1px grey;
+}
+
+.label-caracteristique{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.icon-caracteristique{
+    width:40px;
+    height:40px;
+    margin-right:10px;
+    border-radius:50%;
+    border:solid 1px black;
+    opacity:0.7;
+    
+}
+
+
+/* Collapse chambres */
+
+.grpChambre{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:100%;
+    margin: 0 auto;
+}
+
+.chambre-caracteristique{
+    margin-left:5%;
+    width:40%;
+}
+
+.head-categorie{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    /* width:40%; */
+    border:solid 1px black;
+    border-radius: 8px;
+    padding:2px 5px;
+    margin-top:40px;
+    margin-bottom:15px;
+    background-color:RGB(235, 235, 235);
+   
+}
+
+.btn.btn-primary{
+    padding: 6px 5px;
+    background-color: transparent;
+    border:none;
+    color: rgb(47,79,79);
+    font-weight: 600;
+    font-size:1.1rem;
+}
+.btn.btn-primary:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+.btn.btn-primary:hover{
+    text-decoration: underline;
+}
+
+
+
+.chambreContent{
+    display:flex;
+    flex-direction: column;
+    justify-self: flex-start;
+    /* border:solid 1px black; */
+    margin-bottom: 15px;
+    width:100%;
+} 
+
+.input-modifier{
+    margin-top:3px;
+    padding:8px 5px 8px 5px;
+}
+
+.label-input{
+    color:gray;
+}
+
+.btn-enregistrer{
+    border:solid 1px black;
+    border-radius:8px;
+    padding:6px 5px 6px 5px;
+    background-color: RGB(0, 132, 137);
+    font-weight: 500;
+    letter-spacing: 0.05rem;
+    color: whitesmoke;
+    width:40%;
+}
+
+/* FIN COLLAPSE CHAMBRE */
+
+/* COMMODITES */
+
+#allCommodite{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+
+
+#btn-ajouter{
+    margin-top: 60px;
+    width: 20%;
+}
+
+
+
+/* FOOTER */
+
+footer{
+    height:10vh;
+    background-color: rgb(247, 247, 247);
+    margin-top:50px;
+}
+
+.fContent{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height:100%;
+    width:80%;
+    margin:0 auto;
+    
+}
+
+.fLeft{
+    display:flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.fLeft>img{
+    width:30px;
+    height:30px;
+}
+
+.fRight>a>img{
+    width:20px;
+    height:20px;
+}
+
+.fRight>a:nth-of-type(2n){
+    margin:0 10px;
+}

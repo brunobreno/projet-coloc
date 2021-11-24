@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="style-header.css">
+        <link rel="stylesheet" type="text/css" href="style-footer.css">
+        <link rel="stylesheet" href="colocInscription.css">
+        <title>Coloc</title>
+    </head>
+
+    <body class="container-fluid">
+
+        <header class="sticky-top">
+            <div class="header-wrap" style="background: linear-gradient(0.25turn, #f69d3c, #ebf8e1, #3f87a6);">
+              <div class="header-main-container">
+                <div class="header-left-container">
+                  <div class="header-logo-main-container" onclick="location.href='../page_accueil/colocFP.html'">
+                  </div>
+                 
+                </div>
+                <div class="header-account-main-container">
+                  <button type=button class="header-button-account button1" style="padding-left:15px;padding-right:15px">
+                    Se connecter
+                  </button>
+                  <button type=button class="header-button-account button1 last-button">
+                    <i class="bi-globe"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <h2 class="row titre">Inscription</h2>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <form class="col-8">
+                            <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Email</label>
+                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+                              <input type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Confirmez le mot de passe</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="nom" class="form-label">Nom</label>
+                                <input type="text" class="form-control" id="nom">
+                            </div>
+                            <div class="mb-3">
+                                <label for="prenom" class="form-label">Prenom</label>
+                                <input type="text" class="form-control" id="prenom">
+                            </div>
+                            <div class="mb-3">
+                                <label for="Civilite" class="form-label">Civilite</label>
+                                <select class="form-select" aria-label="Civilite">
+                                    <option selected></option>
+                                    <option value="1">Mr</option>
+                                    <option value="2">Mme</option>
+                                    <option value="3">NB</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Telephone</label>
+                                <input type="text" class="form-control" id="phone">
+                            </div>
+                            <div class="mb-3">
+                                <label for="choix-loc-proprio" class="form-label">Etes-vous </label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="profil" id="choix-proprio" value="proprietaire">
+                                    <label class="form-check-label" for="choix-proprio">Proprietaire</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="profil" id="choix-locataire" value="locataire">
+                                    <label class="form-check-label" for="choix-locataire">Locataire</label>
+                                  </div>
+                            </div>
+                            <div id="info-locataire" class="invisible">
+                                <div class="mb-3">
+                                    <label for="form-check form-check-inline" class="form-label">En recherche de colocation</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                        <label class="form-check-label" for="inlineRadio1">Oui</label>
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <label class="form-check-label" for="inlineRadio2">Non</label>
+                                      </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Votre description</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                  </div>
+                                <div class="mb-3">
+                                    <label for="Situation" class="form-label">Votre situation</label>
+                                    <select class="form-select" aria-label="Situation">
+                                        <option selected></option>
+                                        <option value="1">Etudiant</option>
+                                        <option value="2">Salarie</option>
+                                        <option value="3">Retraite</option>
+                                        <option value="4">Autre</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button id="btn-submit" type="submit" class="btn btn-primary rounded-pill">S'inscrire</button>
+                          </form>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </main>
+
+        <footer>
+          <div class="fContent">
+            <div class="fLeft">
+              <img src="../img/logo/logoRoofBlack.svg" alt="logo LaColoc">
+              <span>&copy; 2021, LaColoc</span>
+            </div>
+    
+            <div class="fRight">
+              <a target="_blank" href="https://facebook.com/"><img src="../img/reseauxSociaux/facebookBlack.svg" alt="" ></a>
+              <a target="_blank" href="https://twitter.com/"> <img src="../img/reseauxSociaux/twitterBlack.svg" alt=""></a>
+              <a target="_blank" href="https://www.instagram.com/"><img src="../img/reseauxSociaux/instagramBlack.svg" alt=""></a>
+            </div>
+          </div>
+        </footer>
+    </body>
+
+    <script>
+        function montrerChampsLocataire(){
+            document.getElementById("info-locataire").classList.remove("invisible").add("visible");
+        }
+        function masquerChampsLocataire(){
+            document.getElementById("info-locataire").classList.add("invisible").remove("visible");
+        }
+        document.getElementById("choix-locataire").onclick = montrerChampsLocataire;
+        document.getElementById("choix-proprio").onclick = masquerChampsLocataire;
+     </script>
+
+</html>

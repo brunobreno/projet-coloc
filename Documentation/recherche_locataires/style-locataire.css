@@ -1,0 +1,238 @@
+* {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.hide-scrollbar{
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome Safari */
+}
+
+.text-truncate-3{ /* Complete la class texte-truncate de Bootstrap(1 line ellipsis) pour une ellipse multiligne (ici 2)*/
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.page-main-container { /*Contient touta la page*/
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /*height: 2000px;*/
+  margin-top: 75px; /*Adapter a ma tailler du header fixed*/
+}
+
+
+
+.navigation-main-containter{
+  height: 100%;
+  width: 99%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.filter-main-container
+{
+  width: 96%;
+  padding-top: 20px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+
+.filter-button-container{
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-right: 10px;
+  /*  transition-duration: 0.4s;*/
+  cursor: pointer;
+  display: flex;
+}
+
+.filter-button{
+  height: 32px;
+  color: white;
+  background-color: #b56f6f;
+  border: solid 1.5px #b56f6f;/*#d7b99c; #bfd9dc*/
+  border-radius: 8px;
+  padding: 0px 15px 0px 15px;
+  font-size: 15px;
+  margin: 0px 10px 0px 10px;
+  min-width: 75px;
+  white-space: nowrap;
+  /*border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /*  margin: 4px 2px; */
+  /*  transition-duration: 0.4s;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  flex-direction: row;*/
+}
+
+.filter-button:hover {
+  /*background-color: #aea7a04a;color: #606060;*/
+  border: solid 2px white; /* #d4e0d7 #d7b99c; #aa9e91*/
+  color: white;
+}
+
+.filter-button i {
+  transform: translate(7px,1px);
+  font-size: 15px;
+}
+
+
+
+.filter-button-inside
+{
+  padding: 20px;
+}
+
+.cards-container
+{
+  display: flex;
+  width: 80%;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.card{
+  margin: auto;
+  background-color: #fbe8d3;  /*#e9b477;*/
+  border: none;
+  width: 400px;
+  margin-top: 75px;
+  border-radius: 17px;
+  z-index: -1;
+}
+
+.card-img-container
+{
+  height: 68px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-img-content
+{
+  border-radius: 50%;
+  overflow: hidden;
+  width: 115px;
+  height: 115px;
+  display: flex;
+  transform: translateY(-40px);
+  align-self: center;
+  justify-content: center;
+  border: solid 4px white;
+  outline: solid 9px #fbe8d3;
+}
+
+.circle {
+    position: absolute;
+    box-sizing: border-box;
+    border-width: 1.5px;
+    border-style: solid;
+    border-radius: 50%;
+    transition: all 1.5s ease-in-out;
+  }
+
+.inner-circle {
+  width: 115px;
+  height: 115px;
+  top: -43px;
+  left: 87px;
+  border-color: grey grey grey transparent;
+  z-index:10;
+  }
+
+.outer-circle {
+  width: 124px;
+  height: 124px;
+  top: -48px;
+  left: 82px;
+  border-color: grey transparent grey grey;
+  z-index: 9;
+  }
+
+.inner-circle:hover  {
+    transform: rotate(360deg);
+  }
+
+.outer-circle:hover {
+    transform: rotate(-360deg);
+  }
+
+
+.card-img-top
+{
+  width: auto;
+}
+
+.card-title
+{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+
+.card-caract
+{
+  height: 27px;
+  padding-left: 10px;
+}
+
+
+
+
+.card > .list-group
+{
+  border-left: solid 3px #fbe8d3;
+  border-right: solid 3px #fbe8d3;
+}
+
+.list-group-flush > .list-group-item {
+    border-bottom: solid 2px #fbe8d3;
+    font-size: 17px;
+}
+
+.list-group-item.icons
+{
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-bottom
+{
+  padding: 1rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cards-space-between
+{
+  width: 25px;
+}

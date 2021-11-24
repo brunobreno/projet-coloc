@@ -1,0 +1,295 @@
+html * {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+body, h2, .row {
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+/* Header */
+header {
+  overflow: visible;
+}
+
+.header-wrap {
+  background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+  /*linear-gradient(to right, lightgrey, lightpink);*/
+  height: 10px;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  z-index: 9999;
+}
+
+.header-main-container {
+  width: 100%;
+  height: 71px;
+  position: fixed;
+  top: 0px;
+  background-color: red;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 1px 12px #d5d5d5;
+  background-color: white;
+  /*#ffc629; #ffffffe6*/
+  margin-top: 4px;
+  /*  b
+box-shadow: 8px 5px 5px gray;
+ackground-image: url(img/background16.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: visible;*/
+}
+
+.header-left-container {
+  display: flex;
+  height: 100%;
+  margin-top: 15px;
+}
+
+.header-logo-main-container {
+  height: 73%;
+  width: 160px;
+  background-image: url(../img/logo/logo-slogan.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.header-research-main-container {
+  height: 73%;
+  width: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6px;
+  margin-left: 25px;
+}
+
+.header-account-main-container {
+  height: 80%;
+  width: 490px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.header-button-account {
+  border: none;
+  color: white;
+  /*  padding: 16px 15px;*/
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15.5px;
+  /*  margin: 4px 2px; */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+header .first-button {
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+header .button1 {
+  background-color: white;
+  color: #606060;
+  border-right: 2px solid #dfc5acbf;
+  /*#e7e7e7 */
+  width: 135px;
+  height: 60%;
+  white-space: nowrap;
+}
+
+header .last-button {
+  border: none;
+  padding-left: 20px;
+  padding-right: 22px;
+  width: 40px;
+}
+
+header .button1:hover {
+  background-color: #dfc5acbf;
+  /*#f7f7f7;  #ebbf902e; #f69d3c*/
+  color: #606060;
+}
+
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* border : solid 1px black; */
+  margin: 0;
+  padding: 0;
+}
+
+.boutonHeader {
+  height: 60%;
+  font-size: 70%;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: black;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+#btn-ajoutlgmt {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.titre {
+  display: block;
+  text-align: center;
+  margin-bottom: 0px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: large;
+}
+
+.titre-info {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: 15%;
+}
+
+.logo {
+  /* border:solid 1px black; */
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+#logo-img {
+  width: 80px;
+  margin: 0;
+  padding: 0;
+}
+
+#logo-txt {
+  margin: 0;
+  padding: 0;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: black;
+  transform: translateX(-50px);
+}
+
+.carousel-row {
+  display: flex;
+  justify-content: center;
+}
+
+.afficheLogement, .hideLogement, .detailChambre, .cache {
+  display: none;
+}
+
+.logement {
+  border-bottom: solid black 1px;
+}
+
+@media (max-width: 767px) {
+  .carousel-inner .carousel-item>div {
+    display: none;
+  }
+
+  .carousel-inner .carousel-item>div:first-child {
+    display: block;
+  }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+  display: flex;
+}
+
+.carrousel, .nomLogement, .chambre{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+
+  .carousel-inner .carousel-item-end.active,
+  .carousel-inner .carousel-item-next {
+    transform: translateX(25%);
+  }
+
+  .carousel-inner .carousel-item-start.active,
+  .carousel-inner .carousel-item-prev {
+    transform: translateX(-25%);
+  }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start {
+  transform: translateX(0);
+}
+
+footer {
+  height: 10vh;
+  background-color: rgb(247, 247, 247);
+}
+
+.fContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.fLeft {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.fLeft>img {
+  width: 30px;
+  height: 30px;
+}
+
+.fRight>a>img {
+  width: 20px;
+  height: 20px;
+}
+
+.fRight>a:nth-of-type(2n) {
+  margin: 0 10px;
+}
+
+.showHideLogement {
+  justify-content: right;
+  display: flex;
+}

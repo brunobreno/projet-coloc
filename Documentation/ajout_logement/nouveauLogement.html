@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Font Icon CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <!-- Fontawesome Font Icon CSS -->
+        <link href="../fontawesome/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="style-header.css">
+        <link rel="stylesheet" href="nouveauLogement.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
+
+        <title>Ajouter un nouveau logement</title>
+    </head>
+
+
+
+    <body>
+
+        <div class="container-fluid">
+
+            <header>
+                <div class="header-wrap">
+                    <div class="header-main-container">
+
+                        <div class="header-left-container">
+
+                            <div class="header-logo-main-container">
+
+                            </div>
+
+                            <div class="header-research-main-container">
+                                <div class="grp-recherche">
+                                    <input type="text" placeholder="Dans quelle ville cherchez-vous une colocation ?"
+                                        id="barre-recherche">
+                                    <button id="btn-recherche" type="submit"></button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="header-account-main-container">
+
+
+                            <button type=button class="header-button-account button1 ">
+                                Messages
+                            </button>
+
+                            <button type=button class="header-button-account button1"
+                                style="padding-left:15px;padding-right:15px">
+                                Mon compte
+                            </button>
+
+                            <button type=button class="header-button-account button1 last-button">
+                                <i class="bi-globe"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+
+            <div class="content">
+
+
+                <!-- TYPE LOGEMENT-->
+
+                <div class="titre">Ajout d'un nouveau logement</div>
+
+                <div class="categorie" id="type-logement">
+                    <div class="titre-categorie">Type de logement</div>
+                    <div id="categorie-typeLogement">
+                        <div class="categorie-logement" id="type-studio">
+                            <input type="radio" class="btn-check" name="options" id="studio" autocomplete="off">
+                            <label class="btn btn-secondary" for="studio">Studio</label>
+                        </div>
+                        <div class="categorie-logement" id="type-appartement">
+                            <input type="radio" class="btn-check" name="options" id="appartement" autocomplete="off">
+                            <label class="btn btn-secondary" for="appartement">Appartement</label>
+                        </div>
+                        <div class="categorie-logement" id="type-maison">
+                            <input type="radio" class="btn-check" name="options" id="maison" autocomplete="off">
+                            <label class="btn btn-secondary" for="maison">Maison</label>
+                        </div>
+                        <div class="categorie-logement" id="type-appartement">
+                            <input type="radio" class="btn-check" name="options" id="loft" autocomplete="off">
+                            <label class="btn btn-secondary" for="loft">Loft</label>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <!-- LOCALISATION LOGEMENT-->
+
+                <div class="categorie" id="localisation">
+                    <div class="titre-categorie">Localisation du logement</div>
+                    <div id="ville-cp">
+                        <div class="categorie-localisation">
+                            <label for="cp">Code Postal</label>
+                            <input class="input-localisation" name="cp" id="cp" type="text" placeholder="CP">
+                        </div>
+                        <div class="categorie-localisation">
+                            <label for="ville">Ville</label>
+                            <input class="input-localisation" name="ville" id="ville" type="text" placeholder="Ville">
+                        </div>
+                    </div>
+                    <div id="voie-numero">
+                        <div class="categorie-localisation">
+                            <label for="adresse">Voie</label>
+                            <input class="input-localisation" name="adresse" id="adresse" type="text"
+                                placeholder="Voie">
+                        </div>
+                        <div class="categorie-localisation">
+                            <label for="adresse">n°</label>
+                            <input class="input-localisation" name="adresse" id="adresse" type="number"
+                                placeholder="n° de voie" min=0>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- CARACTERISTIQUES LOGEMENT-->
+
+                <div class="categorie" id="caracteristiques">
+                    <div class="titre-categorie">Caracteristiques du logement</div>
+                    <div class="categorie-caracteristique">
+                        <div class="label-caracteristique">
+                            <img class="icon-caracteristique" src="../img/icon_logement/surface.svg" alt="icon surface">
+                            <label for="surface">Surface (m2)</label>
+                        </div>
+                        <input class="input-caracteristique" id="surface" type="number" min="0">
+                    </div>
+                    <div class="categorie-caracteristique">
+                        <div class="label-caracteristique">
+                            <img class="icon-caracteristique" src="../img/icon_logement/loyer.svg" alt="icon loyer">
+                            <label for="loyer">Loyer €/mois (hors charge)</label>
+                        </div>
+                        <input class="input-caracteristique" id="loyer" type="number" min="0">
+                    </div>
+                    <div class="categorie-caracteristique">
+                        <div class="label-caracteristique">
+                            <img class="icon-caracteristique" src="../img/icon_logement/douche.svg"
+                                alt="icon salle de bain">
+                            <label for="sdb">Nombre de salle de bain</label>
+                        </div>
+                        <input class="input-caracteristique" id="sdb" type="number" min="0">
+                    </div>
+                    <div class="categorie-caracteristique">
+                        <div class="label-caracteristique">
+                            <img class="icon-caracteristique" src="../img/icon_logement/lit.svg" alt="icon chambre">
+                            <label for="chambre">Nombre de chambre</label>
+                        </div>
+                        <input class="input-caracteristique" id="nbChambre" type="number" min="0">
+                    </div>
+
+
+                    <div class="grpChambre">
+                        <div class="chambre-caracteristique" hidden>
+                            <div class="head-categorie">
+                                <p class="categorie-titre">Chambre n°</p>
+                                <p>
+                                    <button class="btn btn-primary" class="collapser" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#caractChambre" aria-expanded="false"
+                                        aria-controls="caractChambre">
+                                        Modifier
+                                    </button>
+                                </p>
+                            </div>
+                            <div class="collapse" id="caractChambre">
+                                <div class="card card-body">
+                                    <div class="categorie-content">
+                                        <div class="chambreContent">
+                                            <label for="dateDispo" class="label-input" min="">Date de
+                                                disponiblite</label>
+                                            <input type="date" name="dateDispo" class="input-modifier">
+                                        </div>
+                                        <div class="chambreContent">
+                                            <label for="input-chambre" class="label-input">Surface chambre (m2)</label>
+                                            <input value="" type="number" class="input-modifier" min="0">
+                                        </div>
+                                        <div class="chambreContent">
+                                            <label for="input-chambre" class="label-input">Loyer €/mois</label>
+                                            <input value="" type="number" class="input-modifier" min="0">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn-enregistrer">Enregistrer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <!-- Commodites logement-->
+
+                <div class="categorie" id="commodite">
+                    <div class="titre-categorie">Commodités du logement</div>
+                    <div id="allCommodite">
+                        <div class="categorie-commodite">
+                            <div class="form-check form-switch">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">WiFi</label>
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            </div>
+                        </div>
+                        <div class="categorie-commodite">
+                            <div class="form-check form-switch">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Ascenseur</label>
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            </div>
+                        </div>
+                        <div class="categorie-commodite">
+                            <div class="form-check form-switch">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Balcon</label>
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            </div>
+                        </div>
+                        <div class="categorie-commodite">
+                            <div class="form-check form-switch">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Terasse</label>
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            </div>
+                        </div>
+                        <div class="categorie-commodite">
+                            <div class="form-check form-switch">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Cave</label>
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            </div>
+                        </div>
+                        <div class="categorie-commodite">
+                            <div class="form-check form-switch">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Local Velo</label>
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+
+                 <!-- Commodites logement-->
+
+                <div class="categorie" id="commodite">
+                    <div class="titre-categorie">Règles du logement</div>
+                    <div id="allCommodite">
+                        <div class="categorie-commodite">
+                            <div class="form-check form-switch">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">WiFi</label>
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-enregistrer" id="btn-ajouter">Ajouter le logement</button>
+
+            </div>
+
+            
+
+
+        </div>
+
+
+
+        <footer>
+            <div class="fContent">
+                <div class="fLeft">
+                    <img src="../img/logo/logoRoofBlack.svg" alt="logo LaColoc">
+                    <p>&copy; 2021, LaColoc</p>
+                </div>
+
+                <div class="fRight">
+                    <a target="_blank" href="https://facebook.com/"><img src="../img/reseauxSociaux/facebookBlack.svg"
+                            alt=""></a>
+                    <a target="_blank" href="https://twitter.com/"> <img src="../img/reseauxSociaux/twitterBlack.svg"
+                            alt=""></a>
+                    <a target="_blank" href="https://www.instagram.com/"><img
+                            src="../img/reseauxSociaux/instagramBlack.svg" alt=""></a>
+                </div>
+            </div>
+
+
+        </footer>
+
+
+
+        </div>
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+
+
+            // COLLAPSE CHAMBRES
+
+            var oldValueChambre = 0;
+            var nbChambre = document.querySelector("#nbChambre");
+            nbChambre.addEventListener('change', addNbChambre);
+
+
+            function addNbChambre() {
+
+                var newValueChambre = nbChambre.value;
+                if (oldValueChambre !== 0) {
+                    for (let i = 1; i <= oldValueChambre; i++) {
+                        var elem = document.querySelector(`#chambre${i}`);
+                        elem.parentNode.removeChild(elem);
+                    }
+                }
+                for (let i = newValueChambre; i >=1 ; i--) {
+                    var myDiv = document.querySelector(".chambre-caracteristique");
+                    var divClone = myDiv.cloneNode(true);
+                    divClone.id = `chambre${i}`;
+                    divClone.children[0].children[0].innerHTML = `Chambre n° ${i}`
+                    divClone.hidden = false;
+                    myDiv.insertAdjacentElement('afterend', divClone);
+                    // document.getElementById(`chambre${i}`).children[0].children[0].innerHTML = `Chambre n° ${i}`;
+                    
+                }
+                oldValueChambre = newValueChambre;
+            }
+
+            // function addNbChambre(){
+            //     var newValueChambre = nbChambre.value;
+            //     if(oldValueChambre !==0 && newValueChambre<oldValueChambre)
+            //     {
+            //         for(let i=oldValueChambre; i>newValueChambre; i--)
+            //         {
+            //             var elem = document.querySelector(`#chambre${i}`);
+            //             elem.parentNode.removeChild(elem);
+            //         }
+            //     }
+            //     else if(oldValueChambre !==0 && newValueChambre > oldValueChambre)
+            //     {
+            //         for(let i = oldValueChambre; i < newValueChambre; i++)
+            //         {
+            //             var myDiv = document.querySelector(".chambre-caracteristique");
+            //             var myLastDiv = document.querySelector(`#chambre${i}`);
+            //             var divClone = myDiv.cloneNode(true);
+            //             divClone.id = `chambre${i++}`;
+            //             divClone.hidden = false;
+            //             myLastDiv.insertAdjacentElement('afterend',divClone);
+            //         }
+            //     }
+            //     else
+            //     {
+            //         for(let i=1; i<=newValueChambre; i++)
+            //         {
+            //             var myDiv = document.querySelector(".chambre-caracteristique");
+            //             var divClone = myDiv.cloneNode(true);
+            //             divClone.id = `chambre${i}`;
+            //             divClone.hidden = false;
+            //             myDiv.insertAdjacentElement('afterend',divClone);
+            //         }
+            //     }
+
+            //     oldValueChambre = newValueChambre;
+            // }
+
+
+
+            // COMPLETER FORMULAIRE LOCATION
+
+            $("#cp").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "https://api-adresse.data.gouv.fr/search/?postcode=" + $("input[name='cp']").val(),
+                        data: { q: request.term },
+                        dataType: "json",
+                        success: function (data) {
+                            var postcodes = [];
+                            response($.map(data.features, function (item) {
+                                // Ici on est obligé d'ajouter les CP dans un array pour ne pas avoir plusieurs fois le même
+                                if ($.inArray(item.properties.postcode, postcodes) == -1) {
+                                    postcodes.push(item.properties.postcode);
+                                    return {
+                                        label: item.properties.postcode + " - " + item.properties.city,
+                                        city: item.properties.city,
+                                        value: item.properties.postcode
+                                    };
+                                }
+                            }));
+                        }
+                    });
+                },
+                // On remplit aussi la ville
+                select: function (event, ui) {
+                    $('#ville').val(ui.item.city);
+                }
+            });
+            $("#ville").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "https://api-adresse.data.gouv.fr/search/?city=" + $("input[name='ville']").val(),
+                        data: { q: request.term },
+                        dataType: "json",
+                        success: function (data) {
+                            var cities = [];
+                            response($.map(data.features, function (item) {
+                                // Ici on est obligé d'ajouter les villes dans un array pour ne pas avoir plusieurs fois la même
+                                if ($.inArray(item.properties.postcode, cities) == -1) {
+                                    cities.push(item.properties.postcode);
+                                    return {
+                                        label: item.properties.postcode + " - " + item.properties.city,
+                                        postcode: item.properties.postcode,
+                                        value: item.properties.city
+                                    };
+                                }
+                            }));
+                        }
+                    });
+                },
+                // On remplit aussi le CP
+                select: function (event, ui) {
+                    $('#cp').val(ui.item.postcode);
+                }
+            });
+            $("#adresse").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "https://api-adresse.data.gouv.fr/search/?postcode=" + $("input[name='cp']").val(),
+                        data: { q: request.term },
+                        dataType: "json",
+                        success: function (data) {
+                            response($.map(data.features, function (item) {
+                                return { label: item.properties.name, value: item.properties.name };
+                            }));
+                        }
+                    });
+                }
+            });
+        </script>
+    </body>
+
+</html>

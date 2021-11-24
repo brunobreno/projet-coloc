@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
+        <!-- Bootstrap Font Icon CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="style-header.css">
+        <link rel="stylesheet" type="text/css" href="style-footer.css">
+        <link rel="stylesheet" href="colocConnexion.css">
+        <title>Coloc</title>
+    </head>
+
+    <body class="container-fluid">
+        <header>
+            <div class="header-wrap" style="background: linear-gradient(0.25turn, #f69d3c, #ebf8e1, #3f87a6);">
+              <div class="header-main-container">
+                <div class="header-left-container">
+                  <div class="header-logo-main-container" onclick="location.href='../page_accueil/colocFP.html'">
+                  </div>
+                </div>
+                <div class="header-account-main-container">
+                  <button type=button class="header-button-account button1" style="padding-left:15px;padding-right:15px">
+                    S'inscrire
+                  </button>
+                  <button type=button class="header-button-account button1 last-button">
+                    <i class="bi-globe"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <h2 class="row titre">Connexion</h2>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <form class="col-8">
+                            <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Email</label>
+                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+                              <input type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <a id="mot-de-passe-oublie" href="">Mot de passe oublié</a>
+                            <button type="submit" class="btn btn-primary rounded-pill">Se connecter</button>
+                          </form>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </main>
+
+        <footer class="fixed-bottom">
+          <div class="fContent">
+            <div class="fLeft">
+              <img src="../img/logo/logoRoofBlack.svg" alt="logo LaColoc">
+              <span>&copy; 2021, LaColoc</span>
+            </div>
+    
+            <div class="fRight">
+              <a target="_blank" href="https://facebook.com/"><img src="../img/reseauxSociaux/facebookBlack.svg" alt="" ></a>
+              <a target="_blank" href="https://twitter.com/"> <img src="../img/reseauxSociaux/twitterBlack.svg" alt=""></a>
+              <a target="_blank" href="https://www.instagram.com/"><img src="../img/reseauxSociaux/instagramBlack.svg" alt=""></a>
+            </div>
+          </div>
+        </footer>
+
+    </body>
+
+    <script>
+        function motDePasseOublie(){
+            var emailUtilisateur = prompt("Saisissez votre email :");
+            //Envoyer lien par mail pour modifier le mot de passe + redirection vers la page d'accueil
+        }
+        document.getElementById("mot-de-passe-oublie").onclick = motDePasseOublie;
+    </script>
+</html>
