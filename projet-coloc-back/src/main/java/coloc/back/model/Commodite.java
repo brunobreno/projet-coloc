@@ -11,8 +11,6 @@ import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import coloc.back.model.Views.ViewChambre;
-
 @Entity
 @JsonView(Views.ViewCommon.class)
 public class Commodite {

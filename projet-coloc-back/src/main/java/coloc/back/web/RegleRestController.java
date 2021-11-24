@@ -4,6 +4,8 @@ package coloc.back.web;
 import java.util.List;
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 import coloc.back.model.Regle;
+import coloc.back.model.Views;
 import coloc.back.repository.IRegleRepository;
 
 
@@ -31,7 +34,7 @@ public class RegleRestController {
 	private IRegleRepository regleRepo;
 
 	@GetMapping("")
-//	@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public List<Regle> findAll() {
 		List<Regle> regles = regleRepo.findAll();
 
@@ -39,7 +42,7 @@ public class RegleRestController {
 	}
 
 	@GetMapping("/{id}")
-//	@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public Regle findById(@PathVariable Long id) {
 		Optional<Regle> optRegle = regleRepo.findById(id);
 
@@ -52,7 +55,7 @@ public class RegleRestController {
 	
 
 	@PostMapping("")
-//	@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public Regle create(@RequestBody Regle regle) {
 		regle = regleRepo.save(regle);
 
@@ -60,7 +63,7 @@ public class RegleRestController {
 	}
 
 	@PutMapping("/{id}")
-	//@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public Regle update(@PathVariable Long id, @RequestBody Regle regle) {
 		if (!regleRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Regle non trouvée");
