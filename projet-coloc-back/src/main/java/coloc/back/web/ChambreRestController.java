@@ -18,67 +18,66 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 
-import coloc.back.model.Photo;
-import coloc.back.repository.IPhotoRepository;
+import coloc.back.model.Chambre;
+import coloc.back.repository.IChambreRepository;
 
 
 @RestController
-@RequestMapping("/photos")
+@RequestMapping("/chambres")
 @CrossOrigin("*")
-public class PhotoRestController {
+public class ChambreRestController {
 
 	@Autowired
-	private IPhotoRepository photoRepo;
+	private IChambreRepository chambreRepo;
 
 	@GetMapping("")
 //	@JsonView(Views.ViewPhoto.class)
-	public List<Photo> findAll() {
-		List<Photo> photos = photoRepo.findAll();
+	public List<Chambre> findAll() {
+		List<Chambre> chambres = chambreRepo.findAll();
 
-		return photos;
+		return chambres;
 	}
 
 	@GetMapping("/{id}")
 //	@JsonView(Views.ViewPhoto.class)
-	public Photo find(@PathVariable Long id) {
-		Optional<Photo> optPhoto = photoRepo.findById(id);
+	public Chambre findById(@PathVariable Long id) {
+		Optional<Chambre> optChambre = chambreRepo.findById(id);
 
-		if (optPhoto.isPresent()) {
-			return optPhoto.get();
+		if (optChambre.isPresent()) {
+			return optChambre.get();
 		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Photo non trouvée");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Chambre non trouvée");
 		}
 	}
 	
 
 	@PostMapping("")
 //	@JsonView(Views.ViewPhoto.class)
-	public Photo create(@RequestBody Photo photo) {
-		photo = photoRepo.save(photo);
+	public Chambre create(@RequestBody Chambre chambre) {
+		chambre = chambreRepo.save(chambre);
 
-		return photo;
+		return chambre;
 	}
 
 	@PutMapping("/{id}")
 	//@JsonView(Views.ViewPhoto.class)
-	public Photo update(@PathVariable Long id, @RequestBody Photo photo) {
-		if (!photoRepo.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Photo non trouvée");
+	public Chambre update(@PathVariable Long id, @RequestBody Chambre chambre) {
+		if (!chambreRepo.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Chambre non trouvée");
 		}
 
-		photo = photoRepo.save(photo);
+		chambre = chambreRepo.save(chambre);
 
-		return photo;
+		return chambre;
 	}
 
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		if (!photoRepo.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Photo non trouvée");
+		if (!chambreRepo.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Chambre non trouvée");
 		}
-		
-		photoRepo.deleteById(id);
+		chambreRepo.deleteById(id);
 	}
 
 }
