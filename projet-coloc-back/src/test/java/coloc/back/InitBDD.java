@@ -1,16 +1,17 @@
+package coloc.back;
 import java.time.LocalDate;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import coloc.back.model.*;
 import coloc.back.repository.*;
-import config.ApplicationConfig;
+
 
 public class InitBDD {
     
     public static void run(){
 
-        AnnotationConfigApplicationContext spring = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+        AnnotationConfigApplicationContext spring = new AnnotationConfigApplicationContext(ProjetColocBackApplication.class);
 
         IUtilisateurRepository utilisateurRepository = spring.getBean(IUtilisateurRepository.class);
         IProprietaireRepository proprietaireRepository = spring.getBean(IProprietaireRepository.class);
