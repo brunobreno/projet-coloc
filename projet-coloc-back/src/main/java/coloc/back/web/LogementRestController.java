@@ -3,11 +3,9 @@ package coloc.back.web;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,21 +27,21 @@ import coloc.back.repository.ILogementRepository;
 @RestController
 @RequestMapping("/logements")
 @CrossOrigin("*")
-public class LogementController {
+public class LogementRestController {
 
 	@Autowired
 	private ILogementRepository logementRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewLogement.class)
+	//@JsonView(Views.ViewLogement.class)
 	public List<Logement> findAll() {
 		List<Logement> logements = logementRepo.findAll();
 
 		return logements;
 	}
 
-	@GetMapping("{id}")
-	@JsonView(Views.ViewLogementDetail.class)
+	@GetMapping("/{id}")
+	//@JsonView(Views.ViewLogementDetail.class)
 	public Logement find(@PathVariable Long id) {
 		Optional<Logement> optLogement = logementRepo.findById(id);
 
@@ -55,19 +53,15 @@ public class LogementController {
 	}
 
 	@PostMapping("")
-	@JsonView(Views.ViewLogement.class)
-	public Logement create(@Valid @RequestBody Logement logement, BindingResult result) {
-		if(result.hasErrors()) {
-			throw new LogementValidationException();
-		}
-		
+	//@JsonView(Views.ViewLogement.class)
+	public Logement create(@RequestBody Logement logement) {		
 		logement = logementRepo.save(logement);
 
 		return logement;
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewLogement.class)
+	//@JsonView(Views.ViewLogement.class)
 	public Logement update(@PathVariable Long id, @RequestBody Logement logement) {
 		if (!logementRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Logement non trouvé");

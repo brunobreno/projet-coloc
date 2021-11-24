@@ -18,67 +18,66 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 
-import coloc.back.model.Photo;
-import coloc.back.repository.IPhotoRepository;
+import coloc.back.model.Commodite;
+import coloc.back.repository.ICommoditeRepository;
 
 
 @RestController
-@RequestMapping("/photos")
+@RequestMapping("/commodites")
 @CrossOrigin("*")
-public class PhotoRestController {
+public class CommoditeRestController {
 
 	@Autowired
-	private IPhotoRepository photoRepo;
+	private ICommoditeRepository commoditeRepo;
 
 	@GetMapping("")
 //	@JsonView(Views.ViewPhoto.class)
-	public List<Photo> findAll() {
-		List<Photo> photos = photoRepo.findAll();
+	public List<Commodite> findAll() {
+		List<Commodite> commodites = commoditeRepo.findAll();
 
-		return photos;
+		return commodites;
 	}
 
 	@GetMapping("/{id}")
 //	@JsonView(Views.ViewPhoto.class)
-	public Photo find(@PathVariable Long id) {
-		Optional<Photo> optPhoto = photoRepo.findById(id);
+	public Commodite findById(@PathVariable Long id) {
+		Optional<Commodite> optChambre = commoditeRepo.findById(id);
 
-		if (optPhoto.isPresent()) {
-			return optPhoto.get();
+		if (optChambre.isPresent()) {
+			return optChambre.get();
 		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Photo non trouvée");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Commodite non trouvée");
 		}
 	}
 	
 
 	@PostMapping("")
 //	@JsonView(Views.ViewPhoto.class)
-	public Photo create(@RequestBody Photo photo) {
-		photo = photoRepo.save(photo);
+	public Commodite create(@RequestBody Commodite commodite) {
+		commodite = commoditeRepo.save(commodite);
 
-		return photo;
+		return commodite;
 	}
 
 	@PutMapping("/{id}")
 	//@JsonView(Views.ViewPhoto.class)
-	public Photo update(@PathVariable Long id, @RequestBody Photo photo) {
-		if (!photoRepo.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Photo non trouvée");
+	public Commodite update(@PathVariable Long id, @RequestBody Commodite commodite) {
+		if (!commoditeRepo.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Commodite non trouvée");
 		}
 
-		photo = photoRepo.save(photo);
+		commodite = commoditeRepo.save(commodite);
 
-		return photo;
+		return commodite;
 	}
 
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		if (!photoRepo.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Photo non trouvée");
+		if (!commoditeRepo.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Commodite non trouvée");
 		}
-		
-		photoRepo.deleteById(id);
+		commoditeRepo.deleteById(id);
 	}
 
 }
