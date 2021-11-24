@@ -4,6 +4,8 @@ package coloc.back.web;
 import java.util.List;
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 import coloc.back.model.Photo;
+import coloc.back.model.Views;
 import coloc.back.repository.IPhotoRepository;
 
 
@@ -31,7 +34,7 @@ public class PhotoRestController {
 	private IPhotoRepository photoRepo;
 
 	@GetMapping("")
-//	@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public List<Photo> findAll() {
 		List<Photo> photos = photoRepo.findAll();
 
@@ -39,7 +42,7 @@ public class PhotoRestController {
 	}
 
 	@GetMapping("/{id}")
-//	@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public Photo find(@PathVariable Long id) {
 		Optional<Photo> optPhoto = photoRepo.findById(id);
 
@@ -52,7 +55,7 @@ public class PhotoRestController {
 	
 
 	@PostMapping("")
-//	@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public Photo create(@RequestBody Photo photo) {
 		photo = photoRepo.save(photo);
 
@@ -60,7 +63,7 @@ public class PhotoRestController {
 	}
 
 	@PutMapping("/{id}")
-	//@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public Photo update(@PathVariable Long id, @RequestBody Photo photo) {
 		if (!photoRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Photo non trouvée");

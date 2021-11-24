@@ -20,6 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import coloc.back.model.Logement;
+import coloc.back.model.Views;
 import coloc.back.repository.ILogementRepository;
 
 
@@ -33,7 +34,7 @@ public class LogementRestController {
 	private ILogementRepository logementRepo;
 
 	@GetMapping("")
-	//@JsonView(Views.ViewLogement.class)
+	@JsonView(Views.ViewCommon.class)
 	public List<Logement> findAll() {
 		List<Logement> logements = logementRepo.findAll();
 
@@ -41,7 +42,7 @@ public class LogementRestController {
 	}
 
 	@GetMapping("/{id}")
-	//@JsonView(Views.ViewLogementDetail.class)
+	@JsonView(Views.ViewCommon.class)
 	public Logement find(@PathVariable Long id) {
 		Optional<Logement> optLogement = logementRepo.findById(id);
 
@@ -53,7 +54,7 @@ public class LogementRestController {
 	}
 
 	@PostMapping("")
-	//@JsonView(Views.ViewLogement.class)
+	@JsonView(Views.ViewCommon.class)
 	public Logement create(@RequestBody Logement logement) {		
 		logement = logementRepo.save(logement);
 
@@ -61,7 +62,7 @@ public class LogementRestController {
 	}
 
 	@PutMapping("/{id}")
-	//@JsonView(Views.ViewLogement.class)
+	@JsonView(Views.ViewCommon.class)
 	public Logement update(@PathVariable Long id, @RequestBody Logement logement) {
 		if (!logementRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Logement non trouvé");

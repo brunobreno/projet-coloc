@@ -20,6 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import coloc.back.model.Locataire;
+import coloc.back.model.Views;
 import coloc.back.repository.ILocataireRepository;
 
 
@@ -33,7 +34,7 @@ public class LocataireRestController {
 	private ILocataireRepository locataireRepo;
 
 	@GetMapping("")
-	//@JsonView(Views.ViewLocataire.class)
+	@JsonView(Views.ViewCommon.class)
 	public List<Locataire> findAll() {
 		List<Locataire> locataires = locataireRepo.findAll();
 
@@ -41,7 +42,7 @@ public class LocataireRestController {
 	}
 
 	@GetMapping("/{id}")
-	//@JsonView(Views.ViewLocataireDetail.class)
+	@JsonView(Views.ViewCommon.class)
 	public Locataire find(@PathVariable Long id) {
 		Optional<Locataire> optLocataire = locataireRepo.findById(id);
 
@@ -53,7 +54,7 @@ public class LocataireRestController {
 	}
 
 	@PostMapping("")
-	//@JsonView(Views.ViewLocataire.class)
+	@JsonView(Views.ViewCommon.class)
 	public Locataire create(@RequestBody Locataire locataire) {
 		locataire = locataireRepo.save(locataire);
 
@@ -61,7 +62,7 @@ public class LocataireRestController {
 	}
 
 	@PutMapping("/{id}")
-	//@JsonView(Views.ViewLocataire.class)
+	@JsonView(Views.ViewCommon.class)
 	public Locataire update(@PathVariable Long id, @RequestBody Locataire locataire) {
 		if (!locataireRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Locataire non trouvé");
