@@ -9,8 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonView;
 
+import coloc.back.model.Views.ViewChambre;
+
+@Entity
+@JsonView(Views.ViewCommon.class)
 public class Commodite {
 	
 	@Id
@@ -18,8 +22,10 @@ public class Commodite {
 	private Long id;
 	private String libelle;
 	@ManyToMany(mappedBy = "commodites")
+	@JsonView(Views.ViewCommoditeLogement.class)
 	private List<Logement> logements;
 	@ManyToMany(mappedBy = "commodites")
+	@JsonView(Views.ViewCommoditeChambre.class)
 	private List<Chambre> chambres;
 	
 	public Commodite() {

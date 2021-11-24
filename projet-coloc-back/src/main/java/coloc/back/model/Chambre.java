@@ -14,7 +14,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import coloc.back.model.Views.ViewCandidature;
+import coloc.back.model.Views.ViewChambre;
+import coloc.back.model.Views.ViewChambreDetail;
+import coloc.back.model.Views.ViewChambreDetailCandidature;
+
 @Entity
+@JsonView(Views.ViewCommon.class)
 public class Chambre {
 	
 	@Id
@@ -25,11 +33,14 @@ public class Chambre {
 	private Integer version;
 
 	@ManyToOne
+	@JsonView(Views.ViewChambre.class)
 	private Logement logement;
 	
 	@OneToOne(mappedBy = "chambre" )
+	@JsonView(Views.ViewChambre.class)
 	private Locataire locataire;
 	
+	@JsonView(Views.ViewChambre.class)
 	private Integer surface;
 	
 	@ManyToMany
@@ -37,9 +48,11 @@ public class Chambre {
 	(
 		name="commodite_chambre"
 	)
+	@JsonView(Views.ViewChambreDetail.class)
 	private List<Commodite> commodites = new ArrayList<Commodite>();
 
 	@OneToMany(mappedBy = "chambre")
+	@JsonView(Views.ViewChambreDetailCandidature.class)
 	private List<Candidature> candidatures = new ArrayList<Candidature>();
 	
 	public Chambre() {

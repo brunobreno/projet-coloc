@@ -11,21 +11,29 @@ import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @DiscriminatorValue("locataire")
+@JsonView(Views.ViewCommon.class)
 public class Locataire extends Utilisateur {
 	private boolean recherche;
 	private String description;
 	@Enumerated(EnumType.STRING)
+	
+	@JsonView(Views.ViewLocataireDetail.class)
 	private Situation situation;
 	
 	@Embedded
+	@JsonView(Views.ViewLocataireDetail.class)
 	private Dossier dossier;
 	
 	@OneToOne
+	@JsonView(Views.ViewLocataireDetail.class)
 	private Chambre chambre;
 
 	@OneToMany(mappedBy = "locataire")
+	@JsonView(Views.ViewLocataireDetail.class)
 	private List<Candidature> candidatures = new ArrayList<Candidature>();
 	
 	public Locataire() {}
