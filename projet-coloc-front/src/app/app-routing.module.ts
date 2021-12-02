@@ -4,11 +4,9 @@ import { ProfilLocataireComponent } from './profil-locataire/profil-locataire.co
 import { ProprietaireComponent } from './proprietaire/proprietaire.component';
 
 const routes: Routes = [
-  {path: "proprietaire/:id", component: ProprietaireComponent} 
-];
-const routes: Routes = [
-  { path: "profilLocataire", component: ProfilLocataireComponent},
-  { path: "", redirectTo: "profilLocataire", pathMatch: "full" }
+  {path: "proprietaire/:id", component: ProprietaireComponent},
+  {path: "profilLocataire", component: ProfilLocataireComponent},
+  {path: "", redirectTo: "profilLocataire", pathMatch: "full" }
 ];
 
 @NgModule({

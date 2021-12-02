@@ -14,8 +14,7 @@ import { LocataireHttpService } from './locataire/locataire-http.service';
 @NgModule({
   declarations: [
     AppComponent,
-    ProprietaireComponent
-    AppComponent,
+    ProprietaireComponent,
     ProfilLocataireComponent,
     LocataireComponent
   ],
