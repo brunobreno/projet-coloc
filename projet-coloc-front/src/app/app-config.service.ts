@@ -11,12 +11,14 @@ export class AppConfigService {
 
   constructor(private http : HttpClient) { }
 
-  loadSituations(): Observable<Array<string>> {
-    return this.http.get<Array<string>>(this.backEndUrl + "commons/situations");
+  findAllCivilites(): Observable<Array<string>> {
+    return this.http.get<Array<string>>(this.backEndUrl + "civilites");
   }
 
-  loadCivilites(): Observable<Array<string>> {
-    return this.http.get<Array<string>>(this.backEndUrl + "commons/civilites");
+  findAllSituations(): Observable<Array<string>> {
+    return this.http.get<Array<string>>(this.backEndUrl + "situations");
   }
+
+
 }
 
