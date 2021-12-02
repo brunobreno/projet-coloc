@@ -6,10 +6,12 @@ import { AppConfigService } from './app-config.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ProprietaireComponent } from './proprietaire/proprietaire.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProprietaireComponent
   ],
   imports: [
     BrowserModule,
