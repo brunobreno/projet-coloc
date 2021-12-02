@@ -8,7 +8,7 @@ export class ConnexionDTO {
     }
 }
 
-export class Utilisateur {
+export class UtilisateurDTO {
     id: number;
     username: string;
     nom: string;
@@ -94,15 +94,4 @@ export class Locataire extends Utilisateur {
 
 }
 
-export class Dossier {
-    revenu: number;
-    revenuGarant: number;
-    situationGarant: string;
-
-    constructor(revenu?: number, revenuGarant?: number, situationGarant?: string) {
-        this.revenu = revenu;
-        this.revenuGarant = revenuGarant;
-        this.situationGarant = situationGarant;
-    }
-}
 

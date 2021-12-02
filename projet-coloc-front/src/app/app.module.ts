@@ -18,7 +18,7 @@ import { InscriptionService } from './inscription/inscription.service';
   declarations: [
     AppComponent,
     LogInComponent,
-    InscriptionComponent
+    InscriptionComponent,
     ProfilLocataireComponent,
     LocataireComponent
   ],
@@ -28,8 +28,7 @@ import { InscriptionService } from './inscription/inscription.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AppConfigService,LocataireHttpService],
-  providers: [AppConfigService, LogInService, InscriptionService],
+  providers: [AppConfigService,LocataireHttpService, LogInService, InscriptionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
