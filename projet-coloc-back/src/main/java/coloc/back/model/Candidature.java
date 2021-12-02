@@ -62,7 +62,7 @@ public class Candidature {
 		return chambre;
 	}
 
-	public void setLocataire(Chambre chambre) {
+	public void setChambre(Chambre chambre) {
 		this.chambre = chambre;
 	}
 

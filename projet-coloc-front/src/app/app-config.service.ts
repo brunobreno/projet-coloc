@@ -7,12 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class AppConfigService {
 
-  backEndUrl: string = "http://localhost:8080";
+  backEndUrl: string = "http://localhost:8080/";
 
   constructor(private http : HttpClient) { }
 
   findAllCivilites(): Observable<Array<string>> {
     return this.http.get<Array<string>>(this.backEndUrl + "civilites");
   }
+
+  findAllSituations(): Observable<Array<string>> {
+    return this.http.get<Array<string>>(this.backEndUrl + "situations");
+  }
+
 
 }
