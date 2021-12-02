@@ -17,10 +17,12 @@ import { InscriptionService } from './inscription/inscription.service';
 @NgModule({
   declarations: [
     AppComponent,
+    RechercheLogementComponent,
+    ProfilLocataireComponent
+    LocataireComponent,
+    TypeofPipe,
     LogInComponent,
     InscriptionComponent,
-    ProfilLocataireComponent,
-    LocataireComponent
   ],
   imports: [
     BrowserModule,
