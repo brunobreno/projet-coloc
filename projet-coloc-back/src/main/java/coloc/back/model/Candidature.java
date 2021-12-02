@@ -9,9 +9,6 @@ import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import coloc.back.model.Views.ViewCandidature;
-import coloc.back.model.Views;
-
 @Entity
 @JsonView(Views.ViewCommon.class)
 public class Candidature {

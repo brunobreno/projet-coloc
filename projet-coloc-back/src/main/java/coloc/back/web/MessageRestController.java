@@ -20,6 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import coloc.back.model.Message;
+import coloc.back.model.Views;
 import coloc.back.repository.IMessageRepository;
 
 
@@ -33,7 +34,7 @@ public class MessageRestController {
 	private IMessageRepository messageRepo;
 
 	@GetMapping("")
-	//@JsonView(Views.ViewMessage.class)
+	@JsonView(Views.ViewCommon.class)
 	public List<Message> findAll() {
 		List<Message> messages = messageRepo.findAll();
 
@@ -41,7 +42,7 @@ public class MessageRestController {
 	}
 
 	@GetMapping("/{id}")
-	//@JsonView(Views.ViewMessageDetail.class)
+	@JsonView(Views.ViewCommon.class)
 	public Message find(@PathVariable Long id) {
 		Optional<Message> optMessage = messageRepo.findById(id);
 
@@ -53,7 +54,7 @@ public class MessageRestController {
 	}
 
 	@PostMapping("")
-	//@JsonView(Views.ViewMessage.class)
+	@JsonView(Views.ViewCommon.class)
 	public Message create(@RequestBody Message message) {		
 		message = messageRepo.save(message);
 
@@ -61,7 +62,7 @@ public class MessageRestController {
 	}
 
 	@PutMapping("/{id}")
-	//@JsonView(Views.ViewMessage.class)
+	@JsonView(Views.ViewCommon.class)
 	public Message update(@PathVariable Long id, @RequestBody Message message) {
 		if (!messageRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Message non trouvé");

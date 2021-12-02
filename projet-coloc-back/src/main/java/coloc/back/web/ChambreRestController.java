@@ -4,6 +4,8 @@ package coloc.back.web;
 import java.util.List;
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 import coloc.back.model.Chambre;
+import coloc.back.model.Views;
 import coloc.back.repository.IChambreRepository;
 
 
@@ -31,7 +34,7 @@ public class ChambreRestController {
 	private IChambreRepository chambreRepo;
 
 	@GetMapping("")
-//	@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public List<Chambre> findAll() {
 		List<Chambre> chambres = chambreRepo.findAll();
 
@@ -39,7 +42,7 @@ public class ChambreRestController {
 	}
 
 	@GetMapping("/{id}")
-//	@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public Chambre findById(@PathVariable Long id) {
 		Optional<Chambre> optChambre = chambreRepo.findById(id);
 
@@ -52,7 +55,7 @@ public class ChambreRestController {
 	
 
 	@PostMapping("")
-//	@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public Chambre create(@RequestBody Chambre chambre) {
 		chambre = chambreRepo.save(chambre);
 
@@ -60,7 +63,7 @@ public class ChambreRestController {
 	}
 
 	@PutMapping("/{id}")
-	//@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public Chambre update(@PathVariable Long id, @RequestBody Chambre chambre) {
 		if (!chambreRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Chambre non trouvée");
