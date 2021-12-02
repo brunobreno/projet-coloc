@@ -1,5 +1,6 @@
 package coloc.back.web;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,8 +20,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import coloc.back.model.Chambre;
 import coloc.back.model.Locataire;
 import coloc.back.model.Views;
+import coloc.back.repository.IChambreRepository;
 import coloc.back.repository.ILocataireRepository;
 
 
@@ -32,6 +35,8 @@ public class LocataireRestController {
 
 	@Autowired
 	private ILocataireRepository locataireRepo;
+	@Autowired
+	private IChambreRepository chambreRepo;
 
 	@GetMapping("")
 	@JsonView(Views.ViewCommon.class)
@@ -51,6 +56,21 @@ public class LocataireRestController {
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Locataire non trouvé");
 		}
+	}
+	
+	@GetMapping("/by-logement/{idLogement}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Locataire> findAllByLogement(@PathVariable("idLogement") Long id) {
+		List<Chambre> chambres = chambreRepo.findAllByIdLogement(id);
+		
+		List<Locataire> locataires = new ArrayList<Locataire>();
+		
+		for(Chambre chambre : chambres) {
+			locataires.add(locataireRepo.findAllByIdChambre(chambre.getId()));
+		}
+		
+		return locataires;
+
 	}
 
 	@PostMapping("")

@@ -52,7 +52,40 @@ public class LogementRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Logement non trouvé");
 		}
 	}
+	
+	@GetMapping("/by-ville/{ville}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Logement> findByVille(@PathVariable String ville) {
+		List<Logement> logements = logementRepo.findAllLogementByVille(ville);
 
+		return logements;
+	}
+	
+	@GetMapping("/by-commodite/{commodite}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Logement> findByCommodite(@PathVariable String commodite) {
+		List<Logement> logements = logementRepo.findAllLogementByCommodite(commodite);
+
+		return logements;
+	}
+
+	@GetMapping("/by-proprietaire/{idProprietaire}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Logement> findByIdProprietaire(@PathVariable("idProprietaire") Long id) {
+		List<Logement> logements = logementRepo.findAllLogementByIdProprietaire(id);
+
+		return logements;
+	}
+	
+	@GetMapping("/by-dispo/{ville}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Logement> findByDispoAndVille(@PathVariable("ville") String ville) {
+		List<Logement> logements = logementRepo.findAllLogementByDispoAndVille(ville);
+
+		return logements;
+	}
+	
+	
 	@PostMapping("")
 	@JsonView(Views.ViewCommon.class)
 	public Logement create(@RequestBody Logement logement) {		
