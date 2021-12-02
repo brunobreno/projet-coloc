@@ -73,3 +73,15 @@ export class Logement {
         this.caution = caution;
     }
 }
+
+export class Dossier {
+    revenuGarant: number;
+    revenu: number;
+    situationGarant: string;
+
+    constructor(revenu?: number, revenuGarant?: number, situationGarant?: string) {
+        this.revenu = revenu;
+        this.revenuGarant = revenuGarant;
+    }
+}
+        this.situationGarant = situationGarant;
