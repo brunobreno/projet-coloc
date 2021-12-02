@@ -6,10 +6,13 @@ import { AppConfigService } from './app-config.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { LogInService } from './log-in/log-in.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
@@ -17,7 +20,7 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AppConfigService],
+  providers: [AppConfigService, LogInService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

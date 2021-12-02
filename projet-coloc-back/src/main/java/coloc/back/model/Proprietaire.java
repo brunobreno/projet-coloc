@@ -21,13 +21,13 @@ public class Proprietaire extends Utilisateur {
 		super();
 	}
 
-	public Proprietaire(String nom, String prenom, Civilite civ, String email, String tel, String password, List<Logement> logements) {
-		super(nom, prenom, civ, email, tel, password);
+	public Proprietaire(String username, String nom, String prenom, Civilite civ, String email, String tel, String password, List<Logement> logements) {
+		super(username, nom, prenom, civ, email, tel, password);
 		this.logements = logements;
 	}
 
-	public Proprietaire(String nom, String prenom, Civilite civ, String email, String tel, String password) {
-		super(nom, prenom, civ, email, tel, password);
+	public Proprietaire(String username, String nom, String prenom, Civilite civ, String email, String tel, String password) {
+		super(username, nom, prenom, civ, email, tel, password);
 	}
 	
 	/*@Override
