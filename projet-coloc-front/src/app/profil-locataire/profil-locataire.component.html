@@ -1,0 +1,215 @@
+
+
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="content">
+
+            <!-- <form action=""> -->
+                <div class="categorie-locataire">
+                    <!-- <form action=""> -->
+                        <p class="titre-info">Mon profil locataire</p>
+                        <div class="head-categorie">
+                            <p class="categorie-titre">Votre description</p>
+                            <p>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="false" aria-controls="description">
+                                Modifier
+                                </button>
+                            </p>
+                        </div>
+
+                        <p id="texte-description">{{locataireForm.description}}</p>
+
+                        <div class="collapse" id="description">
+                            <div class="card card-body">
+                                <div class="categorie-content">
+                                    <div class="content-first">
+                                        <label for="input-description" class="label-input">Votre description</label>
+                                        <textarea class="input-modifier" id="input-description" cols="30" rows="5" [(ngModel)]="locataireForm.description">{{locataireForm.description}}</textarea>
+                                    </div>
+                                </div>
+                                <button class="btn-enregistrer" type="button" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="false" aria-controls="description" (click)="save()">Enregistrer</button>
+                            </div>
+                        </div>
+                    <!-- </form> -->
+                </div>
+
+                <div class="categorie-locataire">
+                    <!-- <form action=""> -->
+                        <div class="head-categorie">
+                            <p class="categorie-titre">Votre statut</p>
+                            <p>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-toggle="collapse" data-bs-target="#statut" aria-expanded="false" aria-controls="statut">
+                                Modifier
+                                </button>
+                            </p>
+                        </div>
+
+                        <div class="collapse" id="statut">
+                            <div class="card card-body">
+                                <div class="categorie-content">
+                                    <div class="content-first">
+                                        <label for="input-statut" class="label-input">Votre statut</label>
+                                        <select name="" id="statut" class="input-modifier" [(ngModel)]="locataireForm.situation">
+                                            <option [value]="situation" *ngFor="let situation of situations">{{situation}}</option>
+                                        </select>
+                                        <select name="" id="statut-recherche" class="input-modifier" [(ngModel)]="locataireForm.recherche">
+                                            <option value="true">Je cherche une colocation</option>
+                                            <option value="false">Je ne cherche pas de colocation</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button class="btn-enregistrer" (click)="save()">Enregistrer</button>
+                            </div>
+                        </div>
+                    <!-- </form> -->
+                </div>
+
+                <div class="categorie-locataire">
+                    <!-- <form action=""> -->
+                        <div class="head-categorie">
+                            <p class="categorie-titre">Votre dossier de location</p>
+                            <p>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#dossier" aria-expanded="false" aria-controls="dossier">
+                                Modifier
+                                </button>
+                            </p>
+                        </div>
+
+                        <div class="collapse" id="dossier">
+                            <div class="card card-body">
+                                <div class="categorie-content">
+                                    <div class="content-first">
+                                        <p class="label-input">Votre dossier de location</p>
+                                        <label for="input-revenu" class="label-input">Vos revenus</label>
+                                        <input type="number" class="input-modifier" id="input-revenu" min=0 [(ngModel)]="locataireForm.dossier.revenu">
+                                        <label for="input-revenuGarant" class="label-input">Les revenus de votre garant</label>
+                                        <input type="number" class="input-modifier" id="input-revenuGarant" min=0  [(ngModel)]="locataireForm.dossier.revenuGarant">
+                                        <label for="input-statutGarant" class="label-input">La situation de votre garant</label>
+                                        <select name="" id="input-statutGarant" class="input-modifier" [(ngModel)]="locataireForm.dossier.situationGarant">
+                                            <option [value]="situation" *ngFor="let situation of situations">{{situation}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button class="btn-enregistrer" (click)="save()">Enregistrer</button>
+                            </div>
+                        </div>
+                    <!-- </form> -->
+                </div>
+            <!-- </form> -->
+
+
+            <!-- MODIFICATION NOM & PRENOM -->
+
+
+            <!-- <form action=""> -->
+                <div class="categorie-infoPerso">
+                    <!-- <form action=""> -->
+                        <p class="titre-info">Informations personnelles</p>
+                        <div class="head-categorie">
+                            <p class="categorie-titre">Votre Nom et Prenom</p>
+                            <p>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#nom-prenom" aria-expanded="false" aria-controls="nom-prenom">
+                                Modifier
+                                </button>
+                            </p>
+                        </div>
+
+                        <div class="collapse" id="nom-prenom">
+                            <div class="card card-body">
+                                <div class="categorie-content">
+                                    <div class="content-first">
+                                        <label for="input-prenom" class="label-input">Prenom</label>
+                                        <input type="text" class="input-modifier" id="input-prenom"  [(ngModel)]="locataireForm.prenom">
+                                    </div>
+                                    <div class="content-second">
+                                        <label for="input-nom" class="label-input">Nom</label>
+                                        <input type="text" class="input-modifier" id="input-nom"  [(ngModel)]="locataireForm.nom" >
+                                    </div>
+                                </div>
+                                <button  class="btn-enregistrer" (click)="save()">Enregistrer</button>
+                            </div>
+                        </div>
+                    <!-- </form> -->
+                </div>
+            <!-- </form> -->
+
+
+            <!-- MODIFICATION MAIL & MDP  -->
+
+
+            <!-- <form action=""> -->
+                <div class="categorie-infoPerso">
+                    <!-- <form action=""> -->
+                        <div class="head-categorie">
+                            <p class="categorie-titre">Mail & Mot de Passe</p>
+                            <p>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#mail" aria-expanded="false" aria-controls="mail">
+                                Modifier
+                                </button>
+                            </p>
+                        </div>
+
+                        <div class="collapse" id="mail">
+                            <div class="card card-body">
+                                <div class="categorie-content">
+                                    <div class="content-first">
+                                        <label for="input-mail" class="label-input">Mail</label>
+                                        <input type="email" class="input-modifier" id="input-mail" [(ngModel)]="locataireForm.email">
+                                    </div>
+                                    <div class="content-second">
+                                        <label for="input-mdp" class="label-input">Mot de Passe</label>
+                                        <input type="password"  class="input-modifier" id="input-mdp">
+                                    </div>
+                                </div>
+                                <button  class="btn-enregistrer" (click)="save()">Enregistrer</button>
+                            </div>
+                        </div>
+                    <!-- </form> -->
+                </div>
+            <!-- </form> -->
+                
+
+            <!-- MODIFICATION TELEPHONE & ADRESSE -->
+            
+
+            <!-- <form action=""> -->
+                <div class="categorie-infoPerso">
+                    <!-- <form action=""> -->
+                        <div class="head-categorie">
+                            <p class="categorie-titre">Vos coordonnees</p>
+                            <p>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#coordonnees" aria-expanded="false" aria-controls="coordonnees">
+                                Modifier
+                                </button>
+                            </p>
+                        </div>
+
+                        <div class="collapse" id="coordonnees">
+                            <div class="card card-body">
+                                <div class="categorie-content">
+                                    <div class="content-first">
+                                        <label for="input-telephone" class="label-input">n° Telephone</label>
+                                        <input type="text" class="input-modifier" id="input-telephone" [(ngModel)]="locataireForm.tel">
+                                    </div>
+                                    <!-- <div class="content-second">
+                                        <label for="input-adresse" class="label-input">Adresse</label>
+                                        <input type="text"  class="input-modifier" id="input-adresse" placeholder="">
+                                    </div> -->
+                                </div>
+                                <button class="btn-enregistrer" (click)="save()">Enregistrer</button>
+                            </div>
+                        </div>
+                    <!-- </form> -->
+                </div>
+            <!-- </form> -->
+
+        </div>
+
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
