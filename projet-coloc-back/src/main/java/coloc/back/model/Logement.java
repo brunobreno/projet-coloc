@@ -17,8 +17,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonView;
 
+@Entity
+@JsonView(Views.ViewCommon.class)
 public class Logement {
 	
 	@Id
@@ -36,9 +38,11 @@ public class Logement {
 	private Double caution;
 	
 	@OneToMany(mappedBy = "logement")
+	@JsonView(Views.ViewLogementDetail.class)
 	private List<Photo> photos;
 	
 	@OneToMany(mappedBy = "logement")
+	@JsonView(Views.ViewLogementDetail.class)
 	private List<Notation> notations;
 	
 	private LocalDate dateDispo;
@@ -52,6 +56,7 @@ public class Logement {
 	private TypeLogement typeLogement;
 	
 	@OneToMany(mappedBy = "logement")
+	@JsonView(Views.ViewLogementDetail.class)
 	private List<Chambre> chambres = new ArrayList<Chambre>();
 
 	@ManyToMany
@@ -59,6 +64,7 @@ public class Logement {
 	(
 		name="commodite_logement"
 	)
+	@JsonView(Views.ViewLogementDetail.class)
 	private  List<Commodite> commodites = new ArrayList<Commodite>();
 	
 	@ManyToMany
@@ -66,6 +72,7 @@ public class Logement {
 	(
 		name="regle_logement"
 	)
+	@JsonView(Views.ViewLogementDetail.class)
 	private List<Regle> regles = new ArrayList<Regle>();
 	
 	public Logement() {

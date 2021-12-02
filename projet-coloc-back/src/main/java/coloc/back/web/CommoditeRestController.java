@@ -1,7 +1,10 @@
 package coloc.back.web;
 
+
 import java.util.List;
 import java.util.Optional;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,8 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+
 import coloc.back.model.Commodite;
+import coloc.back.model.Views;
 import coloc.back.repository.ICommoditeRepository;
+
 
 @RestController
 @RequestMapping("/commodites")
@@ -25,51 +31,56 @@ import coloc.back.repository.ICommoditeRepository;
 public class CommoditeRestController {
 
 	@Autowired
-	private ICommoditeRepository CommoditeRepo;
+	private ICommoditeRepository commoditeRepo;
 
 	@GetMapping("")
+	@JsonView(Views.ViewCommon.class)
 	public List<Commodite> findAll() {
-		List<Commodite> commodites = CommoditeRepo.findAll();
+		List<Commodite> commodites = commoditeRepo.findAll();
 
 		return commodites;
 	}
 
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
+	@JsonView(Views.ViewCommon.class)
 	public Commodite findById(@PathVariable Long id) {
-		Optional<Commodite> optCommodite = CommoditeRepo.findById(id);
+		Optional<Commodite> optChambre = commoditeRepo.findById(id);
 
-		if (optCommodite.isPresent()) {
-			return optCommodite.get();
+		if (optChambre.isPresent()) {
+			return optChambre.get();
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Commodite non trouvée");
 		}
 	}
+	
 
 	@PostMapping("")
+	@JsonView(Views.ViewCommon.class)
 	public Commodite create(@RequestBody Commodite commodite) {
-		commodite = CommoditeRepo.save(commodite);
+		commodite = commoditeRepo.save(commodite);
 
 		return commodite;
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewCommon.class)
 	public Commodite update(@PathVariable Long id, @RequestBody Commodite commodite) {
-		if (!CommoditeRepo.existsById(id)) {
+		if (!commoditeRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Commodite non trouvée");
 		}
 
-		commodite = CommoditeRepo.save(commodite);
+		commodite = commoditeRepo.save(commodite);
 
 		return commodite;
 	}
+
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		if (!CommoditeRepo.existsById(id)) {
+		if (!commoditeRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Commodite non trouvée");
 		}
-		
-		CommoditeRepo.deleteById(id);
+		commoditeRepo.deleteById(id);
 	}
 
 }

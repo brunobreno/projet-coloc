@@ -3,6 +3,8 @@ package coloc.back.web;
 import java.util.List;
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import coloc.back.model.Candidature;
+import coloc.back.model.Views;
 import coloc.back.repository.ICandidatureRepository;
 
 @RestController
@@ -28,13 +31,15 @@ public class CandidatureRestController {
 	private ICandidatureRepository candidatureRepo;
 
 	@GetMapping("")
+	@JsonView(Views.ViewCommon.class)
 	public List<Candidature> findAll() {
 		List<Candidature> candidatures = candidatureRepo.findAll();
 
 		return candidatures;
 	}
 
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
+	@JsonView(Views.ViewCommon.class)
 	public Candidature findById(@PathVariable Long id) {
 		Optional<Candidature> optCandidature = candidatureRepo.findById(id);
 
@@ -46,6 +51,7 @@ public class CandidatureRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewCommon.class)
 	public Candidature create(@RequestBody Candidature candidature) {
 		candidature = candidatureRepo.save(candidature);
 
@@ -53,6 +59,7 @@ public class CandidatureRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewCommon.class)
 	public Candidature update(@PathVariable Long id, @RequestBody Candidature candidature) {
 		if (!candidatureRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Candidature non trouvée");

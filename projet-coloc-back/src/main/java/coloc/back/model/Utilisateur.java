@@ -12,9 +12,13 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name="type_utilisateur",columnDefinition = ("ENUM('locataire','proprio')"))
+@JsonView(Views.ViewCommon.class)
 public abstract class Utilisateur {
 	
 	@Id
@@ -22,13 +26,19 @@ public abstract class Utilisateur {
 	protected Long id;
 	@Version
 	private Integer version;
+
 	protected String nom;
+
 	protected String prenom;
 	@Enumerated(EnumType.STRING)
+
 	protected Civilite civ;
 	@Column(unique = true)
+
 	protected String email;
+
 	protected String tel;
+	@JsonIgnore
 	protected String password;
 	
 	public Utilisateur() {

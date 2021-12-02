@@ -4,6 +4,8 @@ package coloc.back.web;
 import java.util.List;
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,11 +22,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 import coloc.back.model.Notation;
+import coloc.back.model.Views;
 import coloc.back.repository.INotationRepository;
 
 
 @RestController
-@RequestMapping("/notation")
+@RequestMapping("/notations")
 @CrossOrigin("*")
 public class NotationRestController {
 
@@ -32,15 +35,15 @@ public class NotationRestController {
 	private INotationRepository notationRepo;
 
 	@GetMapping("")
-//	@JsonView(Views.ViewNotation.class)
+	@JsonView(Views.ViewCommon.class)
 	public List<Notation> findAll() {
 		List<Notation> notations = notationRepo.findAll();
 
 		return notations;
 	}
 
-	@GetMapping("{id}")
-//	@JsonView(Views.ViewNotation.class)
+	@GetMapping("/{id}")
+	@JsonView(Views.ViewCommon.class)
 	public Notation find(@PathVariable Long id) {
 		Optional<Notation> optNotation = notationRepo.findById(id);
 
@@ -53,7 +56,7 @@ public class NotationRestController {
 	
 
 	@PostMapping("")
-//	@JsonView(Views.ViewNotation.class)
+	@JsonView(Views.ViewCommon.class)
 	public Notation create(@RequestBody Notation notation) {
 		notation = notationRepo.save(notation);
 
@@ -61,7 +64,7 @@ public class NotationRestController {
 	}
 
 	@PutMapping("/{id}")
-	//@JsonView(Views.ViewNotation.class)
+	@JsonView(Views.ViewCommon.class)
 	public Notation update(@PathVariable Long id, @RequestBody Notation notation) {
 		if (!notationRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Notation non trouvée");

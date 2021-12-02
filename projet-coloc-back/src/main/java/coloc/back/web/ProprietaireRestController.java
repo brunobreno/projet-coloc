@@ -4,6 +4,8 @@ package coloc.back.web;
 import java.util.List;
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,11 +21,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 import coloc.back.model.Proprietaire;
+import coloc.back.model.Views;
 import coloc.back.repository.IProprietaireRepository;
 
 
 @RestController
-@RequestMapping("/proprietaire")
+@RequestMapping("/proprietaires")
 @CrossOrigin("*")
 public class ProprietaireRestController {
 
@@ -31,15 +34,15 @@ public class ProprietaireRestController {
 	private IProprietaireRepository proprietaireRepo;
 
 	@GetMapping("")
-//	@JsonView(Views.ViewProprietaire.class)
+	@JsonView(Views.ViewCommon.class)
 	public List<Proprietaire> findAll() {
 		List<Proprietaire> proprietaires = proprietaireRepo.findAll();
 
 		return proprietaires;
 	}
 
-	@GetMapping("{id}")
-//	@JsonView(Views.ViewProprietaire.class)
+	@GetMapping("/{id}")
+	@JsonView(Views.ViewCommon.class)
 	public Proprietaire find(@PathVariable Long id) {
 		Optional<Proprietaire> optProprietaire = proprietaireRepo.findById(id);
 
@@ -52,7 +55,7 @@ public class ProprietaireRestController {
 	
 
 	@PostMapping("")
-//	@JsonView(Views.ViewProprietaire.class)
+	@JsonView(Views.ViewCommon.class)
 	public Proprietaire create(@RequestBody Proprietaire proprietaire) {
 		proprietaire = proprietaireRepo.save(proprietaire);
 
@@ -60,7 +63,7 @@ public class ProprietaireRestController {
 	}
 
 	@PutMapping("/{id}")
-	//@JsonView(Views.ViewProprietaire.class)
+	@JsonView(Views.ViewCommon.class)
 	public Proprietaire update(@PathVariable Long id, @RequestBody Proprietaire proprietaire) {
 		if (!proprietaireRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Proprietaire non trouvé");

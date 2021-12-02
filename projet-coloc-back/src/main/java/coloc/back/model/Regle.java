@@ -8,10 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 
 @Entity
-
+@JsonView(Views.ViewCommon.class)
 public class Regle {
 	
 	@Id
@@ -20,6 +22,7 @@ public class Regle {
 	private String libelle;
 	
 	@ManyToMany(mappedBy = "regles")
+	@JsonView(Views.ViewRegleLogement.class)
 	private List<Logement> logements;
 	
 	public Regle() {

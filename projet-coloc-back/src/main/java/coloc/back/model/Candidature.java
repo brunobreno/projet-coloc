@@ -7,7 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
+@JsonView(Views.ViewCommon.class)
 public class Candidature {
 	
 	@Id
@@ -18,13 +21,17 @@ public class Candidature {
 	private Integer version;
 
 	@ManyToOne
+	@JsonView(Views.ViewCandidature.class)
 	private Locataire locataire;
 	
 	@ManyToOne
+	@JsonView(Views.ViewCandidature.class)
 	private Chambre chambre;
 
+	@JsonView(Views.ViewCandidature.class)
 	private boolean validation;
 
+	@JsonView(Views.ViewCandidature.class)
 	private boolean enAttente;
 	
 	public Candidature() {
