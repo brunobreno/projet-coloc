@@ -1,0 +1,38 @@
+
+footer{
+    height:10vh;
+    background-color: rgb(247, 247, 247);
+    width: 100%;
+    z-index: 100;
+}
+
+.fContent{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height:100%;
+    width:80%;
+    margin:0 auto;
+
+}
+
+.fLeft{
+    display:flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.fLeft>img{
+    width:30px;
+    height:30px;
+}
+
+.fRight>a>img{
+    width:20px;
+    height:20px;
+}
+
+.fRight>a:nth-of-type(2n){
+    margin:0 10px;
+}
