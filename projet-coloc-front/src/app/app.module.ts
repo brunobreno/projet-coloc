@@ -8,11 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { LogInService } from './log-in/log-in.service';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { InscriptionService } from './inscription/inscription.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogInComponent
+    LogInComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,7 @@ import { LogInService } from './log-in/log-in.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AppConfigService, LogInService],
+  providers: [AppConfigService, LogInService, InscriptionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

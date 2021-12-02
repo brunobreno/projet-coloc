@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConnexionDTO } from '../model';
 import { LogInService } from './log-in.service';
 
@@ -12,7 +13,7 @@ export class LogInComponent implements OnInit {
   logInForm: ConnexionDTO = new ConnexionDTO();
   errorLogIn: String;
 
-  constructor(private logInService: LogInService) { }
+  constructor(private logInService: LogInService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -29,4 +30,9 @@ export class LogInComponent implements OnInit {
       }
     });
   }
+  
+  redirectInscription(){
+    this.router.navigate(['./inscription']);
+  }
+
 }
