@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppConfigService {
 
-  backEndUrl: string = "http://localhost:8080/coloc";
+  backEndUrl: string = "http://localhost:8080/";
 
   constructor(private http : HttpClient) { }
 }
