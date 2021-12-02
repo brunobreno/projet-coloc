@@ -19,9 +19,9 @@ import { LocataireHttpService } from './locataire/locataire-http.service';
   declarations: [
     AppComponent,
     TypeofPipe,
-    LocataireComponent
-    RechercheLogementComponent
-    ProfilLocataireComponent,
+    LocataireComponent,
+    RechercheLogementComponent,
+    ProfilLocataireComponent
   ],
   imports: [
     BrowserModule,

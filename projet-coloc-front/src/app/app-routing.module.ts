@@ -5,8 +5,8 @@ import { ProfilLocataireComponent } from './profil-locataire/profil-locataire.co
 
 const routes: Routes = [
   { path: "profilLocataire", component: ProfilLocataireComponent},
-  { path: "", redirectTo: "profilLocataire", pathMatch: "full" }
-  { path: "recherche", component: RechercheLogementComponent },
+  { path: "", redirectTo: "profilLocataire", pathMatch: "full" },
+  { path: "recherche", component: RechercheLogementComponent }
 ];
 
 @NgModule({
