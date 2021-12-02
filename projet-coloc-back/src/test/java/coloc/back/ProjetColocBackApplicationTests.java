@@ -29,13 +29,10 @@ import coloc.back.repository.INotationRepository;
 import coloc.back.repository.IPhotoRepository;
 import coloc.back.repository.IProprietaireRepository;
 import coloc.back.repository.IRegleRepository;
-import coloc.back.repository.IUtilisateurRepository;
 
 @SpringBootTest
 class ProjetColocBackApplicationTests {
 
-	@Autowired
-	private IUtilisateurRepository utilisateurRepository;
 	@Autowired
 	private IProprietaireRepository proprietaireRepository;
 	@Autowired
@@ -57,43 +54,47 @@ class ProjetColocBackApplicationTests {
 
 	@Test
 	void contextLoads() {
+		//Creation Admin
+		Proprietaire admin = new Proprietaire("admin", "adminNom", "adminPrenom", Civilite.NB, "admin@mail.com", "0000000000", "admin");
+		admin = proprietaireRepository.save(admin);
+
 		// Creation des Proprio
-		Proprietaire proprietaire1 = new Proprietaire("NomProprietaire1", "PrenomProprietaire1", Civilite.Mr,
+		Proprietaire proprietaire1 = new Proprietaire("proprietaire1", "NomProprietaire1", "PrenomProprietaire1", Civilite.Mr,
 				"proprietaire1@mail.com", "0000000001", "proprietaire1");
 		proprietaire1 = proprietaireRepository.save(proprietaire1);
-		Proprietaire proprietaire2 = new Proprietaire("NomProprietaire2", "PrenomProprietaire2", Civilite.Mme,
+		Proprietaire proprietaire2 = new Proprietaire("proprietaire2", "NomProprietaire2", "PrenomProprietaire2", Civilite.Mme,
 				"proprietaire2@mail.com", "0000000002", "proprietaire2");
 		proprietaire2 = proprietaireRepository.save(proprietaire2);
-		Proprietaire proprietaire3 = new Proprietaire("NomProprietaire3", "PrenomProprietaire3", Civilite.Mr,
+		Proprietaire proprietaire3 = new Proprietaire("proprietaire3", "NomProprietaire3", "PrenomProprietaire3", Civilite.Mr,
 				"proprietaire3@mail.com", "0000000003", "proprietaire3");
 		proprietaire3 = proprietaireRepository.save(proprietaire3);
-		Proprietaire proprietaire4 = new Proprietaire("NomProprietaire4", "PrenomProprietaire4", Civilite.Mme,
+		Proprietaire proprietaire4 = new Proprietaire("proprietaire4", "NomProprietaire4", "PrenomProprietaire4", Civilite.Mme,
 				"proprietaire4@mail.com", "0000000004", "proprietaire4");
 		proprietaire4 = proprietaireRepository.save(proprietaire4);
 
 		// Creation des Locataire
-		Locataire locataire1 = new Locataire("NomLocataire1", "PrenomLocataire1", Civilite.Mr, "locataire1@mail.com",
+		Locataire locataire1 = new Locataire("locataire1", "NomLocataire1", "PrenomLocataire1", Civilite.Mr, "locataire1@mail.com",
 				"0011000001", "locataire1", true, "Description locataire 1", Situation.Etudiant);
 		locataire1 = locataireRepository.save(locataire1);
-		Locataire locataire2 = new Locataire("NomLocataire2", "PrenomLocataire2", Civilite.Mr, "locataire2@mail.com",
+		Locataire locataire2 = new Locataire("locataire2", "NomLocataire2", "PrenomLocataire2", Civilite.Mr, "locataire2@mail.com",
 				"0011000002", "locataire2", true, "Description locataire 2", Situation.Salarie);
 		locataire2 = locataireRepository.save(locataire2);
-		Locataire locataire3 = new Locataire("NomLocataire3", "PrenomLocataire3", Civilite.Mme, "locataire3@mail.com",
+		Locataire locataire3 = new Locataire("locataire3", "NomLocataire3", "PrenomLocataire3", Civilite.Mme, "locataire3@mail.com",
 				"0011000003", "locataire3", true, "Description locataire 3", Situation.Etudiant);
 		locataire3 = locataireRepository.save(locataire3);
-		Locataire locataire4 = new Locataire("NomLocataire4", "PrenomLocataire4", Civilite.Mr, "locataire4@mail.com",
+		Locataire locataire4 = new Locataire("locataire4", "NomLocataire4", "PrenomLocataire4", Civilite.Mr, "locataire4@mail.com",
 				"0011000004", "locataire4", false, "Description locataire 4", Situation.Retraite);
 		locataire4 = locataireRepository.save(locataire4);
-		Locataire locataire5 = new Locataire("NomLocataire5", "PrenomLocataire5", Civilite.Mme, "locataire5@mail.com",
+		Locataire locataire5 = new Locataire("locataire5", "NomLocataire5", "PrenomLocataire5", Civilite.Mme, "locataire5@mail.com",
 				"0011000005", "locataire5", false, "Description locataire 5", Situation.Etudiant);
 		locataire5 = locataireRepository.save(locataire5);
-		Locataire locataire6 = new Locataire("NomLocataire6", "PrenomLocataire6", Civilite.Mme, "locataire6@mail.com",
+		Locataire locataire6 = new Locataire("locataire6", "NomLocataire6", "PrenomLocataire6", Civilite.Mme, "locataire6@mail.com",
 				"0011000006", "locataire6", true, "Description locataire 6", Situation.Etudiant);
 		locataire6 = locataireRepository.save(locataire6);
-		Locataire locataire7 = new Locataire("NomLocataire7", "PrenomLocataire7", Civilite.Mr, "locataire7@mail.com",
+		Locataire locataire7 = new Locataire("locataire7", "NomLocataire7", "PrenomLocataire7", Civilite.Mr, "locataire7@mail.com",
 				"0011000007", "locataire7", true, "Description locataire 7", Situation.Salarie);
 		locataire7 = locataireRepository.save(locataire7);
-		Locataire locataire8 = new Locataire("NomLocataire8", "PrenomLocataire8", Civilite.Mme, "locataire8@mail.com",
+		Locataire locataire8 = new Locataire("locataire8", "NomLocataire8", "PrenomLocataire8", Civilite.Mme, "locataire8@mail.com",
 				"0011000008", "locataire8", true, "Description locataire 8", Situation.Salarie);
 		locataire8 = locataireRepository.save(locataire8);
 

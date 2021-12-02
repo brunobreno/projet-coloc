@@ -16,11 +16,6 @@ import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import coloc.back.model.Views.ViewCandidature;
-import coloc.back.model.Views.ViewChambre;
-import coloc.back.model.Views.ViewChambreDetail;
-import coloc.back.model.Views.ViewChambreDetailCandidature;
-
 @Entity
 @JsonView(Views.ViewCommon.class)
 public class Chambre {

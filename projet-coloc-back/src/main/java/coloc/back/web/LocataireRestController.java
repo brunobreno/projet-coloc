@@ -1,5 +1,6 @@
 package coloc.back.web;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import coloc.back.model.Chambre;
 import coloc.back.model.Locataire;
+import coloc.back.model.Views;
+import coloc.back.repository.IChambreRepository;
 import coloc.back.repository.ILocataireRepository;
 
 
@@ -31,9 +35,11 @@ public class LocataireRestController {
 
 	@Autowired
 	private ILocataireRepository locataireRepo;
+	@Autowired
+	private IChambreRepository chambreRepo;
 
 	@GetMapping("")
-	//@JsonView(Views.ViewLocataire.class)
+	@JsonView(Views.ViewCommon.class)
 	public List<Locataire> findAll() {
 		List<Locataire> locataires = locataireRepo.findAll();
 
@@ -41,7 +47,7 @@ public class LocataireRestController {
 	}
 
 	@GetMapping("/{id}")
-	//@JsonView(Views.ViewLocataireDetail.class)
+	@JsonView(Views.ViewCommon.class)
 	public Locataire find(@PathVariable Long id) {
 		Optional<Locataire> optLocataire = locataireRepo.findById(id);
 
@@ -51,9 +57,24 @@ public class LocataireRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Locataire non trouvé");
 		}
 	}
+	
+	@GetMapping("/by-logement/{idLogement}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Locataire> findAllByLogement(@PathVariable("idLogement") Long id) {
+		List<Chambre> chambres = chambreRepo.findAllByIdLogement(id);
+		
+		List<Locataire> locataires = new ArrayList<Locataire>();
+		
+		for(Chambre chambre : chambres) {
+			locataires.add(locataireRepo.findAllByIdChambre(chambre.getId()));
+		}
+		
+		return locataires;
+
+	}
 
 	@PostMapping("")
-	//@JsonView(Views.ViewLocataire.class)
+	@JsonView(Views.ViewCommon.class)
 	public Locataire create(@RequestBody Locataire locataire) {
 		locataire = locataireRepo.save(locataire);
 
@@ -61,7 +82,7 @@ public class LocataireRestController {
 	}
 
 	@PutMapping("/{id}")
-	//@JsonView(Views.ViewLocataire.class)
+	@JsonView(Views.ViewCommon.class)
 	public Locataire update(@PathVariable Long id, @RequestBody Locataire locataire) {
 		if (!locataireRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Locataire non trouvé");

@@ -38,6 +38,7 @@ public class Logement {
 	private Double caution;
 	
 	@OneToMany(mappedBy = "logement")
+	@JsonView(Views.ViewLogementDetail.class)
 	private List<Photo> photos;
 	
 	@OneToMany(mappedBy = "logement")

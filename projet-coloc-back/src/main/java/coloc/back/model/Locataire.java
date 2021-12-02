@@ -25,7 +25,7 @@ public class Locataire extends Utilisateur {
 	private Situation situation;
 	
 	@Embedded
-	@JsonView(Views.ViewLocataireDetail.class)
+//	@JsonView(Views.ViewLocataireDetail.class)
 	private Dossier dossier;
 	
 	@OneToOne
@@ -38,9 +38,9 @@ public class Locataire extends Utilisateur {
 	
 	public Locataire() {}
 
-	public Locataire(String nom, String prenom, Civilite civ, String email, String tel, String password, boolean recherche,
+	public Locataire(String username, String nom, String prenom, Civilite civ, String email, String tel, String password, boolean recherche,
 			String description, Situation situation, Dossier dossier, Chambre chambre) {
-		super(nom, prenom, civ, email, tel, password);
+		super(username, nom, prenom, civ, email, tel, password);
 		this.recherche = recherche;
 		this.description = description;
 		this.situation = situation;
@@ -48,9 +48,9 @@ public class Locataire extends Utilisateur {
 		this.chambre = chambre;
 	}
 
-	public Locataire(String nom, String prenom, Civilite civ, String email, String tel, String password, boolean recherche,
+	public Locataire(String username, String nom, String prenom, Civilite civ, String email, String tel, String password, boolean recherche,
 			String description, Situation situation) {
-		super(nom, prenom, civ, email, tel, password);
+		super(username, nom, prenom, civ, email, tel, password);
 		this.recherche = recherche;
 		this.description = description;
 		this.situation = situation;

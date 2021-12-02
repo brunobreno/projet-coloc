@@ -4,6 +4,8 @@ package coloc.back.web;
 import java.util.List;
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,7 +21,9 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 import coloc.back.model.Utilisateur;
+import coloc.back.model.Views;
 import coloc.back.repository.IUtilisateurRepository;
+import coloc.back.web.dto.ConnexionDTO;
 
 
 @RestController
@@ -31,7 +35,7 @@ public class UtilisateurRestController {
 	private IUtilisateurRepository utilisateurRepo;
 
 	@GetMapping("")
-//	@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public List<Utilisateur> findAll() {
 		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
 
@@ -39,7 +43,7 @@ public class UtilisateurRestController {
 	}
 
 	@GetMapping("/{id}")
-//	@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public Utilisateur findById(@PathVariable Long id) {
 		Optional<Utilisateur> optUtilisateur = utilisateurRepo.findById(id);
 
@@ -52,7 +56,7 @@ public class UtilisateurRestController {
 	
 
 	@PostMapping("")
-//	@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public Utilisateur create(@RequestBody Utilisateur utilisateur) {
 		utilisateur = utilisateurRepo.save(utilisateur);
 
@@ -60,7 +64,7 @@ public class UtilisateurRestController {
 	}
 
 	@PutMapping("/{id}")
-	//@JsonView(Views.ViewPhoto.class)
+	@JsonView(Views.ViewCommon.class)
 	public Utilisateur update(@PathVariable Long id, @RequestBody Utilisateur utilisateur) {
 		if (!utilisateurRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utilisateur non trouvé");
@@ -79,6 +83,18 @@ public class UtilisateurRestController {
 		}
 		
 		utilisateurRepo.deleteById(id);
+	}
+
+	@PostMapping("/login")
+	@JsonView(Views.ViewCommon.class)
+	public Utilisateur connexion(@RequestBody ConnexionDTO connexion) {
+		Optional<Utilisateur> optUtilisateur = utilisateurRepo.findByUsernameAndPasswordWithRoles(connexion.getUsername(), connexion.getPassword());
+
+		if (optUtilisateur.isPresent()) {
+			return optUtilisateur.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Erreur d'utilisateur ou de mot de passe");
+		}
 	}
 
 }
