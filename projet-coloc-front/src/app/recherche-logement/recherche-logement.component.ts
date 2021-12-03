@@ -6,7 +6,7 @@ import { faCouch } from '@fortawesome/free-solid-svg-icons';
 import { faSmoking } from '@fortawesome/free-solid-svg-icons';
 import { faCat } from '@fortawesome/free-solid-svg-icons';
 import { faParking } from '@fortawesome/free-solid-svg-icons';
-import { Logement } from '../model';
+import { Logement,Commodite } from '../model';
 
 
 @Component({
@@ -20,7 +20,10 @@ export class RechercheLogementComponent implements OnInit {
   faCat = faCat;
   faParking = faParking;
 
+  carousselId:number = 1;
+
   ville:string;
+  logementWithCom:Logement;
 
   constructor(private rechercheLogementService: RechercheLogementService) { }
 
@@ -31,9 +34,9 @@ export class RechercheLogementComponent implements OnInit {
     return this.rechercheLogementService.findAll();
   }
 
-  search(ville:string): Array<Logement> {
-    this.rechercheLogementService.findByVille(ville);
-    return this.rechercheLogementService.findAll();
+
+  caroussel(): number{
+    return this.carousselId;
   }
 
 

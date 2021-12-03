@@ -22,10 +22,10 @@ export class AppComponent {
 
   constructor(private rechercheLogementService: RechercheLogementService) {}
 
-  search(ville:string): Array<Logement> {
+  search(ville:string) {
     console.log('passage par search')
-    this.rechercheLogementService.findByVille(ville);
-    return this.rechercheLogementService.findAll();
+    this.rechercheLogementService.findByVilleWithCom(ville);
+    //return this.rechercheLogementService.findAll();
   }
  
 }

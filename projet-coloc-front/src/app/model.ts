@@ -80,20 +80,27 @@ export class Chambre {
 export class Commodite{
     id: number;
     version: number;
+    libelle: string;
+    chemin: string;
     logements: Array<Logement> = new Array <Logement>();
     chambres: Array<Chambre> = new Array <Chambre>();
 
   constructor(
     id?: number, 
     version?: number, 
-    logements?: Array<Logement>, 
+    libelle?: string, 
+    chemin?: string, 
+    logements?: Array<Logement> , 
     chambres?: Array<Chambre> 
 ) {
     this.id = id
     this.version = version
+    this.libelle = libelle
+    this.chemin = chemin
     this.logements = logements
     this.chambres = chambres
   }
+  
     
 }
 

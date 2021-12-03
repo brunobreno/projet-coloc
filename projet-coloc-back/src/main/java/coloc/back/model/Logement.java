@@ -64,7 +64,7 @@ public class Logement {
 	(
 		name="commodite_logement"
 	)
-	@JsonView(Views.ViewLogementDetail.class)
+	@JsonView(Views.ViewLogementCommodite.class)
 	private  List<Commodite> commodites = new ArrayList<Commodite>();
 	
 	@ManyToMany

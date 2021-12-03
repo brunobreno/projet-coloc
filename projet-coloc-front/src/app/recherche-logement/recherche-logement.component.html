@@ -1,5 +1,3 @@
-
-
 <body onload="init()">
 
   <div class="page-main-container">
@@ -332,12 +330,8 @@
                                 Voir toutes les règles
                               </button>
                             </div>
-
-
                           </div>
-
                         </div>
-
                       </div>
 
                       <div class="modal-body-section ">
@@ -425,30 +419,32 @@
 
         <div class="cards-container">
 
-          
+
           <div *ngFor="let logement of list()" class="card-container">
             <div class="card-carousel-container">
-              <div id="carouselExampleIndicators" class="carousel slide " data-bs-ride="carousel" data-interval="100">
+              <div id="car{{logement.id}}" class="carousel slide " data-bs-ride="carousel" data-interval="100">
                 <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                  <button type="button" attr.data-bs-target="#car{{logement.id}}" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                  <button type="button" attr.data-bs-target="#car{{logement.id}}" data-bs-slide-to="1"
                     aria-label="Slide 2"></button>
                 </div>
                 <div class="carousel-inner ">
                   <div class="carousel-item active">
-                    <img src="../img/exempleLogement/logement2/logement2_1.png" class="d-block w-100" alt="...">
+                    <img src="../../assets/img/exempleLogement/logement1/logement1_1.png" class="d-block w-100"
+                      alt="...">
                   </div>
                   <div class="carousel-item ">
-                    <img src="../img/exempleLogement/logement2/logement2_2.png" class="d-block  w-100" alt="...">
+                    <img src="../../assets/img/exempleLogement/logement1/logement1_1.png" class="d-block  w-100"
+                      alt="...">
                   </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                <button class="carousel-control-prev" type="button" attr.data-bs-target="#car{{logement.id}}"
                   data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                <button class="carousel-control-next" type="button" attr.data-bs-target="#car{{logement.id}}"
                   data-bs-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
@@ -459,40 +455,36 @@
             <div class="card-content-main-container">
               <div class="card-title-container">
                 <h6 class="card-title">Colocation en centre ville</h6>
-                <div class="card-title-spec"> 
-                  <span id="card-title-price"> 375€ </span>
+                <div class="card-title-spec">
+                  <span id="card-title-price"> {{logement.loyer}}€ </span>
                   <span id="card-title-line"></span>
-                  <span id="card-title-surface"> 67m²</span>
+                  <span id="card-title-surface"> {{logement.surface}}m²</span>
                 </div>
-               
+
               </div>
               <div class="card-content-description-main-container">
                 <ul>
-                  <li class="first-subsect">Appartement</li>
+                  <li class="first-subsect">{{logement.typeLogement}}</li>
+                  <li> <i class="bi bi-people-fill"></i> 5 occupants</li>
                   <li class="first-subsect caracteristiques">
-                    <ul>
-                      <li> 5 <i class="bi bi-people-fill"></i></li>
-                      <li><i class="bi bi-gender-female"></i></li>
-                      <li><fa-icon [icon]="faCouch"></fa-icon></li>
-                      <li><fa-icon class="faSmoking"></fa-icon></li>
-                      <li><fa-icon class="faCog"></fa-icon></li>
-                      <li><mat-icon aria-hidden="false" aria-label="Example home icon">yard</mat-icon></li>
-                      <li><mat-icon aria-hidden="false" aria-label="Example home icon">local_parking</mat-icon></li>
-                      <li></li>
+                    <ul style="display: flex;">
+                      <li *ngFor="let com of logement.commodites"  >
+                         <img src="../../assets/img/icons/{{com.chemin}}" class="d-block w-100" alt="..."> 
+                      </li>
                     </ul>
                   </li>
-                  
+
                   <li style="display: flex;"><span class="ligne ligne-description"></span></li>
                   <li class="card-description-txt text-truncate text-truncate-3">
                     {{logement.description}}
-                </li>
+                  </li>
                 </ul>
               </div>
-              
+
               <div class="card-content-link-main-container">
                 <a href="#" class="card-link">Découvrir les occupants</a>
-                 <!--<a href="#" class="card-link">Contacter</a>--> 
-              </div> 
+                <!--<a href="#" class="card-link">Contacter</a>-->
+              </div>
               <div class="card-content-update-main-container">
                 <p class="card-text"><small class="text-muted">Posté le jj-mm-aaaa</small></p>
               </div>

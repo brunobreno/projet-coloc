@@ -53,6 +53,40 @@ public class LogementRestController {
 		}
 	}
 	
+	@GetMapping("/by-ville/{ville}/with-commodite")
+	@JsonView(Views.ViewLogementCommodite.class)
+	public List<Logement> findAllWithCommoditeByVille(@PathVariable String ville) {
+		List<Logement> logements = logementRepo.findAllByVilleWithCom(ville);
+		return logements;
+	}
+	
+	@GetMapping("/by-ville/{ville}/with-commodite/order-by-price-asc")
+	@JsonView(Views.ViewLogementCommodite.class)
+	public List<Logement> findAllWithCommoditeByVilleOrderByPriceAsc(@PathVariable String ville) {
+		List<Logement> logements = logementRepo.findAllByVilleWithCom(ville);
+		return logements;
+	}
+	
+	
+	@GetMapping("/with-commodite/{id}")
+	@JsonView(Views.ViewLogementCommodite.class)
+	public Logement findWithCommodite(@PathVariable Long id) {
+		Optional<Logement> optLogement = logementRepo.findByIdWithCommodite(id);
+
+		if (optLogement.isPresent()) {
+			return optLogement.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Logement non trouvé");
+		}
+	}
+	
+	@GetMapping("/with-commodite")
+	@JsonView(Views.ViewLogementCommodite.class)
+	public List<Logement> findAllWithCommodite() {
+		List<Logement> logements = logementRepo.findAllWithCommodite();
+		return logements;
+	}
+	
 	@GetMapping("/by-ville/{ville}")
 	@JsonView(Views.ViewCommon.class)
 	public List<Logement> findByVille(@PathVariable String ville) {
