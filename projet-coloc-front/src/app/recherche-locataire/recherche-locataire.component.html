@@ -1,5 +1,9 @@
 <!-- Faire barre de filtre-->
 
+<h2 class="row justify-content-md-center mt-5 mb-3">Colocataires en recherche - Ville </h2>
+
+<!-- Affichage de la recherche-->
+
 <div class="row justify-content-md-center">
 <div class="d-flex flex-wrap col-md-8"> 
  <div class="card flex-wrap" style="width: 18rem" *ngFor="let loc of locataires">
@@ -19,6 +23,7 @@
             <!-- en fonction de civilite-->
             <i *ngIf="loc?.civ == 'Mme'" class="bi bi-gender-female float-end"></i>
             <i *ngIf="loc?.civ == 'Mr'" class="bi bi-gender-male float-end"></i>
+            <i *ngIf="loc?.civ == 'NB'" class="bi bi-gender-ambiguous float-end"></i>
             <img class="card-caract" src="../assets/img/locataires/france.png" alt="drapeau">
         </span>
       </h5>
