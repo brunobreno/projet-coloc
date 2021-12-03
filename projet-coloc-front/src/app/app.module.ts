@@ -10,13 +10,15 @@ import { ProprietaireComponent } from './proprietaire/proprietaire.component';
 import { ProfilLocataireComponent } from './profil-locataire/profil-locataire.component';
 import { LocataireComponent } from './locataire/locataire.component';
 import { LocataireHttpService } from './locataire/locataire-http.service';
+import { LogementComponent } from './logement/logement.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProprietaireComponent,
     ProfilLocataireComponent,
-    LocataireComponent
+    LocataireComponent,
+    LogementComponent
   ],
   imports: [
     BrowserModule,

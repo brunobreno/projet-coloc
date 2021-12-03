@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppConfigService } from '../app-config.service';
-import { Proprietaire } from '../model';
+import { LogementHttpService } from '../logement/logement-http.service';
+import { Logement, Proprietaire } from '../model';
 import { ProprietaireHttpService } from './proprietaire-http.service';
 
 @Component({
@@ -12,9 +13,11 @@ import { ProprietaireHttpService } from './proprietaire-http.service';
 export class ProprietaireComponent implements OnInit {
 
   proprietaireForm: Proprietaire = null;
+  logements: Array<Logement> = new Array<Logement>();
   civilites: Array<String> = new Array<String>();
+  idLogements: Array<number> = new Array<number>();
 
-  constructor(private appConfig: AppConfigService, private proprietaireService: ProprietaireHttpService, private activatedRoute: ActivatedRoute) {
+  constructor(private appConfig: AppConfigService, private proprietaireService: ProprietaireHttpService, private logementService: LogementHttpService, private activatedRoute: ActivatedRoute) {
     this.loadCivilites(); 
   }
 
@@ -23,6 +26,9 @@ export class ProprietaireComponent implements OnInit {
         const id = p['id'];
         this.proprietaireService.findById(id).subscribe(proprietaire => {
           this.proprietaireForm = proprietaire;
+        })
+        this.logementService.findAllByIdProprietaire(id).subscribe(logements => {
+          this.logements = logements;
         })
     })
         
@@ -44,16 +50,19 @@ export class ProprietaireComponent implements OnInit {
   edit(id: number) {
     this.proprietaireService.findById(id).subscribe(resp => {
       this.proprietaireForm = resp;
+      this.idLogements = new Array <number>();
+      this.proprietaireForm.logements.forEach(logement => {
+        this.idLogements.push(logement.id);
+      });
+      this.proprietaireForm.logements = new Array <Logement>();
     }, err => console.log(err));
   }
 
   save() {
-    if (!this.proprietaireForm.id) {
-      this.proprietaireService.create(this.proprietaireForm);
-    } else {
+    this.idLogements.forEach(id => {
+      this.proprietaireForm.logements.push(new Logement(id));
+    });
       this.proprietaireService.modify(this.proprietaireForm);
-    }
-    this.proprietaireForm = null;
   }
 
   cancel() {

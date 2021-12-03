@@ -13,7 +13,7 @@ export class ProprietaireHttpService {
   proprietaireUrl: string;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
-    this.proprietaireUrl = this.appConfig.backEndUrl + "/proprietaires/"
+    this.proprietaireUrl = this.appConfig.backEndUrl + "proprietaires/"
     this.load();
    }
 
