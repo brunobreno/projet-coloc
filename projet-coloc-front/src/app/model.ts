@@ -3,6 +3,7 @@ import { PathLocationStrategy } from "@angular/common";
 export class Utilisateur {
   id: number;
   version: number;
+  username: string;
   nom: string;
   prenom: string;
   civ: string;
@@ -10,9 +11,10 @@ export class Utilisateur {
   tel: string;
   password: string;
 
-  constructor(id?: number, version?: number, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
+  constructor(id?: number, version?: number, username?: string, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
     this.id = id;
     this.version = version;
+    this.username = username;
     this.nom = nom;
     this.prenom = prenom;
     this.civ = civ;
@@ -300,8 +302,8 @@ export class Photo {
 export class Proprietaire extends Utilisateur {
   logements: Array<Logement> = new Array<Logement>();
 
-  constructor(id?: number, version?: number, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
-    super(id, version, nom, prenom, civ, email, tel, password);
+  constructor(id?: number, version?: number, username?: string, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
+    super(id, version, username, nom, prenom, civ, email, tel, password);
   }
 }
 
