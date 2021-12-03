@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppConfigService } from '../app-config.service';
 import { ConnexionDTO } from '../model';
 import { LogInService } from './log-in.service';
 
@@ -14,14 +15,14 @@ export class LogInComponent implements OnInit {
   errorLogIn: string;
   connexionEtablie: boolean = false;
 
-  constructor(private logInService: LogInService, private router: Router) { }
+  constructor(private logInService: LogInService, private router: Router, private appConfig: AppConfigService) { }
 
   ngOnInit(): void {
   }
 
   login() {
     this.logInService.connexion(this.logInForm).subscribe(resp => {
-      this.logInService.utilisateur = resp;
+      this.appConfig.utilisateurConnecte = resp;
       this.connexionEtablie = true;
       this.errorLogIn = null;
       setTimeout(() =>{

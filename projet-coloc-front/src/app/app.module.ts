@@ -16,6 +16,7 @@ import { InscriptionService } from './inscription/inscription.service';
 import { RechercheLocataireComponent } from './recherche-locataire/recherche-locataire.component';
 import { RechercheLocataireService } from './recherche-locataire/recherche-locataire.service';
 import { AgePipe } from './age.pipe';
+import { RedirectComponent } from './redirect/redirect.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AgePipe } from './age.pipe';
     ProfilLocataireComponent,
     LocataireComponent,
     RechercheLocataireComponent,
-    AgePipe
+    AgePipe,
+    RedirectComponent
   ],
   imports: [
     BrowserModule,
