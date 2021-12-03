@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import coloc.back.model.Civilite;
 import coloc.back.model.Situation;
 
-
-
 @RestController
 @CrossOrigin("*")
 public class CommonRestController {

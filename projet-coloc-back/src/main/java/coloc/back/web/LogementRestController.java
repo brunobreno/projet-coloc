@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +35,7 @@ public class LogementRestController {
 	private ILogementRepository logementRepo;
 
 	@GetMapping("")
+	@PreAuthorize("hasAnyRole('ADMIN','PROPRIETAIRE')")
 	@JsonView(Views.ViewCommon.class)
 	public List<Logement> findAll() {
 		List<Logement> logements = logementRepo.findAll();
@@ -51,6 +53,40 @@ public class LogementRestController {
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Logement non trouvé");
 		}
+	}
+	
+	@GetMapping("/by-ville/{ville}/with-commodite")
+	@JsonView(Views.ViewLogementCommodite.class)
+	public List<Logement> findAllWithCommoditeByVille(@PathVariable String ville) {
+		List<Logement> logements = logementRepo.findAllByVilleWithCom(ville);
+		return logements;
+	}
+	
+	@GetMapping("/by-ville/{ville}/with-commodite/order-by-price-asc")
+	@JsonView(Views.ViewLogementCommodite.class)
+	public List<Logement> findAllWithCommoditeByVilleOrderByPriceAsc(@PathVariable String ville) {
+		List<Logement> logements = logementRepo.findAllByVilleWithCom(ville);
+		return logements;
+	}
+	
+	
+	@GetMapping("/with-commodite/{id}")
+	@JsonView(Views.ViewLogementCommodite.class)
+	public Logement findWithCommodite(@PathVariable Long id) {
+		Optional<Logement> optLogement = logementRepo.findByIdWithCommodite(id);
+
+		if (optLogement.isPresent()) {
+			return optLogement.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Logement non trouvé");
+		}
+	}
+	
+	@GetMapping("/with-commodite")
+	@JsonView(Views.ViewLogementCommodite.class)
+	public List<Logement> findAllWithCommodite() {
+		List<Logement> logements = logementRepo.findAllWithCommodite();
+		return logements;
 	}
 	
 	@GetMapping("/by-ville/{ville}")

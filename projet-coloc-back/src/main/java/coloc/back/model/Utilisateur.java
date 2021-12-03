@@ -10,7 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Version;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -26,7 +31,7 @@ public abstract class Utilisateur {
 	protected Long id;
 	@Version
 	private Integer version;
-
+	private String username;
 	protected String nom;
 
 	protected String prenom;
@@ -38,14 +43,18 @@ public abstract class Utilisateur {
 	protected String email;
 
 	protected String tel;
-	@JsonIgnore
+	@JsonView(Views.ViewPassword.class)
 	protected String password;
-	
+	@JsonView(Views.ViewProprietaireDetail.class)
+	@OneToMany(mappedBy = "user")
+	private Set<UtilisateurRole> roles;	
+
 	public Utilisateur() {
 		super();
 	}
 
-	public Utilisateur(String nom, String prenom, Civilite civ, String email, String tel, String password) {
+	public Utilisateur(String username, String nom, String prenom, Civilite civ, String email, String tel, String password) {
+		this.username = username;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.civ = civ;
@@ -60,6 +69,14 @@ public abstract class Utilisateur {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getNom() {
@@ -108,6 +125,23 @@ public abstract class Utilisateur {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Set<UtilisateurRole> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<UtilisateurRole> roles) {
+		this.roles = roles;
+	}
+	
+	@JsonView(Views.ViewLocataireDetail.class)
+	public List<String> getStringRoles() {
+		List<String> stringRoles = new ArrayList<>();
+		for (UtilisateurRole role : roles) {
+			stringRoles.add("ROLE_" + role.getRole().name());
+		}
+		return stringRoles;
 	}
 
 	@Override

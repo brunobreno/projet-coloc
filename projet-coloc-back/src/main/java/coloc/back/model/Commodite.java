@@ -19,6 +19,7 @@ public class Commodite {
 	@GeneratedValue(strategy =  GenerationType.IDENTITY )
 	private Long id;
 	private String libelle;
+	private String chemin;
 	@ManyToMany(mappedBy = "commodites")
 	@JsonView(Views.ViewCommoditeLogement.class)
 	private List<Logement> logements;
@@ -30,10 +31,10 @@ public class Commodite {
 		super();
 	}
 
-	public Commodite(String libelle) {
+	public Commodite(String libelle,String chemin) {
 		super();
 		this.libelle = libelle;
-	}
+		this.chemin = chemin;	}
 
 	public Long getId() {
 		return id;
@@ -46,9 +47,20 @@ public class Commodite {
 	public String getLibelle() {
 		return libelle;
 	}
+	
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+
+	
+	
+	public String getChemin() {
+		return chemin;
+	}
+
+	public void setChemin(String chemin) {
+		this.chemin = chemin;
 	}
 
 	public List<Logement> getLogements() {
@@ -67,6 +79,8 @@ public class Commodite {
 		this.chambres = chambres;
 	}
 
+	
+	
 	@Override
 	public String toString() {
 		return "Commodite [id=" + id + ", libelle=" + libelle + "]";
