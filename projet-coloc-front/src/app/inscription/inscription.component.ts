@@ -50,7 +50,7 @@ export class InscriptionComponent implements OnInit {
           this.inscriptionRealise = true;
           setTimeout(() =>{
             this.inscriptionRealise = false;
-            this.inscriptionForm = new UtilisateurDTO;
+            this.inscriptionForm = new UtilisateurDTO();
             this.router.navigate(['./login']);
           }, 3000);
         }, err => {console.log(err)});

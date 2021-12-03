@@ -53,7 +53,7 @@ public abstract class Utilisateur {
 		super();
 	}
 
-	public Utilisateur(String username, String nom, String prenom, Civilite civ, String email, String tel, String password, Set<UtilisateurRole> roles) {
+	public Utilisateur(String username, String nom, String prenom, Civilite civ, String email, String tel, String password) {
 		this.username = username;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -61,8 +61,6 @@ public abstract class Utilisateur {
 		this.email = email;
 		this.tel = tel;
 		this.password = password;
-		this.roles = roles;
-
 	}
 
 	public Long getId() {
@@ -137,6 +135,7 @@ public abstract class Utilisateur {
 		this.roles = roles;
 	}
 	
+	@JsonView(Views.ViewLocataireDetail.class)
 	public List<String> getStringRoles() {
 		List<String> stringRoles = new ArrayList<>();
 		for (UtilisateurRole role : roles) {

@@ -11,7 +11,8 @@ import { LogInService } from './log-in.service';
 export class LogInComponent implements OnInit {
   
   logInForm: ConnexionDTO = new ConnexionDTO();
-  errorLogIn: String;
+  errorLogIn: string;
+  connexionEtablie: boolean = false;
 
   constructor(private logInService: LogInService, private router: Router) { }
 
@@ -21,8 +22,13 @@ export class LogInComponent implements OnInit {
   login() {
     this.logInService.connexion(this.logInForm).subscribe(resp => {
       this.logInService.utilisateur = resp;
-      this.router.navigate(['']);
+      this.connexionEtablie = true;
       this.errorLogIn = null;
+      setTimeout(() =>{
+        this.connexionEtablie = false;
+        this.logInForm = new ConnexionDTO();
+        this.router.navigate(['']);
+      }, 3000);
     }, error => {
       console.log(error);
       if(error.status == 404) {

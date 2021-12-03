@@ -21,8 +21,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 import coloc.back.model.Proprietaire;
+import coloc.back.model.Role;
+import coloc.back.model.UtilisateurRole;
 import coloc.back.model.Views;
 import coloc.back.repository.IProprietaireRepository;
+import coloc.back.repository.IUtilisateurRoleRepository;
 
 
 @RestController
@@ -32,6 +35,8 @@ public class ProprietaireRestController {
 
 	@Autowired
 	private IProprietaireRepository proprietaireRepo;
+	@Autowired
+	private IUtilisateurRoleRepository utilisateurRoleRepo;
 
 	@GetMapping("")
 	@JsonView(Views.ViewCommon.class)
@@ -58,7 +63,8 @@ public class ProprietaireRestController {
 	@JsonView(Views.ViewCommon.class)
 	public Proprietaire create(@RequestBody Proprietaire proprietaire) {
 		proprietaire = proprietaireRepo.save(proprietaire);
-		System.out.println("ajout proprio");
+		UtilisateurRole ur = new UtilisateurRole(proprietaire, Role.PROPRIETAIRE);
+		ur = utilisateurRoleRepo.save(ur);
 		return proprietaire;
 	}
 
