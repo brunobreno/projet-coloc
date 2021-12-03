@@ -76,31 +76,31 @@ class ProjetColocBackApplicationTests {
 		proprietaire4 = proprietaireRepository.save(proprietaire4);
 
 		// Creation des Locataire
-		Locataire locataire1 = new Locataire("NomLocataire1", "PrenomLocataire1", Civilite.Mr, "locataire1@mail.com",
+		Locataire locataire1 = new Locataire("locataire1", "NomLocataire1", "PrenomLocataire1", Civilite.Mr, "locataire1@mail.com",
 				"0011000001", "locataire1", true, 
 				"Description locataire 1" + Lorem, 
-				Situation.Etudiant);
+				Situation.Etudiant,  LocalDate.parse("1992-02-09"));
 		locataire1 = locataireRepository.save(locataire1);
-		Locataire locataire2 = new Locataire("NomLocataire2", "PrenomLocataire2", Civilite.Mr, "locataire2@mail.com",
-				"0011000002", "locataire2", true, "Description locataire 2" + Lorem , Situation.Salarie);
+		Locataire locataire2 = new Locataire("locataire2", "NomLocataire2", "PrenomLocataire2", Civilite.Mr, "locataire2@mail.com",
+				"0011000002", "locataire2", true, "Description locataire 2" + Lorem , Situation.Salarie, LocalDate.parse("1992-02-09"));
 		locataire2 = locataireRepository.save(locataire2);
-		Locataire locataire3 = new Locataire("NomLocataire3", "PrenomLocataire3", Civilite.Mme, "locataire3@mail.com",
-				"0011000003", "locataire3", true, "Description locataire 3" + Lorem, Situation.Etudiant);
+		Locataire locataire3 = new Locataire("locataire3", "NomLocataire3", "PrenomLocataire3", Civilite.Mme, "locataire3@mail.com",
+				"0011000003", "locataire3", true, "Description locataire 3" + Lorem, Situation.Etudiant, LocalDate.parse("1992-02-09"));
 		locataire3 = locataireRepository.save(locataire3);
-		Locataire locataire4 = new Locataire("NomLocataire4", "PrenomLocataire4", Civilite.Mr, "locataire4@mail.com",
-				"0011000004", "locataire4", false, "Description locataire 4" + Lorem, Situation.Retraite);
+		Locataire locataire4 = new Locataire("locataire4", "NomLocataire4", "PrenomLocataire4", Civilite.Mr, "locataire4@mail.com",
+				"0011000004", "locataire4", false, "Description locataire 4" + Lorem, Situation.Retraite, LocalDate.parse("1992-02-09"));
 		locataire4 = locataireRepository.save(locataire4);
-		Locataire locataire5 = new Locataire("NomLocataire5", "PrenomLocataire5", Civilite.Mme, "locataire5@mail.com",
-				"0011000005", "locataire5", false, "Description locataire 5" + Lorem, Situation.Etudiant);
+		Locataire locataire5 = new Locataire("locataire5", "NomLocataire5", "PrenomLocataire5", Civilite.Mme, "locataire5@mail.com",
+				"0011000005", "locataire5", false, "Description locataire 5" + Lorem, Situation.Etudiant, LocalDate.parse("1992-02-09"));
 		locataire5 = locataireRepository.save(locataire5);
-		Locataire locataire6 = new Locataire("NomLocataire6", "PrenomLocataire6", Civilite.Mme, "locataire6@mail.com",
-				"0011000006", "locataire6", true, "Description locataire 6" + Lorem, Situation.Etudiant);
+		Locataire locataire6 = new Locataire("locataire6", "NomLocataire6", "PrenomLocataire6", Civilite.Mme, "locataire6@mail.com",
+				"0011000006", "locataire6", true, "Description locataire 6" + Lorem, Situation.Etudiant, LocalDate.parse("1992-02-09"));
 		locataire6 = locataireRepository.save(locataire6);
-		Locataire locataire7 = new Locataire("NomLocataire7", "PrenomLocataire7", Civilite.Mr, "locataire7@mail.com",
-				"0011000007", "locataire7", true, "Description locataire 7" + Lorem , Situation.Salarie);
+		Locataire locataire7 = new Locataire("locataire7", "NomLocataire7", "PrenomLocataire7", Civilite.Mr, "locataire7@mail.com",
+				"0011000007", "locataire7", true, "Description locataire 7" + Lorem , Situation.Salarie, LocalDate.parse("1992-02-09"));
 		locataire7 = locataireRepository.save(locataire7);
-		Locataire locataire8 = new Locataire("NomLocataire8", "PrenomLocataire8", Civilite.Mme, "locataire8@mail.com",
-				"0011000008", "locataire8", true, "Description locataire 8" + Lorem, Situation.Salarie);
+		Locataire locataire8 = new Locataire("locataire8", "NomLocataire8", "PrenomLocataire8", Civilite.Mme, "locataire8@mail.com",
+				"0011000008", "locataire8", true, "Description locataire 8" + Lorem, Situation.Salarie, LocalDate.parse("1992-02-09"));
 		locataire8 = locataireRepository.save(locataire8);
 
 		// Creation des Localisation
