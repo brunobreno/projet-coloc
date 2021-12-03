@@ -1,3 +1,100 @@
+<header>
+  <div class="header-wrap">
+    <div class="header-main-container">
+
+      <div class="header-left-container">
+
+        <div class="header-logo-main-container" [routerLink]="['/accueil']" routerLinkActive="active">
+        </div>
+
+        <div class="header-research-main-container">
+          <div class="grp-recherche">
+            <input type="text" 
+            placeholder="Dans quelle ville cherchez-vous une colocation ?" 
+            id="barre-recherche"
+            [(ngModel)]="filtre">
+            <button id="btn-recherche" (click)="search(filtre)"></button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- User non connecté -->
+      <div class="header-account-main-container" *ngIf="!userConnect">
+        <button type=button class="header-button-account button1 ">
+          S'inscrire
+        </button>
+
+        <button type=button class="header-button-account button1" style="padding-left:15px;padding-right:15px" >
+          Se connecter
+        </button>
+        <button type=button class="header-button-account button1 last-button">
+          <i class="bi-globe"></i>
+        </button>
+      </div>
+
+      <!-- User connecté en tant que locataire-->
+      <div class="header-account-main-container" *ngIf= "userConnect=='Locataire'">
+        <button type=button class="header-button-account button1 first-button" >
+          Mes recherches
+        </button>
+        <button type=button class="header-button-account button1 ">
+          Favoris
+        </button>
+        <button type=button class="header-button-account button1 ">
+          Messages
+        </button>
+        <button type=button class="header-button-account button1" style="padding-left:15px;padding-right:15px" >
+          Mon compte
+        </button>
+        <button type=button class="header-button-account button1 last-button">
+          <i class="bi-globe"></i>
+        </button>
+      </div>
+
+     <!-- User connecté en tant que propriétaire-->
+     <div class="header-account-main-container" *ngIf= "(userConnect | typeof) =='Propretaire'">
+      <button type=button class="header-button-account button1 first-button" >
+        Candidatures reçues
+      </button>
+      <button type=button class="header-button-account button1 first-button" >
+        Mes logements
+      </button>
+      <button type=button class="header-button-account button1 ">
+        Messages
+      </button>
+      <button type=button class="header-button-account button1" style="padding-left:15px;padding-right:15px" >
+        Mon compte
+      </button>
+      <button type=button class="header-button-account button1 last-button">
+        <i class="bi-globe"></i>
+      </button>
+    </div>
+    </div>
+  </div>
+
+</header>
+
 <div class="container-fluid">
   <router-outlet></router-outlet>
 </div>
+
+
+<footer>
+  <div class="fContent">
+    <div class="fLeft">
+      <img src="../assets/img/logoRoofBlack.svg" alt="logo LaColoc">
+      <span>&copy; 2021, LaColoc</span>
+    </div>
+
+    <div class="fRight">
+      <a target="_blank" href="https://www.facebook.com/La-Coloc-102882025547821"><img
+          src="../assets/img/reseauxSociaux/facebookBlack.svg" alt=""></a>
+      <a target="_blank" href="https://twitter.com/"> <img src="../assets/img/reseauxSociaux/twitterBlack.svg" alt=""></a>
+      <a target="_blank" href="https://www.instagram.com/"><img src="../assets/img/reseauxSociaux/instagramBlack.svg"
+          alt=""></a>
+    </div>
+  </div>
+
+
+</footer>
