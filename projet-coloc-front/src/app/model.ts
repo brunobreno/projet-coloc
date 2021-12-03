@@ -145,6 +145,7 @@ export class Locataire extends Utilisateur {
   recherche: boolean;
   description: string;
   situation: string;
+  dateDeNaissance: string;
   dossier: Dossier;
   chambre: Chambre;
   candidatures: Array<Candidature> = new Array<Candidature>();
@@ -161,6 +162,7 @@ export class Locataire extends Utilisateur {
     recherche?: boolean,
     description?: string,
     situation?: string,
+    dateDeNaissance?: string,
     dossier?: Dossier,
     chambre?: Chambre,
     candidatures?: Array<Candidature>
@@ -169,6 +171,7 @@ export class Locataire extends Utilisateur {
     this.recherche = recherche
     this.description = description
     this.situation = situation
+    this.dateDeNaissance = dateDeNaissance
     this.dossier = dossier
     this.chambre = chambre
     this.candidatures = candidatures
