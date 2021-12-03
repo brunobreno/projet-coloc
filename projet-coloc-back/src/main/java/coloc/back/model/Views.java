@@ -29,12 +29,21 @@ public class Views {
 	public static class ViewLocataireDetail extends ViewLocataire{
 	}
 	
-	public static class ViewLogementDetail extends ViewCommon{
+	public static class ViewLogement extends ViewCommon{
+	}
+	
+	public static class ViewLogementDetail extends ViewLogement{
+	}
+	
+	public static class ViewLogementCommodite extends ViewLogement{
 	}
 	
 	public static class ViewProprietaireDetail extends ViewCommon{
 	}
 	
 	public static class ViewRegleLogement extends ViewCommon{
+	}
+
+	public static class ViewPassword extends ViewCommon{
 	}
 }

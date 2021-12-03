@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Logement } from '../model';
+import { LogementHttpService } from './logement-http.service';
 
 @Component({
   selector: 'app-logement',
@@ -7,9 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogementComponent implements OnInit {
 
-  constructor() { }
+  logementForm: Logement;
+  filtre: string;
+
+  constructor(private logementService: LogementHttpService) { }
 
   ngOnInit(): void {
+  }
+
+  list(): Array<Logement> {
+    return this.logementService.findAll();
+  }
+
+  add() {
+    this.logementForm = new Logement();
+  }
+
+  edit(id: number) {
+    this.logementService.findById(id).subscribe(response => {
+      this.logementForm = response;
+    }, err => console.log(err));
+  }
+
+  save() {
+      this.logementService.modify(this.logementForm);
+  }
+
+  cancel() {
+    this.logementForm = null;
+  }
+
+  remove(id: number) {
+    this.logementService.deleteById(id);
   }
 
 }

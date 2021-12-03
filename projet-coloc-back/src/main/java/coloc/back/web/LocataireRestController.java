@@ -22,9 +22,12 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import coloc.back.model.Chambre;
 import coloc.back.model.Locataire;
+import coloc.back.model.Role;
+import coloc.back.model.UtilisateurRole;
 import coloc.back.model.Views;
 import coloc.back.repository.IChambreRepository;
 import coloc.back.repository.ILocataireRepository;
+import coloc.back.repository.IUtilisateurRoleRepository;
 
 
 
@@ -37,6 +40,8 @@ public class LocataireRestController {
 	private ILocataireRepository locataireRepo;
 	@Autowired
 	private IChambreRepository chambreRepo;
+	@Autowired
+	private IUtilisateurRoleRepository utilisateurRoleRepo;
 
 	@GetMapping("")
 	@JsonView(Views.ViewCommon.class)
@@ -77,7 +82,8 @@ public class LocataireRestController {
 	@JsonView(Views.ViewCommon.class)
 	public Locataire create(@RequestBody Locataire locataire) {
 		locataire = locataireRepo.save(locataire);
-
+		UtilisateurRole ur = new UtilisateurRole(locataire, Role.LOCATAIRE);
+		ur = utilisateurRoleRepo.save(ur);
 		return locataire;
 	}
 

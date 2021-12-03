@@ -23,6 +23,7 @@ import org.springframework.web.server.ResponseStatusException;
 import coloc.back.model.Utilisateur;
 import coloc.back.model.Views;
 import coloc.back.repository.IUtilisateurRepository;
+import coloc.back.web.dto.ConnexionDTO;
 
 
 @RestController
@@ -52,7 +53,18 @@ public class UtilisateurRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utilisateur non trouvé");
 		}
 	}
-	
+
+	@GetMapping("/find-by-email/{email}")
+	@JsonView(Views.ViewCommon.class)
+	public Utilisateur findByEmail(@PathVariable String email) {
+		Optional<Utilisateur> optUtilisateur = utilisateurRepo.findByEmail(email);
+
+		if (optUtilisateur.isPresent()) {
+			return optUtilisateur.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utilisateur non trouvé");
+		}
+	}
 
 	@PostMapping("")
 	@JsonView(Views.ViewCommon.class)
@@ -82,6 +94,18 @@ public class UtilisateurRestController {
 		}
 		
 		utilisateurRepo.deleteById(id);
+	}
+
+	@PostMapping("/login")
+	@JsonView(Views.ViewCommon.class)
+	public Utilisateur connexion(@RequestBody ConnexionDTO connexion) {
+		Optional<Utilisateur> optUtilisateur = utilisateurRepo.findByUsernameAndPasswordWithRoles(connexion.getUsername(), connexion.getPassword());
+
+		if (optUtilisateur.isPresent()) {
+			return optUtilisateur.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Erreur d'utilisateur ou de mot de passe");
+		}
 	}
 
 }
