@@ -13,6 +13,9 @@ import { LogInComponent } from './log-in/log-in.component';
 import { LogInService } from './log-in/log-in.service';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { InscriptionService } from './inscription/inscription.service';
+import { RechercheLocataireComponent } from './recherche-locataire/recherche-locataire.component';
+import { RechercheLocataireService } from './recherche-locataire/recherche-locataire.service';
+import { AgePipe } from './age.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { InscriptionService } from './inscription/inscription.service';
     LogInComponent,
     InscriptionComponent,
     ProfilLocataireComponent,
-    LocataireComponent
+    LocataireComponent,
+    RechercheLocataireComponent,
+    AgePipe
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,7 @@ import { InscriptionService } from './inscription/inscription.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AppConfigService,LocataireHttpService, LogInService, InscriptionService],
+  providers: [AppConfigService,LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

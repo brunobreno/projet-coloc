@@ -23,7 +23,7 @@ export class InscriptionService {
     if(utilisateur.typeDeCompte == "locataire"){
       // Problème sur la situationGarant qui passe en attribut situation et à valeur null
       let dossierLocataireACreer = new Dossier(utilisateur.dossier.revenu, utilisateur.dossier.revenuGarant, utilisateur.dossier.situationGarant);
-      let locataireACreer: LocataireDTOInscription = new LocataireDTOInscription(utilisateur.username, utilisateur.nom, utilisateur.prenom, utilisateur.civ, utilisateur.email, utilisateur.tel, utilisateur.password, utilisateur.recherche, utilisateur.description, utilisateur.situation, dossierLocataireACreer)
+      let locataireACreer: LocataireDTOInscription = new LocataireDTOInscription(utilisateur.username, utilisateur.nom, utilisateur.prenom, utilisateur.civ, utilisateur.email, utilisateur.tel, utilisateur.password, utilisateur.recherche, utilisateur.description, utilisateur.situation, utilisateur.dateDeNaissance, dossierLocataireACreer)
       return this.http.post<UtilisateurDTO>(this.locataireUrl, locataireACreer);
 
     } else {
