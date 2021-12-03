@@ -53,7 +53,18 @@ public class UtilisateurRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utilisateur non trouvé");
 		}
 	}
-	
+
+	@GetMapping("/find-by-email/{email}")
+	@JsonView(Views.ViewCommon.class)
+	public Utilisateur findByEmail(@PathVariable String email) {
+		Optional<Utilisateur> optUtilisateur = utilisateurRepo.findByEmail(email);
+
+		if (optUtilisateur.isPresent()) {
+			return optUtilisateur.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utilisateur non trouvé");
+		}
+	}
 
 	@PostMapping("")
 	@JsonView(Views.ViewCommon.class)

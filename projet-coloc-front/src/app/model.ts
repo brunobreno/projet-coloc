@@ -19,12 +19,12 @@ export class UtilisateurDTO {
     password: string;
     stringRoles: Array<string> = new Array<string>();
     typeDeCompte: string;
-    enRecherche: boolean;
+    recherche: boolean;
     description: string;
     situation: string;
     dossier : Dossier;
 
-    constructor(id?: number, username?: string, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string, typeDeCompte?: string, enRecherche?: boolean, description?: string, situation?: string, dossier?: Dossier) {
+    constructor(id?: number, username?: string, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string, typeDeCompte?: string, recherche?: boolean, description?: string, situation?: string, dossier?: Dossier) {
         this.id = id;
         this.username = username;
         this.nom = nom;
@@ -34,7 +34,7 @@ export class UtilisateurDTO {
         this.tel = tel;
         this.password = password;
         this.typeDeCompte = typeDeCompte;
-        this.enRecherche = enRecherche;
+        this.recherche = recherche;
         this.description = description;
         this.situation = situation;
         this.dossier = dossier;
@@ -90,8 +90,52 @@ export class Locataire extends Utilisateur {
         this.dossier = dossier;
         // this.chambre = chambre;
     }
-
-
 }
 
+export class LocataireDTOInscription {
+    username: string;
+    nom: string;
+    prenom: string;
+    civ: string;
+    email: string;
+    tel: string;
+    password: string;
+    recherche: boolean;
+    description: string;
+    situation: string;
+    dossier : Dossier;
 
+    constructor(username?: string, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string, recherche?: boolean, description?: string, situation?: string, dossier?: Dossier) {
+        this.username = username;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.civ = civ;
+        this.email = email;
+        this.tel = tel;
+        this.password = password;
+        this.recherche = recherche;
+        this.description = description;
+        this.situation = situation;
+        this.dossier = dossier;
+    }
+}
+
+export class ProprietaireDTOInscription {
+    username: string;
+    nom: string;
+    prenom: string;
+    civ: string;
+    email: string;
+    tel: string;
+    password: string;
+
+    constructor(username?: string, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
+        this.username = username;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.civ = civ;
+        this.email = email;
+        this.tel = tel;
+        this.password = password;
+    }
+}

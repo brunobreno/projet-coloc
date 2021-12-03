@@ -37,4 +37,7 @@ public class Views {
 	
 	public static class ViewRegleLogement extends ViewCommon{
 	}
+
+	public static class ViewPassword extends ViewCommon{
+	}
 }
