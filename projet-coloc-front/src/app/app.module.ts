@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppConfigService } from './app-config.service';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {MatIconModule} from '@angular/material/icon'; 
+import { MatIconModule } from '@angular/material/icon'; 
 
 
 import { AppRoutingModule } from './app-routing.module';

@@ -17,9 +17,9 @@ const routes: Routes = [
   { path: "recherche", component: RechercheLogementComponent },
   { path: "rechercheLocataires", component: RechercheLocataireComponent },
   { path: "proprietaire/:id", component: ProprietaireComponent},
-  { path: "**", component: RedirectComponent},
   { path: "ajoutLogement", component: AjoutLogementComponent},
-  { path: "descriptionLogement", component: DescriptionLogementComponent}
+  { path: "descriptionLogement", component: DescriptionLogementComponent},
+  { path: "**", component: RedirectComponent},
 ];
 
 @NgModule({
