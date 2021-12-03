@@ -71,6 +71,10 @@
                         <option value="">Choisir une situation</option>
                         <option *ngFor="let sit of situations" [value]="sit">{{sit}}</option>
                     </select>
+                    <div class="col-12 mt-2">
+                        <label for="dateDeNaissance" class="form-label">Date de naissance :</label>
+                        <input type="date" class="form-control" id="dateDeNaissance" [(ngModel)]="inscriptionForm.dateDeNaissance">
+                    </div>
                 </div>
                 <div class="col-12 mt-2">
                     <label for="choix-dossier" class="form-label">Voulez vous completer votre dossier de recherche maintenant ?</label><br>

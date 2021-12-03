@@ -1,5 +1,6 @@
 package coloc.back.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +20,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Locataire extends Utilisateur {
 	private boolean recherche;
 	private String description;
-	@Enumerated(EnumType.STRING)
+
+	private LocalDate dateDeNaissance;
 	
-	@JsonView(Views.ViewLocataireDetail.class)
+	@Enumerated(EnumType.STRING)
 	private Situation situation;
 	
 	@Embedded
@@ -39,21 +41,23 @@ public class Locataire extends Utilisateur {
 	public Locataire() {}
 
 	public Locataire(String username, String nom, String prenom, Civilite civ, String email, String tel, String password, boolean recherche,
-			String description, Situation situation, Dossier dossier, Chambre chambre) {
+			String description, Situation situation, LocalDate dateDeNaissance, Dossier dossier, Chambre chambre) {
 		super(username, nom, prenom, civ, email, tel, password);
 		this.recherche = recherche;
 		this.description = description;
 		this.situation = situation;
+		this.dateDeNaissance = dateDeNaissance;
 		this.dossier = dossier;
 		this.chambre = chambre;
 	}
 
 	public Locataire(String username, String nom, String prenom, Civilite civ, String email, String tel, String password, boolean recherche,
-			String description, Situation situation) {
+			String description, Situation situation, LocalDate dateDeNaissance) {
 		super(username, nom, prenom, civ, email, tel, password);
 		this.recherche = recherche;
 		this.description = description;
 		this.situation = situation;
+		this.dateDeNaissance = dateDeNaissance;
 	}
 
 	public Situation getSituation() {
@@ -94,6 +98,14 @@ public class Locataire extends Utilisateur {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public LocalDate getDateDeNaissance() {
+		return dateDeNaissance;
+	}
+
+	public void setDateDeNaissance(LocalDate dateDeNaissance) {
+		this.dateDeNaissance = dateDeNaissance;
 	}
 
 	public List<Candidature> getCandidatures() {
