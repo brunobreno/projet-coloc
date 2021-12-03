@@ -9,8 +9,11 @@ import { LogInComponent } from './log-in/log-in.component';
 import { RechercheLocataireComponent } from './recherche-locataire/recherche-locataire.component';
 import { RedirectComponent } from './redirect/redirect.component';
 import { ProprietaireComponent } from './proprietaire/proprietaire.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
+  { path: "", component: HomePageComponent},
+  { path: "home", component: HomePageComponent},
   { path: "login", component: LogInComponent},
   { path: "inscription", component: InscriptionComponent},
   { path: "profilLocataire", component: ProfilLocataireComponent},

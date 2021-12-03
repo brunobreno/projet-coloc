@@ -28,6 +28,8 @@ import { LogementComponent } from './logement/logement.component';
 import { AjoutLogementComponent } from './ajout-logement/ajout-logement.component';
 import { DescriptionLogementComponent } from './description-logement/description-logement.component';
 import { AjoutLogementHttpService } from './ajout-logement/ajout-logement-http.service';
+import { HomePageComponent } from './home-page/home-page.component';
+import { HomePageService } from './home-page/home-page.service';
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { AjoutLogementHttpService } from './ajout-logement/ajout-logement-http.s
     ProprietaireComponent,
     LogementComponent,
     AjoutLogementComponent,
-    DescriptionLogementComponent
+    DescriptionLogementComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,7 @@ import { AjoutLogementHttpService } from './ajout-logement/ajout-logement-http.s
     HttpClientModule,
     //NoopAnimationsModule
   ],
-  providers: [AppConfigService, LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService, AjoutLogementHttpService],
+  providers: [AppConfigService, LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService, AjoutLogementHttpService, HomePageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
