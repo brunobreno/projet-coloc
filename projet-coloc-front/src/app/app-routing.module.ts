@@ -11,14 +11,14 @@ import { RedirectComponent } from './redirect/redirect.component';
 import { ProprietaireComponent } from './proprietaire/proprietaire.component';
 
 const routes: Routes = [
-  {path: "login", component: LogInComponent},
-  {path: "inscription", component: InscriptionComponent},
+  { path: "login", component: LogInComponent},
+  { path: "inscription", component: InscriptionComponent},
   { path: "profilLocataire", component: ProfilLocataireComponent},
-  { path: "recherche", component: RechercheLogementComponent }
+  { path: "recherche", component: RechercheLogementComponent },
   { path: "rechercheLocataires", component: RechercheLocataireComponent },
-  {path: "proprietaire/:id", component: ProprietaireComponent},
-  { path: "**", component: RedirectComponent}
-  { path: "ajoutLogement", component: AjoutLogementComponent },
+  { path: "proprietaire/:id", component: ProprietaireComponent},
+  { path: "**", component: RedirectComponent},
+  { path: "ajoutLogement", component: AjoutLogementComponent},
   { path: "descriptionLogement", component: DescriptionLogementComponent}
 ];
 
