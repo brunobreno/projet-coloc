@@ -1,0 +1,579 @@
+<div class="page-main-container">
+
+    <!-- Section Titre -->
+    <div class="section-container" id="title-section">
+      <h4>Colocation jeunes actifs Quartier Graslin</h4>
+      <div class="subtitle">
+        <div class="subtext">
+          <!-- <span class="subtext"> Logement :</span>
+          <span class="subtext"> Appartement</span>
+          <span class="subtext"> - </span>
+          <span class="subtext"> 120m²</span>
+          <span class="subtext"> - </span>
+          <span class="subtext"> 6 pièces</span>
+          <span class="subtext"> - </span>
+          <span class="subtext"> 3 occupants</span>
+          <span class="subtext"> | </span>
+          <span class="subtext"> Chambre :</span>
+          <span class="subtext"> 17m² </span>
+          <span class="subtext"> - </span>
+          <span class="subtext"> 425€ </span>
+          <span class="subtext"> | </span> -->
+
+          12 place Graslin, Nantes (44000)
+
+        </div>
+
+        <div style="display: flex;">
+          <button class="subtext" id="partage"> Partager <span class="material-icons-outlined subtext"> share
+            </span></button>
+          <button class="subtext" id="favoris"> Ajouter aux favoris<span
+              class="material-icons-outlined subtext">favorite_border</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Photo -->
+    <div class="section-container" id="photo-section">
+
+      <div class="photo-side-container" style="align-items: flex-end;">
+        <div class="photo-mosaic-container ">
+          <div class="photo-content"><img src="../img/exempleLogement/logement2/logement2_1.png" class="h-100"
+              alt="..."></div>
+        </div>
+        <div class="photo-mosaic-container">
+          <div class="photo-content"><img src="../img/exempleLogement/logement2/logement2_2.png" class="h-100"
+              alt="..."></div>
+        </div>
+      </div>
+
+      <div class="photo-center-container">
+        <div class="photo-content"><img src="../img/exempleLogement/logement3/logement3_1.png" class="h-100" alt="...">
+        </div>
+      </div>
+
+      <div class="photo-side-container" style="align-items: flex-start;">
+        <div class="photo-mosaic-container">
+          <div class="photo-content"><img src="../img/exempleLogement/logement3/logement3_2.png" class="h-100"
+              alt="..."></div>
+        </div>
+        <div class="photo-mosaic-container">
+          <div class="photo-content"><img src="../img/exempleLogement/logement2/logement2_1.png" class="h-100"
+              alt="..."></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#photoModal">
+      Launch demo modal
+    </button>
+
+    <!-- Modal Photo -->
+    <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <!-- Caroussel -->
+
+            <div id="carouselLogementIndicators" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselLogementIndicators" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselLogementIndicators" data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselLogementIndicators" data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="../img/exempleLogement/logement1/logement1_1.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="../img/exempleLogement/logement1/logement1_2.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="../img/exempleLogement/logement2/logement2_1.png" class="d-block w-100" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselLogementIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselLogementIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="navigation-main-containter">
+
+      <div id="sticky-main-container">
+        <div id="sticky-card">
+
+          <h5> <i class="far fa-calendar-alt"></i>
+            Disponible le : jj-mm-aaaa
+          </h5>
+
+          <h5> <i class="fas fa-money-bill"></i> Loyer tout compris : 520€</h5>
+
+          <h5> <i class="fas fa-users"></i> Nombre d'occupant : 3</h5>
+
+          <h5><i class="fas fa-expand-alt"></i> Superficie de la chambre : 22 m² </h5>
+          <div style="display: flex;">
+            <button class="contact-button" id="envoi_message">
+              <i class="far fa-comment-alt"></i>
+              Envoyer un Message </button>
+            <button class="contact-button" id="depot-dossier">
+              <i class="fas fa-file-download"></i>
+              Déposer un dossier </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div id="scrollable-main-containter">
+
+
+
+
+        <!-- Section Infos clés -->
+        <div class="section-container" id="info-section">
+          <h4>Les infos clés</h4>
+
+          <div class="caracteristiques-container ">
+
+            <div id="info-container">
+
+
+              <div class="card-style">
+                <h5>Le logement</h5>
+                <span>Type : Appartement</span>
+                <span>Superficie : 160m² </span>
+                <span>Nombre de chambre : 4 </span>
+                <span>Nombre de sdb : 1 </span>
+                <span>Meublé : Oui</span>
+              </div>
+
+              <div class="card-style">
+                <h5>Les dépenses</h5>
+                <span>Loyer : 470€ </span>
+                <span>Charges : 50€ </span>
+                <span>Caution : 450€ </span>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <!-- Section Colocation -->
+        <div class="section-container" id="occupant-section">
+          <h4>La colocation</h4>
+
+          <div class="caracteristiques-container ">
+            <h6>Description de la coloc'</h6>
+
+            <div class="description text-truncate text-truncate-6">
+              Lorem ipsum dolor sit amet. Vel totam delectus sit autem illo a illo unde ut perspiciatis enim. Ab
+              voluptatem
+              blanditiis et ipsa enim eos enim nisi aut eius doloribus. Qui dolorem pariatur ea aperiam saepe qui Quis
+              obcaecati ex repellat quia cum architecto reprehenderit in sint facilis. Totam neque est quibusdam velit
+              sed
+              voluptatem commodi 33 soluta veritatis ea aliquam debitis et eveniet similique. Et doloremque beatae in
+              saepe
+              cumque aut distinctio consectetur ut perspiciatis natus aut eveniet sapiente et dignissimos sint. Et
+              aperiam
+              consequuntur sed enim mollitia ab dolor voluptas. Non consectetur eius et autem eius qui omnis voluptate.
+
+              Et facere error ut perspiciatis quis eos aliquid accusantium nam facilis molestiae qui voluptates dicta
+              quo
+              velit tempora et perferendis impedit. Est distinctio nihil quo molestiae exercitationem quo asperiores
+              eius
+              et
+              assumenda dolorum aut magnam rerum ea reprehenderit rerum ea dolores tempora. Est cupiditate cupiditate
+              aut
+              ipsam quia quo nihil eaque. Ex nostrum commodi qui fugiat illo non blanditiis fuga non odit perferendis
+              sed
+              earum quis! Et voluptatum dolores aut quaerat aperiam et cumque rerum sed facilis deserunt ut esse
+              voluptatem.
+              Et enim molestiae ut neque obcaecati eum delectus obcaecati. Qui placeat fuga sed tempora nesciunt et
+              deleniti
+              incidunt.
+
+              Est vero corporis aut quae deleniti aut maxime fugiat qui maxime quia et placeat error. Et molestiae
+              eveniet
+              est voluptatum galisum ut fuga soluta. Aut laboriosam esse aut galisum nihil et cupiditate galisum qui
+              quaerat
+              quia. Ut explicabo nisi ad omnis repellendus sit repellendus officiis 33 eius nemo et nulla deleniti aut
+              eius
+              magni nam voluptate natus. Est esse sint ad asperiores dolorem et ratione impedit est perspiciatis
+              cupiditate!
+            </div>
+
+          </div>
+
+
+
+          <div class="caracteristiques-container">
+            <h6>Les occupants</h6>
+            <div class="occupant-container">
+              <div class="occupant-card-mini card-style">
+                <div class="occupant-card-mini-photo" style="outline: solid 2px #ed99a1;">
+                  <img src="../img/occupants/occupant1-1.jpg" class="h-100" alt="...">
+                </div>
+                <div class="occupant-card-mini-content">
+                  <span class="occupant-desc">Louise, 27 ans</span>
+                  <span class="occupant-desc">Indépendante</span>
+                  <div class="occupant-hobbies">
+                    <span class="material-icons">menu_book</span>
+                    <span class="material-icons">sports_esports</span>
+                    <span class="material-icons">brush</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="occupant-card-mini card-style">
+                <div class="occupant-card-mini-photo" style="outline: solid 2px #8bc2a8 ;">
+                  <img src="../img/occupants/occupant7-1.jpg" class="h-100" alt="...">
+                </div>
+                <div class="occupant-card-mini-content">
+                  <span class="occupant-desc">Iris, 26ans</span>
+                  <span class="occupant-desc">Salarié</span>
+                  <div class="occupant-hobbies">
+                    <span class="material-icons">hiking</span>
+                    <span class="material-icons">explore</span>
+                    <span class="material-icons">sports_bar</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="occupant-card-mini card-style">
+                <div class="occupant-card-mini-photo" style="outline: solid 2px #85b5fd;">
+                  <img src="../img/occupants/occupant4-1.jpg" class="h-100" alt="...">
+                </div>
+                <div class="occupant-card-mini-content">
+                  <span class="occupant-desc">Amir, 29 ans</span>
+                  <span class="occupant-desc">Salarié</span>
+                  <div class="occupant-hobbies">
+                    <span class="material-icons">sports_handball</span>
+                    <span class="material-icons">movie</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="caracteristiques-container">
+
+            <h6>Le mode de vie adopté</h6>
+
+
+            <div class="caracteristiques-list card-style">
+              <div class="caracteristiques"> <i class="fas fa-glass-cheers"></i>
+                Festif
+              </div>
+              <div class="caracteristiques"> <span class="material-icons-outlined">self_improvement</span>
+                Calme & Cocooning
+              </div>
+              <div class="caracteristiques"> <i class="fas fa-leaf"></i>
+                Ecolo
+              </div>
+              <div class="caracteristiques"> <i class="fas fa-laptop-house"></i>
+                Télétravail
+              </div>
+              <div class="caracteristiques"> <i class="fas fa-users"></i>
+                <!--  <i class="fas fa-hands-helping"> </i> -->
+                Collectif
+              </div>
+
+
+
+              <div class="caracteristiques"> <i class="fas fa-user-circle"></i>
+                Indépendant
+              </div>
+              <div class="caracteristiques"> <i class="fas fa-tools"></i>
+                Débrouille
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- Section logement -->
+        <div div class="section-container" id="section-logement">
+
+          <h4>Les caractéristiques du logement</h4>
+
+          <div class="caracteristiques-container ">
+
+            <h6>Les commodités proposées</h6>
+
+            <div class="caracteristiques-list card-style">
+
+              <div class="caracteristiques"> <span class="material-icons-outlined google-icon-filter">yard</span>
+                Jardin / Terrasse
+              </div>
+              <div class="caracteristiques"> <span class="material-icons-round">balcony</span>
+                Balcon
+              </div>
+              <div class="caracteristiques"> <span class="material-icons-round">accessible</span>
+                Acces handicapé
+              </div>
+              <div class="caracteristiques"> <span class="material-icons-round google-icon-filter">local_parking</span>
+                Parking
+              </div>
+              <div class="caracteristiques"> <span class="material-icons-round"> fitness_center</span>
+                Salle de sport
+              </div>
+
+
+              <div class="caracteristiques"> <span class="material-icons-round">wifi</span>
+                Internet Fibre
+              </div>
+              <div class="caracteristiques"><span class="material-icons">local_laundry_service</span>
+                Lave-vaisselle
+              </div>
+              <div class="caracteristiques"><span class="material-icons">local_laundry_service</span>
+                Lave-linge
+              </div>
+              <div class="caracteristiques"><span class="material-icons">ac_unit</span>
+                Climatisation
+              </div>
+              <div class="caracteristiques"> <span class="material-icons">tv</span>
+                Télévision
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="caracteristiques-container">
+
+            <h6>Les règles à respecter</h6>
+
+
+            <div class="caracteristiques-list card-style">
+
+              <div class="caracteristiques"> <i class="fas fa-cat"></i>
+                Animaux autorisés
+              </div>
+              <div class="caracteristiques"> <i class="fas fa-smoking"></i>
+                Fumeur autorisé
+              </div>
+              <div class="caracteristiques"> <i class="fas fa-venus"></i>
+                Femme uniquement
+              </div>
+              <div class="caracteristiques"> <i class="fas fa-mars"></i>
+                Homme uniquement
+              </div>
+              <div class="caracteristiques"><i class="fas fa-syringe"></i>
+                Pass sanitaire
+              </div>
+              <div class="caracteristiques"> <i class="fas fa-graduation-cap"></i>
+                Etudiant uniquement
+              </div>
+              <div class="caracteristiques"> <i class="fas fa-user-tie"></i>
+                Travailleur uniquement
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+        <!-- Section Chambre -->
+        <div class="section-container" id="chambre-section">
+          <h4>La chambre proposée</h4>
+
+          <div style="    display: flex;justify-content: space-around; height: 320px;">
+            <div class="caracteristiques-container" style="width: 45%;">
+              <h6>Les photos </h6>
+
+              <div class="photo-content"><img src="../img/exempleLogement/logement2/logement2_1.png" class="h-100"
+                  alt="...">
+              </div>
+
+              <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#photoModal">
+      Launch demo modal
+    </button>
+
+    <!-- Modal Photo -->
+    <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <!-- Caroussel -->
+
+            <div id="carouselChambreIndicators" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselChambreIndicators" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselChambreIndicators" data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselChambreIndicators" data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="../img/exempleLogement/logement1/logement1_1.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="../img/exempleLogement/logement1/logement1_2.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="../img/exempleLogement/logement2/logement2_1.png" class="d-block w-100" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselChambreIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselChambreIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+            </div>
+
+            <div class="caracteristiques-container" style="width: 45%;">
+              <h6>Description </h6>
+
+              <div class="description text-truncate text-truncate-12">
+                Lorem ipsum dolor sit amet. Vel totam delectus sit autem illo a illo unde ut perspiciatis enim. Ab
+                voluptatem
+                blanditiis et ipsa enim eos enim nisi aut eius doloribus. Qui dolorem pariatur ea aperiam saepe qui Quis
+                obcaecati ex repellat quia cum architecto reprehenderit in sint facilis. Totam neque est quibusdam velit
+                sed
+                voluptatem commodi 33 soluta veritatis ea aliquam debitis et eveniet similique. Et doloremque beatae in
+                saepe
+                cumque aut distinctio consectetur ut perspiciatis natus aut eveniet sapiente et dignissimos sint. Et
+                aperiam
+                consequuntur sed enim mollitia ab dolor voluptas. Non consectetur eius et autem eius qui omnis
+                voluptate.
+
+                Et facere error ut perspiciatis quis eos aliquid accusantium nam facilis molestiae qui voluptates dicta
+                quo
+                velit tempora et perferendis impedit. Est distinctio nihil quo molestiae exercitationem quo asperiores
+                eius
+                et
+                assumenda dolorum aut magnam rerum ea reprehenderit rerum ea dolores tempora. Est cupiditate cupiditate
+                aut
+                ipsam quia quo nihil eaque. Ex nostrum commodi qui fugiat illo non blanditiis fuga non odit perferendis
+                sed
+                earum quis! Et voluptatum dolores aut quaerat aperiam et cumque rerum sed facilis deserunt ut esse
+                voluptatem.
+                Et enim molestiae ut neque obcaecati eum delectus obcaecati. Qui placeat fuga sed tempora nesciunt et
+                deleniti
+                incidunt.
+
+                Est vero corporis aut quae deleniti aut maxime fugiat qui maxime quia et placeat error. Et molestiae
+                eveniet
+                est voluptatum galisum ut fuga soluta. Aut laboriosam esse aut galisum nihil et cupiditate galisum qui
+                quaerat
+                quia. Ut explicabo nisi ad omnis repellendus sit repellendus officiis 33 eius nemo et nulla deleniti aut
+                eius
+                magni nam voluptate natus. Est esse sint ad asperiores dolorem et ratione impedit est perspiciatis
+                cupiditate!
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="caracteristiques-container">
+
+            <h6>Les commodités proposées</h6>
+
+            <div class="caracteristiques-list card-style">
+
+              <div class="caracteristiques"> <span class="material-icons-round">balcony</span>
+                Balcon
+              </div>
+              <div class="caracteristiques"> <span class="material-icons-round">accessible</span>
+                Acces handicapé
+              </div>
+              <div class="caracteristiques"><span class="material-icons">ac_unit</span>
+                Climatisation
+              </div>
+              <div class="caracteristiques"> <span class="material-icons">tv</span>
+                Télévision
+              </div>
+              <div class="caracteristiques"> <span class="material-icons-outlined">bed</span>
+                Lit Double
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Section détails
+        <div class="section-container" id="détails-section">
+          <h6>Les choses à savoir</h6>
+          <div></div>
+        </div> -->
+
+        <!-- Section localisation -->
+        <div class="section-container" id="localisation-section">
+          <h6>Où se situe le logement</h6>
+
+          <div class="description" style="margin-top: 20px;">
+            Adresse exacte : 12 place Graslin, Nantes (44000)
+          </div>
+
+          <div class="map-main-container">
+            <div class="map-content-container">
+              <div class="map" id=mapid>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <footer>
+      <div class="fContent">
+        <div class="fLeft">
+          <img src="../img/logo/logoRoofBlack.svg" alt="logo LaColoc">
+          <span>&copy; 2021, LaColoc</span>
+        </div>
+
+        <div class="fRight">
+          <a target="_blank" href="https://www.facebook.com/La-Coloc-102882025547821"><img
+              src="../img/reseauxSociaux/facebookBlack.svg" alt=""></a>
+          <a target="_blank" href="https://twitter.com/"> <img src="../img/reseauxSociaux/twitterBlack.svg" alt=""></a>
+          <a target="_blank" href="https://www.instagram.com/"><img src="../img/reseauxSociaux/instagramBlack.svg"
+              alt=""></a>
+        </div>
+      </div>
+
+
+    </footer>
+
+  </div>

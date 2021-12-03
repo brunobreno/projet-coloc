@@ -14,12 +14,14 @@ export class ProfilLocataireComponent implements OnInit {
   locataireForm: Locataire = null;
   civilites: Array<string> = new Array<string>();
   situations: Array<string> = new Array<string>();
+  situationLoc: string;
 
   constructor(private appConfig: AppConfigService, private locataireService: LocataireHttpService) {
     this.loadCivilites();
     this.loadSituations();
     
     this.loadTestLocataireForm(5);
+    this.situationLoc = this.locataireForm.situation;
    }
 
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class ProfilLocataireComponent implements OnInit {
     this.locataireForm = new Locataire();
     this.locataireForm.dossier = new Dossier();
     this.locataireService.findById(id).subscribe(resp => {
-      this.locataireForm = resp;
+    this.locataireForm = resp;
 
       
     })

@@ -19,6 +19,9 @@ import { RechercheLocataireService } from './recherche-locataire/recherche-locat
 import { AgePipe } from './age.pipe';
 import { RedirectComponent } from './redirect/redirect.component';
 import { LogementComponent } from './logement/logement.component';
+import { AjoutLogementComponent } from './ajout-logement/ajout-logement.component';
+import { DescriptionLogementComponent } from './description-logement/description-logement.component';
+
 
 @NgModule({
   declarations: [
@@ -34,12 +37,15 @@ import { LogementComponent } from './logement/logement.component';
     AgePipe,
     ProprietaireComponent,
     LogementComponent
+    AjoutLogementComponent,
+    DescriptionLogementComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NoopAnimationsModule
   ],
   providers: [AppConfigService,LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService],
   bootstrap: [AppComponent]
