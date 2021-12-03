@@ -1,0 +1,611 @@
+<body onload="init()">
+
+  <div class="page-main-container">
+
+    <div class="navigation-main-containter">
+
+      <div class="map-main-container">
+        <div class="map" id=mapid>
+        </div>
+      </div>
+
+
+
+      <div class="list-main-container">
+
+        <div class="list-head">
+          <h4 class="">Colocation - Rennes </h4>
+          <div class="filter-bar-container">
+
+
+            <div class="dropdown filter-dropdown">
+              <button class="dropdown-toggle filter-button" type="button" id="drop-type-logement"
+                data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                Types
+              </button>
+              <ul class="dropdown-menu " aria-labelledby="drop-type-logement">
+                <li>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="flexCheckAppart">
+                    <label class="form-check-label" for="flexCheck0">Appartement</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="flexCheckMaison">
+                    <label class="form-check-label" for="flexCheck0">Maison</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="flexCheckStudio">
+                    <label class="form-check-label" for="flexCheck0">Studio</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="flexCheckDuplex">
+                    <label class="form-check-label" for="flexCheck0">Duplex</label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="dropdown filter-dropdown">
+              <button class="dropdown-toggle filter-button" type="button" id="drop-loyer" data-bs-toggle="dropdown"
+                data-bs-auto-close="outside" aria-expanded="false">
+                Loyer
+              </button>
+              <div class="dropdown-menu" aria-labelledby="drop-loyer">
+                <input type="range" class="form-range" id="customRange1">
+              </div>
+            </div>
+
+            <div class="dropdown filter-dropdown">
+              <button class="dropdown-toggle filter-button" type="button" id="drop-occupant" data-bs-toggle="dropdown"
+                data-bs-auto-close="outside" aria-expanded="false">
+                Occupants
+              </button>
+              <div class="dropdown-menu" aria-labelledby="drop-occupant">
+                <input type="range" class="form-range" id="customRange1">
+              </div>
+            </div>
+
+
+
+            <div class="filter-dropdown" id="filter-dropdown-dispo">
+              <div class="filter-button" id="filter-dispo"> Disponibilité : </div>
+              <div class="filter-button" id="dispoDatePicker-container">
+                <input type="text" class="filter-button" id="dispoDatePicker" />
+              </div>
+            </div>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="filter-button" data-bs-toggle="modal" data-bs-target="#filterModal">
+              Plus de filters <i class="fas fa-sliders-h"></i>
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <form class="" action="index.html" method="post">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="filterModalLabel" style="width:120%">Tous les filters</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                      <!-- Modal sections -->
+
+                      <div class="modal-body-section">
+                        <h6>Logement</h6>
+                        <div class="modal-subsection-container">
+                          <div class="modal-subsection">
+                            <span class="modal-subsection-column">Nombre de chambres total</span>
+                            <div class="modal-subsection-column counter">
+                              <button type="button" name="button" class="button-counter" id="button-minus-chambre"> -
+                              </button>
+                              <div class="counter-chiffre" id="counter-chambre"> 1 </div>
+                              <button type="button" name="button" class="button-counter button-plus"
+                                id="button-plus-chambre"> + </button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="modal-subsection-container">
+                          <div class="modal-subsection">
+                            <span class="modal-subsection-column">Nombre de chambres libres</span>
+                            <div class="modal-subsection-column counter">
+                              <button type="button" name="button" class="button-counter" id="button-minus-occupant"> -
+                              </button>
+                              <div class="counter-chiffre" id="counter-occupant"> 1 </div>
+                              <button type="button" name="button" class="button-counter button-plus"
+                                id="button-plus-occupant"> + </button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="modal-subsection-container">
+                          <div class="modal-subsection">
+                            <span class="modal-subsection-column">Nombre de salles de bain</span>
+                            <div class="modal-subsection-column counter">
+                              <button type="button" name="button" class="button-counter" id="button-minus-sdb"> -
+                              </button>
+                              <div class="counter-chiffre" id="counter-sdb"> 1 </div>
+                              <button type="button" name="button" class="button-counter button-plus"
+                                id="button-plus-sdb"> + </button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="modal-subsection-container">
+                          <div class="modal-subsection">
+                            <span class="modal-subsection-column">Surface</span>
+                            <div class="modal-subsection-column container-range">
+                              <input type="range" class="form-range" id="customRange1">
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="modal-subsection-container">
+                          <div class="modal-subsection">
+
+                            <span class="modal-subsection-column">Meublé</span>
+                            <div class="modal-subsection-column container-range">
+                              <div class="switch-toggle switch-3 switch-candy">
+                                <input id="switch-meuble-on" name="state-d" type="radio" checked="" />
+                                <label for="switch-meuble-on" onclick="">Oui</label>
+                                <input id="switch-meuble-na" name="state-d" type="radio" checked="checked" />
+                                <label for="switch-meuble-na" class="na" onclick="">Indifferent</label>
+                                <input id="switch-meuble-off" name="state-d" type="radio" />
+                                <label for="switch-meuble-off" onclick="">Non</label>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+
+                      </div>
+
+
+
+
+
+
+                      <div class="modal-body-section">
+                        <h6>Chambre(s)</h6>
+
+                        <div class="modal-subsection-container">
+                          <div class="modal-subsection">
+                            <span class="modal-subsection-column">Surface</span>
+                            <div class="modal-subsection-column container-range">
+                              <input type="range" class="form-range" id="customRange1">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="modal-subsection-container">
+                          <div class="modal-subsection">
+                            <span class="modal-subsection-column">Meublé</span>
+                            <div class="modal-subsection-column container-range">
+                              <div class="switch-toggle switch-3 switch-candy">
+                                <input id="switch-meuble-chambre-on" name="state-d-2" type="radio" checked="" />
+                                <label for="switch-meuble-chambre-on" onclick="">Oui</label>
+                                <input id="switch-meuble-chambre-na" name="state-d-2" type="radio" checked="checked" />
+                                <label for="switch-meuble-chambre-na" class="na" onclick="">Indifferent</label>
+                                <input id="switch-meuble-chambre-off" name="state-d-2" type="radio" />
+                                <label for="switch-meuble-chambre-off" onclick="">Non</label>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+
+
+
+                      <div class="modal-body-section">
+                        <h6>Commodités</h6>
+
+                        <div class="modal-subsection-container">
+
+                          <div class="modal-subsection ">
+
+                            <div class="form-check modal-subsection-column">
+                              <input type="checkbox" class="form-check-input" id="flexCheck1">
+                              <label class="form-check-label" for="flexCheck1"> Jardin / Terrasse </label>
+                            </div>
+
+                            <div class="form-check modal-subsection-column">
+                              <input type="checkbox" class="form-check-input" id="flexCheck1">
+                              <label class="form-check-label" for="flexCheck1">Balcon</label>
+                            </div>
+
+                            <div class="form-check modal-subsection-column">
+                              <input type="checkbox" class="form-check-input" id="flexCheck1">
+                              <label class="form-check-label" for="flexCheck1">Accès handicapé</label>
+                            </div>
+
+                            <div class="form-check modal-subsection-column">
+                              <input type="checkbox" class="form-check-input" id="flexCheck1">
+                              <label class="form-check-label" for="flexCheck1">Parking</label>
+                            </div>
+
+
+                            <div class="collapse w-100" id="collapseCom">
+
+                              <div class="modal-subsection ">
+
+                                <div class="form-check modal-subsection-column">
+                                  <input type="checkbox" class="form-check-input" id="flexCheck1">
+                                  <label class="form-check-label" for="flexCheck1">Salle de sport</label>
+                                </div>
+
+                                <div class="form-check modal-subsection-column">
+                                  <input type="checkbox" class="form-check-input" id="flexCheck1">
+                                  <label class="form-check-label" for="flexCheck1">Internet Fibre</label>
+                                </div>
+
+                                <div class="form-check modal-subsection-column">
+                                  <input type="checkbox" class="form-check-input" id="flexCheck1">
+                                  <label class="form-check-label" for="flexCheck1">Lave-linge</label>
+                                </div>
+
+                                <div class="form-check modal-subsection-column">
+                                  <input type="checkbox" class="form-check-input" id="flexCheck1">
+                                  <label class="form-check-label" for="flexCheck1">Climatisation</label>
+                                </div>
+
+                                <div class="form-check modal-subsection-column">
+                                  <input type="checkbox" class="form-check-input" id="flexCheck1">
+                                  <label class="form-check-label" for="flexCheck1">Télévision</label>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+
+                          <div>
+                            <button class="btn btn-primary btn-collapse" id="btn-collapse-com" type="button"
+                              data-bs-toggle="collapse" data-bs-target="#collapseCom" aria-expanded="false"
+                              aria-controls="collapseCom">
+                              Voir toutes les commodités
+                            </button>
+                          </div>
+                        </div>
+
+
+                      </div>
+
+                      <div class="modal-body-section ">
+                        <h6>Regles</h6>
+
+                        <div class="modal-subsection-container">
+
+                          <div class="modal-subsection">
+
+                            <div class="form-check modal-subsection-column">
+                              <input type="checkbox" class="form-check-input" id="flexCheck-animal">
+                              <label class="form-check-label" for="flexCheck1">Animaux autorisés</label>
+                            </div>
+
+                            <div class="form-check modal-subsection-column">
+                              <input type="checkbox" class="form-check-input" id="flexCheck-fumeur">
+                              <label class="form-check-label" for="flexCheck1">Fumeur autorisé</label>
+                            </div>
+
+                            <div class="form-check modal-subsection-column">
+                              <input type="checkbox" class="form-check-input" id="flexCheck-femme">
+                              <label class="form-check-label" for="flexCheck1">Femme uniquement</label>
+                            </div>
+
+                            <div class="form-check modal-subsection-column">
+                              <input type="checkbox" class="form-check-input" id="flexCheck-homme">
+                              <label class="form-check-label" for="flexCheck1">Homme uniquement</label>
+                            </div>
+
+                            <div class="collapse w-100" id="collapseReg">
+
+                              <div class="modal-subsection">
+
+                                <div class="form-check modal-subsection-column">
+                                  <input type="checkbox" class="form-check-input" id="flexCheck-sanitaire">
+                                  <label class="form-check-label" for="flexCheck1">Pass sanitaire</label>
+                                </div>
+
+                              </div>
+
+                            </div>
+                            <div>
+                              <button class="btn btn-primary btn-collapse" id="btn-collapse-reg" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseReg" aria-expanded="false"
+                                aria-controls="collapseReg">
+                                Voir toutes les règles
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="modal-body-section ">
+                        <h6>Mode de vie</h6>
+                        <div class="modal-subsection ">
+                          <div class="form-check modal-subsection-column filter-checkbox">
+                            <input type="checkbox" class="form-check-input" id="flexCheck-festif">
+                            <label class="form-check-label" for="flexCheck1">Festif</label>
+                          </div>
+                          <div class="form-check modal-subsection-column filter-checkbox">
+                            <input type="checkbox" class="form-check-input" id="flexCheck-calme">
+                            <label class="form-check-label" for="flexCheck1">Calme & Cocooning</label>
+                          </div>
+                          <div class="form-check modal-subsection-column filter-checkbox">
+                            <input type="checkbox" class="form-check-input" id="flexCheck-ecolo">
+                            <label class="form-check-label" for="flexCheck1">Ecolo</label>
+                          </div>
+                          <div class="form-check modal-subsection-column filter-checkbox">
+                            <input type="checkbox" class="form-check-input" id="flexCheck-teletrav">
+                            <label class="form-check-label" for="flexCheck1">Télétravail</label>
+                          </div>
+
+                          <div class="w-100">
+
+                            <div class="collapse" id="collapseMdv">
+                              <div class="card card-body modal-subsection">
+                                <div class="form-check modal-subsection-column filter-checkbox">
+                                  <input type="checkbox" class="form-check-input" id="flexCheck-collec">
+                                  <label class="form-check-label" for="flexCheck1">Collectif</label>
+                                </div>
+                                <div class="form-check modal-subsection-column filter-checkbox">
+                                  <input type="checkbox" class="form-check-input" id="flexCheck-autonome">
+                                  <label class="form-check-label" for="flexCheck1">Autonome</label>
+                                </div>
+                              </div>
+
+                            </div>
+                            <div>
+                              <button class="btn btn-primary btn-collapse" id="btn-collapse-mdv" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseMdv" aria-expanded="false"
+                                aria-controls="collapseMdv">
+                                Voir tous les modes de vie
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+
+                    <div class="modal-footer" style="border:none;">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                      <button type="button" class="btn btn-primary">Appliquer les filters</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div id="list-head-lastsection">
+            <div id="lastsection-subtext">
+              xxx logements disponibles
+            </div>
+            <div id="tri-container">
+              <div>
+                Trier par :
+              </div>
+              <div>
+                <select class="form-select tri-select" aria-label="Default select example">
+                  <option selected> Plus récents </option>
+                  <option value="1"> <a href="#">Plus anciens</a> </option>
+                  <option value="2">Prix croissant</option>
+                  <option value="3">Prix décroissant</option>
+                  <option value="4">Disponibilité</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="cards-container">
+
+
+          <div *ngFor="let logement of list()" class="card-container">
+            <div class="card-carousel-container">
+              <div id="car{{logement.id}}" class="carousel slide " data-bs-ride="carousel" data-interval="100">
+                <div class="carousel-indicators">
+                  <button type="button" attr.data-bs-target="#car{{logement.id}}" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" attr.data-bs-target="#car{{logement.id}}" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                </div>
+                <div class="carousel-inner ">
+                  <div class="carousel-item active">
+                    <img src="../../assets/img/exempleLogement/logement1/logement1_1.png" class="d-block w-100"
+                      alt="...">
+                  </div>
+                  <div class="carousel-item ">
+                    <img src="../../assets/img/exempleLogement/logement1/logement1_1.png" class="d-block  w-100"
+                      alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" attr.data-bs-target="#car{{logement.id}}"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" attr.data-bs-target="#car{{logement.id}}"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-content-main-container">
+              <div class="card-title-container">
+                <h6 class="card-title">Colocation en centre ville</h6>
+                <div class="card-title-spec">
+                  <span id="card-title-price"> {{logement.loyer}}€ </span>
+                  <span id="card-title-line"></span>
+                  <span id="card-title-surface"> {{logement.surface}}m²</span>
+                </div>
+
+              </div>
+              <div class="card-content-description-main-container">
+                <ul>
+                  <li class="first-subsect">{{logement.typeLogement}}</li>
+                  <li> <i class="bi bi-people-fill"></i> 5 occupants</li>
+                  <li class="first-subsect caracteristiques">
+                    <ul style="display: flex;">
+                      <li *ngFor="let com of logement.commodites"  >
+                         <img src="../../assets/img/icons/{{com.chemin}}" class="d-block w-100" alt="..."> 
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li style="display: flex;"><span class="ligne ligne-description"></span></li>
+                  <li class="card-description-txt text-truncate text-truncate-3">
+                    {{logement.description}}
+                  </li>
+                </ul>
+              </div>
+
+              <div class="card-content-link-main-container">
+                <a href="#" class="card-link">Découvrir les occupants</a>
+                <!--<a href="#" class="card-link">Contacter</a>-->
+              </div>
+              <div class="card-content-update-main-container">
+                <p class="card-text"><small class="text-muted">Posté le jj-mm-aaaa</small></p>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</body>
+
+
+
+<script type="text/javascript">
+
+
+
+
+  $(document).ready(function () {
+
+    $(function () {
+
+      $('#dispoDatePicker').datepicker({ dateFormat: 'dd-mm-yy' });
+      $("#dispoDatePicker").datepicker().datepicker("setDate", new Date());
+      $("#dispoDatePicker").datepicker({
+        changeMonth: true,
+        changeYear: true,
+      })
+    })
+
+
+
+    $('#collapseCom').on('shown.bs.collapse', function () {
+      $('#btn-collapse-com').text('Cacher les commodités')
+    })
+    $('#collapseCom').on('hidden.bs.collapse', function () {
+      $('#btn-collapse-com').text('Voir toutes les commidités')
+    })
+    $('#collapseReg').on('shown.bs.collapse', function () {
+      $('#btn-collapse-reg').text('Cacher les règles')
+    })
+    $('#collapseReg').on('hidden.bs.collapse', function () {
+      $('#btn-collapse-reg').text('Voir toutes les règles')
+    })
+    $('#collapseReg').on('shown.bs.collapse', function () {
+      $('#btn-collapse-reg').text('Cacher les modes de vie')
+    })
+    $('#collapseReg').on('hidden.bs.collapse', function () {
+      $('#btn-collapse-reg').text('Voir toutes les modes de vie')
+    })
+
+    $('#button-minus-chambre').on('click', function () {
+      var count = parseInt($('#counter-chambre').text());
+      if (count > 1) {
+        $('#counter-chambre').html(count - 1);
+      }
+    })
+
+    $('#button-plus-chambre').on('click', function () {
+      var count = parseInt($('#counter-chambre').text());
+      if (count < 9) {
+        $('#counter-chambre').html(count + 1);
+      }
+    })
+
+    $('#button-minus-occupant').on('click', function () {
+      var count = parseInt($('#counter-occupant').text());
+      if (count > 1) {
+        $('#counter-occupant').html(count - 1);
+      }
+    })
+
+    $('#button-plus-occupant').on('click', function () {
+      var count = parseInt($('#counter-occupant').text());
+      if (count < 9) {
+        $('#counter-occupant').html(count + 1);
+      }
+    })
+
+    $('#button-minus-sdb').on('click', function () {
+      var count = parseInt($('#counter-sdb').text());
+      if (count > 1) {
+        $('#counter-sdb').html(count - 1);
+      }
+    })
+
+    $('#button-plus-sdb').on('click', function () {
+      var count = parseInt($('#counter-sdb').text());
+      if (count < 9) {
+        $('#counter-sdb').html(count + 1);
+      }
+    })
+
+
+  });
+
+  /*
+  $('#myCollapsible').on('hidden.bs.collapse', function () {
+  // do something…
+  })
+  */
+
+  /* $(document).ready(function(){
+  $('#collapseCom').on('click', function () {
+  var text=$('#collapseCom').text();
+  if(text === "Read More"){
+  $(this).html('Read less');
+  } else{
+  $(this).text('Read More');
+  }
+  });
+  }); */
+
+
+
+
+</script>

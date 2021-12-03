@@ -51,7 +51,10 @@ class ProjetColocBackApplicationTests {
 	private ICommoditeRepository commoditeRepository;
 	@Autowired
 	private IPhotoRepository photoRepository;
+	
+	String Lorem ="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, ";
 
+			
 	@Test
 	void contextLoads() {
 		//Creation Admin
@@ -74,28 +77,30 @@ class ProjetColocBackApplicationTests {
 
 		// Creation des Locataire
 		Locataire locataire1 = new Locataire("locataire1", "NomLocataire1", "PrenomLocataire1", Civilite.Mr, "locataire1@mail.com",
-				"0011000001", "locataire1", true, "Description locataire 1", Situation.Etudiant, LocalDate.parse("1993-02-04"));
+				"0011000001", "locataire1", true, 
+				"Description locataire 1" + Lorem, 
+				Situation.Etudiant,  LocalDate.parse("1992-02-09"));
 		locataire1 = locataireRepository.save(locataire1);
 		Locataire locataire2 = new Locataire("locataire2", "NomLocataire2", "PrenomLocataire2", Civilite.Mr, "locataire2@mail.com",
-				"0011000002", "locataire2", true, "Description locataire 2", Situation.Salarie, LocalDate.parse("1992-03-04"));
+				"0011000002", "locataire2", true, "Description locataire 2" + Lorem , Situation.Salarie, LocalDate.parse("1992-02-09"));
 		locataire2 = locataireRepository.save(locataire2);
 		Locataire locataire3 = new Locataire("locataire3", "NomLocataire3", "PrenomLocataire3", Civilite.Mme, "locataire3@mail.com",
-				"0011000003", "locataire3", true, "Description locataire 3", Situation.Etudiant, LocalDate.parse("1991-04-04"));
+				"0011000003", "locataire3", true, "Description locataire 3" + Lorem, Situation.Etudiant, LocalDate.parse("1992-02-09"));
 		locataire3 = locataireRepository.save(locataire3);
 		Locataire locataire4 = new Locataire("locataire4", "NomLocataire4", "PrenomLocataire4", Civilite.Mr, "locataire4@mail.com",
-				"0011000004", "locataire4", false, "Description locataire 4", Situation.Retraite, LocalDate.parse("1990-05-04"));
+				"0011000004", "locataire4", false, "Description locataire 4" + Lorem, Situation.Retraite, LocalDate.parse("1992-02-09"));
 		locataire4 = locataireRepository.save(locataire4);
 		Locataire locataire5 = new Locataire("locataire5", "NomLocataire5", "PrenomLocataire5", Civilite.Mme, "locataire5@mail.com",
-				"0011000005", "locataire5", false, "Description locataire 5", Situation.Etudiant, LocalDate.parse("1989-06-04"));
+				"0011000005", "locataire5", false, "Description locataire 5" + Lorem, Situation.Etudiant, LocalDate.parse("1992-02-09"));
 		locataire5 = locataireRepository.save(locataire5);
 		Locataire locataire6 = new Locataire("locataire6", "NomLocataire6", "PrenomLocataire6", Civilite.Mme, "locataire6@mail.com",
-				"0011000006", "locataire6", true, "Description locataire 6", Situation.Etudiant, LocalDate.parse("1994-02-04"));
+				"0011000006", "locataire6", true, "Description locataire 6" + Lorem, Situation.Etudiant, LocalDate.parse("1992-02-09"));
 		locataire6 = locataireRepository.save(locataire6);
 		Locataire locataire7 = new Locataire("locataire7", "NomLocataire7", "PrenomLocataire7", Civilite.Mr, "locataire7@mail.com",
-				"0011000007", "locataire7", true, "Description locataire 7", Situation.Salarie, LocalDate.parse("1995-06-04"));
+				"0011000007", "locataire7", true, "Description locataire 7" + Lorem , Situation.Salarie, LocalDate.parse("1992-02-09"));
 		locataire7 = locataireRepository.save(locataire7);
 		Locataire locataire8 = new Locataire("locataire8", "NomLocataire8", "PrenomLocataire8", Civilite.Mme, "locataire8@mail.com",
-				"0011000008", "locataire8", true, "Description locataire 8", Situation.Salarie, LocalDate.parse("1996-07-04"));
+				"0011000008", "locataire8", true, "Description locataire 8" + Lorem, Situation.Salarie, LocalDate.parse("1992-02-09"));
 		locataire8 = locataireRepository.save(locataire8);
 
 		// Creation des Localisation
@@ -105,40 +110,42 @@ class ProjetColocBackApplicationTests {
 		Localisation locLog4 = new Localisation("departementLog4", "villeLog4", "cpLog4", "voieLog4", 4);
 
 		// Creation des Logement
-		Logement log1 = new Logement(proprietaire1, "Description log1", 70, 2, 0, 1, 300.0, 50.0, 300.0, locLog1,
+		Logement log1 = new Logement(proprietaire1, "Description log1" + Lorem, 70, 2, 0, 1, 300.0, 50.0, 300.0, locLog1,
 				TypeLogement.Appartement, LocalDate.now());
 		log1 = logementRepository.save(log1);
-		Logement log2 = new Logement(proprietaire2, "Description log2", 40, 1, 0, 1, 350.0, 50.0, 350.0, locLog2,
+		Logement log2 = new Logement(proprietaire2, "Description log2" + Lorem, 40, 1, 0, 1, 350.0, 50.0, 350.0, locLog2,
 				TypeLogement.Studio, LocalDate.now());
 		log2 = logementRepository.save(log2);
-		Logement log3 = new Logement(proprietaire3, "Description log3", 110, 4, 0, 1, 275.0, 50.0, 275.0, locLog3,
+		Logement log3 = new Logement(proprietaire3, "Description log3" + Lorem, 110, 4, 0, 1, 275.0, 50.0, 275.0, locLog3,
 				TypeLogement.Maison, LocalDate.now());
 		log3 = logementRepository.save(log3);
-		Logement log4 = new Logement(proprietaire4, "Description log4", 35, 2, 0, 1, 325.0, 50.0, 325.0, locLog4,
+		Logement log4 = new Logement(proprietaire4, "Description log4" + Lorem, 35, 2, 0, 1, 325.0, 50.0, 325.0, locLog4,
 				TypeLogement.Studio, LocalDate.now());
 		log4 = logementRepository.save(log4);
 
-		// Creation des Commodite
-		Commodite balcon = new Commodite("balcon");
+		// Creation des Commodites
+		Commodite balcon = new Commodite("balcon","balcon.svg");
 		balcon = commoditeRepository.save(balcon);
-		Commodite jardin = new Commodite("jardin");
+		Commodite jardin = new Commodite("jardin","jardin.svg");
 		jardin = commoditeRepository.save(jardin);
-		Commodite terrasse = new Commodite("terrasse");
+		Commodite terrasse = new Commodite("terrasse","terrasse.svg");
 		terrasse = commoditeRepository.save(terrasse);
-		Commodite handicape = new Commodite("acces handicape");
+		Commodite handicape = new Commodite("acces handicape","handi.svg");
 		handicape = commoditeRepository.save(handicape);
-		Commodite parking = new Commodite("parking");
+		Commodite parking = new Commodite("parking","parking.svg");
 		parking = commoditeRepository.save(parking);
-		Commodite salleDeSport = new Commodite("salle de sport");
+		Commodite salleDeSport = new Commodite("salle de sport","sport.svg");
 		salleDeSport = commoditeRepository.save(salleDeSport);
-		Commodite fibre = new Commodite("internet fibre");
+		Commodite fibre = new Commodite("internet fibre","fibre.svg");
 		fibre = commoditeRepository.save(fibre);
-		Commodite climatisation = new Commodite("climatisation");
+		Commodite climatisation = new Commodite("climatisation",".climatisation.svg");
 		climatisation = commoditeRepository.save(climatisation);
-		Commodite television = new Commodite("television");
+		Commodite television = new Commodite("television","television.svg");
 		television = commoditeRepository.save(television);
-		Commodite laveLinge = new Commodite("lave linge");
+		Commodite laveLinge = new Commodite("lave linge","lave-linge.svg");
 		laveLinge = commoditeRepository.save(laveLinge);
+		Commodite laveVaiselle = new Commodite("lave vaisselle","lave-vaiselle.svg");
+		laveVaiselle = commoditeRepository.save(laveVaiselle);
 
 		// Creation des Regle
 		Regle fumeurAutorise = new Regle("fumeur autorise");

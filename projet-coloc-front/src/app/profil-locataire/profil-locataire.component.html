@@ -53,11 +53,11 @@
                                     <div class="content-first">
                                         <label for="input-statut" class="label-input">Votre statut</label>
                                         <select name="" id="statut" class="input-modifier" [(ngModel)]="locataireForm.situation">
-                                            <option [value]="situation" *ngFor="let situation of situations">{{situation}}</option>
+                                            <option [value]="situation"  *ngFor="let situation of situations" [selected]="situation == situationLoc">{{situation}}</option>
                                         </select>
                                         <select name="" id="statut-recherche" class="input-modifier" [(ngModel)]="locataireForm.recherche">
-                                            <option value="true">Je cherche une colocation</option>
-                                            <option value="false">Je ne cherche pas de colocation</option>
+                                            <option value="true" [selected]="locataireForm.recherche == true">Je cherche une colocation</option>
+                                            <option value="false" [selected]="locataireForm.recherche == false">Je ne cherche pas de colocation</option>
                                         </select>
                                     </div>
                                 </div>
@@ -209,7 +209,5 @@
         </div>
 
     </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

@@ -26,8 +26,8 @@ public class Logement {
 	@Id
 	@GeneratedValue(strategy =  GenerationType.IDENTITY )
 	private Long id;
-	@Version
-	private Integer version;
+//	@Version
+//	private Integer version;
 	private String description;
 	private Integer surface;
 	private Integer nChambre;
@@ -64,7 +64,7 @@ public class Logement {
 	(
 		name="commodite_logement"
 	)
-	@JsonView(Views.ViewLogementDetail.class)
+	@JsonView(Views.ViewLogementCommodite.class)
 	private  List<Commodite> commodites = new ArrayList<Commodite>();
 	
 	@ManyToMany
