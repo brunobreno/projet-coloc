@@ -21,7 +21,7 @@ export class LogInComponent implements OnInit {
   login() {
     this.logInService.connexion(this.logInForm).subscribe(resp => {
       this.logInService.utilisateur = resp;
-      console.log(resp.email)
+      this.router.navigate(['']);
       this.errorLogIn = null;
     }, error => {
       console.log(error);

@@ -16,6 +16,8 @@ export class InscriptionComponent implements OnInit {
   choixDossier: string;
   situations: Array<String> = new Array<string>();
   civilites: Array<String> = new Array<string>();
+  inscriptionRealise = false;
+  emailExistant = false;
 
   constructor(private inscriptionService: InscriptionService, private appConfig: AppConfigService, private router: Router) {
 
@@ -37,8 +39,23 @@ export class InscriptionComponent implements OnInit {
     this.router.navigate(['./login']);
   }
 
-  inscriptionValidation(){
-    // Faire la gestion de l'inscription suite à la saisie dans le formulaire
-    console.log(this.inscriptionForm);
+  register(){
+    this.inscriptionService.isUserAlreadyRegister(this.inscriptionForm.email).subscribe(resp => {
+      this.emailExistant = true;
+    }, err => {
+      if(err.status == 404) {
+        //Si aucun utilisateur existant en base avec le meme email -> enregistrement du nouvel utilisateur
+        this.emailExistant = false;
+        this.inscriptionService.registerBack(this.inscriptionForm).subscribe(resp => {
+          this.inscriptionRealise = true;
+          setTimeout(() =>{
+            this.inscriptionRealise = false;
+            this.inscriptionForm = new UtilisateurDTO;
+            this.router.navigate(['./login']);
+          }, 3000);
+        }, err => {console.log(err)});
+        console.log(this.inscriptionForm);
+      }
+    })
   }
 }

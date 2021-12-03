@@ -58,7 +58,7 @@ public class ProprietaireRestController {
 	@JsonView(Views.ViewCommon.class)
 	public Proprietaire create(@RequestBody Proprietaire proprietaire) {
 		proprietaire = proprietaireRepo.save(proprietaire);
-
+		System.out.println("ajout proprio");
 		return proprietaire;
 	}
 

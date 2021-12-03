@@ -1,6 +1,7 @@
 package coloc.back.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -21,13 +22,13 @@ public class Proprietaire extends Utilisateur {
 		super();
 	}
 
-	public Proprietaire(String username, String nom, String prenom, Civilite civ, String email, String tel, String password, List<Logement> logements) {
-		super(username, nom, prenom, civ, email, tel, password);
+	public Proprietaire(String username, String nom, String prenom, Civilite civ, String email, String tel, String password, Set<UtilisateurRole> roles, List<Logement> logements) {
+		super(username, nom, prenom, civ, email, tel, password, roles);
 		this.logements = logements;
 	}
 
-	public Proprietaire(String username, String nom, String prenom, Civilite civ, String email, String tel, String password) {
-		super(username, nom, prenom, civ, email, tel, password);
+	public Proprietaire(String username, String nom, String prenom, Civilite civ, String email, String tel, String password, Set<UtilisateurRole> roles) {
+		super(username, nom, prenom, civ, email, tel, password, roles);
 	}
 	
 	/*@Override

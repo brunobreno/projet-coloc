@@ -43,9 +43,9 @@ public abstract class Utilisateur {
 	protected String email;
 
 	protected String tel;
-	@JsonIgnore
+	@JsonView(Views.ViewPassword.class)
 	protected String password;
-	@JsonIgnore
+	@JsonView(Views.ViewProprietaireDetail.class)
 	@OneToMany(mappedBy = "user")
 	private Set<UtilisateurRole> roles;	
 
@@ -53,7 +53,7 @@ public abstract class Utilisateur {
 		super();
 	}
 
-	public Utilisateur(String username, String nom, String prenom, Civilite civ, String email, String tel, String password) {
+	public Utilisateur(String username, String nom, String prenom, Civilite civ, String email, String tel, String password, Set<UtilisateurRole> roles) {
 		this.username = username;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -61,6 +61,8 @@ public abstract class Utilisateur {
 		this.email = email;
 		this.tel = tel;
 		this.password = password;
+		this.roles = roles;
+
 	}
 
 	public Long getId() {
