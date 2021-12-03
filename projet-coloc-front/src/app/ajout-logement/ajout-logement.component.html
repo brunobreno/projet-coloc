@@ -1,0 +1,331 @@
+<div class="container-fluid">
+
+    <div class="content">
+
+
+        
+        <!-- TYPE LOGEMENT-->
+
+        <div class="titre">Ajout d'un nouveau logement</div>
+
+        <div class="categorie" id="type-logement">
+            <div class="titre-categorie">Type de logement</div>
+            <div id="categorie-typeLogement">
+                <div class="categorie-logement" id="type-studio">
+                    <input type="radio" class="btn-check" name="options" id="studio" autocomplete="off" value="Studio" [(ngModel)]="logementForm.typeLogement">
+                    <label class="btn btn-secondary" for="studio">Studio</label>
+                </div>
+                <div class="categorie-logement" id="type-appartement">
+                    <input type="radio" class="btn-check" name="options" id="appartement" autocomplete="off" value="Appartement" [(ngModel)]="logementForm.typeLogement">
+                    <label class="btn btn-secondary" for="appartement">Appartement</label>
+                </div>
+                <div class="categorie-logement" id="type-maison">
+                    <input type="radio" class="btn-check" name="options" id="maison" autocomplete="off" value="Maison" [(ngModel)]="logementForm.typeLogement">
+                    <label class="btn btn-secondary" for="maison">Maison</label>
+                </div>
+                <div class="categorie-logement" id="type-appartement">
+                    <input type="radio" class="btn-check" name="options" id="loft" autocomplete="off" value="Loft" [(ngModel)]="logementForm.typeLogement">
+                    <label class="btn btn-secondary" for="loft">Loft</label>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DESCRIPTION LOGEMENT-->
+
+        <div class="categorie" id="description-logement">
+            <div class="titre-categorie">Description du logement</div>
+                <div class="categorie-description">
+                    <!-- <label for="input-description" class="input-caracteristique">Description du logement</label> -->
+                    <textarea class="input-modifier" id="input-description" cols="30" rows="5" [(ngModel)]="logementForm.description"></textarea>
+                </div>
+        </div>
+
+        <div class="categorie" id="description-logement">
+            <div class="titre-categorie">Date de disponibilité</div>
+                <div class="categorie-date">
+                    <!-- <label for="input-description" class="input-caracteristique">Description du logement</label> -->
+                   <input type="date" [(ngModel)]="logementForm.dateDispo" placeholder="Choisir une date de disponiblité">
+                </div>
+        </div>
+
+
+
+        <!-- LOCALISATION LOGEMENT-->
+
+        <div class="categorie" id="localisation">
+            <div class="titre-categorie">Localisation du logement</div>
+            <div id="ville-cp">
+                <div class="categorie-localisation">
+                    <label for="cp">Code Postal</label>
+                    <input class="input-localisation" name="cp" id="cp" type="text" placeholder="CP" [(ngModel)]="logementForm.localisation.codePostal">
+                </div>
+                <div class="categorie-localisation">
+                    <label for="ville">Ville</label>
+                    <input class="input-localisation" name="ville" id="ville" type="text" placeholder="Ville" [(ngModel)]="logementForm.localisation.ville">
+                </div>
+            </div>
+            <div id="voie-numero">
+                <div class="categorie-localisation">
+                    <label for="adresse">Voie</label>
+                    <input class="input-localisation" name="adresse" id="adresse" type="text"
+                        placeholder="Voie" [(ngModel)]="logementForm.localisation.voie">
+                </div>
+                <div class="categorie-localisation">
+                    <label for="adresse">n°</label>
+                    <input class="input-localisation" name="adresse" id="adresse" type="number"
+                        placeholder="n° de voie" min=0 [(ngModel)]="logementForm.localisation.num">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- CARACTERISTIQUES LOGEMENT-->
+
+        <div class="categorie" id="caracteristiques">
+            <div class="titre-categorie">Caracteristiques du logement</div>
+            <div class="categorie-caracteristique">
+                <div class="label-caracteristique">
+                    <img class="icon-caracteristique" src="..\assets\img\icon_logement\surface.svg" alt="icon surface">
+                    <label for="surface">Surface (m2)</label>
+                </div>
+                <input class="input-caracteristique" id="surface" type="number" min="0" [(ngModel)]="logementForm.surface">
+            </div>
+            <div class="loyer">
+            <div class="categorie-caracteristique">
+                <div class="label-caracteristique">
+                    <img class="icon-caracteristique" src="..\assets\img\icon_logement\loyer.svg" alt="icon loyer">
+                    <label for="loyer">Loyer €/mois</label>
+                </div>
+                <input class="input-caracteristique" id="loyer" type="number" min="0" [(ngModel)]="logementForm.loyer">
+            </div>
+            <div class="categorie-caracteristique">
+                <div class="label-caracteristique">
+                    <img class="icon-caracteristique" src="..\assets\img\icon_logement\loyer.svg" alt="icon loyer">
+                    <label for="loyer">Charges</label>
+                </div>
+                <input class="input-caracteristique" id="charges" type="number" min="0" [(ngModel)]="logementForm.charges">
+            </div>
+            <div class="categorie-caracteristique">
+                <div class="label-caracteristique">
+                    <img class="icon-caracteristique" src="..\assets\img\icon_logement\loyer.svg" alt="icon loyer">
+                    <label for="loyer">Caution</label>
+                </div>
+                <input class="input-caracteristique" id="caution" type="number" min="0" [(ngModel)]="logementForm.caution">
+            </div>
+            </div>
+            <div class="categorie-caracteristique">
+                <div class="label-caracteristique">
+                    <img class="icon-caracteristique" src="..\assets\img\icon_logement\douche.svg"
+                        alt="icon salle de bain">
+                    <label for="sdb">Nombre de salle de bain</label>
+                </div>
+                <input class="input-caracteristique" id="sdb" type="number" min="0" [(ngModel)]="logementForm.nSdb">
+            </div>
+            <div class="chambre">
+            <div class="categorie-caracteristique">
+                <div class="label-caracteristique">
+                    <img class="icon-caracteristique" src="..\assets\img\icon_logement\lit.svg" alt="icon chambre">
+                    <label for="chambre">Nombre de chambre</label>
+                </div>
+                <input class="input-caracteristique" id="nbChambre" type="number" min="0" [(ngModel)]="logementForm.nChambre" >
+            </div>
+
+            <div class="categorie-caracteristique">
+                <div class="label-caracteristique">
+                    <img class="icon-caracteristique" src="..\assets\img\icon_logement\lit.svg" alt="icon chambre">
+                    <label for="chambre">Chambres occupées</label>
+                </div>
+                <input class="input-caracteristique" id="nbChambreOccup" type="number" min="0" [(ngModel)]="logementForm.nChambreOccup" >
+            </div>
+            </div>
+
+
+
+             <!-- AJOUT DES  CHAMBRES -->
+            <ul >
+                <li *ngFor="let c of listChambre()">
+                    <div class="categorie-caracteristique">
+                        <label class="label-caracteristique" for="surfaceChambre{{c}}">Surface (m2) chambre {{c}}</label>
+                        <input class="input-caracteristique" id="surfaceChambre{{c}}" type="number" min="0" (ngModel)="logementForm.chambres[c].surface">
+                    </div>  
+                </li>
+            </ul> 
+                
+        </div>
+
+    
+        <!-- Commodites logement-->
+
+        <div class="categorie" id="commodite">
+            <div class="titre-categorie">Commodités du logement</div>
+            <div id="allCommodite">
+                <!-- <div class="categorie-commodite"> -->
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="balcon" autocomplete="off" [value]="1" (click)="addCommodite(1)">
+                        <label class="btn btn-secondary" for="balcon">Balcon</label>
+                    </div>
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="jardin" autocomplete="off" [value]="2" (click)="addCommodite(2)">
+                        <label class="btn btn-secondary" for="jardin">Jardin</label>
+                    </div>
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="terrasse" autocomplete="off" [value]="3" (click)="addCommodite(3)">
+                        <label class="btn btn-secondary" for="terrasse">Terrasse</label>
+                    </div>
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="handicape" autocomplete="off" [value]="4" (click)="addCommodite(4)">
+                        <label class="btn btn-secondary" for="handicape">Acces Handicape</label>
+                    </div>
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="parking" autocomplete="off" [value]="5" (click)="addCommodite(5)">
+                        <label class="btn btn-secondary" for="parking">Parking</label>
+                    </div>
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="sport" autocomplete="off" [value]="6" (click)="addCommodite(6)">
+                        <label class="btn btn-secondary" for="sport">Salle sport</label>
+                    </div>
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="internet" autocomplete="off" [value]="7" (click)="addCommodite(7)">
+                        <label class="btn btn-secondary" for="internet">Internet</label>
+                    </div>
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="climatisation" autocomplete="off" [value]="8" (click)="addCommodite(8)">
+                        <label class="btn btn-secondary" for="climatisation">Climatisation</label>
+                    </div>
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="television" autocomplete="off" [value]="9" (click)="addCommodite(9)">
+                        <label class="btn btn-secondary" for="television">Television</label>
+                    </div>
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="linge" autocomplete="off" [value]="10" (click)="addCommodite(10)">
+                        <label class="btn btn-secondary" for="linge">Lave linge</label>
+                    </div>
+            </div>
+        </div>
+
+         <!-- Regles logement-->
+
+         <div class="categorie" id="commodite">
+            <div class="titre-categorie">Regles du logement</div>
+            <div id="allCommodite">
+                <!-- <div class="categorie-commodite"> -->
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="fumeur" autocomplete="off" [value]="1" (click)="addRegle(1)">
+                        <label class="btn btn-secondary" for="fumeur">Fumeur</label>
+                    </div>
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="animaux" autocomplete="off" [value]="2" (click)="addRegle(2)">
+                        <label class="btn btn-secondary" for="animaux">Animaux</label>
+                    </div>
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="femme" autocomplete="off" [value]="3" (click)="addRegle(3)">
+                        <label class="btn btn-secondary" for="femme">Femme seulement</label>
+                    </div>
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="homme" autocomplete="off" [value]="4" (click)="addRegle(4)">
+                        <label class="btn btn-secondary" for="homme">Homme seulement</label>
+                    </div>
+                    <div class="categorie-typeCommodite" id="type-studio">
+                        <input type="checkbox" class="btn-check" id="pass" autocomplete="off" [value]="5" (click)="addRegle(5)">
+                        <label class="btn btn-secondary" for="pass">Pass sanitaire</label>
+                    </div>
+                    
+            </div>
+        </div>
+
+        <div id="grp-ajouter">
+            <i class="bi bi-house-door" *ngIf='ajout'> Logement ajouté !</i>
+            <button  class="btn-enregistrer" id="btn-ajouter" (click)="save()">Ajouter le logement</button>
+        </div>
+
+    </div>
+
+    
+
+
+</div>
+
+
+
+
+
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script>
+
+    // COMPLETER FORMULAIRE LOCATION
+
+    $("#cp").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: "https://api-adresse.data.gouv.fr/search/?postcode=" + $("input[name='cp']").val(),
+                data: { q: request.term },
+                dataType: "json",
+                success: function (data) {
+                    var postcodes = [];
+                    response($.map(data.features, function (item) {
+                        // Ici on est obligé d'ajouter les CP dans un array pour ne pas avoir plusieurs fois le même
+                        if ($.inArray(item.properties.postcode, postcodes) == -1) {
+                            postcodes.push(item.properties.postcode);
+                            return {
+                                label: item.properties.postcode + " - " + item.properties.city,
+                                city: item.properties.city,
+                                value: item.properties.postcode
+                            };
+                        }
+                    }));
+                }
+            });
+        },
+        // On remplit aussi la ville
+        select: function (event, ui) {
+            $('#ville').val(ui.item.city);
+        }
+    });
+    $("#ville").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: "https://api-adresse.data.gouv.fr/search/?city=" + $("input[name='ville']").val(),
+                data: { q: request.term },
+                dataType: "json",
+                success: function (data) {
+                    var cities = [];
+                    response($.map(data.features, function (item) {
+                        // Ici on est obligé d'ajouter les villes dans un array pour ne pas avoir plusieurs fois la même
+                        if ($.inArray(item.properties.postcode, cities) == -1) {
+                            cities.push(item.properties.postcode);
+                            return {
+                                label: item.properties.postcode + " - " + item.properties.city,
+                                postcode: item.properties.postcode,
+                                value: item.properties.city
+                            };
+                        }
+                    }));
+                }
+            });
+        },
+        // On remplit aussi le CP
+        select: function (event, ui) {
+            $('#cp').val(ui.item.postcode);
+        }
+    });
+    $("#adresse").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: "https://api-adresse.data.gouv.fr/search/?postcode=" + $("input[name='cp']").val(),
+                data: { q: request.term },
+                dataType: "json",
+                success: function (data) {
+                    response($.map(data.features, function (item) {
+                        return { label: item.properties.name, value: item.properties.name };
+                    }));
+                }
+            });
+        }
+    });
+</script> -->
