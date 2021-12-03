@@ -43,9 +43,9 @@ public abstract class Utilisateur {
 	protected String email;
 
 	protected String tel;
-	@JsonIgnore
+	@JsonView(Views.ViewPassword.class)
 	protected String password;
-	@JsonIgnore
+	@JsonView(Views.ViewProprietaireDetail.class)
 	@OneToMany(mappedBy = "user")
 	private Set<UtilisateurRole> roles;	
 
@@ -135,6 +135,7 @@ public abstract class Utilisateur {
 		this.roles = roles;
 	}
 	
+	@JsonView(Views.ViewLocataireDetail.class)
 	public List<String> getStringRoles() {
 		List<String> stringRoles = new ArrayList<>();
 		for (UtilisateurRole role : roles) {

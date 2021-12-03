@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UtilisateurDTO } from './model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { Observable } from 'rxjs';
 export class AppConfigService {
 
   backEndUrl: string = "http://localhost:8080/";
+  utilisateurConnecte: UtilisateurDTO;
 
   constructor(private http : HttpClient) { }
 

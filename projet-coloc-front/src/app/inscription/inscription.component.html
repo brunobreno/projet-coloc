@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="!inscriptionRealise">
     <div class="col-md-4 offset-md-4">
         <div class="login-form mt-4 p-4">
             <h2 class="text-center">Inscription</h2>
@@ -30,6 +30,9 @@
                 <label for="email" class="form-label">Email :</label>
                 <input type="text" class="form-control" id="email" [(ngModel)]="inscriptionForm.email">
             </div>
+            <div class="col-12">
+                <span class="text-danger" *ngIf="emailExistant">Email déjà utilisé</span>
+            </div>
             <div class="col-12 mt-2">
                 <label for="tel" class="form-label">Téléphone :</label>
                 <input type="text" class="form-control" id="tel" [(ngModel)]="inscriptionForm.tel">
@@ -50,11 +53,11 @@
                 <div class="col-12 mt-2">
                     <label for="choix-recherche" class="form-label">Etes vous en recherche de colocation :</label><br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="choix-recherche" value=true [(ngModel)]="inscriptionForm.enRecherche">
+                        <input class="form-check-input" type="radio" name="choix-recherche" value=true [(ngModel)]="inscriptionForm.recherche">
                         <label class="form-check-label" for="choix-recherche">Oui</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="choix-recherche" value=false [(ngModel)]="inscriptionForm.enRecherche">
+                        <input class="form-check-input" type="radio" name="choix-recherche" value=false [(ngModel)]="inscriptionForm.recherche">
                         <label class="form-check-label" for="choix-recherche">Non</label>
                       </div>
                 </div>
@@ -68,6 +71,10 @@
                         <option value="">Choisir une situation</option>
                         <option *ngFor="let sit of situations" [value]="sit">{{sit}}</option>
                     </select>
+                    <div class="col-12 mt-2">
+                        <label for="dateDeNaissance" class="form-label">Date de naissance :</label>
+                        <input type="date" class="form-control" id="dateDeNaissance" [(ngModel)]="inscriptionForm.dateDeNaissance">
+                    </div>
                 </div>
                 <div class="col-12 mt-2">
                     <label for="choix-dossier" class="form-label">Voulez vous completer votre dossier de recherche maintenant ?</label><br>
@@ -100,7 +107,7 @@
                 </div>
             </div>
             <div class="col-12 mt-3 mb-1">
-                <button type="submit" class="btn btn-primary rounded-pill" (click)="inscriptionValidation()">S'inscrire</button>
+                <button type="submit" class="btn btn-primary rounded-pill" (click)="register()">S'inscrire</button>
             </div>
             <hr class="mt-4">
             <div class="col-12">
@@ -109,3 +116,17 @@
         </div>
     </div>
 </div>
+
+<div class="row" *ngIf="inscriptionRealise">
+    <div class="col-md-4 offset-md-4">
+        <div class="login-form mt-4 p-4">
+            <h2 class="text-center">Inscription</h2>
+            <hr class="mt-4">
+            <div class="col-12 mt-2">
+                <p class="text-center">Inscription réalisée</p>
+                <p class="text-center">Redirection vers la page de connexion en cours</p>
+            </div>
+        </div>
+    </div>
+</div>
+
