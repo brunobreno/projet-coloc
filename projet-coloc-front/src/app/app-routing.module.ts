@@ -10,6 +10,7 @@ import { RechercheLocataireComponent } from './recherche-locataire/recherche-loc
 import { RedirectComponent } from './redirect/redirect.component';
 import { ProprietaireComponent } from './proprietaire/proprietaire.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MessagerieComponent } from './messagerie/messagerie.component';
 
 const routes: Routes = [
   { path: "", component: HomePageComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: "proprietaire/:id", component: ProprietaireComponent},
   { path: "ajoutLogement", component: AjoutLogementComponent},
   { path: "descriptionLogement", component: DescriptionLogementComponent},
+  { path: "messagerie", component: MessagerieComponent},
   { path: "**", component: RedirectComponent},
 ];
 

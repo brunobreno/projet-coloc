@@ -4,6 +4,7 @@ import { AppConfigService } from '../app-config.service';
 import { Locataire, Utilisateur } from '../model';
 import { RechercheLocataireService } from './recherche-locataire.service';
 
+
 @Component({
   selector: 'app-recherche-locataire',
   templateUrl: './recherche-locataire.component.html',
