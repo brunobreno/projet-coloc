@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: "inscription", component: InscriptionComponent},
   { path: "profilLocataire", component: ProfilLocataireComponent},
   { path: "recherche", component: RechercheLogementComponent },
-  { path: "rechercheLocataires", component: RechercheLocataireComponent },
+  { path: "recherche-locataires", component: RechercheLocataireComponent },
   { path: "proprietaire/:id", component: ProprietaireComponent},
   { path: "ajoutLogement", component: AjoutLogementComponent},
   { path: "descriptionLogement", component: DescriptionLogementComponent},

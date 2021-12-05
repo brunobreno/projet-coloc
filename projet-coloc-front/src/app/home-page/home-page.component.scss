@@ -8,10 +8,6 @@
     margin-right: -80px;
 }
 
-.espace-blanc {
-    height: 325px;
-}
-
 .barre-recherche{
     margin: auto;
     width: 50%;
@@ -35,4 +31,16 @@
 #recherche-input{
     border: none;
     outline: none;
+}
+
+.ville-populaire-exemple {
+    width: 300px;
+    height: 200px;
+    border: solid;
+}
+
+.colocation-autour-exemple {
+    width: 400px;
+    height: 200px;
+    border: solid;
 }
