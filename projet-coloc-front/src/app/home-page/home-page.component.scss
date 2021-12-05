@@ -3,5 +3,36 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center; 
-    height: 400px;
+    height: 540px;
+    margin-left: -50px;
+    margin-right: -80px;
+}
+
+.espace-blanc {
+    height: 325px;
+}
+
+.barre-recherche{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+#btn-recherche{
+    height:32px;
+    width:32px;
+    background-image: url(../../assets/img/searchButton.svg);
+    background-size:45%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    background-color: light-grey ;
+    border:none;
+  }
+
+#recherche-input{
+    border: none;
+    outline: none;
 }
