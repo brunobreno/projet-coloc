@@ -12,13 +12,13 @@ import { ProprietaireHttpService } from './proprietaire-http.service';
 })
 export class ProprietaireComponent implements OnInit {
 
-  proprietaireForm: Proprietaire = null;
+  proprietaireForm: Proprietaire = new Proprietaire();
   logements: Array<Logement> = new Array<Logement>();
   civilites: Array<String> = new Array<String>();
   idLogements: Array<number> = new Array<number>();
 
   constructor(private appConfig: AppConfigService, private proprietaireService: ProprietaireHttpService, private logementService: LogementHttpService, private activatedRoute: ActivatedRoute) {
-    this.loadCivilites(); 
+    this.loadCivilites();
   }
 
    ngOnInit() {
@@ -26,10 +26,11 @@ export class ProprietaireComponent implements OnInit {
         const id = p['id'];
         this.proprietaireService.findById(id).subscribe(proprietaire => {
           this.proprietaireForm = proprietaire;
-        })
-        this.logementService.findAllByIdProprietaire(id).subscribe(logements => {
-          this.logements = logements;
-        })
+        });
+        this.logementService.findAllByIdProprietaire(id).subscribe(logs => {
+          this.logements = logs;
+          console.log(logs);
+        }, err => console.log(err));
     })
         
   }

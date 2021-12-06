@@ -28,6 +28,7 @@ import { LogementComponent } from './logement/logement.component';
 import { AjoutLogementComponent } from './ajout-logement/ajout-logement.component';
 import { DescriptionLogementComponent } from './description-logement/description-logement.component';
 import { AjoutLogementHttpService } from './ajout-logement/ajout-logement-http.service';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { DescriptionLogementService } from './description-logement/description-logement.service';
 import { ChambreComponent } from './chambre/chambre.component';
 
@@ -57,6 +58,7 @@ import { ChambreComponent } from './chambre/chambre.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    IvyCarouselModule
     //NoopAnimationsModule
   ],
   providers: [

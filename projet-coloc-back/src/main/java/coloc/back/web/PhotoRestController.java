@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-
+import coloc.back.model.Logement;
 import coloc.back.model.Photo;
 import coloc.back.model.Views;
 import coloc.back.repository.IPhotoRepository;
@@ -72,6 +72,14 @@ public class PhotoRestController {
 		photo = photoRepo.save(photo);
 
 		return photo;
+	}
+	
+	@GetMapping("/by-logement/{idLogement}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Photo> findByIdLogement(@PathVariable("idLogement") Long id) {
+		List<Photo> album = photoRepo.findAllPhotoByIdLogement(id);
+
+		return album;
 	}
 
 	

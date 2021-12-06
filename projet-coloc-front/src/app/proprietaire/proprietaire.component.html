@@ -1,104 +1,205 @@
 <div class="container-fluid">
-    <p class="titre-info">Informations personnelles</p>
-    <div class="container" *ngIf="proprietaireForm">
-        <div class="row nomLogement">
-            <div class=" col-10">Nom et prénom</div>
-            <p class="categorie-titre">{{proprietaireForm.civ}} {{proprietaireForm.nom}} {{proprietaireForm.prenom}}</p>
-            <div class="showHideLogement col-2">
-                <button class="showLogement btn btn-outline-dark" id="boutonAfficher-nomprenom" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#nomprenom" aria-expanded="false"
-                    aria-controls="nomprenom">Modifier</button>
+    <div class="content">
+        <div class="categorie-proprietaire">
+            <p class="titre-info">Informations personnelles</p>
+            <div class="head-categorie" *ngIf="proprietaireForm">
+                <p class="categorie-titre">{{proprietaireForm.civ}} {{proprietaireForm.nom}}
+                    {{proprietaireForm.prenom}}</p>
+                <p>
+                    <button class="btn btn-primary" id="boutonAfficher-nomprenom" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#nomprenom" aria-expanded="false"
+                        aria-controls="nomprenom">Modifier</button>
+                </p>
             </div>
+
             <div class="collapse" id="nomprenom">
-                <div class="row">
-                    <form>
-                        <div class="mb-3">
-                            <label for="civ" class="form-label">Civilité</label>
-                            <select class="form-control" id="civilite" [(ngModel)]="proprietaireForm.civ"
-                                name="civilite">
-                                <option value="">Choisir une civilité</option>
-                                <option *ngFor="let civ of civilites" [value]="civ">{{civ}}</option>
-                            </select>
+                <div class="card card-body">
+                    <div class="categorie-content">
+                        <div class="content-first">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="civ" class="label-input">Civilité</label>
+                                    <select class="form-control input-modifier" id="civ"
+                                        [(ngModel)]="proprietaireForm.civ" name="civ">
+                                        <option value="">Choisir une civilité</option>
+                                        <option *ngFor="let civ of civilites" [value]="civ">{{civ}}</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nom" class="label-input">Nom</label>
+                                    <input type="nom" class="form-control input-modifier" id="nom"
+                                        [(ngModel)]="proprietaireForm.nom" name="nom">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="prenom" class="label-input">Prénom</label>
+                                    <input type="prenom" class="form-control input-modifier" id="prenom"
+                                        [(ngModel)]="proprietaireForm.prenom" name="prenom">
+                                </div>
+                                <button (click)="save()" type="submit" class="btn btn-outline-dark"
+                                    data-bs-toggle="collapse" data-bs-target="#nomprenom" aria-expanded="false"
+                                    aria-controls="nomprenom">Enregistrer</button>
+                            </form>
                         </div>
-                        <div class="mb-3">
-                            <label for="Nom" class="form-label">Nom</label>
-                            <input type="nom" class="form-control" id="Nom" [(ngModel)]="proprietaireForm.nom"
-                                name="nom">
+                    </div>
+                </div>
+            </div>
+
+            <div class="head-categorie" *ngIf="proprietaireForm">
+                <p class="categorie-titre">{{proprietaireForm.username}}</p>
+                <p>
+                    <button class="btn btn-primary" id="boutonAfficher-usermdp" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#usermdp" aria-expanded="false" aria-controls="usermdp">Modifier</button>
+                </p>
+            </div>
+            <div class="collapse" id="usermdp">
+                <div class="card card-body">
+                    <div class="categorie-content">
+                        <div class="content-first">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="username" class="label-input">Username</label>
+                                    <input type="username" class="form-control input-modifier" id="username"
+                                        [(ngModel)]="proprietaireForm.username" name="username">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mdp" class="label-input">Mot de passe</label>
+                                    <input type="password" class="form-control input-modifier" id="mdp"
+                                        [(ngModel)]="proprietaireForm.password" name="mdp">
+                                </div>
+                                <button (click)="save()" type="submit" class="btn btn-outline-dark"
+                                    data-bs-toggle="collapse" data-bs-target="#usermdp" aria-expanded="false"
+                                    aria-controls="usermdp">Enregistrer</button>
+                            </form>
                         </div>
-                        <div class="mb-3">
-                            <label for="Prenom" class="form-label">Prénom</label>
-                            <input type="prenom" class="form-control" id="Prenom" [(ngModel)]="proprietaireForm.prenom"
-                                name="prenom">
+                    </div>
+                </div>
+            </div>
+
+            <div class="head-categorie" *ngIf="proprietaireForm">
+                <p class="categorie-titre">{{proprietaireForm.email}} - {{proprietaireForm.tel}}</p>
+                <p>
+                    <button class="btn btn-primary" id="boutonAfficher-mailnum" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mailnum" aria-expanded="false" aria-controls="mailnum">Modifier</button>
+                </p>
+            </div>
+            <div class="collapse" id="mailnum">
+                <div class="card card-body">
+                    <div class="categorie-content">
+                        <div class="content-first">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="email" class="label-input">Adresse e-mail</label>
+                                    <input type="email" class="form-control input-modifier" id="email"
+                                        [(ngModel)]="proprietaireForm.email" name="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="num" class="label-input">Numéro de téléphone</label>
+                                    <input type="num" class="form-control input-modifier" id="num"
+                                        [(ngModel)]="proprietaireForm.tel" name="num">
+                                </div>
+                                <button (click)="save()" type="submit" class="btn btn-outline-dark"
+                                    data-bs-toggle="collapse" data-bs-target="#mailnum" aria-expanded="false"
+                                    aria-controls="mailnum">Enregistrer</button>
+                            </form>
                         </div>
-                        <button (click)="save()" type="submit" class="showLogement btn btn-outline-dark"
-                            data-bs-toggle="collapse" data-bs-target="#nomprenom" aria-expanded="false"
-                            aria-controls="nomprenom">Enregistrer</button>
-                    </form>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <p class="titre-info">Logements</p>
+        </div>
+
+        <div class="categorie-logements">
+            <div class="container" *ngFor="let logement of logements">
+                <div class="head-categorie">
+                    <p class="categorie-titre"> Logement n°{{logement.id}}</p>
+                    <p>
+                        <button class="btn btn-primary" id="boutonAfficher-logement" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#logement" aria-expanded="false"
+                            aria-controls="logement">Modifier</button>
+                    </p>
+                </div>
+                <div class="collapse" id="logement">
+                    <div class="card card-body">
+                        <div class="categorie-content">
+                            <div class="content-first">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="description" class="label-input">Description</label>
+                                        <textarea type="text" class="form-control input-modifier" id="description"
+                                            [(ngModel)]="logement.description" name="description"></textarea>
+                                    </div>
+                                    <div class="mb-3 ligne">
+                                        <div class="colonne">
+                                            <label for="surface" class="label-input">Surface (m²)</label>
+                                            <input type="number" class="form-control input-modifier" id="surface"
+                                                [(ngModel)]="logement.surface" name="surface">
+                                        </div>
+                                        <div class="colonne">
+                                            <label for="nChambre" class="label-input">Nombre de chambres</label>
+                                            <input type="number" class="form-control input-modifier" id="nChambre"
+                                                [(ngModel)]="logement.nChambre" name="nChambre">
+                                        </div>
+                                        <div class="colonne">
+                                            <label for="nChambreOccup" class="label-input">Nombre de chambres
+                                                occupées</label>
+                                            <input type="number" class="form-control input-modifier" id="nChambreOccup"
+                                                [(ngModel)]="logement.nChambreOccup" name="nChambreOccup">
+                                        </div>
+                                        <div class="colonne">
+                                            <label for="nSdb" class="label-input">Nombre de salles de bain</label>
+                                            <input type="number" class="form-control input-modifier" id="nSdb"
+                                                [(ngModel)]="logement.nSdb" name="nSdb">
+                                        </div>
+                                    </div>
+                                    <div class=" mb-3 ligne">
+                                        <div class="colonne">
+                                            <label for="loyer" class="label-input">Loyer (€)</label>
+                                            <input type="number" class="form-control input-modifier" id="loyer"
+                                                [(ngModel)]="logement.loyer" name="loyer">
+                                        </div>
+                                        <div class="colonne">
+                                            <label for="charges" class="label-input">Charges (€)</label>
+                                            <input type="number" class="form-control input-modifier" id="charges"
+                                                [(ngModel)]="logement.charges" name="charges">
+                                        </div>
+                                        <div class="colonne">
+                                            <label for="caution" class="label-input">Caution (€)</label>
+                                            <input type="number" class="form-control input-modifier" id="caution"
+                                                [(ngModel)]="logement.caution" name="caution">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <carousel>
+                                            <div class="carousel-cell">
+                                                <img src="../../../../Documentation/img/logements/img5.jpg">
+                                            </div>
+                                            <div class="carousel-cell">
+                                                <img src="../../../../Documentation/img/logements/img5.jpg">
+                                            </div>
+                                            <div class="carousel-cell">
+                                                <img src="../../../../Documentation/img/logements/img6.jpg">
+                                            </div>
+                                            <div class="carousel-cell">
+                                                <img src="../../../../img/logements/imgb6.jpg">
+                                            </div>
+                                            <div class="carousel-cell">
+                                                <img src="../../../../Documentation/img/logements/img5.jpg">
+                                            </div>
+                                            <div class="carousel-cell">
+                                                <img src="../../../../Documentation/img/logements/img6.jpg">
+                                            </div>
+                                        </carousel>
+                                    </div>
+                                    <button (click)="save()" type="submit" class="btn btn-outline-dark"
+                                        data-bs-toggle="collapse" data-bs-target="#usermdp" aria-expanded="false"
+                                        aria-controls="usermdp">Enregistrer</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="row nomLogement">
-            <div class=" col-10">Mail & Mot de Passe</div>
-            <div class="showHideLogement col-2">
-                <button class="showLogement btn btn-outline-dark" id="boutonAfficher-mailmdp" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#mailmdp" aria-expanded="false"
-                    aria-controls="mailmdp">Modifier</button>
-            </div>
-        </div>
-        <div class="collapse" id="mailmdp">
-            <div class="row">
-                <form>
-                    <div class="mb-3">
-                        <label for="mail" class="form-label">Mail</label>
-                        <input type="email" class="form-control" id="mail" [(ngModel)]="proprietaireForm.email"
-                            name="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="mdp" class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" id="mdp" [(ngModel)]="proprietaireForm.password"
-                            name="password">
-                    </div>
-                    <button (click)="save()" type="submit" class="btn btn-primary" data-bs-toggle="collapse"
-                        data-bs-target="#mailmdp" aria-expanded="false" aria-controls="mailmdp">Enregistrer</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="row nomLogement">
-            <div class=" col-10">Coordonnées</div>
-            <div class="showHideLogement col-2">
-                <button class="showLogement btn btn-outline-dark" id="boutonAfficher-coord" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#coord" aria-expanded="false"
-                    aria-controls="coord">Modifier</button>
-            </div>
-        </div>
-        <div class="collapse" id="coord">
-            <div class="row">
-                <form>
-                    <div class="mb-3">
-                        <label for="mail" class="form-label">Mail</label>
-                        <input type="email" class="form-control" id="mail" [(ngModel)]="proprietaireForm.email"
-                            name="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="num" class="form-label">Numéro de téléphone</label>
-                        <input type="num" class="form-control" id="num" [(ngModel)]="proprietaireForm.tel" name="num">
-                    </div>
-                    <button (click)="save()" type="submit" class="btn btn-primary" data-bs-toggle="collapse"
-                        data-bs-target="#coord" aria-expanded="false" aria-controls="coord">Enregistrer</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <p class="titre-info">Logements</p>
-    <div class="container" *ngFor="let logement of logements">
-        <div class="mb-3">
-            <label for="des" class="form-label">{{logement.description}}</label>
-            <input type="des" class="form-control" id="des" [(ngModel)]="logement.description" name="des">
-        </div>
-
-
     </div>
 </div>

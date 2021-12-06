@@ -60,6 +60,23 @@ html * {
     padding:5px 5px 10px 5px;
 }
 
+.categorie-logements{
+    width:80%;
+    margin: 0 0 10% 10%;
+    padding:5px 5px 10px 5px;
+}
+
+.ligne{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.colonne{
+    display: flex;
+    flex-direction: column;
+}
+
 
 .categorie-titre{
     font-weight: 600;
