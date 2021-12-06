@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AgePipe } from '../age.pipe';
 import { AppConfigService } from '../app-config.service';
 import { Locataire, Utilisateur } from '../model';
@@ -20,7 +21,7 @@ export class RechercheLocataireComponent implements OnInit {
   triRecherche: string;
   utilisateurConnecte: Utilisateur;
 
-  constructor(private rechercheLocataireService: RechercheLocataireService, private appConfig: AppConfigService) {
+  constructor(private rechercheLocataireService: RechercheLocataireService, private appConfig: AppConfigService, private router:Router) {
     rechercheLocataireService.loadLocataires().subscribe(resp => {
       this.locataires = resp;
       if(this.appConfig.utilisateurConnecte){
@@ -67,4 +68,9 @@ export class RechercheLocataireComponent implements OnInit {
     this.triRecherche = null;
     this.filtrer(null);
   }
+
+  /*contacter(id:number){
+    console.log("hello");
+    this.router.navigate(['messagerie-nouveau', id]);
+  }*/
 }

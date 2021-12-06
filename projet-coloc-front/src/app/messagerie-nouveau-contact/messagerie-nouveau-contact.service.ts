@@ -7,7 +7,7 @@ import { Message, MessageDTO, UtilisateurDTO } from '../model';
 @Injectable({
   providedIn: 'root'
 })
-export class MessagerieService {
+export class MessagerieNouveauContactService {
 
   utilisateurUrl: string;
   messagerieUrl: string;

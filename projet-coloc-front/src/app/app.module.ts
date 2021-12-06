@@ -32,6 +32,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HomePageService } from './home-page/home-page.service';
 import { MessagerieComponent } from './messagerie/messagerie.component';
 import { MessagerieService } from './messagerie/messagerie.service';
+import { MessagerieNouveauContactComponent } from './messagerie-nouveau-contact/messagerie-nouveau-contact.component';
+import { MessagerieNouveauContactService } from './messagerie-nouveau-contact/messagerie-nouveau-contact.service';
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import { MessagerieService } from './messagerie/messagerie.service';
     AjoutLogementComponent,
     DescriptionLogementComponent,
     HomePageComponent,
-    MessagerieComponent
+    MessagerieComponent,
+    MessagerieNouveauContactComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,7 @@ import { MessagerieService } from './messagerie/messagerie.service';
     HttpClientModule,
     //NoopAnimationsModule
   ],
-  providers: [AppConfigService, LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService, AjoutLogementHttpService, HomePageService, MessagerieService],
+  providers: [AppConfigService, LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService, AjoutLogementHttpService, HomePageService, MessagerieService, MessagerieNouveauContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

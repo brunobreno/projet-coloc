@@ -11,6 +11,7 @@ import { RedirectComponent } from './redirect/redirect.component';
 import { ProprietaireComponent } from './proprietaire/proprietaire.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
+import { MessagerieNouveauContactComponent } from './messagerie-nouveau-contact/messagerie-nouveau-contact.component';
 
 const routes: Routes = [
   { path: "", component: HomePageComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: "ajoutLogement", component: AjoutLogementComponent},
   { path: "descriptionLogement", component: DescriptionLogementComponent},
   { path: "messagerie", component: MessagerieComponent},
+  { path: "messagerie-nouveau/:id", component: MessagerieNouveauContactComponent},
   { path: "**", component: RedirectComponent},
 ];
 

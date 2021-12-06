@@ -16,21 +16,33 @@ export class MessagerieComponent implements OnInit {
   relationsId: Array<number> = new Array<number>(); 
   relations: Array<UtilisateurDTO> = new Array<UtilisateurDTO>();
   messageForm: MessageDTO = new MessageDTO();
+  destinataireId: number;
 
   constructor(private appConfig: AppConfigService, private messagerieService: MessagerieService) {
     //A modifier quand l'utilisateur se connecte
     //this.utilisateurConnecte = this.appConfig.utilisateurConnecte;
     messagerieService.findUtilisateurById(6).subscribe(resp => {
       this.utilisateurConnecte = resp;
-      this.loadConversations();
       this.messageForm.emetteurId = this.utilisateurConnecte.id;
+      this.loadConversations();
     }, err => console.log(err))    
    }
 
   ngOnInit(): void {
   }
 
+  loadConversations(){
+    // Charge toutes les conversions de l'utilisateur connecté
+    this.messagerieService.findMessagesById(this.utilisateurConnecte.id).subscribe(resp => {
+      this.conversations = resp;
+      this.relations = new Array<UtilisateurDTO>();
+      this.relationsId = new Array<number>();
+      this.findRelationsId();
+    });
+  }
+
   findRelationsId(){
+    // Trouve tous les id des correspondants de l'utilisateur connecté
     this.conversations.forEach(m => {
       if(m.emetteur.id != this.utilisateurConnecte.id && !this.relationsId.includes(m.emetteur.id)){
         this.relationsId.push(m.emetteur.id);
@@ -42,14 +54,18 @@ export class MessagerieComponent implements OnInit {
     this.findRelations();
   }
 
-  //a appeler quand click sur conversation
+  findRelations(){
+    // Trouve les utilisateur en fonction des id récupérés
+    for(let id of this.relationsId){
+      this.messagerieService.findUtilisateurById(id).subscribe(resp => {
+        this.relations.push(resp);
+      }, err => console.log(err))
+    }
+  }
+
   findConversation(id: number){
-    this.conversation = new Array<Message>();
-    this.conversations.forEach(m => {
-      if((m.emetteur.id == id || m.destinataire.id == id) && !this.conversation.includes(m)){
-        this.conversation.push(m);
-      }
-    });
+    this.destinataireId = id;
+    this.loadConversation();
     this.setMessageFormDestinataire(id);
   }
 
@@ -59,13 +75,22 @@ export class MessagerieComponent implements OnInit {
     }, err => console.log(err))
   }
 
+  loadConversation(){
+    // Filtre l'ensemble des messages pour conserver que les messages de l'interlocuteur choisi
+    this.conversation = new Array<Message>();
+    this.conversations.forEach(m => {
+      if((m.emetteur.id == this.destinataireId || m.destinataire.id == this.destinataireId) && !this.conversation.includes(m)){
+        this.conversation.push(m);
+      }
+    });
+  }
+
   envoyerMessage(){
     if(this.messageForm.contenu != null && this.messageForm.contenu != ""){
-      console.log(this.messageForm);
       this.messagerieService.sendMessage(this.messageForm).subscribe(resp => {
         this.messageForm.contenu = "";
-        this.loadConversations();
-        this.conversation = new Array<Message>();
+        this.conversations.push(resp)
+        this.conversation.push(resp);
       }, err => {
         console.log(err);
         this.messageForm.contenu = "";
@@ -73,20 +98,7 @@ export class MessagerieComponent implements OnInit {
     }
   }
 
-  findRelations(){
-    for(let id of this.relationsId){
-      this.messagerieService.findUtilisateurById(id).subscribe(resp => {
-        this.relations.push(resp);
-      }, err => console.log(err))
-    }
-  }
-
-  loadConversations(){
-    this.messagerieService.findMessagesById(this.utilisateurConnecte.id).subscribe(resp => {
-      this.conversations = resp;
-      this.relations = new Array<UtilisateurDTO>();
-      this.relationsId = new Array<number>();
-      this.findRelationsId();
-    });
+  afficherMessages(): Array<Message> {
+    return this.conversation;
   }
 }
