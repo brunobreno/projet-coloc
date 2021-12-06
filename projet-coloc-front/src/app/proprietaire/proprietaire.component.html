@@ -35,9 +35,14 @@
                                     <input type="prenom" class="form-control input-modifier" id="prenom"
                                         [(ngModel)]="proprietaireForm.prenom" name="prenom">
                                 </div>
-                                <button (click)="save()" type="submit" class="btn btn-outline-dark"
-                                    data-bs-toggle="collapse" data-bs-target="#nomprenom" aria-expanded="false"
-                                    aria-controls="nomprenom">Enregistrer</button>
+                                <div class="droite">
+                                    <button (click)="save()" type="submit" class="btn btn-outline-dark bouton"
+                                        data-bs-toggle="collapse" data-bs-target="#nomprenom" aria-expanded="false"
+                                        aria-controls="nomprenom">Enregistrer</button>
+                                    <button (click)="cancel()" type="submit" class="btn btn-outline-dark bouton"
+                                        data-bs-toggle="collapse" data-bs-target="#nomprenom" aria-expanded="false"
+                                        aria-controls="nomprenom">Annuler</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -66,9 +71,14 @@
                                     <input type="password" class="form-control input-modifier" id="mdp"
                                         [(ngModel)]="proprietaireForm.password" name="mdp">
                                 </div>
-                                <button (click)="save()" type="submit" class="btn btn-outline-dark"
-                                    data-bs-toggle="collapse" data-bs-target="#usermdp" aria-expanded="false"
-                                    aria-controls="usermdp">Enregistrer</button>
+                                <div class="droite">
+                                    <button (click)="save()" type="submit" class="btn btn-outline-dark bouton"
+                                        data-bs-toggle="collapse" data-bs-target="#usermdp" aria-expanded="false"
+                                        aria-controls="usermdp">Enregistrer</button>
+                                    <button (click)="cancel()" type="submit" class="btn btn-outline-dark bouton"
+                                        data-bs-toggle="collapse" data-bs-target="#usermdp" aria-expanded="false"
+                                        aria-controls="usermdp">Annuler</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -97,9 +107,14 @@
                                     <input type="num" class="form-control input-modifier" id="num"
                                         [(ngModel)]="proprietaireForm.tel" name="num">
                                 </div>
-                                <button (click)="save()" type="submit" class="btn btn-outline-dark"
-                                    data-bs-toggle="collapse" data-bs-target="#mailnum" aria-expanded="false"
-                                    aria-controls="mailnum">Enregistrer</button>
+                                <div class="droite">
+                                    <button (click)="save()" type="submit" class="btn btn-outline-dark bouton"
+                                        data-bs-toggle="collapse" data-bs-target="#mailnum" aria-expanded="false"
+                                        aria-controls="mailnum">Enregistrer</button>
+                                    <button (click)="cancel()" type="submit" class="btn btn-outline-dark bouton"
+                                        data-bs-toggle="collapse" data-bs-target="#mailnum" aria-expanded="false"
+                                        aria-controls="mailnum">Annuler</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -112,7 +127,7 @@
         <div class="categorie-logements">
             <div class="container" *ngFor="let logement of logements">
                 <div class="head-categorie">
-                    <p class="categorie-titre"> Logement n°{{logement.id}}</p>
+                    <p class="categorie-titre">{{logement.titre}}</p>
                     <p>
                         <button class="btn btn-primary" id="boutonAfficher-logement" type="button"
                             data-bs-toggle="collapse" data-bs-target="#logement" aria-expanded="false"
@@ -124,6 +139,13 @@
                         <div class="categorie-content">
                             <div class="content-first">
                                 <form>
+                                    <div class="mb-3">
+                                        <carousel objectFit="contain" [overflowCellsLimit]=1>
+                                            <div class="carousel-cell" *ngFor="let photo of logement.photos">
+                                                <img src="../../assets/img/exempleLogement/{{photo.chemin}}">
+                                            </div>
+                                        </carousel>
+                                    </div>
                                     <div class="mb-3">
                                         <label for="description" class="label-input">Description</label>
                                         <textarea type="text" class="form-control input-modifier" id="description"
@@ -169,31 +191,14 @@
                                                 [(ngModel)]="logement.caution" name="caution">
                                         </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <carousel>
-                                            <div class="carousel-cell">
-                                                <img src="../../../../Documentation/img/logements/img5.jpg">
-                                            </div>
-                                            <div class="carousel-cell">
-                                                <img src="../../../../Documentation/img/logements/img5.jpg">
-                                            </div>
-                                            <div class="carousel-cell">
-                                                <img src="../../../../Documentation/img/logements/img6.jpg">
-                                            </div>
-                                            <div class="carousel-cell">
-                                                <img src="../../../../img/logements/imgb6.jpg">
-                                            </div>
-                                            <div class="carousel-cell">
-                                                <img src="../../../../Documentation/img/logements/img5.jpg">
-                                            </div>
-                                            <div class="carousel-cell">
-                                                <img src="../../../../Documentation/img/logements/img6.jpg">
-                                            </div>
-                                        </carousel>
+                                    <div class="centre">
+                                        <button (click)="save()" type="submit" class="btn btn-outline-dark bouton"
+                                            data-bs-toggle="collapse" data-bs-target="#logement" aria-expanded="false"
+                                            aria-controls="logement">Enregistrer</button>
+                                        <button (click)="cancel()" type="submit" class="btn btn-outline-dark bouton"
+                                            data-bs-toggle="collapse" data-bs-target="#logement" aria-expanded="false"
+                                            aria-controls="logement">Annuler</button>
                                     </div>
-                                    <button (click)="save()" type="submit" class="btn btn-outline-dark"
-                                        data-bs-toggle="collapse" data-bs-target="#usermdp" aria-expanded="false"
-                                        aria-controls="usermdp">Enregistrer</button>
                                 </form>
                             </div>
                         </div>

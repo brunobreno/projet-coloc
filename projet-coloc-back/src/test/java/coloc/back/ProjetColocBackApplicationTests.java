@@ -293,46 +293,46 @@ class ProjetColocBackApplicationTests {
 		log3 = logementRepository.save(log3);
 
 		// Ajout de Photo a Logement
-		Photo photo1Log1 = new Photo("Photo1Log1", "URLPhoto1Log1", 1, log1);
+		Photo photo1Log1 = new Photo("Photo1Log1", "logement1_1.png", 1, log1);
 		photo1Log1 = photoRepository.save(photo1Log1);
-		Photo photo2Log1 = new Photo("Photo2Log1", "URLPhoto2Log1", 2, log1);
+		Photo photo2Log1 = new Photo("Photo2Log1", "logement1_2.png", 2, log1);
 		photo2Log1 = photoRepository.save(photo2Log1);
-		Photo photo3Log1 = new Photo("Photo3Log1", "URLPhoto3Log1", 3, log1);
+		Photo photo3Log1 = new Photo("Photo3Log1", "logement1_3.jpg", 3, log1);
 		photo3Log1 = photoRepository.save(photo3Log1);
-		Photo photo4Log1 = new Photo("Photo4Log1", "URLPhoto4Log1", 4, log1);
+		Photo photo4Log1 = new Photo("Photo4Log1", "logement1_4.jpg", 4, log1);
 		photo4Log1 = photoRepository.save(photo4Log1);
-		Photo photo5Log1 = new Photo("Photo5Log1", "URLPhoto5Log1", 5, log1, ch1Log1);
+		Photo photo5Log1 = new Photo("Photo5Log1", "logement1_5.jpg", 5, log1, ch1Log1);
 		photo5Log1 = photoRepository.save(photo5Log1);
-		Photo photo6Log1 = new Photo("Photo6Log1", "URLPhoto6Log1", 6, log1, ch1Log1);
+		Photo photo6Log1 = new Photo("Photo6Log1", "logement1_6.jpg", 6, log1, ch1Log1);
 		photo6Log1 = photoRepository.save(photo6Log1);
-		Photo photo7Log1 = new Photo("Photo7Log1", "URLPhoto7Log1", 7, log1, ch2Log1);
+		Photo photo7Log1 = new Photo("Photo7Log1", "logement1_7.jpg", 7, log1, ch2Log1);
 		photo7Log1 = photoRepository.save(photo7Log1);
-		Photo photo8Log1 = new Photo("Photo8Log1", "URLPhoto8Log1", 8, log1, ch2Log1);
+		Photo photo8Log1 = new Photo("Photo8Log1", "logement1_8.jpg", 8, log1, ch2Log1);
 		photo8Log1 = photoRepository.save(photo8Log1);
 		
-		Photo photo1Log2 = new Photo("Photo1Log2", "URLPhoto1Log2", 1, log2);
+		Photo photo1Log2 = new Photo("Photo1Log2", "logement2_1.png", 1, log2);
 		photo1Log2 = photoRepository.save(photo1Log2);
-		Photo photo2Log2 = new Photo("Photo2Log2", "URLPhoto2Log2", 2, log2);
+		Photo photo2Log2 = new Photo("Photo2Log2", "logement2_2.png", 2, log2);
 		photo2Log2 = photoRepository.save(photo2Log2);
-		Photo photo3Log2 = new Photo("Photo3Log2", "URLPhoto3Log2", 3, log2);
+		Photo photo3Log2 = new Photo("Photo3Log2", "logement2_3.jpg", 3, log2);
 		photo3Log2 = photoRepository.save(photo3Log2);
-		Photo photo4Log2 = new Photo("Photo4Log2", "URLPhoto4Log2", 4, log2);
+		Photo photo4Log2 = new Photo("Photo4Log2", "logement2_4.jpg", 4, log2);
 		photo4Log2 = photoRepository.save(photo4Log2);
-		Photo photo1Log3 = new Photo("Photo1Log3", "URLPhoto1Log3", 1, log3);
+		Photo photo1Log3 = new Photo("Photo1Log3", "logement3_1.png", 1, log3);
 		photo1Log3 = photoRepository.save(photo1Log3);
-		Photo photo2Log3 = new Photo("Photo2Log3", "URLPhoto2Log3", 2, log3);
+		Photo photo2Log3 = new Photo("Photo2Log3", "logement3_2.png", 2, log3);
 		photo2Log3 = photoRepository.save(photo2Log3);
-		Photo photo3Log3 = new Photo("Photo3Log3", "URLPhoto3Log3", 3, log3);
+		Photo photo3Log3 = new Photo("Photo3Log3", "logement3_3.jpg", 3, log3);
 		photo3Log3 = photoRepository.save(photo3Log3);
-		Photo photo4Log3 = new Photo("Photo4Log3", "URLPhoto4Log3", 4, log3);
+		Photo photo4Log3 = new Photo("Photo4Log3", "logement3_4.jpg", 4, log3);
 		photo4Log3 = photoRepository.save(photo4Log3);
-		Photo photo1Log4 = new Photo("Photo1Log4", "URLPhoto1Log4", 1, log4);
+		Photo photo1Log4 = new Photo("Photo1Log4", "logement4_1.jpg", 1, log4);
 		photo1Log4 = photoRepository.save(photo1Log4);
-		Photo photo2Log4 = new Photo("Photo2Log4", "URLPhoto2Log4", 2, log4);
+		Photo photo2Log4 = new Photo("Photo2Log4", "logement4_2.jpg", 2, log4);
 		photo2Log4 = photoRepository.save(photo2Log4);
-		Photo photo3Log4 = new Photo("Photo3Log4", "URLPhoto3Log4", 3, log4);
+		Photo photo3Log4 = new Photo("Photo3Log4", "logement4_3.jpg", 3, log4);
 		photo3Log4 = photoRepository.save(photo3Log4);
-		Photo photo4Log4 = new Photo("Photo4Log4", "URLPhoto4Log4", 4, log4);
+		Photo photo4Log4 = new Photo("Photo4Log4", "logement4_4.png", 4, log4);
 		photo4Log4 = photoRepository.save(photo4Log4);
 	}
 
