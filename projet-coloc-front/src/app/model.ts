@@ -147,6 +147,30 @@ export class Localisation {
 
 }
 
+export class Hobby {
+  id: number;
+  version: number;
+  libelle: string;
+  chemin: string;
+  locataires: Array<Locataire> = new Array<Locataire>();
+
+  constructor(
+    id?: number,
+    version?: number,
+    libelle?: string,
+    chemin?: string,
+    locataires?: Array<Locataire>
+  ) {
+    this.id = id
+    this.version = version
+    this.libelle = libelle
+    this.chemin = chemin
+    this.locataires = locataires
+  }
+
+
+}
+
 
 export class Locataire extends Utilisateur {
 
@@ -157,6 +181,8 @@ export class Locataire extends Utilisateur {
   dossier: Dossier;
   chambre: Chambre;
   candidatures: Array<Candidature> = new Array<Candidature>();
+  photos: Array<Photo> = new Array<Photo>();
+  hobbies: Array<Hobby> = new Array<Hobby>();
 
   constructor(
     id?: number,
@@ -173,7 +199,9 @@ export class Locataire extends Utilisateur {
     dateDeNaissance?: string,
     dossier?: Dossier,
     chambre?: Chambre,
-    candidatures?: Array<Candidature>
+    candidatures?: Array<Candidature>,
+    photos?: Array<Photo>,
+    hobbies?: Array<Hobby>
   ) {
     super(id, version, nom, prenom, civ, email, tel, password)
     this.recherche = recherche
@@ -183,6 +211,8 @@ export class Locataire extends Utilisateur {
     this.dossier = dossier
     this.chambre = chambre
     this.candidatures = candidatures
+    this.photos = photos;
+    this.hobbies = hobbies;
   }
 
 }
@@ -208,6 +238,7 @@ export class Logement {
   chambres: Array<Chambre> = new Array<Chambre>();
   commodites: Array<Commodite> = new Array<Commodite>();
   regles: Array<Regle> = new Array<Regle>();
+  meuble: boolean;
 
 
   constructor(
@@ -230,7 +261,8 @@ export class Logement {
     localisation?: Localisation,
     chambres?: Array<Chambre>,
     commodites?: Array<Commodite>,
-    regles?: Array<Regle>
+    regles?: Array<Regle>,
+    meuble?: boolean
   ) {
     this.id = id
     this.version = version
@@ -252,6 +284,7 @@ export class Logement {
     this.chambres = chambres
     this.commodites = commodites
     this.regles = regles
+    this.meuble=meuble
   }
 
 }

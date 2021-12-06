@@ -33,6 +33,9 @@ public class Chambre {
 	@JsonView(Views.ViewChambre.class)
 	private String description;
 	
+	@JsonView(Views.ViewChambre.class)
+	private boolean meuble;
+	
 
 	@OneToMany(mappedBy = "chambre")
 	@JsonView(Views.ViewChambreDescription.class)
@@ -76,6 +79,14 @@ public class Chambre {
 		this.description = description;
 		this.logement = logement;
 	}
+	
+	public Chambre(Logement logement, Integer surface, String description, boolean meuble) {
+		this.surface = surface;
+		this.description = description;
+		this.logement = logement;
+		this.meuble = meuble;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -121,6 +132,16 @@ public class Chambre {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	
+
+	public boolean isMeuble() {
+		return meuble;
+	}
+
+	public void setMeuble(boolean meuble) {
+		this.meuble = meuble;
 	}
 
 	public List<Photo> getPhotos() {

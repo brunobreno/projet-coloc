@@ -62,12 +62,12 @@
         </h5>
 
         <h5>
-          <fa-icon [icon]="faUsers"></fa-icon> Nombre d'occupant :
+          <fa-icon [icon]="faUsers"></fa-icon> Nombre d'occupant : {{locataires.length}}
         </h5>
 
         <h5>
           <fa-icon [icon]="faExpandAlt"></fa-icon>
-          Superficie de la chambre : 22 m²
+          Superficie : {{logement.surface}} m²
         </h5>
         <div style="display: flex;">
           <button class="contact-button" id="envoi_message">
@@ -105,7 +105,8 @@
               <span>Nombre de chambres : {{logement.nChambre}} </span>
               <span>Nombre de chambre(s) occupée(s): {{logement.nChambreOccup}} </span>
               <span>Nombre de sdb : {{logement.nSdb}} </span>
-              <span>Meublé : Oui</span>
+              <span *ngIf="logement.meuble" >Meublé : Oui</span>
+              <span *ngIf="!logement.meuble" >Meublé : Non</span>
             </div>
 
             <div class="card-style">
