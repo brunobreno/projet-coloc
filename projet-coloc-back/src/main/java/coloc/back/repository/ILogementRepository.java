@@ -42,6 +42,8 @@ public interface ILogementRepository extends JpaRepository<Logement,Long>{
 	@Query("select distinct l from Logement l left join fetch l.commodites c where l.id = :id")
 	Optional<Logement>  findByIdWithCommodite(@Param("id") Long id);
 	
+	@Query(value="SELECT * FROM `logement` WHERE (n_chambre - n_chambre_occup) > 0 ORDER BY date_de_mise_en_ligne LIMIT 3", nativeQuery = true)
+	public List<Logement> findMostRecentLogement();
 	
 }
 

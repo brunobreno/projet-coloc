@@ -36,6 +36,7 @@ public class Logement {
 	private Double loyer;
 	private Double charges;
 	private Double caution;
+	private LocalDate dateDeMiseEnLigne;
 	
 	@OneToMany(mappedBy = "logement")
 	@JsonView(Views.ViewLogementDetail.class)
@@ -93,6 +94,7 @@ public class Logement {
 		this.caution = caution;
 		this.localisation = localisation;
 		this.typeLogement = typeLogement;
+		this.dateDeMiseEnLigne = LocalDate.now();
 	}
 
 	public Logement(Proprietaire proprietaire, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
@@ -110,6 +112,7 @@ public class Logement {
 		this.localisation = localisation;
 		this.typeLogement = typeLogement;
 		this.dateDispo = dateDispo;
+		this.dateDeMiseEnLigne = LocalDate.now();
 	}
 	
 	public Logement(Proprietaire proprietaire, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
@@ -128,6 +131,7 @@ public class Logement {
 		this.typeLogement = typeLogement;
 		this.commodites = commodites;
 		this.regles = regles;
+		this.dateDeMiseEnLigne = LocalDate.now();
 	}
 
 	public Long getId() {
@@ -280,6 +284,14 @@ public class Logement {
 
 	public void setPhotos(List<Photo> photos) {
 		this.photos = photos;
+	}
+
+	public LocalDate getDateDeMiseEnLigne() {
+		return dateDeMiseEnLigne;
+	}
+
+	public void setDateDeMiseEnLigne(LocalDate dateDeMiseEnLigne) {
+		this.dateDeMiseEnLigne = dateDeMiseEnLigne;
 	}
 
 	@Override
