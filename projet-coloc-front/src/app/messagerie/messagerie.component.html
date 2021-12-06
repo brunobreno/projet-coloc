@@ -4,28 +4,46 @@
         <div class="col-1"></div>
         <h3 class="col">Mes messages</h3>
     </div>
-    <div class="row" style="border: solid;">
+    <div class="row">
         <div class="col-1"></div>
-        <div class="col-2 cadre-exemple" id="conversations">
+        <div class="col-2 my-2 cadre-relations" id="conversations">
             <!-- faire un ngFor qui requete sur les emetteur/destinataire distinct des messages reçus-->
-            <div class="row cadre-contact"></div>
-            <div class="row cadre-contact"></div>
-            <div class="row cadre-contact"></div>
-            <div class="row cadre-contact"></div>       
+            <div class="row my-2">
+                <h5 class="my-4 text-center">Mes contacts</h5>
+            </div>
+            <div *ngFor="let r of relations">
+                <div class="row my-2 mx-1 cadre-contact" (click)="findConversation(r.id)">
+                    <p class="row mt-3 text-center">{{r?.prenom}} {{r?.nom}}</p>
+                </div>
+            </div>
         </div>
         <div class="col-1"></div>
-        <div class="col-7 cadre-exemple" id="messages">
-            <div class="row cadre-message">
-                <!-- faire un ngFor qui requete sur les messages de la conversation tries par date-->
-                <div class="d-block cadre-message-destinataire"></div>
-                <div class="d-block cadre-message-destinataire"></div>
-                <div class="d-block cadre-message-destinataire"></div>
-                <div class="d-block cadre-message-destinataire"></div>
-            </div>
-            <div class="row cadre-saisie" id="saisie-message">
-
+        <div class="col-7 cadre-messages overflow-auto" id="messages">
+            <ng-container class="row cadre-message" *ngFor="let m of conversation">
+                <div class="row d-flex justify-content-between" *ngIf="m.emetteur.id != utilisateurConnecte.id">
+                    <div class="col-6 my-0 cadre-message-emetteur">
+                        <p>{{m.contenu}}</p>
+                        <p style="text-align: end;">Reçu le : {{m.date}}</p>
+                    </div>
+                </div>
+                <div class="row" *ngIf="m.emetteur.id == utilisateurConnecte.id">
+                    <div class="col"></div>
+                    <div class="col-6 my-0 justify-content-end cadre-message-destinataire">
+                        <p>{{m.contenu}}</p>
+                        <p style="text-align: end;">Envoyé le : {{m.date}}</p>
+                    </div>
+                </div>
+            </ng-container>
+            <hr>
+            <div class="row cadre-saisie mt-5" id="saisie-message">
+                <div class="d-flex justify-content-between mb-5">
+                    <label for="messageContenu">Ecrire un nouveau message: </label>
+                    <button type="button" id="boutonEnvoyer" class="btn btn-success" (click)="envoyerMessage()">Envoyer</button>
+                </div>
+                <textarea class="form-control overflow-auto" id="messageContenu" rows="5" [(ngModel)]="messageForm.contenu"></textarea>
             </div>
         </div>
         <div class="col-1"></div>
     </div>
+    <div style="height:200px"></div>
 </div>
