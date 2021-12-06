@@ -16,6 +16,7 @@ export class ProprietaireComponent implements OnInit {
   logements: Array<Logement> = new Array<Logement>();
   civilites: Array<String> = new Array<String>();
   idLogements: Array<number> = new Array<number>();
+  proprietaire: Proprietaire;
 
   constructor(private appConfig: AppConfigService, private proprietaireService: ProprietaireHttpService, private logementService: LogementHttpService, private activatedRoute: ActivatedRoute) {
     this.loadCivilites();
@@ -24,8 +25,9 @@ export class ProprietaireComponent implements OnInit {
    ngOnInit() {
     this.activatedRoute.params.subscribe(p => {
         const id = p['id'];
-        this.proprietaireService.findById(id).subscribe(proprietaire => {
-          this.proprietaireForm = proprietaire;
+        this.proprietaireService.findById(id).subscribe(prop => {
+          this.proprietaireForm = prop;
+          this.proprietaire = prop;
         });
         this.logementService.findAllByIdProprietaire(id).subscribe(logs => {
           this.logements = logs;
@@ -64,10 +66,12 @@ export class ProprietaireComponent implements OnInit {
       this.proprietaireForm.logements.push(new Logement(id));
     });
       this.proprietaireService.modify(this.proprietaireForm);
+      this.proprietaire=this.proprietaireForm;
   }
 
   cancel() {
     this.proprietaireForm = null;
+
   }
 
   delete(id: number) {
