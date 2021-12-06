@@ -29,6 +29,8 @@ import { AjoutLogementComponent } from './ajout-logement/ajout-logement.componen
 import { DescriptionLogementComponent } from './description-logement/description-logement.component';
 import { AjoutLogementHttpService } from './ajout-logement/ajout-logement-http.service';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { DescriptionLogementService } from './description-logement/description-logement.service';
+import { ChambreComponent } from './chambre/chambre.component';
 
 
 @NgModule({
@@ -45,8 +47,9 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
     AgePipe,
     ProprietaireComponent,
     LogementComponent,
+    DescriptionLogementComponent,
     AjoutLogementComponent,
-    DescriptionLogementComponent
+    ChambreComponent    
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,15 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
     IvyCarouselModule
     //NoopAnimationsModule
   ],
-  providers: [AppConfigService, LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService, AjoutLogementHttpService],
+  providers: [
+    AppConfigService, 
+    LocataireHttpService, 
+    LogInService, 
+    InscriptionService, 
+    RechercheLocataireService, 
+    AjoutLogementHttpService,
+    DescriptionLogementService,
+    RechercheLogementComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

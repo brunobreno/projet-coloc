@@ -21,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 import coloc.back.model.Commodite;
+import coloc.back.model.Logement;
 import coloc.back.model.Views;
 import coloc.back.repository.ICommoditeRepository;
 
@@ -52,6 +53,14 @@ public class CommoditeRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Commodite non trouvée");
 		}
 	}
+	
+	/*@GetMapping("/by-logement/{idLogement}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Commodite> findByIdLogement(@PathVariable("idLogement") Long id) {
+		List<Commodite> logements = commoditeRepo.findAllCommoditeByIdLogement(id);
+
+		return logements;
+	}*/
 	
 
 	@PostMapping("")

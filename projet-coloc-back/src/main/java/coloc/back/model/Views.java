@@ -11,6 +11,9 @@ public class Views {
 	public static class ViewChambre extends ViewCommon {
 	}
 	
+	public static class ViewChambreDetailDescription extends ViewChambre{
+	}
+	
 	public static class ViewChambreDetail extends ViewChambre{
 	}
 	
@@ -38,6 +41,9 @@ public class Views {
 	public static class ViewLogementCommodite extends ViewLogement{
 	}
 	
+	public static class ViewLogementComplete extends ViewLogement{
+	}
+	
 	public static class ViewProprietaireDetail extends ViewCommon{
 	}
 	
@@ -46,4 +52,11 @@ public class Views {
 
 	public static class ViewPassword extends ViewCommon{
 	}
+	
+	public static class ViewPhoto extends ViewCommon{
+	}
+	
+	public static class ViewPhotoDetail extends ViewPhoto{
+	}
+	
 }

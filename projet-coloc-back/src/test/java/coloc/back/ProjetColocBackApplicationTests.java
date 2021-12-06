@@ -110,16 +110,16 @@ class ProjetColocBackApplicationTests {
 		Localisation locLog4 = new Localisation("departementLog4", "villeLog4", "cpLog4", "voieLog4", 4);
 
 		// Creation des Logement
-		Logement log1 = new Logement(proprietaire1, "Description log1" + Lorem, 70, 2, 0, 1, 300.0, 50.0, 300.0, locLog1,
+		Logement log1 = new Logement(proprietaire1, "Titre log1", "Description log1" + Lorem, 70, 2, 0, 1, 300.0, 50.0, 300.0, locLog1,
 				TypeLogement.Appartement, LocalDate.now());
 		log1 = logementRepository.save(log1);
-		Logement log2 = new Logement(proprietaire2, "Description log2" + Lorem, 40, 1, 0, 1, 350.0, 50.0, 350.0, locLog2,
+		Logement log2 = new Logement(proprietaire2,"Titre log2", "Description log2" + Lorem, 40, 1, 0, 1, 350.0, 50.0, 350.0, locLog1,
 				TypeLogement.Studio, LocalDate.now());
 		log2 = logementRepository.save(log2);
-		Logement log3 = new Logement(proprietaire3, "Description log3" + Lorem, 110, 4, 0, 1, 275.0, 50.0, 275.0, locLog3,
+		Logement log3 = new Logement(proprietaire3,"Titre log3", "Description log3" + Lorem, 110, 4, 0, 1, 275.0, 50.0, 275.0, locLog3,
 				TypeLogement.Maison, LocalDate.now());
 		log3 = logementRepository.save(log3);
-		Logement log4 = new Logement(proprietaire4, "Description log4" + Lorem, 35, 2, 0, 1, 325.0, 50.0, 325.0, locLog4,
+		Logement log4 = new Logement(proprietaire4,"Titre log4", "Description log4" + Lorem, 35, 2, 0, 1, 325.0, 50.0, 325.0, locLog4,
 				TypeLogement.Studio, LocalDate.now());
 		log4 = logementRepository.save(log4);
 
@@ -148,16 +148,18 @@ class ProjetColocBackApplicationTests {
 		laveVaiselle = commoditeRepository.save(laveVaiselle);
 
 		// Creation des Regle
-		Regle fumeurAutorise = new Regle("fumeur autorise");
+		Regle fumeurAutorise = new Regle("fumeur autorise","fumeur.svg");
 		fumeurAutorise = regleRepository.save(fumeurAutorise);
-		Regle animauxAutorises = new Regle("animaux autorises");
+		Regle animauxAutorises = new Regle("animaux autorises","animaux.svg");
 		animauxAutorises = regleRepository.save(animauxAutorises);
-		Regle femmeUniquement = new Regle("femme uniquement");
+		Regle femmeUniquement = new Regle("femme uniquement","femme.svg");
 		femmeUniquement = regleRepository.save(femmeUniquement);
-		Regle hommeUniquement = new Regle("homme uniquement");
+		Regle hommeUniquement = new Regle("homme uniquement","homme.svg");
 		hommeUniquement = regleRepository.save(hommeUniquement);
-		Regle passSanitaire = new Regle("pass sanitaire");
+		Regle passSanitaire = new Regle("pass sanitaire","sanitaire.svg");
 		passSanitaire = regleRepository.save(passSanitaire);
+		Regle salarie = new Regle("Pas d'étudiants","salarie.svg");
+		salarie = regleRepository.save(salarie);
 
 		// Creation des Notation
 		Notation noteLoc1Lg1 = new Notation(log1, locataire1, 15.0, "commentaire note loc1 pour log1");
@@ -178,23 +180,23 @@ class ProjetColocBackApplicationTests {
 		noteLoc8Lg4 = notationRepository.save(noteLoc8Lg4);
 
 		// Creation des Chambre
-		Chambre ch1Log1 = new Chambre(log1, 12);
+		Chambre ch1Log1 = new Chambre(log1, 12, "description chambre 1 Log 1");
 		ch1Log1 = chambreRepository.save(ch1Log1);
-		Chambre ch2Log1 = new Chambre(log1, 13);
+		Chambre ch2Log1 = new Chambre(log1, 13,  "description chambre 2 Log 1");
 		ch2Log1 = chambreRepository.save(ch2Log1);
-		Chambre ch1Log2 = new Chambre(log2, 15);
+		Chambre ch1Log2 = new Chambre(log2, 15,  "description chambre 1 Log 2");
 		ch1Log2 = chambreRepository.save(ch1Log2);
-		Chambre ch1Log3 = new Chambre(log3, 10);
+		Chambre ch1Log3 = new Chambre(log3, 10, "description chambre 1 Log 3");
 		ch1Log3 = chambreRepository.save(ch1Log3);
-		Chambre ch2Log3 = new Chambre(log3, 12);
+		Chambre ch2Log3 = new Chambre(log3, 12, "description chambre 2 log 3");
 		ch2Log3 = chambreRepository.save(ch2Log3);
-		Chambre ch3Log3 = new Chambre(log3, 14);
+		Chambre ch3Log3 = new Chambre(log3, 14, "description chambre 3 log 3");
 		ch3Log3 = chambreRepository.save(ch3Log3);
-		Chambre ch4Log3 = new Chambre(log3, 13);
+		Chambre ch4Log3 = new Chambre(log3, 13, "description chambre 4 log 3");
 		ch4Log3 = chambreRepository.save(ch4Log3);
-		Chambre ch1Log4 = new Chambre(log4, 12);
+		Chambre ch1Log4 = new Chambre(log4, 12, "description chambre 1 log 4");
 		ch1Log4 = chambreRepository.save(ch1Log4);
-		Chambre ch2Log4 = new Chambre(log4, 16);
+		Chambre ch2Log4 = new Chambre(log4, 16, "description chambre 2 log 4");
 		ch2Log4 = chambreRepository.save(ch2Log4);
 
 		// Creation des Message
@@ -299,6 +301,15 @@ class ProjetColocBackApplicationTests {
 		photo3Log1 = photoRepository.save(photo3Log1);
 		Photo photo4Log1 = new Photo("Photo4Log1", "URLPhoto4Log1", 4, log1);
 		photo4Log1 = photoRepository.save(photo4Log1);
+		Photo photo5Log1 = new Photo("Photo5Log1", "URLPhoto5Log1", 5, log1, ch1Log1);
+		photo5Log1 = photoRepository.save(photo5Log1);
+		Photo photo6Log1 = new Photo("Photo6Log1", "URLPhoto6Log1", 6, log1, ch1Log1);
+		photo6Log1 = photoRepository.save(photo6Log1);
+		Photo photo7Log1 = new Photo("Photo7Log1", "URLPhoto7Log1", 7, log1, ch2Log1);
+		photo7Log1 = photoRepository.save(photo7Log1);
+		Photo photo8Log1 = new Photo("Photo8Log1", "URLPhoto8Log1", 8, log1, ch2Log1);
+		photo8Log1 = photoRepository.save(photo8Log1);
+		
 		Photo photo1Log2 = new Photo("Photo1Log2", "URLPhoto1Log2", 1, log2);
 		photo1Log2 = photoRepository.save(photo1Log2);
 		Photo photo2Log2 = new Photo("Photo2Log2", "URLPhoto2Log2", 2, log2);

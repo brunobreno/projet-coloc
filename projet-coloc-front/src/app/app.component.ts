@@ -4,6 +4,13 @@ import { Locataire } from './model';
 import { RechercheLogementComponent } from './recherche-logement/recherche-logement.component';
 import { RechercheLogementService } from './recherche-logement/recherche-logement.service';
 
+// import des incons fontawesome
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBill } from '@fortawesome/free-solid-svg-icons';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faExpandAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCommentAlt } from '@fortawesome/free-solid-svg-icons';
+import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -15,13 +22,22 @@ export class AppComponent {
   title = 'projet-coloc-front';
   userConnect:string = 'Locataire';
 
+  //icons fontawesome
+  faCalendar=faCalendarAlt;
+  faMoneyBill=faMoneyBill;
+  faUsers=faUsers;
+  faExpandAlt=faExpandAlt;
+  faCommentAlt=faCommentAlt;
+  faFileDownload=faFileDownload;
+
+
   filtre: string;
 
-  constructor(private rechercheLogementService: RechercheLogementService) {}
+  constructor(private rechercheLogement: RechercheLogementComponent, private rechercheLogementService: RechercheLogementService) {}
 
   search(ville:string) {
     console.log('passage par search')
-    this.rechercheLogementService.findByVilleWithCom(ville);
+    this.rechercheLogement.search(ville);
     //return this.rechercheLogementService.findAll();
   }
  
