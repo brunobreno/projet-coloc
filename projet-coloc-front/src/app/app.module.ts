@@ -6,6 +6,7 @@ import { AppConfigService } from './app-config.service';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatIconModule} from '@angular/material/icon'; 
+import {CrystalLightboxModule} from '@crystalui/angular-lightbox';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -58,7 +59,8 @@ import { ChambreComponent } from './chambre/chambre.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    IvyCarouselModule
+    IvyCarouselModule,
+    CrystalLightboxModule
     //NoopAnimationsModule
   ],
   providers: [

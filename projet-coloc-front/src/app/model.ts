@@ -59,6 +59,7 @@ export class Chambre {
   description: String;
   commodites: Array<Commodite> = new Array<Commodite>();
   candidatures: Array<Candidature> = new Array<Candidature>();
+  photos:  Array<Photo> = new Array<Photo>();
 
   constructor(
     id?: number,
@@ -68,7 +69,8 @@ export class Chambre {
     surface?: number,
     description?: string,
     commodites?: Array<Commodite>,
-    candidatures?: Array<Candidature>
+    candidatures?: Array<Candidature>,
+    photos?:Array<Photo>
   ) {
     this.id = id
     this.version = version
@@ -78,6 +80,7 @@ export class Chambre {
     this.description = description
     this.commodites = commodites
     this.candidatures = candidatures
+    this.photos = photos;
   }
 
 }

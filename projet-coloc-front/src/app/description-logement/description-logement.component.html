@@ -2,7 +2,7 @@
 
   <!-- Section Titre -->
   <div class="section-container" id="title-section">
-    <h4>Colocation jeunes actifs Quartier Graslin</h4>
+    <h4> {{logement.titre}} </h4>
     <div class="subtitle">
       <div class="subtext">
         <!-- <span class="subtext"> Logement :</span>
@@ -36,72 +36,15 @@
 
   <!-- Section Photo -->
   <div class="section-container" id="photo-section">
-
-    <div class="photo-side-container" style="align-items: flex-end;">
-      <div class="photo-mosaic-container ">
-        <div class="photo-content"><img src="../img/exempleLogement/logement2/logement2_1.png" class="h-100" alt="...">
-        </div>
+    <carousel objectFit="contain" [loop]="true" [dots]="true" [margin]="20" [cellsToShow]="4"  >
+      <div  lightbox-group class="carousel-cell" *ngFor="let photo of logement.photos" >
+        <img src="../../assets/img/exempleLogement/{{photo.chemin}}" lightbox >
       </div>
-      <div class="photo-mosaic-container">
-        <div class="photo-content"><img src="../img/exempleLogement/logement2/logement2_2.png" class="h-100" alt="...">
-        </div>
-      </div>
-    </div>
-
-    <div class="photo-center-container">
-      <div class="photo-content"><img src="../img/exempleLogement/logement3/logement3_1.png" class="h-100" alt="...">
-      </div>
-    </div>
-
-    <div class="photo-side-container" style="align-items: flex-start;">
-      <div class="photo-mosaic-container">
-        <div class="photo-content"><img src="../img/exempleLogement/logement3/logement3_2.png" class="h-100" alt="...">
-        </div>
-      </div>
-      <div class="photo-mosaic-container">
-        <div class="photo-content"><img src="../img/exempleLogement/logement2/logement2_1.png" class="h-100" alt="...">
-        </div>
-      </div>
-    </div>
+    </carousel>
   </div>
 
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#photoModal">
-    Launch demo modal
-  </button>
 
-  <!-- Modal Photo -->
-  <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
 
-        <!-- Caroussel -->
-
-        <carousel [cellWidth]="'100%'" [cellsToShow]="1" [height]="150">
-          <div class="carousel-cell">
-            <img src="../../assets/img/exempleLogement/logement1/logement1_1.png">
-          </div>
-          <div class="carousel-cell">
-            <img src="../../assets/img/exempleLogement/logement1/logement1_2.png">
-          </div>
-          <div class="carousel-cell">
-            <img src="../../assets/img/exempleLogement/logement1/logement1_2.png">
-          </div>
-          <div class="carousel-cell">
-            <img src="../../assets/img/exempleLogement/logement1/logement1_2.png">
-          </div>
-          <div class="carousel-cell">
-            <img src="../../assets/img/exempleLogement/logement1/logement1_2.png">
-          </div>
-          <div class="carousel-cell">
-            <img src="../../assets/img/exempleLogement/logement1/logement1_2.png">
-          </div>
-
-        </carousel>
-
-      </div>
-    </div>
-  </div>
 
 
   <div id="navigation-main-containter">
@@ -280,73 +223,52 @@
       <!-- Section Chambre -->
       <div class="section-container" id="chambre-section">
         <h4>Les chambres (disponibles?)</h4>
-        <div *ngFor="let chambre of chambres" style="display: flex;">
-          <div class="caracteristiques-container">
-            <h6>Les photos </h6>
-            <div style="display: flex;align-items: center;height:100%;">
-              <carousel objectFit="contain" [cellWidth]="'100%'" [cellsToShow]="1">
-                <div class="carousel-cell">
-                  <img src="../../assets/img/exempleLogement/logement1/logement1_1.png">
-                </div>
-                <div class="carousel-cell">
-                  <img src="../../assets/img/exempleLogement/logement1/logement1_2.png">
-                </div>
-                <div class="carousel-cell">
-                  <img src="../../assets/img/exempleLogement/logement1/logement1_2.png">
-                </div>
-                <div class="carousel-cell">
-                  <img src="../../assets/img/exempleLogement/logement1/logement1_2.png">
-                </div>
-                <div class="carousel-cell">
-                  <img src="../../assets/img/exempleLogement/logement1/logement1_2.png">
-                </div>
-                <div class="carousel-cell">
-                  <img src="../../assets/img/exempleLogement/logement1/logement1_2.png">
-                </div>
-  
-              </carousel>
-
+        <div *ngFor="let chambre of chambres;let index=index;" style="display: flex;flex-direction: column;" >
+          <div class="caracteristiques-container" >
+          <h5>Chambre {{index+1}}</h5>
+          <div style="display: flex;">
+            <div class="caracteristiques-container" style="height: 350px;" style="width: 50%;">
+              <h6>Les photos </h6>
+              <div style="display: flex;align-items: center;height:100%;">
+                <carousel objectFit="contain" [loop]="true" [cellWidth]="'100%'">
+                  <div class="carousel-cell" *ngFor="let photo of chambre.photos">
+                    <img src="../../assets/img/exempleLogement/{{photo.chemin}}" lightbox >
+                  </div>
+                </carousel>
+              </div>
             </div>
-            
-
-
+  
+            <div class="caracteristiques-container" style="width: 50%;">
+              <h6>Description </h6>
+              <div class="description text-truncate text-truncate-12">
+                {{chambre.description}}
+              </div>
+            </div>
 
           </div>
-          <div class="caracteristiques-container" style="width: 50%;">
-            <h6>Description </h6>
-            <div class="description text-truncate text-truncate-12">
-              {{chambre.description}}
+         
+          <div class="caracteristiques-container" *ngIf="chambre.commodites.length > 0">
+
+            <h6 >Proposé dans la chambre</h6>
+            
+            <div class="caracteristiques-list card-style">
+              <div *ngFor="let com of chambre.commodites" class="caracteristiques">
+                <img src="../../assets/img/icons/{{com.chemin}}" class="" alt="..."> {{com.libelle}}
+              </div>
             </div>
+          </div>
+
+          <div class="caracteristiques-container" style="width: 85%;
+          border-bottom: solid 2px lightgray;
+          margin: auto;">
           </div>
         </div>
-
-
-        <div class="caracteristiques-container">
-
-          <h6>Les commodités proposées</h6>
-
-          <div class="caracteristiques-list card-style">
-
-            <div class="caracteristiques"> <span class="material-icons-round">balcony</span>
-              Balcon
-            </div>
-            <div class="caracteristiques"> <span class="material-icons-round">accessible</span>
-              Acces handicapé
-            </div>
-            <div class="caracteristiques"><span class="material-icons">ac_unit</span>
-              Climatisation
-            </div>
-            <div class="caracteristiques"> <span class="material-icons">tv</span>
-              Télévision
-            </div>
-            <div class="caracteristiques"> <span class="material-icons-outlined">bed</span>
-              Lit Double
-            </div>
-
-          </div>
         </div>
 
       </div>
+
+
+
 
       <!-- Section détails
         <div class="section-container" id="détails-section">
@@ -356,13 +278,15 @@
 
       <!-- Section localisation -->
       <div class="section-container" id="localisation-section">
-        <h6>Où se situe le logement</h6>
-
+        <h4>La localisation</h4>
+<div class="caracteristiques-container"> 
+        <h6> L'adresse exacte </h6>
         <div class="description" style="margin-top: 20px;">
-          Adresse exacte : {{logement.localisation.num}} {{logement.localisation.voie}}, {{logement.localisation.ville}}
+          {{logement.localisation.num}} {{logement.localisation.voie}}, {{logement.localisation.ville}}
           ({{logement.localisation.codePostal}} {{logement.localisation.departement}})
         </div>
-
+      </div>
+        <h6> Sur une carte </h6>
         <div class="map-main-container">
           <div class="map-content-container">
             <div class="map" id=mapid>

@@ -5,6 +5,15 @@
   scrollbar-width: none;
 }
 
+h6
+{
+  margin-bottom: 10px !important;
+}
+
+carousel {
+  z-index: 1;
+}
+
 .card-style {
   background-color: #fbfbfb;
   border: solid 1px lightgrey;
@@ -189,7 +198,7 @@
 }
 
 #photo-section {
-  height: 400px;
+  //height: 400px;
   display: flex;
   justify-content: center;
   width: 80%;
@@ -316,10 +325,7 @@
   padding: 1px 7px 1px 0px;
 }
 
-#chambre-section .caracteristiques-container{
-  width: 50%;
-  height: 350px;
-}
+
 
 .map-main-container {
   display: flex;
