@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import coloc.back.service.CustomUserDetailService;
 
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired

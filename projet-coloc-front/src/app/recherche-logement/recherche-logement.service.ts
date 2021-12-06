@@ -33,13 +33,13 @@ export class RechercheLogementService {
 
   findByVilleWithCom(ville: string){
     console.log('passage par findByVilleWithCom')
-    this.http.get<Array<Logement>>(this.logementUrl + "by-ville/" + ville + "/with-commodite").subscribe(response => {
+    this.http.get<Array<Logement>>(this.logementUrl + "by-ville/" + ville + "with-commodite").subscribe(response => {
       this.logements = response;
     }, error => console.log(error));
   }
   
   load() {
-    this.http.get<Array<Logement>>(this.logementUrl + "/with-commodite" ).subscribe(response => {
+    this.http.get<Array<Logement>>(this.logementUrl + "with-commodite" ).subscribe(response => {
       this.logements = response;
     }, error => console.log(error));
   }

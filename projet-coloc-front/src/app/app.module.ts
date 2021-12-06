@@ -53,7 +53,7 @@ import { AjoutLogementHttpService } from './ajout-logement/ajout-logement-http.s
     MatIconModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
     //NoopAnimationsModule
   ],
   providers: [AppConfigService, LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService, AjoutLogementHttpService],
