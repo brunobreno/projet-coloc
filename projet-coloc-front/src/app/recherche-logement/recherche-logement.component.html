@@ -14,7 +14,8 @@
       <div class="list-main-container">
 
         <div class="list-head">
-          <h4 class="">Colocation - Rennes </h4>
+          <h4 *ngIf="ville" class="">Colocation - {{ville}} </h4>
+          <h4 *ngIf="!ville" class="">Colocation partout en France </h4>
           <div class="filter-bar-container">
 
 
@@ -63,7 +64,7 @@
 
             <div class="dropdown filter-dropdown">
               <button class="dropdown-toggle filter-button" type="button" id="drop-occupant" data-bs-toggle="dropdown"
-                data-bs-auto-close="outside" aria-expanded="false">
+                data-bs-auto-close="outside" aria-expanded="false"> 
                 Occupants
               </button>
               <div class="dropdown-menu" aria-labelledby="drop-occupant">
@@ -396,19 +397,15 @@
           </div>
           <div id="list-head-lastsection">
             <div id="lastsection-subtext">
-              xxx logements disponibles
+              {{ list().length }} logements disponibles
             </div>
             <div id="tri-container">
               <div>
                 Trier par :
               </div>
               <div>
-                <select class="form-select tri-select" aria-label="Default select example">
-                  <option selected> Plus récents </option>
-                  <option value="1"> <a href="#">Plus anciens</a> </option>
-                  <option value="2">Prix croissant</option>
-                  <option value="3">Prix décroissant</option>
-                  <option value="4">Disponibilité</option>
+                <select (change)="onChange($event)" class="form-select tri-select" aria-label="Default select example">
+                 <option *ngFor="let v of values" [value]="v.id">{{v.name}}</option>
                 </select>
               </div>
             </div>
@@ -454,7 +451,7 @@
 
             <div class="card-content-main-container">
               <div class="card-title-container">
-                <h6 class="card-title">Colocation en centre ville</h6>
+                <h6 class="card-title"> {{logement.titre}}</h6>
                 <div class="card-title-spec">
                   <span id="card-title-price"> {{logement.loyer}}€ </span>
                   <span id="card-title-line"></span>
@@ -465,7 +462,7 @@
               <div class="card-content-description-main-container">
                 <ul>
                   <li class="first-subsect">{{logement.typeLogement}}</li>
-                  <li> <i class="bi bi-people-fill"></i> 5 occupants</li>
+                  <li> <i class="bi bi-people-fill"></i>  {{logement.nChambreOccup}} occupants</li>
                   <li class="first-subsect caracteristiques">
                     <ul style="display: flex;">
                       <li *ngFor="let com of logement.commodites"  >

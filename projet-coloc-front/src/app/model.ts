@@ -54,6 +54,7 @@ export class Chambre {
   logement: Logement;
   locataire: Locataire;
   surface: number;
+  description: String;
   commodites: Array<Commodite> = new Array<Commodite>();
   candidatures: Array<Candidature> = new Array<Candidature>();
 
@@ -63,6 +64,7 @@ export class Chambre {
     logement?: Logement,
     locataire?: Locataire,
     surface?: number,
+    description?: string,
     commodites?: Array<Commodite>,
     candidatures?: Array<Candidature>
   ) {
@@ -71,6 +73,7 @@ export class Chambre {
     this.logement = logement
     this.locataire = locataire
     this.surface = surface
+    this.description = description
     this.commodites = commodites
     this.candidatures = candidatures
   }
@@ -182,6 +185,7 @@ export class Locataire extends Utilisateur {
 export class Logement {
   id: number;
   version: number;
+  titre: string;
   description: string;
   surface: number;
   nChambre: number;
@@ -204,6 +208,7 @@ export class Logement {
   constructor(
     id?: number,
     version?: number,
+    titre?: string,
     description?: string,
     surface?: number,
     nChambre?: number,
@@ -224,6 +229,7 @@ export class Logement {
   ) {
     this.id = id
     this.version = version
+    this.titre = titre
     this.description = description
     this.surface = surface
     this.nChambre = nChambre

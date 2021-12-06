@@ -1,376 +1,343 @@
 * {
-    border: 0px;
-    margin: 0px;
-   /* padding: 0px; */
-    scrollbar-width: none;
-  }
-  
-  .card-style
-  {
-    background-color: #fbfbfb;
-    border: solid 1px lightgrey;
-    border-radius: 4px;
-    padding: 15px;
-  }
-  
-  
-  .link {
-    stroke: #ccc;
-  }
-  
-  .node text {
-    pointer-events: none;
-    font: 10px sans-serif;
-  }
-  .subtext
-  {
-    color: #696969;
-  }
-  
-  .description
-  {
-    text-align: justify;
-    line-height: 27px;
-  }
-  
-  .text-truncate-6{ /* Complete la class texte-truncate de Bootstrap(1 line ellipsis) pour une ellipse multiligne (ici 2)*/
-    display: -webkit-box !important;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    white-space: normal;
-  }
-  
-  .text-truncate-12{ /* Complete la class texte-truncate de Bootstrap(1 line ellipsis) pour une ellipse multiligne (ici 2)*/
-    display: -webkit-box !important;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    white-space: normal;
-  }
-  
-  .page-main-container { /*Contient toute la page*/
-    width: 100%;
-    height: 100%;
-    /*height: 2000px;*/
-    margin-top: 75px; /*Adapter a ma tailler du header fixed*/
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  
-  
-  
-  #navigation-main-containter
-  {
-    width: 85%;
-    display: flex;
-    flex-direction: row-reverse;
-  }
-  
-  .section-container{
-    margin: 15px 0px;
-    padding: 15px 0px;
-  }
-  
-  .section-container h4
-  {
-    background-color: #6fa0b53b;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-  }
-  
-  #sticky-main-container
-  {
-    width: 40%;
-    margin-left: 30px;
-  }
-  
-  #sticky-card
-  {
-    position: sticky;
-    top: 170px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 4px;
-    box-shadow: rgb(0 0 0 / 16%) 0px 2px 8px 0px;
-    padding: 22px 22px;
-    border: solid 2px #484848;
-  }
-  
-  #sticky-card h5
-  {
-    padding: 7px 0px;
-    display: flex;
-  }
-  
-  #sticky-card i
-  {
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    /* padding-right: 15px; */
-  }
-  
-  .contact-button
-  {
-    margin: 10px;
-    font-size: 20px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    background-color: #6fa0b5;
-    border-radius: 4px;
-    color: white;
-    width: 45%;
-  }
-  
-  .contact-button i
-  {
-    font-size: 24px;
-  }
-  
-  #scrollable-main-containter{
-    height: 100%;
-    width: 60%;
-  }
-  
-  
-  
-  #info-section .caracteristiques-container 
-  {
-    display: flex;
-    justify-content: center;
-  }
-  
-  #info-container
-  {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+  border: 0px;
+  margin: 0px;
+  /* padding: 0px; */
+  scrollbar-width: none;
+}
+
+.card-style {
+  background-color: #fbfbfb;
+  border: solid 1px lightgrey;
+  border-radius: 4px;
+  padding: 15px;
+}
+
+.link {
+  stroke: #ccc;
+}
+
+.node text {
+  pointer-events: none;
+  font: 10px sans-serif;
+}
+.subtext {
+  color: #696969;
+}
+
+.description {
+  text-align: justify;
+  line-height: 27px;
+}
+
+.text-truncate-6 {
+  /* Complete la class texte-truncate de Bootstrap(1 line ellipsis) pour une ellipse multiligne (ici 2)*/
+  display: -webkit-box !important;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.text-truncate-12 {
+  /* Complete la class texte-truncate de Bootstrap(1 line ellipsis) pour une ellipse multiligne (ici 2)*/
+  display: -webkit-box !important;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.page-main-container {
+  /*Contient toute la page*/
+  width: 100%;
+  height: 100%;
+  /*height: 2000px;*/
+  margin-top: 75px; /*Adapter a ma tailler du header fixed*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#navigation-main-containter {
+  width: 85%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.section-container {
+  margin: 15px 0px;
+  padding: 15px 0px;
+}
+
+.section-container h4 {
+  background-color: #6fa0b53b;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+#sticky-main-container {
+  width: 40%;
+  margin-left: 30px;
+}
+
+#sticky-card {
+  position: sticky;
+  top: 170px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  box-shadow: rgb(0 0 0 / 16%) 0px 2px 8px 0px;
+  padding: 22px 22px;
+  border: solid 2px #484848;
+}
+
+#sticky-card h5 {
+  padding: 7px 0px;
+  display: flex;
+}
+
+#sticky-card i {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  /* padding-right: 15px; */
+}
+
+.contact-button {
+  margin: 10px;
+  font-size: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  background-color: #6fa0b5;
+  border-radius: 4px;
+  color: white;
+  width: 45%;
+}
+
+.contact-button i {
+  font-size: 24px;
+}
+
+#scrollable-main-containter {
+  height: 100%;
+  width: 60%;
+}
+
+#info-section .caracteristiques-container {
+  display: flex;
+  justify-content: center;
+}
+
+#info-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   /*  border-radius: 5px;
     border: solid 1px #dbdfe1;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 8px 0px;*/
-  }
-  
-  #info-container .card-style
-  {
-    width: 45%;
-  }
-  
-  #info-container div
-  {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    min-width: 225px;
-    font-size: 18px;
-    line-height: 36px;
-    padding: 20px 25px;
-   /* background-color: #becacf;*/
-  }
-  
-  
-  
-  
-  
-  #title-section
-  {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-    padding-top: 20px;
-    width: 100%;
-    background-color:#85afbd2b;
-    border-top: solid 10px #85afbd;
-    padding-bottom: 0px;
-    border-bottom: solid 4px #85afbd;
-  }
-  
-  .subtitle
-  {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 63%;
-    align-items: center;
-    margin: 5px 0px 4px 0px;
-  }
-  
-  .subtitle .subtext
-  {
-    padding: 5px 10px;
-    display: flex;
-    align-items: center;
-    background-color: #85afbd00;
-  }
-  
-  
-  #photo-section
-  {
-    height: 400px ;
-    display: flex;
-    justify-content: center;
-    width: 80%;
-  }
-  
-  .photo-center-container{
-    width: 50%;
-  }
-  
-  .photo-side-container{
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .photo-mosaic-container
-  {
-    height: 50%;
-  }
-  
-  .photo-content
-  {
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    align-items: center;
-    padding: 12px;
-    border-radius: 2px;
-    height: 100%;
-  }
-  
-  .modal-dialog
-  {
-    max-width: 700px;
-  }
-  
-  #section-logement .description
-  
-  #occupant-section
-  {
-  }
-  
-  .occupant-container
-  {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  
-  .occupant-card-mini
-  {
-    display: flex;
-    width: 205px;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px 15px;
-  }
-  
-  .occupant-card-mini-photo
-  {
-    border-radius: 50%;
-    overflow: hidden;
-    width: 90px;
-    height: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .occupant-card-mini-content
-  {
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .occupant-desc
-  {
-    padding-bottom: 3px;
-  }
-  
-  .occupant-hobbies
-  {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding-top: 6px;
-    color: #565656;
-    width: 85%;
-  }
-  
-  
-  
-  .caracteristiques-container
-  {
-    width: 100%;
-    margin: 25px 0px 40px 0px;
-  }
-  
-  .caracteristiques-container .caracteristiques-list
-  {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
-    margin-bottom: 25px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .caracteristiques-container .caracteristiques-list .caracteristiques
-  {
-    width: 23%;
-    min-width: 200px;
-    padding-bottom: 5px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-  }
-  
-  
-  .caracteristiques-container .caracteristiques-list span
-  {
-    padding-right:4px;
-  }
-  
-  .caracteristiques-container .caracteristiques-list i
-  {
-    font-size: 20px;
-    padding-right:7px;
-  }
-  
-  
-  .map-main-container {
-    display: flex;
-    justify-content: center;
-    margin: 40px 5px;
-  }
-  
-  
-  
-  .map-content-container
-  {
-    height: 350px;
-    width: 90%;
-    border: solid 1px grey;
-    z-index: 5;
-  }
-  
-  #mapid {
-    width:100%;
-    height: 100%;
-  }
-  
-  .map {
-    height: 100%;
-    width: 100%;
-  }
-  
-  
+}
+
+#info-container .card-style {
+  width: 45%;
+}
+
+#info-container div {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  min-width: 225px;
+  font-size: 18px;
+  line-height: 36px;
+  padding: 20px 25px;
+  /* background-color: #becacf;*/
+}
+
+#title-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  width: 100%;
+  background-color: #85afbd2b;
+  border-top: solid 10px #85afbd;
+  padding-bottom: 0px;
+  border-bottom: solid 4px #85afbd;
+}
+
+#title-section h4 {
+  background-color: #eaf2f4;
+}
+
+.subtitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 63%;
+  align-items: center;
+  margin: 5px 0px 4px 0px;
+}
+
+.subtitle .subtext {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  background-color: #85afbd00;
+}
+
+#photo-section {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
+
+.photo-center-container {
+  width: 50%;
+}
+
+.photo-side-container {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-mosaic-container {
+  height: 50%;
+}
+
+.photo-content {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  align-items: center;
+  padding: 12px;
+  border-radius: 2px;
+  height: 100%;
+}
+
+.modal-dialog {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.modal-content{
+  transform: translateY(50%);
+}
+
+#section-logement .description #occupant-section {
+}
+
+.occupant-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.occupant-card-mini {
+  display: flex;
+  width: 205px;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 15px;
+}
+
+.occupant-card-mini-photo {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.occupant-card-mini-content {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.occupant-desc {
+  padding-bottom: 3px;
+}
+
+.occupant-hobbies {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 6px;
+  color: #565656;
+  width: 85%;
+}
+
+#chambre-section .section-content{
+  display: flex;
+  justify-content: space-around;
+  height: 320px;
+  border-bottom: solid;
+}
+
+.caracteristiques-container {
+  //width: 100%;
+  margin: 25px 18px 40px 15px;
+}
+
+.caracteristiques-container .caracteristiques-list {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.caracteristiques-container .caracteristiques-list .caracteristiques {
+  width: 23%;
+  min-width: 200px;
+  padding-bottom: 5px;
+  //height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.caracteristiques-container .caracteristiques-list img,
+.ng-fa-icon {
+  /* height: 25px; */
+  padding: 1px 7px 1px 0px;
+}
+
+#chambre-section .caracteristiques-container{
+  width: 50%;
+  height: 350px;
+}
+
+.map-main-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 5px;
+}
+
+.map-content-container {
+  height: 350px;
+  width: 90%;
+  border: solid 1px grey;
+  z-index: 5;
+}
+
+#mapid {
+  width: 100%;
+  height: 100%;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+}
