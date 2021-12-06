@@ -35,7 +35,7 @@ public class Chambre {
 	
 
 	@OneToMany(mappedBy = "chambre")
-	@JsonView(Views.ViewChambreDetailDescription.class)
+	@JsonView(Views.ViewChambreDescription.class)
 	private List<Photo> photos;
 	
 	
@@ -54,7 +54,7 @@ public class Chambre {
 	(
 		name="commodite_chambre"
 	)
-	@JsonView(Views.ViewChambreDetailDescription.class)
+	@JsonView(Views.ViewChambreDescription.class)
 	private List<Commodite> commodites = new ArrayList<Commodite>();
 
 	@OneToMany(mappedBy = "chambre")

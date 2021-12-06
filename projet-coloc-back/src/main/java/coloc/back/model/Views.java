@@ -11,7 +11,7 @@ public class Views {
 	public static class ViewChambre extends ViewCommon {
 	}
 	
-	public static class ViewChambreDetailDescription extends ViewChambre{
+	public static class ViewChambreDescription extends ViewChambre{
 	}
 	
 	public static class ViewChambreDetail extends ViewChambre{

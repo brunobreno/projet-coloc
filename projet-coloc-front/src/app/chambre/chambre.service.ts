@@ -21,7 +21,7 @@ export class ChambreService {
   }
 
   findByLogement(id: number):  Observable<Array<Chambre>>  {
-    return this.http.get<Chambre[]>(this.chambreUrl + "by-logement/" + id);
+    return this.http.get<Chambre[]>(this.chambreUrl + "by-logement/with-detail/" + id);
   }
 
 }
