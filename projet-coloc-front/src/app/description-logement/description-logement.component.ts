@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppConfigService } from '../app-config.service';
-import { Logement, Localisation, Locataire, Chambre } from '../model';
+import { Logement, Localisation, Locataire, Chambre, Photo } from '../model';
 import { DescriptionLogementService } from './description-logement.service';
 import { AppComponent } from '../app.component';
 import { ChambreService } from '../chambre/chambre.service';
@@ -19,6 +19,9 @@ export class DescriptionLogementComponent implements OnInit {
   localisation: Localisation;
   locataires: Array<Locataire> = new Array<Locataire>();
   chambres: Array<Chambre> = new Array<Chambre>();
+  photos: Array<Photo> = new Array<Photo>();
+  
+
 
   faCalendar=this.appComponent.faCalendar;
   faMoneyBill=this.appComponent.faMoneyBill;
@@ -47,6 +50,7 @@ export class DescriptionLogementComponent implements OnInit {
       this.chambreService.findByLogement(id).subscribe(chambres => {
         this.chambres = chambres;
       })
+     
       
   })
   }
