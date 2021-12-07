@@ -115,16 +115,16 @@ class ProjetColocBackApplicationTests {
 
 		// Creation des Logement
 		Logement log1 = new Logement(proprietaire1, "Grand appart central à New York", "Beaucoup trop grand pour le prix et très bien agencé", 104, 2, 2, 1, 180.0, 50.0, 300.0, locLog1,
-				TypeLogement.Appartement, LocalDate.now());
+				TypeLogement.Appartement, LocalDate.now(), false);
 		log1 = logementRepository.save(log1);
 		Logement log2 = new Logement(proprietaire2,"Titre log2", "Description log2" + Lorem, 40, 1, 0, 1, 350.0, 50.0, 350.0, locLog1,
-				TypeLogement.Studio, LocalDate.now());
+				TypeLogement.Studio, LocalDate.now(), true);
 		log2 = logementRepository.save(log2);
 		Logement log3 = new Logement(proprietaire3,"Titre log3", "Description log3" + Lorem, 110, 4, 0, 1, 275.0, 50.0, 275.0, locLog3,
-				TypeLogement.Maison, LocalDate.now());
+				TypeLogement.Maison, LocalDate.now(), false);
 		log3 = logementRepository.save(log3);
 		Logement log4 = new Logement(proprietaire4,"Titre log4", "Description log4" + Lorem, 35, 2, 0, 1, 325.0, 50.0, 325.0, locLog4,
-				TypeLogement.Studio, LocalDate.now());
+				TypeLogement.Studio, LocalDate.now(), true);
 		log4 = logementRepository.save(log4);
 
 		// Creation des Commodites
@@ -420,17 +420,17 @@ class ProjetColocBackApplicationTests {
 				Localisation locLog8 = new Localisation("44", "Nantes", "44100", "Rue Dobree", 2);
 
 				// Creation des Logement
-				Logement log5 = new Logement(proprietaire5, "Appartement pour 2 personnes. Situé rue Racine, animée et proche toute commodités", 70, 2, 0, 1, 300.0, 35.0, 300.0, locLog5,
-						TypeLogement.Appartement, LocalDate.now());
+				Logement log5 = new Logement(proprietaire5, "titre","Appartement pour 2 personnes. Situé rue Racine, animée et proche toute commodités", 70, 2, 0, 1, 300.0, 35.0, 300.0, locLog5,
+						TypeLogement.Appartement, LocalDate.now(), false);
 				log5 = logementRepository.save(log5);
-				Logement log6 = new Logement(proprietaire5, "Appartement recemment rénové avec 3 chambres, dédié et pensé pour la colocation !" , 80, 3, 0, 1, 400.0, 40.0, 400.0, locLog6,
-						TypeLogement.Appartement, LocalDate.now());
+				Logement log6 = new Logement(proprietaire5,"titre", "Appartement recemment rénové avec 3 chambres, dédié et pensé pour la colocation !" ,  80, 3, 0, 1, 400.0, 40.0, 400.0, locLog6,
+						TypeLogement.Appartement, LocalDate.now(), true);
 				log6 = logementRepository.save(log6);
-				Logement log7 = new Logement(proprietaire6, "Grande maison avec 4 chambres et 2 salles de bain pour la colocation. Très lumineux et entièrement équipé !", 150, 4, 0, 2, 500.0, 25.0, 500.0, locLog7,
-						TypeLogement.Maison, LocalDate.now());
+				Logement log7 = new Logement(proprietaire6,"titre", "Grande maison avec 4 chambres et 2 salles de bain pour la colocation. Très lumineux et entièrement équipé !", 150, 4, 0, 2, 500.0, 25.0, 500.0, locLog7,
+						TypeLogement.Maison, LocalDate.now(), true);
 				log7 = logementRepository.save(log7);
-				Logement log8 = new Logement(proprietaire7, "Appartement pour colocation à rue Dobree. 2 chambres de disponibles.", 65, 2, 0, 1, 425.0, 45.0, 425.0, locLog8,
-						TypeLogement.Appartement, LocalDate.now());
+				Logement log8 = new Logement(proprietaire7,"titre", "Appartement pour colocation à rue Dobree. 2 chambres de disponibles.", 65, 2, 0, 1, 425.0, 45.0, 425.0, locLog8,
+						TypeLogement.Appartement, LocalDate.now(), true);
 				log8 = logementRepository.save(log8);
 
 			
