@@ -52,8 +52,23 @@ public class ChambreRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Chambre non trouvée");
 		}
 	}
+
+	@GetMapping("/by-logement/{idLogement}")
+	@JsonView(Views.ViewChambre.class)
+	public List<Chambre> findByIdLogement(@PathVariable("idLogement") Long id) {
+		List<Chambre> chambres = chambreRepo.findAllByIdLogement(id);
+		return chambres;
+	}
 	
 
+	@GetMapping("/by-logement/with-detail/{idLogement}")
+	@JsonView(Views.ViewChambreDescription.class)
+	public List<Chambre> findByIdLogementWithCommodite(@PathVariable("idLogement") Long id) {
+		List<Chambre> chambres = chambreRepo.findAllByIdLogement(id);
+		return chambres;
+	}
+	
+	
 	@PostMapping("")
 	@JsonView(Views.ViewCommon.class)
 	public Chambre create(@RequestBody Chambre chambre) {

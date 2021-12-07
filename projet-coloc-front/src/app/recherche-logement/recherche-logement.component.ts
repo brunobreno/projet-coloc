@@ -6,9 +6,8 @@ import { faCouch } from '@fortawesome/free-solid-svg-icons';
 import { faSmoking } from '@fortawesome/free-solid-svg-icons';
 import { faCat } from '@fortawesome/free-solid-svg-icons';
 import { faParking } from '@fortawesome/free-solid-svg-icons';
-import { Logement, Commodite, filtre } from '../model';
+import { Logement, Commodite, Locataire } from '../model';
 import { MapHttpService } from '../map/map-http.service';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 
 
@@ -27,48 +26,92 @@ export class RechercheLogementComponent implements OnInit {
 
   logementWithCom: Logement;
 
-  logementsPourFiltre:Array<Logement> = new Array<Logement>();
+  logementsPourFiltre: Array<Logement> = new Array<Logement>();
   filtreTypeLogement: string = null;
   filtreLoyer: number = null;
-  filtreOccupant:number = null;
+  filtreOccupant: number = null;
   listeFiltreTypeLogement: Array<string> = new Array<string>();
   logementsFiltreType: Array<Logement> = new Array<Logement>();
   logementsFiltreLoyer: Array<Logement> = new Array<Logement>();
   logementsFiltreOccupant: Array<Logement> = new Array<Logement>();
 
-  cp:string;
-  ville:string;
-  num:number;
-  voie:string;
+  cp: string;
+  ville: string;
+  num: number;
+  voie: string;
   coordonneesAdresses: Array<Array<number>> = new Array<Array<number>>();
+  logements: Array<Logement> = new Array<Logement>();
+  locatairesLogement: Array<Locataire> = new Array<Locataire>();
 
+  filtre: string;
+
+  tri: number;
+  values = [
+    { id: 3432, name: "Prix Croissant" },
+    { id: 3442, name: "Prix Décroissant" },
+    { id: 3452, name: "Surface Croissante" },
+    { id: 3462, name: "Surface Décroissante" }
+  ];
 
   constructor(private rechercheLogementService: RechercheLogementService, private mapService: MapHttpService) {
-    
+
   }
 
   ngOnInit(): void {
   }
 
   list(): Array<Logement> {
-    return this.rechercheLogementService.findAll();
+    console.log("passage par list")
+    this.logements = this.rechercheLogementService.logements;
+    this.trierLogement();
+    return this.logements;
   }
 
 
+  nbLocataires(id: number): number {
+    this.rechercheLogementService.findLocatairesByLogement(id);
+    return this.rechercheLogementService.locatairesLogement.length;
+  }
+
   onChangeFiltreType($event: any) {
     this.filtreTypeLogement = $event.target.value;
-
     if (this.listeFiltreTypeLogement.includes(this.filtreTypeLogement)) {
       let indexFiltre = this.listeFiltreTypeLogement.indexOf(this.filtreTypeLogement);
       this.listeFiltreTypeLogement.splice(indexFiltre, 1);
     } else {
       this.listeFiltreTypeLogement.push(this.filtreTypeLogement);
     }
-
     this.filtreLogement();
   }
 
-  filtreLogement(){
+  /*findLocataireByLogement(id: number){
+    console.log("passage par findLocataireByLogement")
+    this.rechercheLogementService.findLocatairesByLogement(id);
+    this.locatairesLogement = this.rechercheLogementService.locatairesLogement;
+  }*/
+
+  trierLogement() {
+    console.log("passage par trier")
+    if (this.tri == 3442) {
+      this.logements.sort(function (a, b) {
+        return b.loyer - a.loyer;
+      });
+    } else if (this.tri == 3452) {
+      this.logements.sort(function (a, b) {
+        return a.surface - b.surface;
+      });
+    } else if (this.tri == 3462) {
+      this.logements.sort(function (a, b) {
+        return b.surface - a.surface;
+      });
+    } else {
+      this.logements.sort(function (a, b) {
+        return a.loyer - b.loyer;
+      });
+    }
+  }
+
+  filtreLogement() {
     this.filtreLogementType();
     this.filtreLogementLoyer();
     this.filtreLogementOccupant();
@@ -76,13 +119,27 @@ export class RechercheLogementComponent implements OnInit {
     this.getCoordonnesLogements();
   }
 
-  filtreLogementType(){
+
+
+  onChange($event: any) {
+    this.tri = $event.target.value;
+    console.log("passage par onChange")
+    // this.trierLogement();
+  }
+
+
+
+  search(ville: string) {
+    this.ville = ville;
+    console.log("passage par search (recherche logement)")
+    this.rechercheLogementService.findByVille(ville);
+  }
+
+  filtreLogementType() {
     this.logementsPourFiltre = this.rechercheLogementService.logementsByVille;
-    
     if (this.listeFiltreTypeLogement.length == 0) {
       this.rechercheLogementService.logements = this.rechercheLogementService.logementsByVille;
-    }
-    else {
+    } else {
       // this.rechercheLogementService.findByVilleWithCom(this.rechercheLogementService.filtreVille);
       for (let log of this.logementsPourFiltre) {
         for (let f of this.listeFiltreTypeLogement) {
@@ -99,17 +156,14 @@ export class RechercheLogementComponent implements OnInit {
 
 
   filtreLogementLoyer() {
-    if(this.listeFiltreTypeLogement.length > 0) {
+    if (this.listeFiltreTypeLogement.length > 0) {
       this.logementsPourFiltre = this.logementsFiltreType;
-    }
-    else{
+    } else {
       this.logementsPourFiltre = this.rechercheLogementService.logementsByVille;
     }
-
-    if(this.filtreLoyer == null){
-      this.rechercheLogementService.logements =  this.logementsPourFiltre;
-    }
-    else {
+    if (this.filtreLoyer == null) {
+      this.rechercheLogementService.logements = this.logementsPourFiltre;
+    } else {
       for (let log of this.logementsPourFiltre) {
         // console.log(log.loyer);
         // console.log(this.filtreLoyer);
@@ -119,40 +173,40 @@ export class RechercheLogementComponent implements OnInit {
           this.rechercheLogementService.logements = this.logementsFiltreLoyer;
         }
         this.rechercheLogementService.logements = this.logementsFiltreLoyer;
-      } 
+      }
       this.rechercheLogementService.logements = this.logementsFiltreLoyer;
     }
   }
 
   filtreLogementOccupant() {
-    if(this.filtreLoyer == null && this.logementsFiltreType.length == 0) {
+    if (this.filtreLoyer == null && this.logementsFiltreType.length == 0) {
       this.logementsPourFiltre = this.rechercheLogementService.logementsByVille;
     }
-    else if (this.listeFiltreTypeLogement.length == 0){
+    else if (this.listeFiltreTypeLogement.length == 0) {
       this.logementsPourFiltre = this.logementsFiltreLoyer;
     }
-    else{
+    else {
       this.logementsPourFiltre = this.logementsFiltreType;
     }
-    if(this.filtreOccupant == null){
-      this.rechercheLogementService.logements =  this.logementsPourFiltre;
+    if (this.filtreOccupant == null) {
+      this.rechercheLogementService.logements = this.logementsPourFiltre;
     }
     else {
       for (let log of this.logementsPourFiltre) {
         if (log.nChambre <= this.filtreOccupant) {
           this.logementsFiltreOccupant.push(log);
         }
-      } 
-    this.rechercheLogementService.logements = this.logementsFiltreOccupant;
+      }
+      this.rechercheLogementService.logements = this.logementsFiltreOccupant;
     }
   }
 
-resetListeFiltre(){
-  this.logementsFiltreType = new Array<Logement>();
-  this.logementsFiltreLoyer = new Array<Logement>();
-  this.logementsFiltreOccupant = new Array<Logement>();
-  this.logementsPourFiltre = new Array<Logement>();
-}
+  resetListeFiltre() {
+    this.logementsFiltreType = new Array<Logement>();
+    this.logementsFiltreLoyer = new Array<Logement>();
+    this.logementsFiltreOccupant = new Array<Logement>();
+    this.logementsPourFiltre = new Array<Logement>();
+  }
 
 
 
@@ -161,13 +215,13 @@ resetListeFiltre(){
   }
 
 
-  getCoordonnesLogements(){
-    for(let log of this.rechercheLogementService.logements){
+  getCoordonnesLogements() {
+    for (let log of this.rechercheLogementService.logements) {
       log.localisation.codePostal = this.cp;
       log.localisation.ville = this.ville;
       log.localisation.num = this.num;
       log.localisation.voie = this.voie;
-      
+
       console.log('boucle getCoordLogments ' + log);
       // this.voie = this.voie.replace(/ /g, '+');
 
@@ -176,4 +230,4 @@ resetListeFiltre(){
       // console.log("boucle for" + this.coordonneesAdresses);
     }
   }
-} 
+}

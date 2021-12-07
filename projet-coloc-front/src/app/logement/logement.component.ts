@@ -10,6 +10,7 @@ import { LogementHttpService } from './logement-http.service';
 export class LogementComponent implements OnInit {
 
   logementForm: Logement;
+  logement: Logement;
   filtre: string;
 
   constructor(private logementService: LogementHttpService) { }

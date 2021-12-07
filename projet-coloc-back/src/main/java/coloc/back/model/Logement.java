@@ -28,6 +28,7 @@ public class Logement {
 	private Long id;
 //	@Version
 //	private Integer version;
+	private String titre;
 	private String description;
 	private Integer surface;
 	private Integer nChambre;
@@ -36,9 +37,11 @@ public class Logement {
 	private Double loyer;
 	private Double charges;
 	private Double caution;
+	private LocalDate dateDeMiseEnLigne;
+	private boolean meuble;
 	
 	@OneToMany(mappedBy = "logement")
-	@JsonView(Views.ViewLogementDetail.class)
+	@JsonView(Views.ViewLogementComplete.class)
 	private List<Photo> photos;
 	
 	@OneToMany(mappedBy = "logement")
@@ -51,7 +54,10 @@ public class Logement {
 	private Proprietaire proprietaire;
 	
 	@Embedded
+	@JsonView(Views.ViewLogementComplete.class)
 	private Localisation localisation;
+	
+	
 	@Enumerated(EnumType.STRING)
 	private TypeLogement typeLogement;
 	
@@ -64,7 +70,8 @@ public class Logement {
 	(
 		name="commodite_logement"
 	)
-	@JsonView(Views.ViewLogementCommodite.class)
+	//@JsonView(Views.ViewLogementCommodite.class)
+	@JsonView(Views.ViewLogementComplete.class)
 	private  List<Commodite> commodites = new ArrayList<Commodite>();
 	
 	@ManyToMany
@@ -72,17 +79,18 @@ public class Logement {
 	(
 		name="regle_logement"
 	)
-	@JsonView(Views.ViewLogementDetail.class)
+	@JsonView(Views.ViewLogementComplete.class)
 	private List<Regle> regles = new ArrayList<Regle>();
 	
 	public Logement() {
 		super();
 	}
 
-	public Logement(Proprietaire proprietaire, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
+	public Logement(Proprietaire proprietaire, String titre, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
 			Localisation localisation, TypeLogement typeLogement) {
 		super();
 		this.proprietaire = proprietaire;
+		this.titre = titre;
 		this.description = description;
 		this.surface = surface;
 		this.nChambre = nchambre;
@@ -93,12 +101,32 @@ public class Logement {
 		this.caution = caution;
 		this.localisation = localisation;
 		this.typeLogement = typeLogement;
+		this.dateDeMiseEnLigne = LocalDate.now();
 	}
-
-	public Logement(Proprietaire proprietaire, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
-			Localisation localisation, TypeLogement typeLogement, LocalDate dateDispo) {
+	
+	public Logement(Proprietaire proprietaire, String titre, String description, boolean meuble, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
+			Localisation localisation, TypeLogement typeLogement) {
 		super();
 		this.proprietaire = proprietaire;
+		this.titre = titre;
+		this.description = description;
+		this.surface = surface;
+		this.nChambre = nchambre;
+		this.nChambreOccup = nChambreOccup;
+		this.nSdb = nSdb;
+		this.loyer = loyer;
+		this.charges = charges;
+		this.caution = caution;
+		this.localisation = localisation;
+		this.typeLogement = typeLogement;
+		this.meuble = meuble;
+	}
+
+	public Logement(Proprietaire proprietaire, String titre, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
+			Localisation localisation, TypeLogement typeLogement, LocalDate dateDispo, boolean meuble) {
+		super();
+		this.proprietaire = proprietaire;
+		this.titre = titre;
 		this.description = description;
 		this.surface = surface;
 		this.nChambre = nchambre;
@@ -110,13 +138,16 @@ public class Logement {
 		this.localisation = localisation;
 		this.typeLogement = typeLogement;
 		this.dateDispo = dateDispo;
+		this.dateDeMiseEnLigne = LocalDate.now();
+		this.meuble = meuble;
 	}
 	
-	public Logement(Proprietaire proprietaire, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
+	public Logement(Proprietaire proprietaire, String titre, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
 			Localisation localisation,TypeLogement typeLogement, List<Commodite> commodites,List<Regle> regles) {
 		super();
 		this.proprietaire = proprietaire;
 		this.description = description;
+		this.titre = titre;
 		this.surface = surface;
 		this.nChambre = nchambre;
 		this.nChambreOccup = nChambreOccup;
@@ -128,6 +159,7 @@ public class Logement {
 		this.typeLogement = typeLogement;
 		this.commodites = commodites;
 		this.regles = regles;
+		this.dateDeMiseEnLigne = LocalDate.now();
 	}
 
 	public Long getId() {
@@ -194,6 +226,15 @@ public class Logement {
 		this.caution = caution;
 	}
 
+	
+	public boolean isMeuble() {
+		return meuble;
+	}
+
+	public void setMeuble(boolean meuble) {
+		this.meuble = meuble;
+	}
+
 	public LocalDate getDateDispo() {
 		return dateDispo;
 	}
@@ -216,6 +257,16 @@ public class Logement {
 
 	public void setTypeLogement(TypeLogement typeLogement) {
 		this.typeLogement = typeLogement;
+	}
+	
+	
+
+	public String getTitre() {
+		return titre;
+	}
+
+	public void setTitre(String titre) {
+		this.titre = titre;
 	}
 
 	public String getDescription() {
@@ -280,6 +331,14 @@ public class Logement {
 
 	public void setPhotos(List<Photo> photos) {
 		this.photos = photos;
+	}
+
+	public LocalDate getDateDeMiseEnLigne() {
+		return dateDeMiseEnLigne;
+	}
+
+	public void setDateDeMiseEnLigne(LocalDate dateDeMiseEnLigne) {
+		this.dateDeMiseEnLigne = dateDeMiseEnLigne;
 	}
 
 	@Override

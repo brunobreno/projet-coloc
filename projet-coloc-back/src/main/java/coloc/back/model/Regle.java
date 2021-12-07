@@ -20,7 +20,7 @@ public class Regle {
 	@GeneratedValue(strategy =  GenerationType.IDENTITY )
 	private Long id;
 	private String libelle;
-	
+	private String chemin;
 	@ManyToMany(mappedBy = "regles")
 	@JsonView(Views.ViewRegleLogement.class)
 	private List<Logement> logements;
@@ -29,9 +29,10 @@ public class Regle {
 		super();
 	}
 
-	public Regle(String libelle) {
+	public Regle(String libelle,String chemin) {
 		this.libelle = libelle;
-	}
+		this.chemin = chemin;	
+		}
 	
 	public Regle(Long id, String libelle) {
 		this.id = id;
@@ -52,6 +53,15 @@ public class Regle {
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+	
+
+	public String getChemin() {
+		return chemin;
+	}
+
+	public void setChemin(String chemin) {
+		this.chemin = chemin;
 	}
 
 	@Override

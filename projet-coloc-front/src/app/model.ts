@@ -2,6 +2,8 @@ import { PathLocationStrategy } from "@angular/common";
 
 export class Utilisateur {
   id: number;
+  version: number;
+  username: string;
   nom: string;
   prenom: string;
   civ: string;
@@ -9,8 +11,10 @@ export class Utilisateur {
   tel: string;
   password: string;
 
-  constructor(id?: number, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
+  constructor(id?: number, version?: number, username?: string, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
     this.id = id;
+    this.version = version;
+    this.username = username;
     this.nom = nom;
     this.prenom = prenom;
     this.civ = civ;
@@ -52,8 +56,10 @@ export class Chambre {
   logement: Logement;
   locataire: Locataire;
   surface: number;
+  description: String;
   commodites: Array<Commodite> = new Array<Commodite>();
   candidatures: Array<Candidature> = new Array<Candidature>();
+  photos:  Array<Photo> = new Array<Photo>();
 
   constructor(
     id?: number,
@@ -61,16 +67,20 @@ export class Chambre {
     logement?: Logement,
     locataire?: Locataire,
     surface?: number,
+    description?: string,
     commodites?: Array<Commodite>,
-    candidatures?: Array<Candidature>
+    candidatures?: Array<Candidature>,
+    photos?:Array<Photo>
   ) {
     this.id = id
     this.version = version
     this.logement = logement
     this.locataire = locataire
     this.surface = surface
+    this.description = description
     this.commodites = commodites
     this.candidatures = candidatures
+    this.photos = photos;
   }
 
 }
@@ -98,8 +108,6 @@ export class Commodite {
     this.logements = logements
     this.chambres = chambres
   }
-
-
 }
 
 export class Dossier {
@@ -137,6 +145,30 @@ export class Localisation {
 
 }
 
+export class Hobby {
+  id: number;
+  version: number;
+  libelle: string;
+  chemin: string;
+  locataires: Array<Locataire> = new Array<Locataire>();
+
+  constructor(
+    id?: number,
+    version?: number,
+    libelle?: string,
+    chemin?: string,
+    locataires?: Array<Locataire>
+  ) {
+    this.id = id
+    this.version = version
+    this.libelle = libelle
+    this.chemin = chemin
+    this.locataires = locataires
+  }
+
+
+}
+
 
 export class Locataire extends Utilisateur {
 
@@ -147,6 +179,8 @@ export class Locataire extends Utilisateur {
   dossier: Dossier;
   chambre: Chambre;
   candidatures: Array<Candidature> = new Array<Candidature>();
+  photos: Array<Photo> = new Array<Photo>();
+  hobbies: Array<Hobby> = new Array<Hobby>();
 
   constructor(
     id?: number,
@@ -162,7 +196,9 @@ export class Locataire extends Utilisateur {
     dateDeNaissance?: string,
     dossier?: Dossier,
     chambre?: Chambre,
-    candidatures?: Array<Candidature>
+    candidatures?: Array<Candidature>,
+    photos?: Array<Photo>,
+    hobbies?: Array<Hobby>
   ) {
     super(id, nom, prenom, civ, email, tel, password)
     this.recherche = recherche
@@ -172,6 +208,8 @@ export class Locataire extends Utilisateur {
     this.dossier = dossier
     this.chambre = chambre
     this.candidatures = candidatures
+    this.photos = photos;
+    this.hobbies = hobbies;
   }
 
 }
@@ -179,6 +217,7 @@ export class Locataire extends Utilisateur {
 export class Logement {
   id: number;
   version: number;
+  titre: string;
   description: string;
   surface: number;
   nChambre: number;
@@ -196,11 +235,13 @@ export class Logement {
   chambres: Array<Chambre> = new Array<Chambre>();
   commodites: Array<Commodite> = new Array<Commodite>();
   regles: Array<Regle> = new Array<Regle>();
+  meuble: boolean;
 
 
   constructor(
     id?: number,
     version?: number,
+    titre?: string,
     description?: string,
     surface?: number,
     nChambre?: number,
@@ -217,10 +258,12 @@ export class Logement {
     localisation?: Localisation,
     chambres?: Array<Chambre>,
     commodites?: Array<Commodite>,
-    regles?: Array<Regle>
+    regles?: Array<Regle>,
+    meuble?: boolean
   ) {
     this.id = id
     this.version = version
+    this.titre = titre
     this.description = description
     this.surface = surface
     this.nChambre = nChambre
@@ -238,6 +281,7 @@ export class Logement {
     this.chambres = chambres
     this.commodites = commodites
     this.regles = regles
+    this.meuble=meuble
   }
 
 }
@@ -245,16 +289,16 @@ export class Logement {
 export class Message {
   id: number;
   version: number;
-  emetteur: Utilisateur;
-  destinataire: Utilisateur;
+  emetteur: UtilisateurDTO;
+  destinataire: UtilisateurDTO;
   contenu: string;
   date: string;
 
   constructor(
     id?: number,
     version?: number,
-    emetteur?: Utilisateur,
-    destinataire?: Utilisateur,
+    emetteur?: UtilisateurDTO,
+    destinataire?: UtilisateurDTO,
     contenu?: string,
     date?: string
   ) {
@@ -297,8 +341,8 @@ export class Photo {
 export class Proprietaire extends Utilisateur {
   logements: Array<Logement> = new Array<Logement>();
 
-  constructor(id?: number, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
-    super(id, nom, prenom, civ, email, tel, password);
+  constructor(id?: number, version?: number, username?: string, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
+    super(id, version, username, nom, prenom, civ, email, tel, password);
   }
 }
 
@@ -418,21 +462,18 @@ export class ProprietaireDTOInscription {
   }
 }
 
-export class filtreLoyer {
-  max: number;
-  min: number;
+export class MessageDTO {
+  emetteurId: number;
+  destinataireId: number;
+  contenu: string;
 
-  constructor(max?:number, min?:number){
-    this.max = max;
-    this.min = min;
+  constructor(
+    emetteurId?: number,
+    destinataireId?: number,
+    contenu?: string,
+  ) {
+    this.emetteurId = emetteurId
+    this.destinataireId = destinataireId
+    this.contenu = contenu
   }
-}
-
-export class filtreTypeLogement {
-  typeLogement: string;
-}
-
-export class filtre {
-  filtreLoyer:filtreLoyer;
-  filtresTypeLogement: Array<filtreTypeLogement> = new Array<filtreTypeLogement>();
 }

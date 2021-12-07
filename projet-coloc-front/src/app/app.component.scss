@@ -50,6 +50,7 @@ header{
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
+    outline: none;
   }
   
   .header-research-main-container{
@@ -75,13 +76,15 @@ header{
   }
   
   
-  #barre-recherche{
+  #barre-recherche, #barre-recherche:focus, #barre-recherche:active{
     order:1;
     border-radius: 8px;
     width:90%;
     font-size: 15px;
-    border:none;
+    border:none !important;
+    border-color: white !important;
   }
+
   
   #btn-recherche{
     margin : 0 10px;

@@ -1,0 +1,51 @@
+.cadre-exemple {
+    height: 700px;
+    border: solid;
+}
+
+.cadre-messages {
+    height: 700px;
+    border: solid;
+    border-width: 2px;
+    border-radius: 25px;
+    border-color: lightgray;
+}
+
+.cadre-message-destinataire {
+    border-radius: 25px;
+    background-color: lightgreen;
+}
+
+.cadre-message-emetteur {
+    border-radius: 25px;
+    background-color: lightsalmon;
+}
+
+.cadre-message {
+    height: 70%;
+    border: solid;
+    position: relative;
+    border-color: lightgrey;
+    border-radius: 25px;
+    border-width: 1px;
+}
+
+.cadre-saisie {
+    height: 30%;
+}
+
+.cadre-contact {
+    height: 75px;
+    border: solid;
+    border-color: lightgrey;
+    border-radius: 25px;
+    border-width: 1px;
+}
+
+.cadre-relations{
+    height: 700px;
+    border: solid;
+    border-width: 2px;
+    border-radius: 25px;
+    border-color: lightgray;
+}
