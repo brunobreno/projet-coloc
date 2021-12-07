@@ -38,6 +38,9 @@ import { MessagerieNouveauContactService } from './messagerie-nouveau-contact/me
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { DescriptionLogementService } from './description-logement/description-logement.service';
 import { ChambreComponent } from './chambre/chambre.component';
+import { MapComponent } from './map/map.component';
+import { MarkerService } from './map/marker.service';
+import { MapHttpService } from './map/map-http.service';
 
 
 @NgModule({
@@ -61,6 +64,7 @@ import { ChambreComponent } from './chambre/chambre.component';
     HomePageComponent,
     MessagerieComponent,
     MessagerieNouveauContactComponent
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +87,7 @@ import { ChambreComponent } from './chambre/chambre.component';
     AjoutLogementHttpService,
     DescriptionLogementService,
     RechercheLogementComponent],
+  providers: [AppConfigService, LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService, AjoutLogementHttpService, MapHttpService, MarkerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

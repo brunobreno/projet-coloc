@@ -1,12 +1,13 @@
-<body onload="init()">
-
+<body >
+  
   <div class="page-main-container">
 
     <div class="navigation-main-containter">
 
       <div class="map-main-container">
-        <div class="map" id=mapid>
-        </div>
+        <!-- <div class="map" id=mapid>
+        </div> -->
+        <app-map></app-map>
       </div>
 
 
@@ -24,51 +25,70 @@
                 data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                 Types
               </button>
-              <ul class="dropdown-menu " aria-labelledby="drop-type-logement">
+              <ul class="dropdown-menu " aria-labelledby="drop-type-logement" ngDefaultControl
+                [ngModel]="filtreTypeLogement">
                 <li>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="flexCheckAppart">
-                    <label class="form-check-label" for="flexCheck0">Appartement</label>
+                    <input type="checkbox" class="form-check-input" id="flexCheckAppart" value="Appartement"
+                      (change)="onChangeFiltreType($event)">
+                    <label class="form-check-label" for="flexCheckAppart">Appartement</label>
                   </div>
                 </li>
                 <li>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="flexCheckMaison">
-                    <label class="form-check-label" for="flexCheck0">Maison</label>
+                    <input type="checkbox" class="form-check-input" id="flexCheckMaison" value="Maison"
+                      (change)="onChangeFiltreType($event)">
+                    <label class="form-check-label" for="flexCheckMaison">Maison</label>
                   </div>
                 </li>
                 <li>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="flexCheckStudio">
-                    <label class="form-check-label" for="flexCheck0">Studio</label>
+                    <input type="checkbox" class="form-check-input" id="flexCheckStudio" value="Studio"
+                      (change)="onChangeFiltreType($event)">
+                    <label class="form-check-label" for="flexCheckStudio">Studio</label>
                   </div>
                 </li>
-                <li>
+                <!-- <li>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="flexCheckDuplex">
-                    <label class="form-check-label" for="flexCheck0">Duplex</label>
+                    <input type="checkbox" class="form-check-input" id="flexCheckDuplex" >
+                    <label class="form-check-label" for="flexCheckDuplex">Duplex</label>
                   </div>
-                </li>
+                </li> -->
               </ul>
             </div>
 
+
             <div class="dropdown filter-dropdown">
               <button class="dropdown-toggle filter-button" type="button" id="drop-loyer" data-bs-toggle="dropdown"
-                data-bs-auto-close="outside" aria-expanded="false">
+                 aria-expanded="false">
                 Loyer
               </button>
-              <div class="dropdown-menu" aria-labelledby="drop-loyer">
-                <input type="range" class="form-range" id="customRange1">
+               <div class="dropdown-menu" aria-labelledby="drop-loyer" id="loyer">
+                <label for="">Max : </label>
+                <input type="number" class="form-range" id="dispoDatePicker" [(ngModel)]="filtreLoyer"   />
+                <p  data-bs-toggle="collapse" data-bs-target="#loyer" class="applyFilter"  (click)="filtreLogement()">Appliquer filtre</p>
               </div>
+              
             </div>
+
+            <!-- <div class="filter-dropdown" id="filter-dropdown-dispo">
+              <div class="filter-button" id="filter-loyer"> Loyer max : </div>
+              <div class="filter-button" id="dispoDatePicker-container">
+                <input type="number" class="filter-button" id="dispoDatePicker" [ngModel]="filtreLoyer"  (change)="filtreLogementLoyer($event)" />
+              </div>
+            </div> -->
+
 
             <div class="dropdown filter-dropdown">
               <button class="dropdown-toggle filter-button" type="button" id="drop-occupant" data-bs-toggle="dropdown"
                 data-bs-auto-close="outside" aria-expanded="false"> 
                 Occupants
               </button>
-              <div class="dropdown-menu" aria-labelledby="drop-occupant">
-                <input type="range" class="form-range" id="customRange1">
+              <div class="dropdown-menu" aria-labelledby="drop-occupant"  id="nbOccupant">
+                <!-- <input type="range" class="form-range" id="customRange1" >  -->
+                <label for="">Max : </label>
+                <input type="number" class="form-range" id="dispoDatePicker" [(ngModel)]="filtreOccupant"   />
+                <p data-bs-toggle="collapse" data-bs-target="#nbOccupant" class="applyFilter" (click)="filtreLogement()">Appliquer filtre</p>
               </div>
             </div>
 
@@ -450,8 +470,8 @@
 
                   <li class="first-subsect caracteristiques" id="commodites">
                     <ul style="display: flex;">
-                      <li *ngFor="let com of logement.commodites"  >
-                         <img src="../../assets/img/icons/{{com.chemin}}" class="d-block w-100" alt="..."> 
+                      <li *ngFor="let com of logement.commodites">
+                        <img src="../../assets/img/icons/{{com.chemin}}" class="d-block w-100" alt="...">
                       </li>
                     </ul>
                   </li>

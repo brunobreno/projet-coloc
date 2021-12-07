@@ -136,11 +136,11 @@ export class Localisation {
     voie?: string,
     num?: number
   ) {
-    this.departement = departement
-    this.ville = ville
-    this.codePostal = codePostal
-    this.voie = voie
-    this.num = num
+    this.departement = departement;
+    this.ville = ville;
+    this.codePostal = codePostal;
+    this.voie = voie;
+    this.num = num;
   }
 
 }
@@ -184,7 +184,6 @@ export class Locataire extends Utilisateur {
 
   constructor(
     id?: number,
-    version?: number,
     nom?: string,
     prenom?: string,
     civ?: string,
@@ -201,7 +200,7 @@ export class Locataire extends Utilisateur {
     photos?: Array<Photo>,
     hobbies?: Array<Hobby>
   ) {
-    super(id, version, nom, prenom, civ, email, tel, password)
+    super(id, nom, prenom, civ, email, tel, password)
     this.recherche = recherche
     this.description = description
     this.situation = situation
