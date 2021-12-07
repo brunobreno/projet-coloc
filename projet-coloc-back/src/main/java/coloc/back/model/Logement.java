@@ -123,7 +123,7 @@ public class Logement {
 	}
 
 	public Logement(Proprietaire proprietaire, String titre, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
-			Localisation localisation, TypeLogement typeLogement, LocalDate dateDispo) {
+			Localisation localisation, TypeLogement typeLogement, LocalDate dateDispo, boolean meuble) {
 		super();
 		this.proprietaire = proprietaire;
 		this.titre = titre;
@@ -139,6 +139,7 @@ public class Logement {
 		this.typeLogement = typeLogement;
 		this.dateDispo = dateDispo;
 		this.dateDeMiseEnLigne = LocalDate.now();
+		this.meuble = meuble;
 	}
 	
 	public Logement(Proprietaire proprietaire, String titre, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
