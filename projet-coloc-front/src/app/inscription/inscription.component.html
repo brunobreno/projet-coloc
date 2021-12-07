@@ -1,132 +1,135 @@
-<div class="row" *ngIf="!inscriptionRealise">
-    <div class="col-md-4 offset-md-4">
-        <div class="login-form mt-4 p-4">
-            <h2 class="text-center">Inscription</h2>
-            <hr class="mt-4">
-            <div class="col-12 mt-2">
-                <label for="username" class="form-label">Nom d'utilisateur :</label>
-                <input type="text" class="form-control" id="username" [(ngModel)]="inscriptionForm.username">
-            </div>
-            <div class="col-12 mt-2">
-                <label for="password" class="form-label">Mot de passe :</label>
-                <input type="password" class="form-control" id="password" [(ngModel)]="inscriptionForm.password">
-            </div>
-            <div class="col-12 mt-2">
-                <label for="nom" class="form-label">Nom :</label>
-                <input type="text" class="form-control" id="nom" [(ngModel)]="inscriptionForm.nom">
-            </div>
-            <div class="col-12 mt-2">
-                <label for="prenom" class="form-label">Prénom :</label>
-                <input type="text" class="form-control" id="prenom" [(ngModel)]="inscriptionForm.prenom">
-            </div>
-            <div class="col-12 mt-2">
-                <label for="civ" class="form-label">Civilité :</label>
-                <select class="form-select" [(ngModel)]="inscriptionForm.civ">
-                    <option value="">Choisir une civilité</option>
-                    <option *ngFor="let c of civilites" [value]="c">{{c}}</option>
-                </select>
-            </div>
-            <div class="col-12 mt-2">
-                <label for="email" class="form-label">Email :</label>
-                <input type="text" class="form-control" id="email" [(ngModel)]="inscriptionForm.email">
-            </div>
-            <div class="col-12">
-                <span class="text-danger" *ngIf="emailExistant">Email déjà utilisé</span>
-            </div>
-            <div class="col-12 mt-2">
-                <label for="tel" class="form-label">Téléphone :</label>
-                <input type="text" class="form-control" id="tel" [(ngModel)]="inscriptionForm.tel">
-            </div>
-            <div class="col-12 mt-2">
-                <label for="choix-loc-proprio" class="form-label">Vous êtes :</label><br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="choix-loc-proprio" value="proprietaire" [(ngModel)]="inscriptionForm.typeDeCompte">
-                    <label class="form-check-label" for="choix-loc-proprio">Proprietaire</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="choix-loc-proprio" value="locataire" [(ngModel)]="inscriptionForm.typeDeCompte">
-                    <label class="form-check-label" for="choix-loc-proprio">Locataire</label>
-                  </div>
-            </div>
-            <div *ngIf="inscriptionForm.typeDeCompte == 'locataire'">
+<div class="page-main-container">
+    <div class="row" *ngIf="!inscriptionRealise">
+        <div class="col-md-4 offset-md-4">
+            <div class="login-form mt-4 p-4">
+                <h2 class="text-center">Inscription</h2>
                 <hr class="mt-4">
                 <div class="col-12 mt-2">
-                    <label for="choix-recherche" class="form-label">Etes vous en recherche de colocation :</label><br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="choix-recherche" value=true [(ngModel)]="inscriptionForm.recherche">
-                        <label class="form-check-label" for="choix-recherche">Oui</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="choix-recherche" value=false [(ngModel)]="inscriptionForm.recherche">
-                        <label class="form-check-label" for="choix-recherche">Non</label>
-                      </div>
+                    <label for="username" class="form-label">Nom d'utilisateur :</label>
+                    <input type="text" class="form-control" id="username" [(ngModel)]="inscriptionForm.username">
                 </div>
                 <div class="col-12 mt-2">
-                    <label for="description" class="form-label">Votre description :</label>
-                    <textarea class="form-control" id="description" [(ngModel)]="inscriptionForm.description"></textarea>
+                    <label for="password" class="form-label">Mot de passe :</label>
+                    <input type="password" class="form-control" id="password" [(ngModel)]="inscriptionForm.password">
                 </div>
                 <div class="col-12 mt-2">
-                    <label for="situation" class="form-label">Votre situation :</label>
-                    <select class="form-select" [(ngModel)]="inscriptionForm.situation">
-                        <option value="">Choisir une situation</option>
-                        <option *ngFor="let sit of situations" [value]="sit">{{sit}}</option>
+                    <label for="nom" class="form-label">Nom :</label>
+                    <input type="text" class="form-control" id="nom" [(ngModel)]="inscriptionForm.nom">
+                </div>
+                <div class="col-12 mt-2">
+                    <label for="prenom" class="form-label">Prénom :</label>
+                    <input type="text" class="form-control" id="prenom" [(ngModel)]="inscriptionForm.prenom">
+                </div>
+                <div class="col-12 mt-2">
+                    <label for="civ" class="form-label">Civilité :</label>
+                    <select class="form-select" [(ngModel)]="inscriptionForm.civ">
+                        <option value="">Choisir une civilité</option>
+                        <option *ngFor="let c of civilites" [value]="c">{{c}}</option>
                     </select>
-                    <div class="col-12 mt-2">
-                        <label for="dateDeNaissance" class="form-label">Date de naissance :</label>
-                        <input type="date" class="form-control" id="dateDeNaissance" [(ngModel)]="inscriptionForm.dateDeNaissance">
+                </div>
+                <div class="col-12 mt-2">
+                    <label for="email" class="form-label">Email :</label>
+                    <input type="text" class="form-control" id="email" [(ngModel)]="inscriptionForm.email">
+                </div>
+                <div class="col-12">
+                    <span class="text-danger" *ngIf="emailExistant">Email déjà utilisé</span>
+                </div>
+                <div class="col-12 mt-2">
+                    <label for="tel" class="form-label">Téléphone :</label>
+                    <input type="text" class="form-control" id="tel" [(ngModel)]="inscriptionForm.tel">
+                </div>
+                <div class="col-12 mt-2">
+                    <label for="choix-loc-proprio" class="form-label">Vous êtes :</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="choix-loc-proprio" value="proprietaire" [(ngModel)]="inscriptionForm.typeDeCompte">
+                        <label class="form-check-label" for="choix-loc-proprio">Proprietaire</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="choix-loc-proprio" value="locataire" [(ngModel)]="inscriptionForm.typeDeCompte">
+                        <label class="form-check-label" for="choix-loc-proprio">Locataire</label>
                     </div>
                 </div>
-                <div class="col-12 mt-2">
-                    <label for="choix-dossier" class="form-label">Voulez vous completer votre dossier de recherche maintenant ?</label><br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="choix-dossier" value="true" [(ngModel)]="choixDossier">
-                        <label class="form-check-label" for="choix-dossier">Oui</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="choix-dossier" value="false" [(ngModel)]="choixDossier">
-                        <label class="form-check-label" for="choix-dossier">Non</label>
-                      </div>
-                </div>
-                <div *ngIf="choixDossier == 'true'">
+                <div *ngIf="inscriptionForm.typeDeCompte == 'locataire'">
                     <hr class="mt-4">
                     <div class="col-12 mt-2">
-                        <label for="revenu" class="form-label">Vos revenus (par mois en euros) :</label>
-                        <input type="number" class="form-control" id="revenu" [(ngModel)]="inscriptionForm.dossier.revenu">
+                        <label for="choix-recherche" class="form-label">Etes vous en recherche de colocation :</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="choix-recherche" value=true [(ngModel)]="inscriptionForm.recherche">
+                            <label class="form-check-label" for="choix-recherche">Oui</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="choix-recherche" value=false [(ngModel)]="inscriptionForm.recherche">
+                            <label class="form-check-label" for="choix-recherche">Non</label>
+                        </div>
                     </div>
                     <div class="col-12 mt-2">
-                        <label for="revenuGarant" class="form-label">Les revenus de votre garant (par mois en euros) :</label>
-                        <input type="number" class="form-control" id="revenuGarant" [(ngModel)]="inscriptionForm.dossier.revenuGarant">
+                        <label for="description" class="form-label">Votre description :</label>
+                        <textarea class="form-control" id="description" [(ngModel)]="inscriptionForm.description"></textarea>
                     </div>
                     <div class="col-12 mt-2">
-                        <label for="situationGarant" class="form-label">La situation de votre garant :</label>
-                        <select class="form-select" [(ngModel)]="inscriptionForm.dossier.situationGarant">
+                        <label for="situation" class="form-label">Votre situation :</label>
+                        <select class="form-select" [(ngModel)]="inscriptionForm.situation">
                             <option value="">Choisir une situation</option>
                             <option *ngFor="let sit of situations" [value]="sit">{{sit}}</option>
                         </select>
+                        <div class="col-12 mt-2">
+                            <label for="dateDeNaissance" class="form-label">Date de naissance :</label>
+                            <input type="date" class="form-control" id="dateDeNaissance" [(ngModel)]="inscriptionForm.dateDeNaissance">
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <label for="choix-dossier" class="form-label">Voulez vous completer votre dossier de recherche maintenant ?</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="choix-dossier" value="true" [(ngModel)]="choixDossier">
+                            <label class="form-check-label" for="choix-dossier">Oui</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="choix-dossier" value="false" [(ngModel)]="choixDossier">
+                            <label class="form-check-label" for="choix-dossier">Non</label>
+                        </div>
+                    </div>
+                    <div *ngIf="choixDossier == 'true'">
+                        <hr class="mt-4">
+                        <div class="col-12 mt-2">
+                            <label for="revenu" class="form-label">Vos revenus (par mois en euros) :</label>
+                            <input type="number" class="form-control" id="revenu" [(ngModel)]="inscriptionForm.dossier.revenu">
+                        </div>
+                        <div class="col-12 mt-2">
+                            <label for="revenuGarant" class="form-label">Les revenus de votre garant (par mois en euros) :</label>
+                            <input type="number" class="form-control" id="revenuGarant" [(ngModel)]="inscriptionForm.dossier.revenuGarant">
+                        </div>
+                        <div class="col-12 mt-2">
+                            <label for="situationGarant" class="form-label">La situation de votre garant :</label>
+                            <select class="form-select" [(ngModel)]="inscriptionForm.dossier.situationGarant">
+                                <option value="">Choisir une situation</option>
+                                <option *ngFor="let sit of situations" [value]="sit">{{sit}}</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 mt-3 mb-1">
-                <button type="submit" class="btn btn-primary rounded-pill" (click)="register()">S'inscrire</button>
-            </div>
-            <hr class="mt-4">
-            <div class="col-12">
-                <p class="text-center mb-0">Déjà inscrit ? <a class="link-primary" (click)="redirectLogIn()">Se connecter</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row" *ngIf="inscriptionRealise">
-    <div class="col-md-4 offset-md-4">
-        <div class="login-form mt-4 p-4">
-            <h2 class="text-center">Inscription</h2>
-            <hr class="mt-4">
-            <div class="col-12 mt-2">
-                <p class="text-center">Inscription réalisée</p>
-                <p class="text-center">Redirection vers la page de connexion en cours</p>
+                <div class="col-12 mt-3 mb-1">
+                    <button type="submit" class="btn btn-primary rounded-pill" (click)="register()">S'inscrire</button>
+                </div>
+                <hr class="mt-4">
+                <div class="col-12">
+                    <p class="text-center mb-0">Déjà inscrit ? <a class="link-primary" (click)="redirectLogIn()">Se connecter</a></p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
+    <div class="row" *ngIf="inscriptionRealise">
+        <div class="col-md-4 offset-md-4">
+            <div class="login-form mt-4 p-4">
+                <h2 class="text-center">Inscription</h2>
+                <hr class="mt-4">
+                <div class="col-12 mt-2">
+                    <p class="text-center">Inscription réalisée</p>
+                    <p class="text-center">Redirection vers la page de connexion en cours</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="espace-blanc">
+    </div>
+</div>

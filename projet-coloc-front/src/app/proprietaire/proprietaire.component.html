@@ -2,11 +2,11 @@
     <div class="content">
         <div class="categorie-proprietaire">
             <p class="titre-info">Informations personnelles</p>
-            <div class="head-categorie" *ngIf="proprietaireForm">
-                <p class="categorie-titre">{{proprietaireForm.civ}} {{proprietaireForm.nom}}
-                    {{proprietaireForm.prenom}}</p>
+            <div class="head-categorie">
+                <p class="categorie-titre">{{proprietaire.civ}} {{proprietaire.nom}}
+                    {{proprietaire.prenom}}</p>
                 <p>
-                    <button class="btn btn-primary" id="boutonAfficher-nomprenom" type="button"
+                    <button class="btn btn-primary" (click)="edit(proprietaire.id)" id="boutonAfficher-nomprenom" type="button"
                         data-bs-toggle="collapse" data-bs-target="#nomprenom" aria-expanded="false"
                         aria-controls="nomprenom">Modifier</button>
                 </p>
@@ -39,7 +39,7 @@
                                     <button (click)="save()" type="submit" class="btn btn-outline-dark bouton"
                                         data-bs-toggle="collapse" data-bs-target="#nomprenom" aria-expanded="false"
                                         aria-controls="nomprenom">Enregistrer</button>
-                                    <button (click)="cancel()" type="submit" class="btn btn-outline-dark bouton"
+                                    <button (click)="cancel()" class="btn btn-outline-dark bouton"
                                         data-bs-toggle="collapse" data-bs-target="#nomprenom" aria-expanded="false"
                                         aria-controls="nomprenom">Annuler</button>
                                 </div>
@@ -49,10 +49,10 @@
                 </div>
             </div>
 
-            <div class="head-categorie" *ngIf="proprietaireForm">
-                <p class="categorie-titre">{{proprietaireForm.username}}</p>
+            <div class="head-categorie">
+                <p class="categorie-titre">{{proprietaire.username}}</p>
                 <p>
-                    <button class="btn btn-primary" id="boutonAfficher-usermdp" type="button" data-bs-toggle="collapse"
+                    <button class="btn btn-primary" (click)="edit(proprietaire.id)" id="boutonAfficher-usermdp" type="button" data-bs-toggle="collapse"
                         data-bs-target="#usermdp" aria-expanded="false" aria-controls="usermdp">Modifier</button>
                 </p>
             </div>
@@ -86,9 +86,9 @@
             </div>
 
             <div class="head-categorie" *ngIf="proprietaireForm">
-                <p class="categorie-titre">{{proprietaireForm.email}} - {{proprietaireForm.tel}}</p>
+                <p class="categorie-titre">{{proprietaire.email}} - {{proprietaire.tel}}</p>
                 <p>
-                    <button class="btn btn-primary" id="boutonAfficher-mailnum" type="button" data-bs-toggle="collapse"
+                    <button class="btn btn-primary" (click)="edit(proprietaire.id)" id="boutonAfficher-mailnum" type="button" data-bs-toggle="collapse"
                         data-bs-target="#mailnum" aria-expanded="false" aria-controls="mailnum">Modifier</button>
                 </p>
             </div>
@@ -129,9 +129,9 @@
                 <div class="head-categorie">
                     <p class="categorie-titre">{{logement.titre}}</p>
                     <p>
-                        <button class="btn btn-primary" id="boutonAfficher-logement" type="button"
+                        <button class="btn btn-primary" (click)="edit(proprietaire.id)"id="boutonAfficher-logement" type="button"
                             data-bs-toggle="collapse" data-bs-target="#logement" aria-expanded="false"
-                            aria-controls="logement">Modifier</button>
+                            aria-controls="logement">Modifier </button>
                     </p>
                 </div>
                 <div class="collapse" id="logement">
@@ -140,7 +140,7 @@
                             <div class="content-first">
                                 <form>
                                     <div class="mb-3">
-                                        <carousel objectFit="contain" [overflowCellsLimit]=1>
+                                        <carousel objectFit="contain">
                                             <div class="carousel-cell" *ngFor="let photo of logement.photos">
                                                 <img src="../../assets/img/exempleLogement/{{photo.chemin}}">
                                             </div>
@@ -198,6 +198,9 @@
                                         <button (click)="cancel()" type="submit" class="btn btn-outline-dark bouton"
                                             data-bs-toggle="collapse" data-bs-target="#logement" aria-expanded="false"
                                             aria-controls="logement">Annuler</button>
+                                        <button alert="" class="btn btn-outline-dark bouton"
+                                            data-bs-toggle="collapse"
+                                            aria-expanded="false">Supprimer le logement</button>
                                     </div>
                                 </form>
                             </div>

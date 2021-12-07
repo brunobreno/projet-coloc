@@ -136,11 +136,11 @@ export class Localisation {
     voie?: string,
     num?: number
   ) {
-    this.departement = departement
-    this.ville = ville
-    this.codePostal = codePostal
-    this.voie = voie
-    this.num = num
+    this.departement = departement;
+    this.ville = ville;
+    this.codePostal = codePostal;
+    this.voie = voie;
+    this.num = num;
   }
 
 }
@@ -184,7 +184,6 @@ export class Locataire extends Utilisateur {
 
   constructor(
     id?: number,
-    version?: number,
     nom?: string,
     prenom?: string,
     civ?: string,
@@ -201,7 +200,7 @@ export class Locataire extends Utilisateur {
     photos?: Array<Photo>,
     hobbies?: Array<Hobby>
   ) {
-    super(id, version, nom, prenom, civ, email, tel, password)
+    super(id, nom, prenom, civ, email, tel, password)
     this.recherche = recherche
     this.description = description
     this.situation = situation
@@ -290,16 +289,16 @@ export class Logement {
 export class Message {
   id: number;
   version: number;
-  emetteur: Utilisateur;
-  destinataire: Utilisateur;
+  emetteur: UtilisateurDTO;
+  destinataire: UtilisateurDTO;
   contenu: string;
   date: string;
 
   constructor(
     id?: number,
     version?: number,
-    emetteur?: Utilisateur,
-    destinataire?: Utilisateur,
+    emetteur?: UtilisateurDTO,
+    destinataire?: UtilisateurDTO,
     contenu?: string,
     date?: string
   ) {
@@ -460,5 +459,21 @@ export class ProprietaireDTOInscription {
     this.email = email;
     this.tel = tel;
     this.password = password;
+  }
+}
+
+export class MessageDTO {
+  emetteurId: number;
+  destinataireId: number;
+  contenu: string;
+
+  constructor(
+    emetteurId?: number,
+    destinataireId?: number,
+    contenu?: string,
+  ) {
+    this.emetteurId = emetteurId
+    this.destinataireId = destinataireId
+    this.contenu = contenu
   }
 }

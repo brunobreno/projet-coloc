@@ -6,6 +6,11 @@
     padding: 0px;
     scrollbar-width: none;
   }
+
+// body{
+//   position:relative;
+//   overflow:auto;
+// }
   
   .no-padding
   {
@@ -200,11 +205,12 @@
   
   .map-main-container {
     width: 47%;
-    height: 1200px;
+    height: 100%;
+    // margin-bottom: 60px;
     position: fixed;
     right: 0;
     order: 1;
-    /*z-index: -2;*/
+    // z-index: -2;
     /*border: solid 1px black;*/
   }
   
@@ -622,6 +628,13 @@
     font-size: 21px;
   }
   
-  
-  
+
+  .applyFilter{
+    color: gray;
+    font-size: 0.8rem;
+  }
+
+  .applyFilter:hover{
+    text-decoration: underline;
+  }
   
