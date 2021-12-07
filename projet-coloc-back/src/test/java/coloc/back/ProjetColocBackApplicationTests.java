@@ -142,13 +142,13 @@ class ProjetColocBackApplicationTests {
 		salleDeSport = commoditeRepository.save(salleDeSport);
 		Commodite fibre = new Commodite("internet fibre","fibre.svg");
 		fibre = commoditeRepository.save(fibre);
-		Commodite climatisation = new Commodite("climatisation",".climatisation.svg");
+		Commodite climatisation = new Commodite("climatisation","climatisation.svg");
 		climatisation = commoditeRepository.save(climatisation);
 		Commodite television = new Commodite("television","television.svg");
 		television = commoditeRepository.save(television);
 		Commodite laveLinge = new Commodite("lave linge","lave-linge.svg");
 		laveLinge = commoditeRepository.save(laveLinge);
-		Commodite laveVaiselle = new Commodite("lave vaisselle","lave-vaiselle.svg");
+		Commodite laveVaiselle = new Commodite("lave vaisselle","lave-vaisselle.svg");
 		laveVaiselle = commoditeRepository.save(laveVaiselle);
 
 		// Creation des Regle

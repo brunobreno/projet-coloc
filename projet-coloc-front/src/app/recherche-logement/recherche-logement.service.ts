@@ -83,7 +83,7 @@ export class RechercheLogementService {
     this.http.get<Array<Logement>>(this.logementUrl + "complete" ).subscribe(response => {
     console.log("passage par load (service)")
       this.logements = response;
-      console.log("load " + this.logements)
+      console.log("load " + JSON.stringify(this.logements))
     }, error => console.log(error));
   }
 

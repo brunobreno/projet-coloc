@@ -4,8 +4,9 @@
         </div>
         <div class="row barre-recherche">
             <!--Faire redirection vers les logements dans la ville -->
-            <button class="col-1" id="btn-recherche"></button>
-            <input class="col" id="recherche-input" placeholder="Dans quelle ville cherchez-vous une colocation ?">
+            <button class="col-1" id="btn-recherche" (click)="search(filtreVille)" 
+            [routerLink]="['/recherche-logement/',filtreVille]" ></button>
+            <input [(ngModel)]="filtreVille" class="col" id="recherche-input" placeholder="Dans quelle ville cherchez-vous une colocation ?">
         </div>
     </div>
     <div class="row" id="ville-populaires-container">

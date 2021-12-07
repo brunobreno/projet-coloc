@@ -14,7 +14,7 @@ import { MessagerieComponent } from './messagerie/messagerie.component';
 import { MessagerieNouveauContactComponent } from './messagerie-nouveau-contact/messagerie-nouveau-contact.component';
 
 const routes: Routes = [
-  { path: "", component: HomePageComponent},
+  { path: "", redirectTo: '/home', pathMatch: 'full'},
   { path: "home", component: HomePageComponent},
   { path: "login", component: LogInComponent},
   { path: "inscription", component: InscriptionComponent},
@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: "locataire/:id", component: ProfilLocataireComponent},
   { path: "proprietaire/:id", component: ProprietaireComponent},
   { path: "ajout-logement", component: AjoutLogementComponent},
-  { path: "description-logement", component: DescriptionLogementComponent},
+  { path: "description-logement/:id", component: DescriptionLogementComponent},
   { path: "messagerie", component: MessagerieComponent},
   { path: "messagerie-nouveau/:id", component: MessagerieNouveauContactComponent},
   { path: "**", component: RedirectComponent},

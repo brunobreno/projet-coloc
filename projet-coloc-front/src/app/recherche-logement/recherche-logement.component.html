@@ -446,7 +446,7 @@
               </carousel>
             </div>
 
-            <div class="card-content-main-container" [routerLink]="['/descriptionLogement/',logement.id]" >
+            <div class="card-content-main-container" [routerLink]="['/description-logement/',logement.id]" >
               <div class="card-title-container">
                 <h6 class="card-title"> {{logement.titre}}</h6>
                 <div class="card-title-spec">
@@ -456,7 +456,7 @@
                 </div>
 
               </div>
-              <div class="card-content-description-main-container" [routerLink]="['/descriptionLogement/',logement.id]" >
+              <div class="card-content-description-main-container" [routerLink]="['/description-logement/',logement.id]" >
                 <ul>
                   <li>
                     <mat-icon *ngIf="logement.typeLogement == 'Maison'">house</mat-icon>
@@ -483,7 +483,7 @@
                 </ul>
               </div>
 
-              <div class="card-content-link-main-container" [routerLink]="['/descriptionLogement/',logement.id]"  >
+              <div class="card-content-link-main-container" [routerLink]="['/description-logement/',logement.id]"  >
                 <a class="card-link">En savoir plus</a>
                 <div class="card-content-update-main-container">
                   <p class="card-text"><small class="text-muted">Posté le jj-mm-aaaa</small></p>
