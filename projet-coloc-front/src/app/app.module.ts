@@ -6,6 +6,7 @@ import { AppConfigService } from './app-config.service';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatIconModule} from '@angular/material/icon'; 
+import {CrystalLightboxModule} from '@crystalui/angular-lightbox';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,9 +29,18 @@ import { LogementComponent } from './logement/logement.component';
 import { AjoutLogementComponent } from './ajout-logement/ajout-logement.component';
 import { DescriptionLogementComponent } from './description-logement/description-logement.component';
 import { AjoutLogementHttpService } from './ajout-logement/ajout-logement-http.service';
+import { HomePageComponent } from './home-page/home-page.component';
+import { HomePageService } from './home-page/home-page.service';
+import { MessagerieComponent } from './messagerie/messagerie.component';
+import { MessagerieService } from './messagerie/messagerie.service';
+import { MessagerieNouveauContactComponent } from './messagerie-nouveau-contact/messagerie-nouveau-contact.component';
+import { MessagerieNouveauContactService } from './messagerie-nouveau-contact/messagerie-nouveau-contact.service';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { DescriptionLogementService } from './description-logement/description-logement.service';
 import { ChambreComponent } from './chambre/chambre.component';
+import { MapComponent } from './map/map.component';
+import { MarkerService } from './map/marker.service';
+import { MapHttpService } from './map/map-http.service';
 
 
 @NgModule({
@@ -49,7 +59,12 @@ import { ChambreComponent } from './chambre/chambre.component';
     LogementComponent,
     DescriptionLogementComponent,
     AjoutLogementComponent,
-    ChambreComponent    
+    ChambreComponent,
+    DescriptionLogementComponent,
+    HomePageComponent,
+    MessagerieComponent,
+    MessagerieNouveauContactComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -58,9 +73,11 @@ import { ChambreComponent } from './chambre/chambre.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    IvyCarouselModule
+    IvyCarouselModule,
+    CrystalLightboxModule
     //NoopAnimationsModule
   ],
+ 
   providers: [
     AppConfigService, 
     LocataireHttpService, 
@@ -69,7 +86,12 @@ import { ChambreComponent } from './chambre/chambre.component';
     RechercheLocataireService, 
     AjoutLogementHttpService,
     DescriptionLogementService,
-    RechercheLogementComponent],
+    RechercheLogementComponent,
+    HomePageService, 
+    MessagerieService, 
+    MessagerieNouveauContactService,
+    MapHttpService, 
+    MarkerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

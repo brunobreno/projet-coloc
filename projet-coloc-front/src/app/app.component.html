@@ -1,10 +1,10 @@
-<header>
+<header class="row fixed-top mb-10">
   <div class="header-wrap">
     <div class="header-main-container">
 
       <div class="header-left-container">
 
-        <div class="header-logo-main-container" [routerLink]="['/accueil']" routerLinkActive="active">
+        <div class="header-logo-main-container" [routerLink]="['/home']" routerLinkActive="active">
         </div>
 
         <div class="header-research-main-container">
@@ -13,11 +13,12 @@
             placeholder="Dans quelle ville cherchez-vous une colocation ?" 
             id="barre-recherche"
             [(ngModel)]="filtre">
-            <button id="btn-recherche" (click)="search(filtre)"></button>
+            <button id="btn-recherche" (click)="search(filtre)" 
+            [routerLink]="['/rechercheLogement/',filtre]" ></button>
           </div>
         </div>
 
-      </div>
+      </div> 
 
       <!-- User non connecté -->
       <div class="header-account-main-container" *ngIf="!userConnect">
@@ -31,10 +32,10 @@
         <button type=button class="header-button-account button1 last-button">
           <i class="bi-globe"></i>
         </button>
-      </div>
+      </div> 
 
       <!-- User connecté en tant que locataire-->
-      <div class="header-account-main-container" *ngIf= "userConnect=='Locataire'">
+       <div class="header-account-main-container" *ngIf= "userConnect=='Locataire'">
         <button type=button class="header-button-account button1 first-button" >
           Mes recherches
         </button>
@@ -53,7 +54,7 @@
       </div>
 
      <!-- User connecté en tant que propriétaire-->
-     <div class="header-account-main-container" *ngIf= "(userConnect | typeof) =='Propretaire'">
+      <div class="header-account-main-container" *ngIf= "(userConnect | typeof) =='Propretaire'">
       <button type=button class="header-button-account button1 first-button" >
         Candidatures reçues
       </button>
@@ -73,14 +74,14 @@
     </div>
   </div>
 
-</header>
+</header> 
 
-<div class="container-fluid">
+<div class="container-fluid row">
   <router-outlet></router-outlet>
 </div>
 
 
-<footer>
+<footer class="fixed-bottom row mt-10">
   <div class="fContent">
     <div class="fLeft">
       <img src="../assets/img/logoRoofBlack.svg" alt="logo LaColoc">
@@ -97,4 +98,5 @@
   </div>
 
 
-</footer>
+</footer> 
+

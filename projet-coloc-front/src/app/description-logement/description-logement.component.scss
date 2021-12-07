@@ -5,6 +5,15 @@
   scrollbar-width: none;
 }
 
+h6
+{
+  margin-bottom: 10px !important;
+}
+
+carousel {
+  z-index: 1;
+}
+
 .card-style {
   background-color: #fbfbfb;
   border: solid 1px lightgrey;
@@ -189,7 +198,7 @@
 }
 
 #photo-section {
-  height: 400px;
+  //height: 400px;
   display: flex;
   justify-content: center;
   width: 80%;
@@ -273,9 +282,13 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding-top: 6px;
+  padding-top: 12px;
   color: #565656;
   width: 85%;
+}
+
+.occupant-hobbies img {
+  height: 27px;
 }
 
 #chambre-section .section-content{
@@ -290,6 +303,8 @@
   margin: 25px 18px 40px 15px;
 }
 
+
+
 .caracteristiques-container .caracteristiques-list {
   margin-left: auto;
   margin-right: auto;
@@ -301,7 +316,7 @@
 
 .caracteristiques-container .caracteristiques-list .caracteristiques {
   width: 23%;
-  min-width: 200px;
+  min-width: 155px;
   padding-bottom: 5px;
   //height: 50px;
   display: flex;
@@ -314,10 +329,7 @@
   padding: 1px 7px 1px 0px;
 }
 
-#chambre-section .caracteristiques-container{
-  width: 50%;
-  height: 350px;
-}
+
 
 .map-main-container {
   display: flex;

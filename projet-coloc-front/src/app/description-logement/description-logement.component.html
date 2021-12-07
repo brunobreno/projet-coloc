@@ -1,11 +1,11 @@
 <div class="page-main-container">
 
-    <!-- Section Titre -->
-    <div class="section-container" id="title-section">
-      <h4>Colocation jeunes actifs Quartier Graslin</h4>
-      <div class="subtitle">
-        <div class="subtext">
-          <!-- <span class="subtext"> Logement :</span>
+  <!-- Section Titre -->
+  <div class="section-container" id="title-section">
+    <h4> {{logement.titre}} </h4>
+    <div class="subtitle">
+      <div class="subtext">
+        <!-- <span class="subtext"> Logement :</span>
           <span class="subtext"> Appartement</span>
           <span class="subtext"> - </span>
           <span class="subtext"> 120m²</span>
@@ -20,197 +20,143 @@
           <span class="subtext"> 425€ </span>
           <span class="subtext"> | </span> -->
 
-          {{logement.localisation.num}} {{logement.localisation.voie}}, {{logement.localisation.ville}} 
-          ({{logement.localisation.codePostal}} {{logement.localisation.departement}})
+        {{logement.localisation.num}} {{logement.localisation.voie}}, {{logement.localisation.ville}}
+        ({{logement.localisation.codePostal}} {{logement.localisation.departement}})
 
-        </div>
+      </div>
 
+      <div style="display: flex;">
+        <button class="subtext" id="partage"> Partager <span class="material-icons-outlined subtext"> share
+          </span></button>
+        <button class="subtext" id="favoris"> Ajouter aux favoris<span
+            class="material-icons-outlined subtext">favorite_border</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section Photo -->
+  <div class="section-container" id="photo-section">
+    <carousel lightbox-group objectFit="contain" [loop]="true" [dots]="true" [margin]="20" [cellsToShow]="4"  >
+      <div  class="carousel-cell" *ngFor="let photo of logement.photos" >
+        <img src="../../assets/img/exempleLogement/{{photo.chemin}}" lightbox >
+      </div>
+    </carousel>
+  </div>
+
+
+
+
+
+  <div id="navigation-main-containter">
+
+    <div id="sticky-main-container">
+      <div id="sticky-card">
+
+        <h5 *ngIf="logement.dateDispo">
+          <fa-icon [icon]="faCalendar"></fa-icon>
+          Disponible le : {{logement.dateDispo}}
+        </h5>
+
+        <h5>
+          <fa-icon [icon]="faMoneyBill"> </fa-icon>Loyer tout compris :
+           {{logement.loyer + logement.charges}}€
+        </h5>
+
+        <h5>
+          <fa-icon [icon]="faUsers"></fa-icon> Nombre d'occupant : {{locataires.length}}
+        </h5>
+
+        <h5>
+          <fa-icon [icon]="faExpandAlt"></fa-icon>
+          Superficie : {{logement.surface}} m²
+        </h5>
         <div style="display: flex;">
-          <button class="subtext" id="partage"> Partager <span class="material-icons-outlined subtext"> share
-            </span></button>
-          <button class="subtext" id="favoris"> Ajouter aux favoris<span
-              class="material-icons-outlined subtext">favorite_border</span></button>
+          <button class="contact-button" id="envoi_message">
+            <fa-icon [icon]="faCommentAlt"></fa-icon>
+            Envoyer un Message
+          </button>
+          <button class="contact-button" id="depot-dossier">
+            <fa-icon [icon]="faFileDownload"></fa-icon>
+            Déposer un dossier
+          </button>
         </div>
+
       </div>
+
     </div>
 
-    <!-- Section Photo -->
-    <div class="section-container" id="photo-section">
+    <div id="scrollable-main-containter">
 
-      <div class="photo-side-container" style="align-items: flex-end;">
-        <div class="photo-mosaic-container ">
-          <div class="photo-content"><img src="../img/exempleLogement/logement2/logement2_1.png" class="h-100"
-              alt="..."></div>
-        </div>
-        <div class="photo-mosaic-container">
-          <div class="photo-content"><img src="../img/exempleLogement/logement2/logement2_2.png" class="h-100"
-              alt="..."></div>
-        </div>
-      </div>
 
-      <div class="photo-center-container">
-        <div class="photo-content"><img src="../img/exempleLogement/logement3/logement3_1.png" class="h-100" alt="...">
-        </div>
-      </div>
 
-      <div class="photo-side-container" style="align-items: flex-start;">
-        <div class="photo-mosaic-container">
-          <div class="photo-content"><img src="../img/exempleLogement/logement3/logement3_2.png" class="h-100"
-              alt="..."></div>
-        </div>
-        <div class="photo-mosaic-container">
-          <div class="photo-content"><img src="../img/exempleLogement/logement2/logement2_1.png" class="h-100"
-              alt="..."></div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#photoModal">
-      Launch demo modal
-    </button>
+      <!-- Section Infos clés -->
+      <div class="section-container" id="info-section">
+        <h4>Les infos clés</h4>
 
-    <!-- Modal Photo -->
-    <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <!-- Caroussel -->
+        <div class="caracteristiques-container ">
 
-            <div id="carouselLogementIndicators" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselLogementIndicators" data-bs-slide-to="0" class="active"
-                  aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselLogementIndicators" data-bs-slide-to="1"
-                  aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselLogementIndicators" data-bs-slide-to="2"
-                  aria-label="Slide 3"></button>
-              </div>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="../../assets/img/exempleLogement/logement1/logement1_1.png" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="../../assets/img/exempleLogement/logement1/logement1_2.png" class="d-block w-100" alt="...">
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselLogementIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselLogementIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+          <div id="info-container">
+
+
+            <div class="card-style">
+              <h5>Le logement</h5>
+              <span>Type : {{logement.typeLogement}}</span>
+              <span>Superficie : {{logement.surface}}m² </span>
+              <span>Nombre de chambres : {{logement.nChambre}} </span>
+              <span>Nombre de chambre(s) occupée(s): {{logement.nChambreOccup}} </span>
+              <span>Nombre de sdb : {{logement.nSdb}} </span>
+              <span *ngIf="logement.meuble" >Meublé : Oui</span>
+              <span *ngIf="!logement.meuble" >Meublé : Non</span>
             </div>
 
+            <div class="card-style">
+              <h5>Les dépenses</h5>
+              <span>Loyer : {{logement.loyer}}€ </span>
+              <span>Charges : {{logement.charges}}€ </span>
+              <span>Caution : {{logement.caution}}€ </span>
+            </div>
+
+
           </div>
         </div>
       </div>
-    </div>
+      <!-- Section Colocation -->
+      <div class="section-container" id="occupant-section">
+        <h4>La colocation</h4>
 
+        <div class="caracteristiques-container ">
+          <h6>Description de la coloc'</h6>
 
-    <div id="navigation-main-containter">
-
-      <div id="sticky-main-container">
-        <div id="sticky-card">
-
-          <h5> <fa-icon [icon]="faCalendar"></fa-icon>
-            Disponible le : {{logement.dateDispo}}
-          </h5>
-
-          <h5> <fa-icon [icon]="faMoneyBill"> </fa-icon>Loyer tout compris : 520€</h5>
-
-          <h5> <fa-icon [icon]="faUsers"></fa-icon> Nombre d'occupant :  </h5>
-
-          <h5> <fa-icon [icon]="faExpandAlt"></fa-icon> 
-            Superficie de la chambre : 22 m² </h5>
-          <div style="display: flex;">
-            <button class="contact-button" id="envoi_message">
-              <fa-icon [icon]="faCommentAlt"></fa-icon> 
-              Envoyer un Message </button>
-            <button class="contact-button" id="depot-dossier">
-              <fa-icon [icon]="faFileDownload"></fa-icon> 
-              Déposer un dossier </button>
+          <div class="description text-truncate text-truncate-6">
+            {{logement.description}}
           </div>
 
         </div>
 
-      </div>
-
-      <div id="scrollable-main-containter">
 
 
-
-
-        <!-- Section Infos clés -->
-        <div class="section-container" id="info-section">
-          <h4>Les infos clés</h4>
-
-          <div class="caracteristiques-container ">
-
-            <div id="info-container">
-
-
-              <div class="card-style">
-                <h5>Le logement</h5>
-                <span>Type : {{logement.typeLogement}}</span>
-                <span>Superficie : {{logement.surface}}m² </span>
-                <span>Nombre de chambres : {{logement.nChambre}} </span>
-                <span>Nombre de chambre(s) occupée(s): {{logement.nChambreOccup}} </span>
-                <span>Nombre de sdb : {{logement.nSdb}} </span>
-                <span>Meublé : Oui</span>
+        <div class="caracteristiques-container">
+          <h6>Les occupants</h6>
+          <div class="occupant-container">
+            <div *ngFor="let loc of locataires" class="occupant-card-mini card-style">
+              <div class="occupant-card-mini-photo" style="outline: solid 2px #ed99a1;">
+                <img src="../img/occupants/occupant1-1.jpg" class="h-100" alt="...">
               </div>
-
-              <div class="card-style">
-                <h5>Les dépenses</h5>
-                <span>Loyer : {{logement.loyer}}€ </span>
-                <span>Charges : {{logement.charges}}€ </span>
-                <span>Caution : {{logement.caution}}€ </span>
-              </div>
-
-
-            </div>
-          </div>
-        </div>
-        <!-- Section Colocation -->
-        <div class="section-container" id="occupant-section">
-          <h4>La colocation</h4>
-
-          <div class="caracteristiques-container ">
-            <h6>Description de la coloc'</h6>
-
-            <div class="description text-truncate text-truncate-6">
-              {{logement.description}}
-            </div>
-
-          </div>
-
-
-
-          <div class="caracteristiques-container">
-            <h6>Les occupants</h6>
-            <div class="occupant-container">
-              <div  *ngFor="let loc of locataires" class="occupant-card-mini card-style">
-                <div class="occupant-card-mini-photo" style="outline: solid 2px #ed99a1;">
-                  <img src="../img/occupants/occupant1-1.jpg" class="h-100" alt="...">
-                </div>
-                <div class="occupant-card-mini-content">
-                  <span class="occupant-desc"> {{loc.prenom }}</span>
-                  <span class="occupant-desc">{{loc.situation }}</span>
-                  <div class="occupant-hobbies">
-                    <span class="material-icons">menu_book</span>
-                    <span class="material-icons">sports_esports</span>
-                    <span class="material-icons">brush</span>
-                  </div>
+              <div class="occupant-card-mini-content">
+                <span class="occupant-desc"> {{loc.prenom }}</span>
+                <span class="occupant-desc">{{loc.situation }}</span>
+                <div class="occupant-hobbies">
+                  <img src="../../assets/img/icons/cinema.svg" alt="">
+                  <img src="../../assets/img/icons/jeuxSociete.svg" alt="">
+                  <img src="../../assets/img/icons/cuisine.svg" alt="">
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-         <!-- <div class="caracteristiques-container">
+        <!-- <div class="caracteristiques-container">
 
             <h6>Le mode de vie adopté</h6>
 
@@ -244,160 +190,116 @@
             </div>
           </div> -->
 
-        </div>
-
-
-        <!-- Section logement -->
-        <div div class="section-container" id="section-logement">
-
-          <h4>Les caractéristiques du logement</h4>
-
-          <div class="caracteristiques-container ">
-
-            <h6>Les commodités proposées</h6>
-            <div class="caracteristiques-list card-style">
-              <div  *ngFor="let com of logement.commodites"  class="caracteristiques">
-                <img src="../../assets/img/icons/{{com.chemin}}" class="" alt="...">  {{com.libelle}}
-              </div>
-            </div>
-          </div>
-
-          <div class="caracteristiques-container">
-            <h6>Les règles à respecter</h6>
-            <div class="caracteristiques-list card-style">
-              <div  *ngFor="let regle of logement.regles"  class="caracteristiques">
-                <img src="../../assets/img/icons/{{regle.chemin}}" class="" alt="...">  {{regle.libelle}}
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-
-
-
-        <!-- Section Chambre -->
-        <div class="section-container" id="chambre-section">
-          <h4>Les chambres (disponibles?)</h4>
-          <div *ngFor="let chambre of chambres" style="display: flex;">
-            <div class="caracteristiques-container">
-              <h6>Les photos </h6>
-              <div class="photo-content"><img src="../../assets/img/exempleLogement/logement2/logement2_2.png" class="h-100"
-                  alt="...">
-              </div>
-
-              <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#photoModal">
-      Launch demo modal
-    </button>
-
-    <!-- Modal Photo -->
-    <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <!-- Caroussel -->
-
-            <div id="carouselChambreIndicators" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselChambreIndicators" data-bs-slide-to="0" class="active"
-                  aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselChambreIndicators" data-bs-slide-to="1"
-                  aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselChambreIndicators" data-bs-slide-to="2"
-                  aria-label="Slide 3"></button>
-              </div>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="../img/exempleLogement/logement1/logement1_1.png" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="../img/exempleLogement/logement1/logement1_2.png" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="../img/exempleLogement/logement2/logement2_1.png" class="d-block w-100" alt="...">
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselChambreIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselChambreIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-
-          </div>
-        </div>
       </div>
-    </div>
 
+
+      <!-- Section logement -->
+      <div div class="section-container" id="section-logement">
+
+        <h4>Les caractéristiques du logement</h4>
+
+        <div class="caracteristiques-container ">
+
+          <h6>Les commodités proposées</h6>
+          <div class="caracteristiques-list card-style">
+            <div *ngFor="let com of logement.commodites" class="caracteristiques">
+              <img src="../../assets/img/icons/{{com.chemin}}" class="" alt="..."> {{com.libelle}}
             </div>
+          </div>
+        </div>
+
+        <div class="caracteristiques-container">
+          <h6>Les règles à respecter</h6>
+          <div class="caracteristiques-list card-style">
+            <div *ngFor="let regle of logement.regles" class="caracteristiques">
+              <img src="../../assets/img/icons/{{regle.chemin}}" class="" alt="..."> {{regle.libelle}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+      <!-- Section Chambre -->
+      <div class="section-container" id="chambre-section">
+        <h4>Les chambres (disponibles?)</h4>
+        <div *ngFor="let chambre of chambres;let index=index;" style="display: flex;flex-direction: column;" >
+          <div class="caracteristiques-container" >
+          <h5>Chambre {{index+1}}</h5>
+          <div style="display: flex;">
+            <div class="caracteristiques-container" style="height: 350px;" style="width: 50%;">
+              <h6>Les photos </h6>
+              <div style="display: flex;align-items: center;height:100%;">
+                <carousel lightbox-group  objectFit="contain" [dots]="true" [loop]="true" [cellWidth]="'100%'">
+                  <div class="carousel-cell" *ngFor="let photo of chambre.photos">
+                    <img src="../../assets/img/exempleLogement/{{photo.chemin}}" lightbox >
+                  </div>
+                </carousel>
+              </div>
+            </div>
+  
             <div class="caracteristiques-container" style="width: 50%;">
               <h6>Description </h6>
               <div class="description text-truncate text-truncate-12">
                 {{chambre.description}}
               </div>
             </div>
+
           </div>
+         
+          <div class="caracteristiques-container" *ngIf="chambre.commodites.length > 0">
 
-          
-          <div class="caracteristiques-container">
-
-            <h6>Les commodités proposées</h6>
-
+            <h6 >Proposé dans la chambre</h6>
+            
             <div class="caracteristiques-list card-style">
-
-              <div class="caracteristiques"> <span class="material-icons-round">balcony</span>
-                Balcon
+              <div *ngFor="let com of chambre.commodites" class="caracteristiques">
+                <img src="../../assets/img/icons/{{com.chemin}}" class="" alt="..."> {{com.libelle}}
               </div>
-              <div class="caracteristiques"> <span class="material-icons-round">accessible</span>
-                Acces handicapé
-              </div>
-              <div class="caracteristiques"><span class="material-icons">ac_unit</span>
-                Climatisation
-              </div>
-              <div class="caracteristiques"> <span class="material-icons">tv</span>
-                Télévision
-              </div>
-              <div class="caracteristiques"> <span class="material-icons-outlined">bed</span>
-                Lit Double
-              </div>
-
             </div>
           </div>
 
+          <div class="caracteristiques-container" style="width: 85%;
+          border-bottom: solid 2px lightgray;
+          margin: auto;">
+          </div>
+        </div>
         </div>
 
-        <!-- Section détails
+      </div>
+
+
+
+
+      <!-- Section détails
         <div class="section-container" id="détails-section">
           <h6>Les choses à savoir</h6>
           <div></div>
         </div> -->
 
-        <!-- Section localisation -->
-        <div class="section-container" id="localisation-section">
-          <h6>Où se situe le logement</h6>
-
-          <div class="description" style="margin-top: 20px;">
-            Adresse exacte :   {{logement.localisation.num}} {{logement.localisation.voie}}, {{logement.localisation.ville}} 
-            ({{logement.localisation.codePostal}} {{logement.localisation.departement}})
-          </div>
-
-          <div class="map-main-container">
-            <div class="map-content-container">
-              <div class="map" id=mapid>
-              </div>
+      <!-- Section localisation -->
+      <div class="section-container" id="localisation-section">
+        <h4>La localisation</h4>
+<div class="caracteristiques-container"> 
+        <h6> L'adresse exacte </h6>
+        <div class="description" style="margin-top: 20px;">
+          {{logement.localisation.num}} {{logement.localisation.voie}}, {{logement.localisation.ville}}
+          ({{logement.localisation.codePostal}} {{logement.localisation.departement}})
+        </div>
+      </div>
+        <h6> Sur une carte </h6>
+        <div class="map-main-container">
+          <div class="map-content-container">
+            <div class="map" id=mapid>
             </div>
           </div>
         </div>
-
-
-
       </div>
-    </div>
 
+
+
+    </div>
   </div>
+
+</div>

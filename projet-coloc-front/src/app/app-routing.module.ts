@@ -9,17 +9,25 @@ import { LogInComponent } from './log-in/log-in.component';
 import { RechercheLocataireComponent } from './recherche-locataire/recherche-locataire.component';
 import { RedirectComponent } from './redirect/redirect.component';
 import { ProprietaireComponent } from './proprietaire/proprietaire.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { MessagerieComponent } from './messagerie/messagerie.component';
+import { MessagerieNouveauContactComponent } from './messagerie-nouveau-contact/messagerie-nouveau-contact.component';
 
 const routes: Routes = [
+  { path: "", component: HomePageComponent},
+  { path: "home", component: HomePageComponent},
   { path: "login", component: LogInComponent},
   { path: "inscription", component: InscriptionComponent},
-  { path: "profilLocataire", component: ProfilLocataireComponent},
-  { path: "recherche", component: RechercheLogementComponent },
-  { path: "rechercheLocataires", component: RechercheLocataireComponent },
+  { path: "recherche-locataires", component: RechercheLocataireComponent },
+  { path: "recherche-logement/undefined", component: RechercheLogementComponent },
+  { path: "recherche-logement/:ville", component: RechercheLogementComponent },
+  { path: "locataire/:id", component: ProfilLocataireComponent},
   { path: "proprietaire/:id", component: ProprietaireComponent},
-  { path: "ajoutLogement", component: AjoutLogementComponent},
-  { path: "descriptionLogement/:id", component: DescriptionLogementComponent},
-  { path: "**", component: RedirectComponent}
+  { path: "ajout-logement", component: AjoutLogementComponent},
+  { path: "description-logement", component: DescriptionLogementComponent},
+  { path: "messagerie", component: MessagerieComponent},
+  { path: "messagerie-nouveau/:id", component: MessagerieNouveauContactComponent},
+  { path: "**", component: RedirectComponent},
 ];
 
 @NgModule({

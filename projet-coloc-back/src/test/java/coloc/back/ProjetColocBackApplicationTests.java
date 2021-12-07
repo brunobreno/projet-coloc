@@ -10,6 +10,7 @@ import coloc.back.model.Chambre;
 import coloc.back.model.Civilite;
 import coloc.back.model.Commodite;
 import coloc.back.model.Dossier;
+import coloc.back.model.Hobby;
 import coloc.back.model.Localisation;
 import coloc.back.model.Locataire;
 import coloc.back.model.Logement;
@@ -22,6 +23,7 @@ import coloc.back.model.Situation;
 import coloc.back.model.TypeLogement;
 import coloc.back.repository.IChambreRepository;
 import coloc.back.repository.ICommoditeRepository;
+import coloc.back.repository.IHobbyRepository;
 import coloc.back.repository.ILocataireRepository;
 import coloc.back.repository.ILogementRepository;
 import coloc.back.repository.IMessageRepository;
@@ -51,6 +53,8 @@ class ProjetColocBackApplicationTests {
 	private ICommoditeRepository commoditeRepository;
 	@Autowired
 	private IPhotoRepository photoRepository;
+	@Autowired
+	private IHobbyRepository hobbyRepository;
 	
 	String Lorem ="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, ";
 
@@ -160,6 +164,60 @@ class ProjetColocBackApplicationTests {
 		passSanitaire = regleRepository.save(passSanitaire);
 		Regle salarie = new Regle("Pas d'étudiants","salarie.svg");
 		salarie = regleRepository.save(salarie);
+		
+		// Creation des Hobbies
+		Hobby art = new Hobby("Art","art.svg");
+		art = hobbyRepository.save(art);
+		Hobby dessin = new Hobby("Dessin","dessin.svg");
+		dessin = hobbyRepository.save(dessin);
+		Hobby photographie = new Hobby("Photographie","photographie.svg");
+		photographie = hobbyRepository.save(photographie);
+		Hobby lecture = new Hobby("Lecture","lecture.svg");
+		lecture = hobbyRepository.save(lecture);
+
+		
+		Hobby sport = new Hobby("Sport","sport.svg");
+		sport = hobbyRepository.save(sport);
+		Hobby sportEquipe = new Hobby("Sport d'équipe","sportEquipe.svg");
+		sportEquipe = hobbyRepository.save(sportEquipe);
+		
+		Hobby bars = new Hobby("Bars","bars.svg");
+		bars = hobbyRepository.save(bars);
+		Hobby nightLife = new Hobby("Night life","nightLife.svg");
+		nightLife = hobbyRepository.save(nightLife);
+
+		
+		Hobby cuisine = new Hobby("Cuisine","cuisine.svg");
+		cuisine = hobbyRepository.save(cuisine);
+		Hobby jardinage = new Hobby("Jardinage","jardinage.svg");
+		jardinage = hobbyRepository.save(jardinage);
+		Hobby jeuxVidéo = new Hobby("Jeux vidéo","jeuxVidéo.svg");
+		jeuxVidéo = hobbyRepository.save(jeuxVidéo);
+		Hobby jeuxSociete = new Hobby("Jeux de Societe","jeuxSociete.svg");
+		jeuxSociete = hobbyRepository.save(jeuxSociete);
+		
+		Hobby cinema = new Hobby("Cinema","cinema.svg");
+		cinema = hobbyRepository.save(cinema);
+		Hobby musique = new Hobby("Musique","musique.svg");
+		musique = hobbyRepository.save(musique);
+		Hobby guitare = new Hobby("Guitare","guitare.svg");
+		guitare = hobbyRepository.save(guitare);
+		
+		Hobby vegetarien = new Hobby("Vegetarien","vegetarien.svg");
+		vegetarien = hobbyRepository.save(vegetarien);
+		Hobby ecologie = new Hobby("Ecologie","ecologie.svg");
+		ecologie = hobbyRepository.save(ecologie);
+		
+		Hobby voyage = new Hobby("Voyage","voyage.svg");
+		voyage = hobbyRepository.save(voyage);
+		Hobby randonnée = new Hobby("Randonnée","randonnée.svg");
+		randonnée = hobbyRepository.save(randonnée);
+		Hobby pleinAir = new Hobby("Plein air","pleinAir.svg");
+		pleinAir = hobbyRepository.save(pleinAir);
+		
+		Hobby animaux = new Hobby("Animaux","animaux.svg");
+		animaux = hobbyRepository.save(animaux);
+
 
 		// Creation des Notation
 		Notation noteLoc1Lg1 = new Notation(log1, locataire1, 15.0, "commentaire note loc1 pour log1");
@@ -334,6 +392,109 @@ class ProjetColocBackApplicationTests {
 		photo3Log4 = photoRepository.save(photo3Log4);
 		Photo photo4Log4 = new Photo("Photo4Log4", "logement4_4.png", 4, log4);
 		photo4Log4 = photoRepository.save(photo4Log4);
+		
+		
+		
+		// NANTES
+		
+		
+				
+		
+				// Creation des Proprio
+				Proprietaire proprietaire5 = new Proprietaire("alexandreb", "Bertrand", "Alexandre", Civilite.Mr,
+						"alexandre.bertrand@mail.com", "0695178452", "1234");
+				proprietaire5 = proprietaireRepository.save(proprietaire5);
+				Proprietaire proprietaire6 = new Proprietaire("charlotted", "Durand", "Charlotte", Civilite.Mme,
+						"charlotte.durand@mail.com", "0658523695", "1234");
+				proprietaire6 = proprietaireRepository.save(proprietaire6);
+				Proprietaire proprietaire7 = new Proprietaire("gregorym", "Michel", "Gregory", Civilite.Mr,
+						"gregory.michel@mail.com", "0658412658", "1234");
+				proprietaire7 = proprietaireRepository.save(proprietaire7);
+				
+		
+
+				// Creation des Localisation
+				Localisation locLog5 = new Localisation("44", "Nantes", "44000", "Rue Racine", 20);
+				Localisation locLog6 = new Localisation("44", "Nantes", "44000", "Rue du Calvaire", 25);
+				Localisation locLog7 = new Localisation("44", "Nantes", "44000", "Rue Bertrand Geslin", 13);
+				Localisation locLog8 = new Localisation("44", "Nantes", "44100", "Rue Dobree", 2);
+
+				// Creation des Logement
+				Logement log5 = new Logement(proprietaire5, "Appartement pour 2 personnes. Situé rue Racine, animée et proche toute commodités", 70, 2, 0, 1, 300.0, 35.0, 300.0, locLog5,
+						TypeLogement.Appartement, LocalDate.now());
+				log5 = logementRepository.save(log5);
+				Logement log6 = new Logement(proprietaire5, "Appartement recemment rénové avec 3 chambres, dédié et pensé pour la colocation !" , 80, 3, 0, 1, 400.0, 40.0, 400.0, locLog6,
+						TypeLogement.Appartement, LocalDate.now());
+				log6 = logementRepository.save(log6);
+				Logement log7 = new Logement(proprietaire6, "Grande maison avec 4 chambres et 2 salles de bain pour la colocation. Très lumineux et entièrement équipé !", 150, 4, 0, 2, 500.0, 25.0, 500.0, locLog7,
+						TypeLogement.Maison, LocalDate.now());
+				log7 = logementRepository.save(log7);
+				Logement log8 = new Logement(proprietaire7, "Appartement pour colocation à rue Dobree. 2 chambres de disponibles.", 65, 2, 0, 1, 425.0, 45.0, 425.0, locLog8,
+						TypeLogement.Appartement, LocalDate.now());
+				log8 = logementRepository.save(log8);
+
+			
+				// Creation des Chambre
+				Chambre ch1Log5 = new Chambre(log5, 12);
+				ch1Log5 = chambreRepository.save(ch1Log5);
+				Chambre ch2Log5 = new Chambre(log5, 13);
+				ch2Log5 = chambreRepository.save(ch2Log5);
+				
+				Chambre ch1Log6 = new Chambre(log6, 15);
+				ch1Log6 = chambreRepository.save(ch1Log6);
+				Chambre ch2Log6 = new Chambre(log6, 15);
+				ch2Log6 = chambreRepository.save(ch2Log6);
+				Chambre ch3Log6 = new Chambre(log6, 15);
+				ch3Log6 = chambreRepository.save(ch3Log6);
+				
+				Chambre ch1Log7 = new Chambre(log7, 10);
+				ch1Log7 = chambreRepository.save(ch1Log7);
+				Chambre ch2Log7 = new Chambre(log7, 12);
+				ch2Log7 = chambreRepository.save(ch2Log7);
+				Chambre ch3Log7 = new Chambre(log7, 14);
+				ch3Log7 = chambreRepository.save(ch3Log7);
+				Chambre ch4Log7 = new Chambre(log7, 13);
+				ch4Log7 = chambreRepository.save(ch4Log7);
+				
+				Chambre ch1Log8 = new Chambre(log8, 12);
+				ch1Log8 = chambreRepository.save(ch1Log8);
+				Chambre ch2Log8 = new Chambre(log8, 16);
+				ch2Log8 = chambreRepository.save(ch2Log8);
+
+				
+
+				// Ajout de Commodite a Logement
+				log5.addCommodite(balcon);
+				log5.addCommodite(parking);
+				log5.addCommodite(fibre);
+				log5 = logementRepository.save(log5);
+				log6.addCommodite(handicape);
+				log6.addCommodite(parking);
+				log6 = logementRepository.save(log6);
+				log7.addCommodite(jardin);
+				log7.addCommodite(parking);
+				log7.addCommodite(fibre);
+				log7 = logementRepository.save(log7);
+				log8.addCommodite(fibre);
+				log8.addCommodite(balcon);
+				log8.addCommodite(salleDeSport);
+				log8.addCommodite(handicape);
+				log8 = logementRepository.save(log8);
+
+				// Ajout de Regle a Logement
+				log5.addRegle(fumeurAutorise);
+				log5 = logementRepository.save(log5);
+				log6.addRegle(animauxAutorises);
+				log6 = logementRepository.save(log6);
+				log7.addRegle(animauxAutorises);
+				log7.addRegle(passSanitaire);
+				log7 = logementRepository.save(log7);
+				log8.addRegle(femmeUniquement);
+				log8 = logementRepository.save(log8);
+
+				
+		
+		
 	}
 
 }

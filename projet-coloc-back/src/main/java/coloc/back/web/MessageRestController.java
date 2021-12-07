@@ -20,9 +20,11 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import coloc.back.model.Message;
+import coloc.back.model.Utilisateur;
+import coloc.back.web.dto.MessageDTO;
 import coloc.back.model.Views;
 import coloc.back.repository.IMessageRepository;
-
+import coloc.back.repository.IUtilisateurRepository;
 
 
 @RestController
@@ -32,6 +34,9 @@ public class MessageRestController {
 
 	@Autowired
 	private IMessageRepository messageRepo;
+
+	@Autowired
+	private IUtilisateurRepository utilisateurRepo;
 
 	@GetMapping("")
 	@JsonView(Views.ViewCommon.class)
@@ -55,10 +60,12 @@ public class MessageRestController {
 
 	@PostMapping("")
 	@JsonView(Views.ViewCommon.class)
-	public Message create(@RequestBody Message message) {		
-		message = messageRepo.save(message);
-
-		return message;
+	public Message create(@RequestBody MessageDTO message) {
+		Optional<Utilisateur> optEmetteur = utilisateurRepo.findById(message.getEmetteurId());
+		Optional<Utilisateur> optDestinataire = utilisateurRepo.findById(message.getDestinataireId());
+		Message messageASauver = new Message(optEmetteur.get(), optDestinataire.get(), message.getContenu());
+		messageASauver = messageRepo.save(messageASauver);
+		return messageASauver;
 	}
 
 	@PutMapping("/{id}")
@@ -81,5 +88,22 @@ public class MessageRestController {
 		
 		messageRepo.deleteById(id);
 	}
-	
+
+	@GetMapping("/by-id-utilisateur-as-destinataire/{id}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Message> findByIdUserAsDestinataire(@PathVariable Long id) {
+		return messageRepo.findByIdUserIdAsDestinataire(id);
+	}
+
+	@GetMapping("/by-id-utilisateur-as-emetteur/{id}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Message> findByIdUserAsEmmeteur(@PathVariable Long id) {
+		return messageRepo.findByIdUserIdAsEmmeteur(id);
+	}
+
+	@GetMapping("/all-by-id/{id}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Message> findAllByIdUserId(@PathVariable Long id) {
+		return messageRepo.findAllByIdUserId(id);
+	}
 }

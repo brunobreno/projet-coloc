@@ -27,6 +27,10 @@ public class Photo {
 	@JsonView(Views.ViewPhotoDetail.class)
 	private Chambre chambre;
 	
+	@ManyToOne
+	@JsonView(Views.ViewPhotoDetail.class)
+	private Locataire locataire;
+	
 	public Photo() {
 	}
 

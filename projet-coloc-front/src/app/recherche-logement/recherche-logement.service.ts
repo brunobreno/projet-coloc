@@ -4,15 +4,20 @@ import { AppConfigService } from './../app-config.service';
 import { Commodite, Locataire, Logement } from '../model';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class RechercheLogementService {
 
   logements: Array<Logement> = new Array<Logement>();
+  logementsByVille:Array<Logement> = new Array<Logement>();
+ 
   logementUrl: string;
   logement: Logement;
   locatairesLogement: Array<Locataire> = new Array<Locataire>();
+  filtreVille: string;
+  
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) { 
     this.logementUrl = this.appConfig.backEndUrl + "logements/"
@@ -33,10 +38,10 @@ export class RechercheLogementService {
   }*/
 
 
-  findByVilleWithCom(ville: string){
-    console.log("passage par findByVilleWithCom (service)")
+  findByVille(ville: string){
+    console.log("passage par findByVille (service)" + ville)
     if (ville) {
-      this.http.get<Array<Logement>>(this.logementUrl + "by-ville/" + ville + "/with-commodite").subscribe(response => {
+      this.http.get<Array<Logement>>(this.logementUrl + "by-ville/" + ville ).subscribe(response => {
         this.logements = response;
       }, error => console.log(error));
     } else {
@@ -51,16 +56,34 @@ export class RechercheLogementService {
     }, error => console.log(error));
   }
 
-  findByVilleWithComLoyerDesc(ville: string){
-    this.http.get<Array<Logement>>(this.logementUrl + "by-ville/" + ville + "/with-commodite/order-by-price-desc").subscribe(response => {
+  findByVilleWithCom(ville: string){
+    this.filtreVille = ville;
+    console.log('passage par findByVilleWithCom')
+    this.http.get<Array<Logement>>(this.logementUrl + "by-ville/" + ville + "/with-commodite").subscribe(response => {
       this.logements = response;
+      this.logementsByVille = response;
     }, error => console.log(error));
   }*/
   
+  // findbyFiltreType(listeFiltres: Array<string>){
+  //   this.load();
+  //   console.log('passage par filtre type');
+  //   var newLogements: Array<Logement> = new Array<Logement>();
+  //   this.logements = this.logements.filter(function(log) {
+  //     for(let f of listeFiltres) {
+  //       if(log.typeLogement == f) {
+  //         newLogements.push(log);
+  //       }
+  //     }
+  //   });
+  //   return this.logements = newLogements;
+  // }
+
   load() {
+    this.http.get<Array<Logement>>(this.logementUrl + "complete" ).subscribe(response => {
     console.log("passage par load (service)")
-    this.http.get<Array<Logement>>(this.logementUrl + "with-commodite" ).subscribe(response => {
       this.logements = response;
+      console.log("load " + this.logements)
     }, error => console.log(error));
   }
 
@@ -70,5 +93,7 @@ export class RechercheLogementService {
       this.locatairesLogement = response;
     }, error => console.log(error));
   }
+
+
 
 }

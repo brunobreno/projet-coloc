@@ -1,0 +1,33 @@
+<div *ngIf="!messageEnvoye">
+    <div class="row" style="height: 120px;"></div>
+    <div class="row mb-5">
+        <div class="col-1"></div>
+        <h3 class="col">Nouveau message à {{destinataire?.prenom}} {{destinataire?.nom}} :</h3>
+    </div>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8" id="messages">
+            <div class="row cadre-saisie mt-5" id="saisie-message">
+                <div class="d-flex justify-content-between mb-5">
+                    <label for="messageContenu">Votre nouveau message: </label>
+                    <button type="button" id="boutonEnvoyer" class="btn btn-success" (click)="envoyerMessage()">Envoyer</button>
+                </div>
+                <textarea class="form-control overflow-auto" id="messageContenu" rows="10" [(ngModel)]="messageForm.contenu"></textarea>
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div style="height:200px"></div>
+</div>
+
+<div class="row mt-5" *ngIf="messageEnvoye">
+    <div class="col-md-4 offset-md-4">
+        <div class="login-form mt-4 p-4">
+            <h2 class="text-center">Message envoyé</h2>
+            <hr class="mt-4">
+            <div class="col-12 mt-2">
+                <p class="text-center">Redirection en cours</p>
+            </div>
+        </div>
+    </div>
+</div>

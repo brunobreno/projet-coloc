@@ -11,7 +11,7 @@ public class Views {
 	public static class ViewChambre extends ViewCommon {
 	}
 	
-	public static class ViewChambreDetailDescription extends ViewChambre{
+	public static class ViewChambreDescription extends ViewChambre{
 	}
 	
 	public static class ViewChambreDetail extends ViewChambre{
@@ -26,10 +26,16 @@ public class Views {
 	public static class ViewCommoditeLogement extends ViewCommon{
 	}
 	
+	public static class ViewHobbyLocataire extends ViewCommon{
+	}
+	
 	public static class ViewLocataire extends ViewCommon{
 	}
 	
 	public static class ViewLocataireDetail extends ViewLocataire{
+	}
+	
+	public static class ViewLocataireDescription extends ViewLocataire{
 	}
 	
 	public static class ViewLogement extends ViewCommon{
