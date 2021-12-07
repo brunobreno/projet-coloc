@@ -10,5 +10,4 @@ public class ProjetColocBackApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetColocBackApplication.class, args);
 	}
-
 }
