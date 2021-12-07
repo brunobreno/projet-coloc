@@ -16,31 +16,36 @@ export class HomePageComponent implements OnInit {
   logementRecents = new Array<Logement>();
   saisieVille: string;
 
-  constructor(private homeService: HomePageService, private appConfig: AppConfigService, private router: Router) { 
-     homeService.loadMostRecentLogements().subscribe(resp => {
-       this.logementRecents = resp;
-       this.logementRecents.forEach(log => {
-         this.homeService.loadPhotoByLogement(log.id).subscribe(resp => {
-           log.photos = resp;
-         }, err => console.log)
-       });
-     }, err => console.log(err))
+  constructor(private homeService: HomePageService, private appConfig: AppConfigService, private router: Router) {
+    homeService.loadMostRecentLogements().subscribe(resp => {
+      this.logementRecents = resp;
+      this.logementRecents.forEach(log => {
+        this.homeService.loadPhotoByLogement(log.id).subscribe(resp => {
+          log.photos = resp;
+        }, err => console.log)
+      });
+    }, err => console.log(err))
   }
 
   ngOnInit(): void {
   }
 
-  redirect(id:number){
+  redirect(id: number) {
     this.router.navigate(["./description-logement/", id]);
   }
 
-  redirectVille(ville: string){
+  redirectVille(ville: string) {
     this.router.navigate(["./recherche-logement/", ville]);
   }
 
-  rechercheVille(){
+  rechercheVille() {
     this.redirectVille(this.saisieVille);
     this.saisieVille = null;
   }
 
+  isEnter(event: any) {
+    if (event.keyCode == 13) {
+      this.rechercheVille();
+    }
+  }
 }

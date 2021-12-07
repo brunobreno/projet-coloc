@@ -5,7 +5,7 @@
         <div class="row barre-recherche">
             <!--Faire redirection vers les logements dans la ville -->
             <button class="col-1" id="btn-recherche" (click)="rechercheVille()"></button>
-            <input class="col" id="recherche-input" [(ngModel)]="saisieVille" placeholder="Dans quelle ville cherchez-vous une colocation ?">
+            <input class="col" id="recherche-input" (keyup)="isEnter($event)" [(ngModel)]="saisieVille" placeholder="Dans quelle ville cherchez-vous une colocation ?">
         </div>
     </div>
     <div class="row" id="ville-populaires-container">

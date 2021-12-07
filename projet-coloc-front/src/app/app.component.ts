@@ -21,33 +21,30 @@ import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppComponent {
   title = 'projet-coloc-front';
-  userConnect:string = 'Locataire';
+  userConnect: string = 'Locataire';
 
   //icons fontawesome
-  faCalendar=faCalendarAlt;
-  faMoneyBill=faMoneyBill;
-  faUsers=faUsers;
-  faExpandAlt=faExpandAlt;
-  faCommentAlt=faCommentAlt;
-  faFileDownload=faFileDownload;
+  faCalendar = faCalendarAlt;
+  faMoneyBill = faMoneyBill;
+  faUsers = faUsers;
+  faExpandAlt = faExpandAlt;
+  faCommentAlt = faCommentAlt;
+  faFileDownload = faFileDownload;
 
 
   filtre: string;
 
-  constructor(private rechercheLogement: RechercheLogementComponent, private rechercheLogementService: RechercheLogementService, private mapService:MapHttpService) {}
+  constructor(private rechercheLogement: RechercheLogementComponent, private rechercheLogementService: RechercheLogementService, private mapService: MapHttpService) { }
 
-  search(ville:string) {
-    console.log('passage par search')
+  search(ville: string) {
     this.rechercheLogement.search(ville);
     //return this.rechercheLogementService.findAll();
 
     this.getCoordVille(); //Coordonnees pour centrer la map
-    
+
   }
 
-  getCoordVille(){
-    
+  getCoordVille() {
     this.mapService.getCoordVille(this.filtre);
   }
- 
 }
