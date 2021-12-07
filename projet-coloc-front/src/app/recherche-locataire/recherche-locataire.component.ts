@@ -68,10 +68,6 @@ export class RechercheLocataireComponent implements OnInit {
     this.triRecherche = null;
     this.filtrer(null);
   }
-  
-  console() {
-    console.log("hello")
-  }
 
   nouveauMessage(id:number){
     this.router.navigate(["./messagerie-nouveau/", id]);
