@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppConfigService } from './app-config.service';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {MatIconModule} from '@angular/material/icon'; 
+import { MatIconModule } from '@angular/material/icon'; 
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +28,12 @@ import { LogementComponent } from './logement/logement.component';
 import { AjoutLogementComponent } from './ajout-logement/ajout-logement.component';
 import { DescriptionLogementComponent } from './description-logement/description-logement.component';
 import { AjoutLogementHttpService } from './ajout-logement/ajout-logement-http.service';
+import { HomePageComponent } from './home-page/home-page.component';
+import { HomePageService } from './home-page/home-page.service';
+import { MessagerieComponent } from './messagerie/messagerie.component';
+import { MessagerieService } from './messagerie/messagerie.service';
+import { MessagerieNouveauContactComponent } from './messagerie-nouveau-contact/messagerie-nouveau-contact.component';
+import { MessagerieNouveauContactService } from './messagerie-nouveau-contact/messagerie-nouveau-contact.service';
 
 
 @NgModule({
@@ -45,7 +51,10 @@ import { AjoutLogementHttpService } from './ajout-logement/ajout-logement-http.s
     ProprietaireComponent,
     LogementComponent,
     AjoutLogementComponent,
-    DescriptionLogementComponent
+    DescriptionLogementComponent,
+    HomePageComponent,
+    MessagerieComponent,
+    MessagerieNouveauContactComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +65,7 @@ import { AjoutLogementHttpService } from './ajout-logement/ajout-logement-http.s
     HttpClientModule,
     //NoopAnimationsModule
   ],
-  providers: [AppConfigService, LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService, AjoutLogementHttpService],
+  providers: [AppConfigService, LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService, AjoutLogementHttpService, HomePageService, MessagerieService, MessagerieNouveauContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

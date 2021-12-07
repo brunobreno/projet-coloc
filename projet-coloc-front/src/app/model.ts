@@ -248,16 +248,16 @@ export class Logement {
 export class Message {
   id: number;
   version: number;
-  emetteur: Utilisateur;
-  destinataire: Utilisateur;
+  emetteur: UtilisateurDTO;
+  destinataire: UtilisateurDTO;
   contenu: string;
   date: string;
 
   constructor(
     id?: number,
     version?: number,
-    emetteur?: Utilisateur,
-    destinataire?: Utilisateur,
+    emetteur?: UtilisateurDTO,
+    destinataire?: UtilisateurDTO,
     contenu?: string,
     date?: string
   ) {
@@ -418,5 +418,21 @@ export class ProprietaireDTOInscription {
     this.email = email;
     this.tel = tel;
     this.password = password;
+  }
+}
+
+export class MessageDTO {
+  emetteurId: number;
+  destinataireId: number;
+  contenu: string;
+
+  constructor(
+    emetteurId?: number,
+    destinataireId?: number,
+    contenu?: string,
+  ) {
+    this.emetteurId = emetteurId
+    this.destinataireId = destinataireId
+    this.contenu = contenu
   }
 }

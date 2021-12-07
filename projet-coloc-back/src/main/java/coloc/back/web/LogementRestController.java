@@ -88,6 +88,13 @@ public class LogementRestController {
 		List<Logement> logements = logementRepo.findAllWithCommodite();
 		return logements;
 	}
+
+	@GetMapping("/most-recent-with-dispo")
+	@JsonView(Views.ViewLogementCommodite.class)
+	public List<Logement> findMostRecentLogement() {
+		List<Logement> logements = logementRepo.findMostRecentLogement();
+		return logements;
+	}
 	
 	@GetMapping("/by-ville/{ville}")
 	@JsonView(Views.ViewCommon.class)
