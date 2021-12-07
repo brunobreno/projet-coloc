@@ -59,11 +59,11 @@ import { MapHttpService } from './map/map-http.service';
     LogementComponent,
     DescriptionLogementComponent,
     AjoutLogementComponent,
-    ChambreComponent    
+    ChambreComponent,
     DescriptionLogementComponent,
     HomePageComponent,
     MessagerieComponent,
-    MessagerieNouveauContactComponent
+    MessagerieNouveauContactComponent,
     MapComponent
   ],
   imports: [
@@ -77,7 +77,7 @@ import { MapHttpService } from './map/map-http.service';
     CrystalLightboxModule
     //NoopAnimationsModule
   ],
-  providers: [AppConfigService, LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService, AjoutLogementHttpService, HomePageService, MessagerieService, MessagerieNouveauContactService],
+ 
   providers: [
     AppConfigService, 
     LocataireHttpService, 
@@ -86,8 +86,12 @@ import { MapHttpService } from './map/map-http.service';
     RechercheLocataireService, 
     AjoutLogementHttpService,
     DescriptionLogementService,
-    RechercheLogementComponent],
-  providers: [AppConfigService, LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService, AjoutLogementHttpService, MapHttpService, MarkerService],
+    RechercheLogementComponent,
+    HomePageService, 
+    MessagerieService, 
+    MessagerieNouveauContactService,
+    MapHttpService, 
+    MarkerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

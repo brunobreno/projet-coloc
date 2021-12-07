@@ -34,8 +34,7 @@ export class AppComponent {
 
   filtre: string;
 
-  constructor(private rechercheLogementService: RechercheLogementService, private mapService:MapHttpService) {}
-  constructor(private rechercheLogement: RechercheLogementComponent, private rechercheLogementService: RechercheLogementService) {}
+  constructor(private rechercheLogement: RechercheLogementComponent, private rechercheLogementService: RechercheLogementService, private mapService:MapHttpService) {}
 
   search(ville:string) {
     console.log('passage par search')
