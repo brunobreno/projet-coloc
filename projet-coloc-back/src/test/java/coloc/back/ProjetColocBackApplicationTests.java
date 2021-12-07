@@ -146,9 +146,9 @@ class ProjetColocBackApplicationTests {
 
 		// Creation des Localisation
 		Localisation locLog1 = new Localisation("New York", "West Village", "10014", "Bedford Street", 90);
-		Localisation locLog2 = new Localisation("Ile de France", "Paris", "75001", "rue de la Paix", 2);
-		Localisation locLog3 = new Localisation("Ile de France", "Paris", "75008", "rue de Montmartre", 7);
-		Localisation locLog4 = new Localisation("Ile de France", "Paris", "75003", "avenue des Champs-Elysées", 20);
+		Localisation locLog2 = new Localisation("75", "Paris", "75001", "rue de la Paix", 2);
+		Localisation locLog3 = new Localisation("75", "Paris", "75008", "rue de Montmartre", 7);
+		Localisation locLog4 = new Localisation("75", "Paris", "75003", "avenue des Champs-Elysées", 20);
 
 		// Creation des Logement
 		Logement log1 = new Logement(proprietaire1, "Grand appart central à New York", "Beaucoup trop grand pour le prix et très bien agencé", 104, 2, 2, 1, 400.0, 50.0, 300.0, locLog1,
@@ -514,6 +514,119 @@ class ProjetColocBackApplicationTests {
 		log7 = logementRepository.save(log7);
 		log8.addRegle(femmeUniquement);
 		log8 = logementRepository.save(log8);
+
+		// LYON
+	
+		// Creation des Localisation
+		Localisation locLogLyon1 = new Localisation("69", "Lyon", "69007", "Rue De Marseille", 38);
+		Localisation locLogLyon2 = new Localisation("69", "Lyon", "69001", "Place De La Comédie", 1);
+		Localisation locLogLyon3 = new Localisation("69", "Lyon", "69005", "Rue Pierre Marion", 8);
+		Localisation locLogLyon4 = new Localisation("69", "Lyon", "69003", "Rue Moncey", 95);
+
+		// Creation des Logement
+		Logement log1Lyon = new Logement(proprietaire4, "Appartement plein centre ville",
+				"Appartement pour 2 personnes. Situé rue de Marseille, animée et proche toute commodités", 70, 2, 0, 1, 300.0,
+				35.0, 300.0, locLogLyon1,
+				TypeLogement.Appartement, LocalDate.parse("2021-11-03"), false);
+		log1Lyon = logementRepository.save(log1Lyon);
+		Logement log2Lyon = new Logement(proprietaire4, "Appartement rénové idéal coloc",
+				"Appartement recemment rénové avec 3 chambres, dédié et pensé pour la colocation !", 80, 3, 0, 1, 400.0,
+				40.0, 400.0, locLogLyon2,
+				TypeLogement.Appartement, LocalDate.parse("2021-11-20"), true);
+		log2Lyon = logementRepository.save(log2Lyon);
+		Logement log3Lyon = new Logement(proprietaire5, "Maison très lumineuse",
+				"Grande maison avec 4 chambres et 2 salles de bain pour la colocation. Très lumineux et entièrement équipé !",
+				150, 4, 0, 2, 500.0, 25.0, 500.0, locLogLyon3,
+				TypeLogement.Maison, LocalDate.parse("2021-12-03"), true);
+		log3Lyon = logementRepository.save(log3Lyon);
+		Logement log4Lyon = new Logement(proprietaire5, "Appartement proche centre ville",
+				"Appartement pour colocation à rue Moncey. 2 chambres de disponibles.", 65, 2, 0, 1, 425.0, 45.0, 425.0,
+				locLogLyon4,
+				TypeLogement.Appartement, LocalDate.parse("2021-11-24"), true);
+		log4Lyon = logementRepository.save(log4Lyon);
+
+		// Creation des Chambre
+		Chambre lyonCh1Log1 = new Chambre(log1Lyon, 12);
+		lyonCh1Log1 = chambreRepository.save(lyonCh1Log1);
+		Chambre lyonCh2Log1 = new Chambre(log1Lyon, 13);
+		lyonCh2Log1 = chambreRepository.save(lyonCh2Log1);
+
+		Chambre lyonCh1Log2 = new Chambre(log2Lyon, 15);
+		lyonCh1Log2 = chambreRepository.save(lyonCh1Log2);
+		Chambre lyonCh2Log2 = new Chambre(log2Lyon, 15);
+		lyonCh2Log2 = chambreRepository.save(lyonCh2Log2);
+		Chambre lyonCh3Log2 = new Chambre(log2Lyon, 15);
+		lyonCh3Log2 = chambreRepository.save(lyonCh3Log2);
+
+		Chambre lyonCh1Log3 = new Chambre(log3Lyon, 10);
+		lyonCh1Log3 = chambreRepository.save(lyonCh1Log3);
+		Chambre lyonCh2Log3 = new Chambre(log3Lyon, 12);
+		lyonCh2Log3 = chambreRepository.save(lyonCh2Log3);
+		Chambre lyonCh3Log3 = new Chambre(log3Lyon, 14);
+		lyonCh3Log3 = chambreRepository.save(lyonCh3Log3);
+		Chambre lyonCh4Log3 = new Chambre(log3Lyon, 13);
+		lyonCh4Log3 = chambreRepository.save(lyonCh4Log3);
+
+		Chambre lyonCh1Log4 = new Chambre(log4Lyon, 12);
+		lyonCh1Log4 = chambreRepository.save(lyonCh1Log4);
+		Chambre lyonCh2Log4 = new Chambre(log4Lyon, 16);
+		lyonCh2Log4 = chambreRepository.save(lyonCh2Log4);
+
+		// Ajout de Commodite a Logement
+		log1Lyon.addCommodite(balcon);
+		log1Lyon.addCommodite(parking);
+		log1Lyon.addCommodite(fibre);
+		log1Lyon = logementRepository.save(log1Lyon);
+		log2Lyon.addCommodite(handicape);
+		log2Lyon.addCommodite(parking);
+		log2Lyon = logementRepository.save(log2Lyon);
+		log3Lyon.addCommodite(jardin);
+		log3Lyon.addCommodite(parking);
+		log3Lyon.addCommodite(fibre);
+		log3Lyon = logementRepository.save(log3Lyon);
+		log4Lyon.addCommodite(fibre);
+		log4Lyon.addCommodite(balcon);
+		log4Lyon.addCommodite(salleDeSport);
+		log4Lyon.addCommodite(handicape);
+		log4Lyon = logementRepository.save(log4Lyon);
+
+		// Ajout de Regle a Logement
+		log1Lyon.addRegle(fumeurAutorise);
+		log1Lyon = logementRepository.save(log1Lyon);
+		log2Lyon.addRegle(animauxAutorises);
+		log2Lyon = logementRepository.save(log2Lyon);
+		log3Lyon.addRegle(animauxAutorises);
+		log3Lyon.addRegle(passSanitaire);
+		log3Lyon = logementRepository.save(log3Lyon);
+		log4Lyon.addRegle(femmeUniquement);
+		log4Lyon = logementRepository.save(log4Lyon);
+
+		// Ajout Photos
+		Photo lyonPhoto1Log1 = new Photo("lyonPhoto1Log1", "logement2_1.png", 1, log1Lyon);
+		lyonPhoto1Log1 = photoRepository.save(lyonPhoto1Log1);
+		Photo lyonPhoto2Log1 = new Photo("lyonPhoto2Log1", "logement2_2.png", 2, log1Lyon);
+		lyonPhoto2Log1 = photoRepository.save(lyonPhoto2Log1);
+		Photo lyonPhoto3Log1 = new Photo("lyonPhoto3Log1", "logement2_3.jpg", 3, log1Lyon);
+		lyonPhoto3Log1 = photoRepository.save(lyonPhoto3Log1);
+		Photo lyonPhoto1Log2 = new Photo("lyonPhoto1Log2", "logement2_4.jpg", 4, log2Lyon);
+		lyonPhoto1Log2 = photoRepository.save(lyonPhoto1Log2);
+		Photo lyonPhoto2Log2 = new Photo("lyonPhoto2Log2", "logement3_1.png", 1, log2Lyon);
+		lyonPhoto2Log2 = photoRepository.save(lyonPhoto2Log2);
+		Photo lyonPhoto3Log2 = new Photo("lyonPhoto3Log2", "logement3_2.png", 2, log2Lyon);
+		lyonPhoto3Log2 = photoRepository.save(lyonPhoto3Log2);
+		Photo lyonPhoto1Log3 = new Photo("lyonPhoto1Log3", "logement3_3.jpg", 3, log3Lyon);
+		lyonPhoto1Log3 = photoRepository.save(lyonPhoto1Log3);
+		Photo lyonPhoto2Log3 = new Photo("lyonPhoto2Log3", "logement3_4.jpg", 4, log3Lyon);
+		lyonPhoto2Log3 = photoRepository.save(lyonPhoto2Log3);
+		Photo lyonPhoto3Log3 = new Photo("lyonPhoto3Log3", "logement4_1.jpg", 1, log3Lyon);
+		lyonPhoto3Log3 = photoRepository.save(lyonPhoto3Log3);
+		Photo lyonPhoto1Log4 = new Photo("lyonPhoto1Log4", "logement4_2.jpg", 2, log4Lyon);
+		photo2Log4 = photoRepository.save(lyonPhoto1Log4);
+		Photo lyonPhoto2Log4 = new Photo("lyonPhoto2Log4", "logement4_3.jpg", 3, log4Lyon);
+		photo3Log4 = photoRepository.save(lyonPhoto2Log4);
+		Photo lyonPhoto3Log4 = new Photo("lyonPhoto3Log4", "logement4_4.png", 4, log4Lyon);
+		lyonPhoto3Log4 = photoRepository.save(lyonPhoto3Log4);
+
 	}
 
 }
