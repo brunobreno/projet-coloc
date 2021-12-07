@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { MapHttpService } from './map/map-http.service';
-import { Logement, Proprietaire, Utilisateur } from './model';
+import { Logement, Proprietaire, Utilisateur, UtilisateurDTO } from './model';
 import { Locataire } from './model';
 import { RechercheLogementComponent } from './recherche-logement/recherche-logement.component';
 import { RechercheLogementService } from './recherche-logement/recherche-logement.service';
+import { Router } from '@angular/router';
 
 // import des incons fontawesome
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
@@ -21,7 +22,8 @@ import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppComponent {
   title = 'projet-coloc-front';
-  userConnect:string = 'Locataire';
+  utilisateurConnecte: UtilisateurDTO;
+  
 
   //icons fontawesome
   faCalendar=faCalendarAlt;
@@ -32,9 +34,13 @@ export class AppComponent {
   faFileDownload=faFileDownload;
 
 
-  filtre: string;
+  filtreVille: string;
 
-  constructor(private rechercheLogement: RechercheLogementComponent, private rechercheLogementService: RechercheLogementService, private mapService:MapHttpService) {}
+  constructor(private rechercheLogement: RechercheLogementComponent, private rechercheLogementService: RechercheLogementService, private mapService:MapHttpService,public router: Router) {
+    this.utilisateurConnecte = new UtilisateurDTO;
+   // this.utilisateurConnecte.typeDeCompte="locataire";
+    this.utilisateurConnecte.typeDeCompte="locataire";
+  }
 
   search(ville:string) {
     console.log('passage par search')
@@ -47,7 +53,11 @@ export class AppComponent {
 
   getCoordVille(){
     
-    this.mapService.getCoordVille(this.filtre);
+    this.mapService.getCoordVille(this.filtreVille);
+  }
+
+  isHomeRoute() {
+    return this.router.url === '/home';
   }
  
 }

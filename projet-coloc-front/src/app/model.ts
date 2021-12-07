@@ -184,6 +184,7 @@ export class Locataire extends Utilisateur {
 
   constructor(
     id?: number,
+    version?: number,
     nom?: string,
     prenom?: string,
     civ?: string,
@@ -200,7 +201,7 @@ export class Locataire extends Utilisateur {
     photos?: Array<Photo>,
     hobbies?: Array<Hobby>
   ) {
-    super(id, nom, prenom, civ, email, tel, password)
+    super(id, version, nom, prenom, civ, email, tel, password)
     this.recherche = recherche
     this.description = description
     this.situation = situation
