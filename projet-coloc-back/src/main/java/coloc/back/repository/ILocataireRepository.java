@@ -11,4 +11,7 @@ public interface ILocataireRepository extends JpaRepository<Locataire,Long>{
 	
 	@Query("select l from Locataire l where l.chambre.id= :idChambre")
 	public Locataire findAllByIdChambre(Long idChambre);
+	
+	//@Query("select disctinct l from Locataire l left join fetch l.hobbies where l.chambre.id= :idChambre")
+	//public Locataire findAllByIdChambreWithHobbies(Long idChambre);
 }

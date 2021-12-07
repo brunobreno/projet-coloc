@@ -24,7 +24,7 @@ public class Hobby {
 	private String chemin;
 	
 	@ManyToMany(mappedBy = "hobbies")
-	@JsonView(Views.ViewHobbyLocataire.class)
+	@JsonView(Views.ViewHobbyDetail.class)
 	private List<Locataire> Locataires;
 
 	

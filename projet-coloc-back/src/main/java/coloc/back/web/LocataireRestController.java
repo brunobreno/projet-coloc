@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import coloc.back.model.Chambre;
 import coloc.back.model.Locataire;
+import coloc.back.model.Logement;
 import coloc.back.model.Role;
 import coloc.back.model.UtilisateurRole;
 import coloc.back.model.Views;
@@ -61,6 +62,13 @@ public class LocataireRestController {
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Locataire non trouvé");
 		}
+	}
+	
+	@GetMapping("/by-chambre/{idChambre}")
+	@JsonView(Views.ViewCommon.class)
+	public Locataire findAllByChambre(@PathVariable("idChambre") Long id) {
+		Locataire locataire = locataireRepo.findAllByIdChambre(id);
+		return locataire;
 	}
 	
 	@GetMapping("/by-logement/{idLogement}")

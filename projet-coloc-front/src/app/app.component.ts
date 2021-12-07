@@ -7,7 +7,7 @@ import { RechercheLogementService } from './recherche-logement/recherche-logemen
 import { Router } from '@angular/router';
 
 // import des incons fontawesome
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt, faCouch } from '@fortawesome/free-solid-svg-icons';
 import { faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faExpandAlt } from '@fortawesome/free-solid-svg-icons';
@@ -32,14 +32,16 @@ export class AppComponent {
   faExpandAlt=faExpandAlt;
   faCommentAlt=faCommentAlt;
   faFileDownload=faFileDownload;
+  faCouch=faCouch;
 
 
   filtreVille: string;
 
   constructor(private rechercheLogement: RechercheLogementComponent, private rechercheLogementService: RechercheLogementService, private mapService:MapHttpService,public router: Router) {
-    this.utilisateurConnecte = new UtilisateurDTO;
-   // this.utilisateurConnecte.typeDeCompte="locataire";
-    this.utilisateurConnecte.typeDeCompte="locataire";
+   this.utilisateurConnecte = new UtilisateurDTO;
+   this.utilisateurConnecte.typeDeCompte="locataire";
+   this.utilisateurConnecte.id=1;
+  // this.utilisateurConnecte.typeDeCompte="proprietaire";
   }
 
   search(ville:string) {

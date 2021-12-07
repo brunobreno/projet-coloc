@@ -106,6 +106,8 @@ class ProjetColocBackApplicationTests {
 		Locataire locataire8 = new Locataire("locataire8", "NomLocataire8", "PrenomLocataire8", Civilite.Mme, "locataire8@mail.com",
 				"0011000008", "locataire8", true, "Description locataire 8" + Lorem, Situation.Salarie, LocalDate.parse("1992-02-09"));
 		locataire8 = locataireRepository.save(locataire8);
+		
+		
 
 		// Creation des Localisation
 		Localisation locLog1 = new Localisation("New York", "West Village", "10014", "Bedford Street", 90);
@@ -217,6 +219,11 @@ class ProjetColocBackApplicationTests {
 		
 		Hobby animaux = new Hobby("Animaux","animaux.svg");
 		animaux = hobbyRepository.save(animaux);
+		
+		locataire1.addHobby(cuisine);
+		locataire1.addHobby(musique);
+		locataire1.addHobby(lecture);
+		locataire1 = locataireRepository.save(locataire1);
 
 
 		// Creation des Notation
@@ -296,6 +303,8 @@ class ProjetColocBackApplicationTests {
 		Dossier dossierLoc7 = new Dossier(1000.0, 1800.0, Situation.Salarie);
 		locataire7.setDossier(dossierLoc7);
 		locataire7 = locataireRepository.save(locataire7);
+		
+		
 
 		// Ajout de Commodite a Logement
 		log1.addCommodite(balcon);

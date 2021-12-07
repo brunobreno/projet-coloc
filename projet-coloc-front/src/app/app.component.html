@@ -21,12 +21,14 @@
       </div> 
 
       <!-- User non connecté -->
-      <div class="header-account-main-container" *ngIf="!utilisateurConnecte" style="margin-top: 30px;">
-        <button type=button class="header-button-account button1" style="font-size: 22px;height: 85%;">
+      <div class="header-account-main-container" *ngIf="!utilisateurConnecte" > <!-- style="margin-top: 30px;paddin:" -->
+        <button type=button class="header-button-account button1" style="font-size: 22px;height: 85%;padding:0px 20px;"
+        [routerLink]="['/inscription']" routerLinkActive="active">
           S'inscrire
         </button>
 
-        <button type=button class="header-button-account button1" style="font-size: 22px;height: 85%;padding-left:15px;padding-right:15px" >
+        <button type=button class="header-button-account button1" style="font-size: 22px;height: 85%;padding-left:15px;padding:0px 20px;"
+        [routerLink]="['/login']" routerLinkActive="active" >
           Se connecter
         </button>
         <button type=button class="header-button-account button1 last-button">
@@ -53,7 +55,8 @@
         [routerLink]="['/messagerie']">
           Messages
         </button>
-        <button type=button class="header-button-account button1" style="padding-left:15px;padding-right:15px" >
+        <button type=button class="header-button-account button1" style="padding-left:15px;padding-right:15px" 
+        [routerLink]="['/',utilisateurConnecte.typeDeCompte,utilisateurConnecte.id]">
           Mon compte
         </button>
         <button type=button class="header-button-account button1 last-button">

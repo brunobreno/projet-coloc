@@ -29,6 +29,7 @@ export class DescriptionLogementComponent implements OnInit {
   faExpandAlt=this.appComponent.faExpandAlt;
   faCommentAlt=this.appComponent.faCommentAlt;
   faFileDownload=this.appComponent.faFileDownload;
+  faCouch=this.appComponent.faCouch;
 
   
 
@@ -51,7 +52,6 @@ export class DescriptionLogementComponent implements OnInit {
         this.chambres = chambres;
       })
      
-      
   })
   }
 
