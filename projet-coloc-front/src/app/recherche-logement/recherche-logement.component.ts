@@ -100,7 +100,7 @@ export class RechercheLogementComponent implements OnInit {
   search(ville: string) {
     this.ville = ville;
     console.log("passage par search (recherche logement)")
-    this.rechercheLogementService.findByVilleWithCom(ville);
+    this.rechercheLogementService.findByVille(ville);
   }
 
 

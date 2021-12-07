@@ -282,9 +282,13 @@ carousel {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding-top: 6px;
+  padding-top: 12px;
   color: #565656;
   width: 85%;
+}
+
+.occupant-hobbies img {
+  height: 27px;
 }
 
 #chambre-section .section-content{
@@ -312,7 +316,7 @@ carousel {
 
 .caracteristiques-container .caracteristiques-list .caracteristiques {
   width: 23%;
-  min-width: 200px;
+  min-width: 155px;
   padding-bottom: 5px;
   //height: 50px;
   display: flex;

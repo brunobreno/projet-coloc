@@ -33,10 +33,10 @@ export class RechercheLogementService {
   }*/
 
 
-  findByVilleWithCom(ville: string){
-    console.log("passage par findByVilleWithCom (service)")
+  findByVille(ville: string){
+    console.log("passage par findByVille (service)" + ville)
     if (ville) {
-      this.http.get<Array<Logement>>(this.logementUrl + "by-ville/" + ville + "/with-commodite").subscribe(response => {
+      this.http.get<Array<Logement>>(this.logementUrl + "by-ville/" + ville ).subscribe(response => {
         this.logements = response;
       }, error => console.log(error));
     } else {
@@ -59,7 +59,7 @@ export class RechercheLogementService {
   
   load() {
     console.log("passage par load (service)")
-    this.http.get<Array<Logement>>(this.logementUrl + "with-commodite" ).subscribe(response => {
+    this.http.get<Array<Logement>>(this.logementUrl + "complete" ).subscribe(response => {
       this.logements = response;
     }, error => console.log(error));
   }

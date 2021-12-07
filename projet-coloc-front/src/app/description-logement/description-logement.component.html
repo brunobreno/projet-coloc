@@ -36,8 +36,8 @@
 
   <!-- Section Photo -->
   <div class="section-container" id="photo-section">
-    <carousel objectFit="contain" [loop]="true" [dots]="true" [margin]="20" [cellsToShow]="4"  >
-      <div  lightbox-group class="carousel-cell" *ngFor="let photo of logement.photos" >
+    <carousel lightbox-group objectFit="contain" [loop]="true" [dots]="true" [margin]="20" [cellsToShow]="4"  >
+      <div  class="carousel-cell" *ngFor="let photo of logement.photos" >
         <img src="../../assets/img/exempleLogement/{{photo.chemin}}" lightbox >
       </div>
     </carousel>
@@ -52,13 +52,14 @@
     <div id="sticky-main-container">
       <div id="sticky-card">
 
-        <h5>
+        <h5 *ngIf="logement.dateDispo">
           <fa-icon [icon]="faCalendar"></fa-icon>
           Disponible le : {{logement.dateDispo}}
         </h5>
 
         <h5>
-          <fa-icon [icon]="faMoneyBill"> </fa-icon>Loyer tout compris : 520€
+          <fa-icon [icon]="faMoneyBill"> </fa-icon>Loyer tout compris :
+           {{logement.loyer + logement.charges}}€
         </h5>
 
         <h5>
@@ -146,9 +147,9 @@
                 <span class="occupant-desc"> {{loc.prenom }}</span>
                 <span class="occupant-desc">{{loc.situation }}</span>
                 <div class="occupant-hobbies">
-                  <span class="material-icons">menu_book</span>
-                  <span class="material-icons">sports_esports</span>
-                  <span class="material-icons">brush</span>
+                  <img src="../../assets/img/icons/cinema.svg" alt="">
+                  <img src="../../assets/img/icons/jeuxSociete.svg" alt="">
+                  <img src="../../assets/img/icons/cuisine.svg" alt="">
                 </div>
               </div>
             </div>
@@ -231,7 +232,7 @@
             <div class="caracteristiques-container" style="height: 350px;" style="width: 50%;">
               <h6>Les photos </h6>
               <div style="display: flex;align-items: center;height:100%;">
-                <carousel objectFit="contain" [loop]="true" [cellWidth]="'100%'">
+                <carousel lightbox-group  objectFit="contain" [dots]="true" [loop]="true" [cellWidth]="'100%'">
                   <div class="carousel-cell" *ngFor="let photo of chambre.photos">
                     <img src="../../assets/img/exempleLogement/{{photo.chemin}}" lightbox >
                   </div>

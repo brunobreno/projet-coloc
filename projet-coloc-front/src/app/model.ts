@@ -108,8 +108,6 @@ export class Commodite {
     this.logements = logements
     this.chambres = chambres
   }
-
-
 }
 
 export class Dossier {
