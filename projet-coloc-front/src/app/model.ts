@@ -3,6 +3,7 @@ import { PathLocationStrategy } from "@angular/common";
 export class Utilisateur {
   id: number;
   version: number;
+  username: string;
   nom: string;
   prenom: string;
   civ: string;
@@ -10,9 +11,10 @@ export class Utilisateur {
   tel: string;
   password: string;
 
-  constructor(id?: number, version?: number, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
+  constructor(id?: number, version?: number, username?: string, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
     this.id = id;
     this.version = version;
+    this.username = username;
     this.nom = nom;
     this.prenom = prenom;
     this.civ = civ;
@@ -54,6 +56,7 @@ export class Chambre {
   logement: Logement;
   locataire: Locataire;
   surface: number;
+  description: String;
   commodites: Array<Commodite> = new Array<Commodite>();
   candidatures: Array<Candidature> = new Array<Candidature>();
 
@@ -63,6 +66,7 @@ export class Chambre {
     logement?: Logement,
     locataire?: Locataire,
     surface?: number,
+    description?: string,
     commodites?: Array<Commodite>,
     candidatures?: Array<Candidature>
   ) {
@@ -71,6 +75,7 @@ export class Chambre {
     this.logement = logement
     this.locataire = locataire
     this.surface = surface
+    this.description = description
     this.commodites = commodites
     this.candidatures = candidatures
   }
@@ -182,6 +187,7 @@ export class Locataire extends Utilisateur {
 export class Logement {
   id: number;
   version: number;
+  titre: string;
   description: string;
   surface: number;
   nChambre: number;
@@ -204,6 +210,7 @@ export class Logement {
   constructor(
     id?: number,
     version?: number,
+    titre?: string,
     description?: string,
     surface?: number,
     nChambre?: number,
@@ -224,6 +231,7 @@ export class Logement {
   ) {
     this.id = id
     this.version = version
+    this.titre = titre
     this.description = description
     this.surface = surface
     this.nChambre = nChambre
@@ -300,8 +308,8 @@ export class Photo {
 export class Proprietaire extends Utilisateur {
   logements: Array<Logement> = new Array<Logement>();
 
-  constructor(id?: number, version?: number, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
-    super(id, version, nom, prenom, civ, email, tel, password);
+  constructor(id?: number, version?: number, username?: string, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
+    super(id, version, username, nom, prenom, civ, email, tel, password);
   }
 }
 

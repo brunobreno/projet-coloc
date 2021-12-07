@@ -62,30 +62,30 @@ class ProjetColocBackApplicationTests {
 		admin = proprietaireRepository.save(admin);
 
 		// Creation des Proprio
-		Proprietaire proprietaire1 = new Proprietaire("proprietaire1", "NomProprietaire1", "PrenomProprietaire1", Civilite.Mr,
-				"proprietaire1@mail.com", "0000000001", "proprietaire1");
+		Proprietaire proprietaire1 = new Proprietaire("proprietaire1", "Bastier", "Bruno", Civilite.Mr,
+				"bruno@mail.com", "0000000001", "proprietaire1");
 		proprietaire1 = proprietaireRepository.save(proprietaire1);
-		Proprietaire proprietaire2 = new Proprietaire("proprietaire2", "NomProprietaire2", "PrenomProprietaire2", Civilite.Mme,
-				"proprietaire2@mail.com", "0000000002", "proprietaire2");
+		Proprietaire proprietaire2 = new Proprietaire("proprietaire2", "Faurie", "Emma", Civilite.Mme,
+				"emma@mail.com", "0000000002", "proprietaire2");
 		proprietaire2 = proprietaireRepository.save(proprietaire2);
-		Proprietaire proprietaire3 = new Proprietaire("proprietaire3", "NomProprietaire3", "PrenomProprietaire3", Civilite.Mr,
-				"proprietaire3@mail.com", "0000000003", "proprietaire3");
+		Proprietaire proprietaire3 = new Proprietaire("proprietaire3", "Nguyen", "Guillaume", Civilite.Mr,
+				"guillaume@mail.com", "0000000003", "proprietaire3");
 		proprietaire3 = proprietaireRepository.save(proprietaire3);
-		Proprietaire proprietaire4 = new Proprietaire("proprietaire4", "NomProprietaire4", "PrenomProprietaire4", Civilite.Mme,
-				"proprietaire4@mail.com", "0000000004", "proprietaire4");
+		Proprietaire proprietaire4 = new Proprietaire("proprietaire4", "Revillion", "Estelle", Civilite.Mme,
+				"estelle@mail.com", "0000000004", "proprietaire4");
 		proprietaire4 = proprietaireRepository.save(proprietaire4);
 
 		// Creation des Locataire
-		Locataire locataire1 = new Locataire("locataire1", "NomLocataire1", "PrenomLocataire1", Civilite.Mr, "locataire1@mail.com",
-				"0011000001", "locataire1", true, 
-				"Description locataire 1" + Lorem, 
-				Situation.Etudiant,  LocalDate.parse("1992-02-09"));
+		Locataire locataire1 = new Locataire("monica", "Geller", "Monica", Civilite.Mme, "monicageller@mail.com",
+				"0101010101", "monica", false, 
+				"Maniaque mais veut absolument organiser toutes les soirées chez elle. Cuisine hyper bien et nourrit tout le monde", 
+				Situation.Salarie,  LocalDate.parse("1969-03-09"));
 		locataire1 = locataireRepository.save(locataire1);
-		Locataire locataire2 = new Locataire("locataire2", "NomLocataire2", "PrenomLocataire2", Civilite.Mr, "locataire2@mail.com",
-				"0011000002", "locataire2", true, "Description locataire 2" + Lorem , Situation.Salarie, LocalDate.parse("1992-02-09"));
+		Locataire locataire2 = new Locataire("rachel", "Green", "Rachel", Civilite.Mme, "rachelgreen@mail.com",
+				"0202020202", "rachel", false, "Bordélique et enfant gâtée mais peut t'habiller comme personne", Situation.Autre, LocalDate.parse("1969-05-05"));
 		locataire2 = locataireRepository.save(locataire2);
-		Locataire locataire3 = new Locataire("locataire3", "NomLocataire3", "PrenomLocataire3", Civilite.Mme, "locataire3@mail.com",
-				"0011000003", "locataire3", true, "Description locataire 3" + Lorem, Situation.Etudiant, LocalDate.parse("1992-02-09"));
+		Locataire locataire3 = new Locataire("jaxx", "Abid", "Jordan", Civilite.Mr, "jordanabid@mail.com",
+				"0303030303", "jaxx", true, "Peut hypnotiser le propriétaire pour avoir un appartement. C'est aussi bizarre qu'il ait les réfs de tous les jeux vidéos du monde nan ?", Situation.Salarie, LocalDate.parse("1992-02-09"));
 		locataire3 = locataireRepository.save(locataire3);
 		Locataire locataire4 = new Locataire("locataire4", "NomLocataire4", "PrenomLocataire4", Civilite.Mr, "locataire4@mail.com",
 				"0011000004", "locataire4", false, "Description locataire 4" + Lorem, Situation.Retraite, LocalDate.parse("1992-02-09"));
@@ -104,22 +104,22 @@ class ProjetColocBackApplicationTests {
 		locataire8 = locataireRepository.save(locataire8);
 
 		// Creation des Localisation
-		Localisation locLog1 = new Localisation("departementLog1", "villeLog1", "cpLog1", "voieLog1", 1);
+		Localisation locLog1 = new Localisation("New York", "West Village", "10014", "Bedford Street", 90);
 		Localisation locLog2 = new Localisation("departementLog2", "villeLog2", "cpLog2", "voieLog2", 2);
 		Localisation locLog3 = new Localisation("departementLog3", "villeLog3", "cpLog3", "voieLog3", 3);
 		Localisation locLog4 = new Localisation("departementLog4", "villeLog4", "cpLog4", "voieLog4", 4);
 
 		// Creation des Logement
-		Logement log1 = new Logement(proprietaire1, "Description log1" + Lorem, 70, 2, 0, 1, 300.0, 50.0, 300.0, locLog1,
+		Logement log1 = new Logement(proprietaire1, "Grand appart central à New York", "Beaucoup trop grand pour le prix et très bien agencé", 104, 2, 2, 1, 180.0, 50.0, 300.0, locLog1,
 				TypeLogement.Appartement, LocalDate.now());
 		log1 = logementRepository.save(log1);
-		Logement log2 = new Logement(proprietaire2, "Description log2" + Lorem, 40, 1, 0, 1, 350.0, 50.0, 350.0, locLog2,
+		Logement log2 = new Logement(proprietaire2,"Titre log2", "Description log2" + Lorem, 40, 1, 0, 1, 350.0, 50.0, 350.0, locLog1,
 				TypeLogement.Studio, LocalDate.now());
 		log2 = logementRepository.save(log2);
-		Logement log3 = new Logement(proprietaire3, "Description log3" + Lorem, 110, 4, 0, 1, 275.0, 50.0, 275.0, locLog3,
+		Logement log3 = new Logement(proprietaire3,"Titre log3", "Description log3" + Lorem, 110, 4, 0, 1, 275.0, 50.0, 275.0, locLog3,
 				TypeLogement.Maison, LocalDate.now());
 		log3 = logementRepository.save(log3);
-		Logement log4 = new Logement(proprietaire4, "Description log4" + Lorem, 35, 2, 0, 1, 325.0, 50.0, 325.0, locLog4,
+		Logement log4 = new Logement(proprietaire4,"Titre log4", "Description log4" + Lorem, 35, 2, 0, 1, 325.0, 50.0, 325.0, locLog4,
 				TypeLogement.Studio, LocalDate.now());
 		log4 = logementRepository.save(log4);
 
@@ -148,16 +148,18 @@ class ProjetColocBackApplicationTests {
 		laveVaiselle = commoditeRepository.save(laveVaiselle);
 
 		// Creation des Regle
-		Regle fumeurAutorise = new Regle("fumeur autorise");
+		Regle fumeurAutorise = new Regle("fumeur autorise","fumeur.svg");
 		fumeurAutorise = regleRepository.save(fumeurAutorise);
-		Regle animauxAutorises = new Regle("animaux autorises");
+		Regle animauxAutorises = new Regle("animaux autorises","animaux.svg");
 		animauxAutorises = regleRepository.save(animauxAutorises);
-		Regle femmeUniquement = new Regle("femme uniquement");
+		Regle femmeUniquement = new Regle("femme uniquement","femme.svg");
 		femmeUniquement = regleRepository.save(femmeUniquement);
-		Regle hommeUniquement = new Regle("homme uniquement");
+		Regle hommeUniquement = new Regle("homme uniquement","homme.svg");
 		hommeUniquement = regleRepository.save(hommeUniquement);
-		Regle passSanitaire = new Regle("pass sanitaire");
+		Regle passSanitaire = new Regle("pass sanitaire","sanitaire.svg");
 		passSanitaire = regleRepository.save(passSanitaire);
+		Regle salarie = new Regle("Pas d'étudiants","salarie.svg");
+		salarie = regleRepository.save(salarie);
 
 		// Creation des Notation
 		Notation noteLoc1Lg1 = new Notation(log1, locataire1, 15.0, "commentaire note loc1 pour log1");
@@ -178,26 +180,26 @@ class ProjetColocBackApplicationTests {
 		noteLoc8Lg4 = notationRepository.save(noteLoc8Lg4);
 
 		// Creation des Chambre
-		Chambre ch1Log1 = new Chambre(log1, 12);
+		Chambre ch1Log1 = new Chambre(log1, 12, "description chambre 1 Log 1");
 		ch1Log1 = chambreRepository.save(ch1Log1);
-		Chambre ch2Log1 = new Chambre(log1, 13);
+		Chambre ch2Log1 = new Chambre(log1, 13,  "description chambre 2 Log 1");
 		ch2Log1 = chambreRepository.save(ch2Log1);
-		Chambre ch1Log2 = new Chambre(log2, 15);
+		Chambre ch1Log2 = new Chambre(log2, 15,  "description chambre 1 Log 2");
 		ch1Log2 = chambreRepository.save(ch1Log2);
-		Chambre ch1Log3 = new Chambre(log3, 10);
+		Chambre ch1Log3 = new Chambre(log3, 10, "description chambre 1 Log 3");
 		ch1Log3 = chambreRepository.save(ch1Log3);
-		Chambre ch2Log3 = new Chambre(log3, 12);
+		Chambre ch2Log3 = new Chambre(log3, 12, "description chambre 2 log 3");
 		ch2Log3 = chambreRepository.save(ch2Log3);
-		Chambre ch3Log3 = new Chambre(log3, 14);
+		Chambre ch3Log3 = new Chambre(log3, 14, "description chambre 3 log 3");
 		ch3Log3 = chambreRepository.save(ch3Log3);
-		Chambre ch4Log3 = new Chambre(log3, 13);
+		Chambre ch4Log3 = new Chambre(log3, 13, "description chambre 4 log 3");
 		ch4Log3 = chambreRepository.save(ch4Log3);
-		Chambre ch1Log4 = new Chambre(log4, 12);
+		Chambre ch1Log4 = new Chambre(log4, 12, "description chambre 1 log 4");
 		ch1Log4 = chambreRepository.save(ch1Log4);
-		Chambre ch2Log4 = new Chambre(log4, 16);
+		Chambre ch2Log4 = new Chambre(log4, 16, "description chambre 2 log 4");
 		ch2Log4 = chambreRepository.save(ch2Log4);
 
-		// Creation des Message
+		// Creation des Messages
 		Message message1Loc1proprietaire1 = new Message(locataire1, proprietaire1,
 				"Premier message loc1 vers proprietaire1");
 		message1Loc1proprietaire1 = messageRepository.save(message1Loc1proprietaire1);
@@ -291,37 +293,46 @@ class ProjetColocBackApplicationTests {
 		log3 = logementRepository.save(log3);
 
 		// Ajout de Photo a Logement
-		Photo photo1Log1 = new Photo("Photo1Log1", "URLPhoto1Log1", 1, log1);
+		Photo photo1Log1 = new Photo("Photo1Log1", "logement1_1.png", 1, log1);
 		photo1Log1 = photoRepository.save(photo1Log1);
-		Photo photo2Log1 = new Photo("Photo2Log1", "URLPhoto2Log1", 2, log1);
+		Photo photo2Log1 = new Photo("Photo2Log1", "logement1_2.png", 2, log1);
 		photo2Log1 = photoRepository.save(photo2Log1);
-		Photo photo3Log1 = new Photo("Photo3Log1", "URLPhoto3Log1", 3, log1);
+		Photo photo3Log1 = new Photo("Photo3Log1", "logement1_3.jpg", 3, log1);
 		photo3Log1 = photoRepository.save(photo3Log1);
-		Photo photo4Log1 = new Photo("Photo4Log1", "URLPhoto4Log1", 4, log1);
+		Photo photo4Log1 = new Photo("Photo4Log1", "logement1_4.jpg", 4, log1);
 		photo4Log1 = photoRepository.save(photo4Log1);
-		Photo photo1Log2 = new Photo("Photo1Log2", "URLPhoto1Log2", 1, log2);
+		Photo photo5Log1 = new Photo("Photo5Log1", "logement1_5.jpg", 5, log1, ch1Log1);
+		photo5Log1 = photoRepository.save(photo5Log1);
+		Photo photo6Log1 = new Photo("Photo6Log1", "logement1_6.jpg", 6, log1, ch1Log1);
+		photo6Log1 = photoRepository.save(photo6Log1);
+		Photo photo7Log1 = new Photo("Photo7Log1", "logement1_7.jpg", 7, log1, ch2Log1);
+		photo7Log1 = photoRepository.save(photo7Log1);
+		Photo photo8Log1 = new Photo("Photo8Log1", "logement1_8.jpg", 8, log1, ch2Log1);
+		photo8Log1 = photoRepository.save(photo8Log1);
+		
+		Photo photo1Log2 = new Photo("Photo1Log2", "logement2_1.png", 1, log2);
 		photo1Log2 = photoRepository.save(photo1Log2);
-		Photo photo2Log2 = new Photo("Photo2Log2", "URLPhoto2Log2", 2, log2);
+		Photo photo2Log2 = new Photo("Photo2Log2", "logement2_2.png", 2, log2);
 		photo2Log2 = photoRepository.save(photo2Log2);
-		Photo photo3Log2 = new Photo("Photo3Log2", "URLPhoto3Log2", 3, log2);
+		Photo photo3Log2 = new Photo("Photo3Log2", "logement2_3.jpg", 3, log2);
 		photo3Log2 = photoRepository.save(photo3Log2);
-		Photo photo4Log2 = new Photo("Photo4Log2", "URLPhoto4Log2", 4, log2);
+		Photo photo4Log2 = new Photo("Photo4Log2", "logement2_4.jpg", 4, log2);
 		photo4Log2 = photoRepository.save(photo4Log2);
-		Photo photo1Log3 = new Photo("Photo1Log3", "URLPhoto1Log3", 1, log3);
+		Photo photo1Log3 = new Photo("Photo1Log3", "logement3_1.png", 1, log3);
 		photo1Log3 = photoRepository.save(photo1Log3);
-		Photo photo2Log3 = new Photo("Photo2Log3", "URLPhoto2Log3", 2, log3);
+		Photo photo2Log3 = new Photo("Photo2Log3", "logement3_2.png", 2, log3);
 		photo2Log3 = photoRepository.save(photo2Log3);
-		Photo photo3Log3 = new Photo("Photo3Log3", "URLPhoto3Log3", 3, log3);
+		Photo photo3Log3 = new Photo("Photo3Log3", "logement3_3.jpg", 3, log3);
 		photo3Log3 = photoRepository.save(photo3Log3);
-		Photo photo4Log3 = new Photo("Photo4Log3", "URLPhoto4Log3", 4, log3);
+		Photo photo4Log3 = new Photo("Photo4Log3", "logement3_4.jpg", 4, log3);
 		photo4Log3 = photoRepository.save(photo4Log3);
-		Photo photo1Log4 = new Photo("Photo1Log4", "URLPhoto1Log4", 1, log4);
+		Photo photo1Log4 = new Photo("Photo1Log4", "logement4_1.jpg", 1, log4);
 		photo1Log4 = photoRepository.save(photo1Log4);
-		Photo photo2Log4 = new Photo("Photo2Log4", "URLPhoto2Log4", 2, log4);
+		Photo photo2Log4 = new Photo("Photo2Log4", "logement4_2.jpg", 2, log4);
 		photo2Log4 = photoRepository.save(photo2Log4);
-		Photo photo3Log4 = new Photo("Photo3Log4", "URLPhoto3Log4", 3, log4);
+		Photo photo3Log4 = new Photo("Photo3Log4", "logement4_3.jpg", 3, log4);
 		photo3Log4 = photoRepository.save(photo3Log4);
-		Photo photo4Log4 = new Photo("Photo4Log4", "URLPhoto4Log4", 4, log4);
+		Photo photo4Log4 = new Photo("Photo4Log4", "logement4_4.png", 4, log4);
 		photo4Log4 = photoRepository.save(photo4Log4);
 	}
 

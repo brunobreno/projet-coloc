@@ -26,24 +26,35 @@ public class Chambre {
 	
 	@Version
 	private Integer version;
-
-	@ManyToOne
-	@JsonView(Views.ViewChambre.class)
-	private Logement logement;
-	
-	@OneToOne(mappedBy = "chambre" )
-	@JsonView(Views.ViewChambre.class)
-	private Locataire locataire;
 	
 	@JsonView(Views.ViewChambre.class)
 	private Integer surface;
+	
+	@JsonView(Views.ViewChambre.class)
+	private String description;
+	
+
+	@OneToMany(mappedBy = "chambre")
+	@JsonView(Views.ViewChambreDetailDescription.class)
+	private List<Photo> photos;
+	
+	
+	@ManyToOne
+	@JsonView(Views.ViewChambreDetail.class)
+	private Logement logement;
+	
+	@OneToOne(mappedBy = "chambre" )
+	@JsonView(Views.ViewChambreDetail.class)
+	private Locataire locataire;
+	
+
 	
 	@ManyToMany
 	@JoinTable
 	(
 		name="commodite_chambre"
 	)
-	@JsonView(Views.ViewChambreDetail.class)
+	@JsonView(Views.ViewChambreDetailDescription.class)
 	private List<Commodite> commodites = new ArrayList<Commodite>();
 
 	@OneToMany(mappedBy = "chambre")
@@ -58,10 +69,12 @@ public class Chambre {
 		this.surface = surface;
 	}
 	
-	public Chambre(Logement logement, int surface, List<Commodite> commodites) {
-		this.logement = logement;
+
+	
+	public Chambre(Logement logement, Integer surface, String description) {
 		this.surface = surface;
-		this.commodites = commodites;
+		this.description = description;
+		this.logement = logement;
 	}
 
 	public Long getId() {
@@ -83,9 +96,39 @@ public class Chambre {
 	public int getSurface() {
 		return surface;
 	}
+
 	
-	public void setSurface(int surface) {
+	public void setSurface(Integer surface) {
 		this.surface = surface;
+	}
+	
+
+
+
+
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
 	}
 
 	public List<Commodite> getCommodites() {

@@ -20,7 +20,12 @@ public class Photo {
 	private Integer ordre;
 	
 	@ManyToOne
+	@JsonView(Views.ViewPhotoDetail.class)
 	private Logement logement;
+	
+	@ManyToOne
+	@JsonView(Views.ViewPhotoDetail.class)
+	private Chambre chambre;
 	
 	public Photo() {
 	}
@@ -36,6 +41,14 @@ public class Photo {
 		this.chemin = chemin;
 		this.ordre = ordre;
 		this.logement = logement;
+	}
+	
+	public Photo(String libelle, String chemin, Integer ordre, Logement logement, Chambre chambre) {
+		this.libelle = libelle;
+		this.chemin = chemin;
+		this.ordre = ordre;
+		this.logement = logement;
+		this.chambre = chambre;
 	}
 
 	public Long getId() {
@@ -77,4 +90,14 @@ public class Photo {
 	public void setLogement(Logement logement) {
 		this.logement = logement;
 	}
+
+	public Chambre getChambre() {
+		return chambre;
+	}
+
+	public void setChambre(Chambre chambre) {
+		this.chambre = chambre;
+	}
+	
+	
 }

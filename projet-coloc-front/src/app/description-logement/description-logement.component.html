@@ -20,7 +20,8 @@
           <span class="subtext"> 425€ </span>
           <span class="subtext"> | </span> -->
 
-          12 place Graslin, Nantes (44000)
+          {{logement.localisation.num}} {{logement.localisation.voie}}, {{logement.localisation.ville}} 
+          ({{logement.localisation.codePostal}} {{logement.localisation.departement}})
 
         </div>
 
@@ -87,13 +88,10 @@
               </div>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="../img/exempleLogement/logement1/logement1_1.png" class="d-block w-100" alt="...">
+                  <img src="../../assets/img/exempleLogement/logement1/logement1_1.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                  <img src="../img/exempleLogement/logement1/logement1_2.png" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="../img/exempleLogement/logement2/logement2_1.png" class="d-block w-100" alt="...">
+                  <img src="../../assets/img/exempleLogement/logement1/logement1_2.png" class="d-block w-100" alt="...">
                 </div>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselLogementIndicators"
@@ -119,21 +117,22 @@
       <div id="sticky-main-container">
         <div id="sticky-card">
 
-          <h5> <i class="far fa-calendar-alt"></i>
-            Disponible le : jj-mm-aaaa
+          <h5> <fa-icon [icon]="faCalendar"></fa-icon>
+            Disponible le : {{logement.dateDispo}}
           </h5>
 
-          <h5> <i class="fas fa-money-bill"></i> Loyer tout compris : 520€</h5>
+          <h5> <fa-icon [icon]="faMoneyBill"> </fa-icon>Loyer tout compris : 520€</h5>
 
-          <h5> <i class="fas fa-users"></i> Nombre d'occupant : 3</h5>
+          <h5> <fa-icon [icon]="faUsers"></fa-icon> Nombre d'occupant :  </h5>
 
-          <h5><i class="fas fa-expand-alt"></i> Superficie de la chambre : 22 m² </h5>
+          <h5> <fa-icon [icon]="faExpandAlt"></fa-icon> 
+            Superficie de la chambre : 22 m² </h5>
           <div style="display: flex;">
             <button class="contact-button" id="envoi_message">
-              <i class="far fa-comment-alt"></i>
+              <fa-icon [icon]="faCommentAlt"></fa-icon> 
               Envoyer un Message </button>
             <button class="contact-button" id="depot-dossier">
-              <i class="fas fa-file-download"></i>
+              <fa-icon [icon]="faFileDownload"></fa-icon> 
               Déposer un dossier </button>
           </div>
 
@@ -157,18 +156,19 @@
 
               <div class="card-style">
                 <h5>Le logement</h5>
-                <span>Type : Appartement</span>
-                <span>Superficie : 160m² </span>
-                <span>Nombre de chambre : 4 </span>
-                <span>Nombre de sdb : 1 </span>
+                <span>Type : {{logement.typeLogement}}</span>
+                <span>Superficie : {{logement.surface}}m² </span>
+                <span>Nombre de chambres : {{logement.nChambre}} </span>
+                <span>Nombre de chambre(s) occupée(s): {{logement.nChambreOccup}} </span>
+                <span>Nombre de sdb : {{logement.nSdb}} </span>
                 <span>Meublé : Oui</span>
               </div>
 
               <div class="card-style">
                 <h5>Les dépenses</h5>
-                <span>Loyer : 470€ </span>
-                <span>Charges : 50€ </span>
-                <span>Caution : 450€ </span>
+                <span>Loyer : {{logement.loyer}}€ </span>
+                <span>Charges : {{logement.charges}}€ </span>
+                <span>Caution : {{logement.caution}}€ </span>
               </div>
 
 
@@ -183,40 +183,7 @@
             <h6>Description de la coloc'</h6>
 
             <div class="description text-truncate text-truncate-6">
-              Lorem ipsum dolor sit amet. Vel totam delectus sit autem illo a illo unde ut perspiciatis enim. Ab
-              voluptatem
-              blanditiis et ipsa enim eos enim nisi aut eius doloribus. Qui dolorem pariatur ea aperiam saepe qui Quis
-              obcaecati ex repellat quia cum architecto reprehenderit in sint facilis. Totam neque est quibusdam velit
-              sed
-              voluptatem commodi 33 soluta veritatis ea aliquam debitis et eveniet similique. Et doloremque beatae in
-              saepe
-              cumque aut distinctio consectetur ut perspiciatis natus aut eveniet sapiente et dignissimos sint. Et
-              aperiam
-              consequuntur sed enim mollitia ab dolor voluptas. Non consectetur eius et autem eius qui omnis voluptate.
-
-              Et facere error ut perspiciatis quis eos aliquid accusantium nam facilis molestiae qui voluptates dicta
-              quo
-              velit tempora et perferendis impedit. Est distinctio nihil quo molestiae exercitationem quo asperiores
-              eius
-              et
-              assumenda dolorum aut magnam rerum ea reprehenderit rerum ea dolores tempora. Est cupiditate cupiditate
-              aut
-              ipsam quia quo nihil eaque. Ex nostrum commodi qui fugiat illo non blanditiis fuga non odit perferendis
-              sed
-              earum quis! Et voluptatum dolores aut quaerat aperiam et cumque rerum sed facilis deserunt ut esse
-              voluptatem.
-              Et enim molestiae ut neque obcaecati eum delectus obcaecati. Qui placeat fuga sed tempora nesciunt et
-              deleniti
-              incidunt.
-
-              Est vero corporis aut quae deleniti aut maxime fugiat qui maxime quia et placeat error. Et molestiae
-              eveniet
-              est voluptatum galisum ut fuga soluta. Aut laboriosam esse aut galisum nihil et cupiditate galisum qui
-              quaerat
-              quia. Ut explicabo nisi ad omnis repellendus sit repellendus officiis 33 eius nemo et nulla deleniti aut
-              eius
-              magni nam voluptate natus. Est esse sint ad asperiores dolorem et ratione impedit est perspiciatis
-              cupiditate!
+              {{logement.description}}
             </div>
 
           </div>
@@ -226,13 +193,13 @@
           <div class="caracteristiques-container">
             <h6>Les occupants</h6>
             <div class="occupant-container">
-              <div class="occupant-card-mini card-style">
+              <div  *ngFor="let loc of locataires" class="occupant-card-mini card-style">
                 <div class="occupant-card-mini-photo" style="outline: solid 2px #ed99a1;">
                   <img src="../img/occupants/occupant1-1.jpg" class="h-100" alt="...">
                 </div>
                 <div class="occupant-card-mini-content">
-                  <span class="occupant-desc">Louise, 27 ans</span>
-                  <span class="occupant-desc">Indépendante</span>
+                  <span class="occupant-desc"> {{loc.prenom }}</span>
+                  <span class="occupant-desc">{{loc.situation }}</span>
                   <div class="occupant-hobbies">
                     <span class="material-icons">menu_book</span>
                     <span class="material-icons">sports_esports</span>
@@ -240,39 +207,10 @@
                   </div>
                 </div>
               </div>
-
-              <div class="occupant-card-mini card-style">
-                <div class="occupant-card-mini-photo" style="outline: solid 2px #8bc2a8 ;">
-                  <img src="../img/occupants/occupant7-1.jpg" class="h-100" alt="...">
-                </div>
-                <div class="occupant-card-mini-content">
-                  <span class="occupant-desc">Iris, 26ans</span>
-                  <span class="occupant-desc">Salarié</span>
-                  <div class="occupant-hobbies">
-                    <span class="material-icons">hiking</span>
-                    <span class="material-icons">explore</span>
-                    <span class="material-icons">sports_bar</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="occupant-card-mini card-style">
-                <div class="occupant-card-mini-photo" style="outline: solid 2px #85b5fd;">
-                  <img src="../img/occupants/occupant4-1.jpg" class="h-100" alt="...">
-                </div>
-                <div class="occupant-card-mini-content">
-                  <span class="occupant-desc">Amir, 29 ans</span>
-                  <span class="occupant-desc">Salarié</span>
-                  <div class="occupant-hobbies">
-                    <span class="material-icons">sports_handball</span>
-                    <span class="material-icons">movie</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
-          <div class="caracteristiques-container">
+         <!-- <div class="caracteristiques-container">
 
             <h6>Le mode de vie adopté</h6>
 
@@ -291,11 +229,9 @@
                 Télétravail
               </div>
               <div class="caracteristiques"> <i class="fas fa-users"></i>
-                <!--  <i class="fas fa-hands-helping"> </i> -->
+                  <i class="fas fa-hands-helping"> </i> 
                 Collectif
               </div>
-
-
 
               <div class="caracteristiques"> <i class="fas fa-user-circle"></i>
                 Indépendant
@@ -306,7 +242,7 @@
 
 
             </div>
-          </div>
+          </div> -->
 
         </div>
 
@@ -319,75 +255,19 @@
           <div class="caracteristiques-container ">
 
             <h6>Les commodités proposées</h6>
-
             <div class="caracteristiques-list card-style">
-
-              <div class="caracteristiques"> <span class="material-icons-outlined google-icon-filter">yard</span>
-                Jardin / Terrasse
+              <div  *ngFor="let com of logement.commodites"  class="caracteristiques">
+                <img src="../../assets/img/icons/{{com.chemin}}" class="" alt="...">  {{com.libelle}}
               </div>
-              <div class="caracteristiques"> <span class="material-icons-round">balcony</span>
-                Balcon
-              </div>
-              <div class="caracteristiques"> <span class="material-icons-round">accessible</span>
-                Acces handicapé
-              </div>
-              <div class="caracteristiques"> <span class="material-icons-round google-icon-filter">local_parking</span>
-                Parking
-              </div>
-              <div class="caracteristiques"> <span class="material-icons-round"> fitness_center</span>
-                Salle de sport
-              </div>
-
-
-              <div class="caracteristiques"> <span class="material-icons-round">wifi</span>
-                Internet Fibre
-              </div>
-              <div class="caracteristiques"><span class="material-icons">local_laundry_service</span>
-                Lave-vaisselle
-              </div>
-              <div class="caracteristiques"><span class="material-icons">local_laundry_service</span>
-                Lave-linge
-              </div>
-              <div class="caracteristiques"><span class="material-icons">ac_unit</span>
-                Climatisation
-              </div>
-              <div class="caracteristiques"> <span class="material-icons">tv</span>
-                Télévision
-              </div>
-
             </div>
-
           </div>
 
           <div class="caracteristiques-container">
-
             <h6>Les règles à respecter</h6>
-
-
             <div class="caracteristiques-list card-style">
-
-              <div class="caracteristiques"> <i class="fas fa-cat"></i>
-                Animaux autorisés
+              <div  *ngFor="let regle of logement.regles"  class="caracteristiques">
+                <img src="../../assets/img/icons/{{regle.chemin}}" class="" alt="...">  {{regle.libelle}}
               </div>
-              <div class="caracteristiques"> <i class="fas fa-smoking"></i>
-                Fumeur autorisé
-              </div>
-              <div class="caracteristiques"> <i class="fas fa-venus"></i>
-                Femme uniquement
-              </div>
-              <div class="caracteristiques"> <i class="fas fa-mars"></i>
-                Homme uniquement
-              </div>
-              <div class="caracteristiques"><i class="fas fa-syringe"></i>
-                Pass sanitaire
-              </div>
-              <div class="caracteristiques"> <i class="fas fa-graduation-cap"></i>
-                Etudiant uniquement
-              </div>
-              <div class="caracteristiques"> <i class="fas fa-user-tie"></i>
-                Travailleur uniquement
-              </div>
-
             </div>
           </div>
 
@@ -398,13 +278,11 @@
 
         <!-- Section Chambre -->
         <div class="section-container" id="chambre-section">
-          <h4>La chambre proposée</h4>
-
-          <div style="    display: flex;justify-content: space-around; height: 320px;">
-            <div class="caracteristiques-container" style="width: 45%;">
+          <h4>Les chambres (disponibles?)</h4>
+          <div *ngFor="let chambre of chambres" style="display: flex;">
+            <div class="caracteristiques-container">
               <h6>Les photos </h6>
-
-              <div class="photo-content"><img src="../img/exempleLogement/logement2/logement2_1.png" class="h-100"
+              <div class="photo-content"><img src="../../assets/img/exempleLogement/logement2/logement2_2.png" class="h-100"
                   alt="...">
               </div>
 
@@ -458,46 +336,10 @@
     </div>
 
             </div>
-
-            <div class="caracteristiques-container" style="width: 45%;">
+            <div class="caracteristiques-container" style="width: 50%;">
               <h6>Description </h6>
-
               <div class="description text-truncate text-truncate-12">
-                Lorem ipsum dolor sit amet. Vel totam delectus sit autem illo a illo unde ut perspiciatis enim. Ab
-                voluptatem
-                blanditiis et ipsa enim eos enim nisi aut eius doloribus. Qui dolorem pariatur ea aperiam saepe qui Quis
-                obcaecati ex repellat quia cum architecto reprehenderit in sint facilis. Totam neque est quibusdam velit
-                sed
-                voluptatem commodi 33 soluta veritatis ea aliquam debitis et eveniet similique. Et doloremque beatae in
-                saepe
-                cumque aut distinctio consectetur ut perspiciatis natus aut eveniet sapiente et dignissimos sint. Et
-                aperiam
-                consequuntur sed enim mollitia ab dolor voluptas. Non consectetur eius et autem eius qui omnis
-                voluptate.
-
-                Et facere error ut perspiciatis quis eos aliquid accusantium nam facilis molestiae qui voluptates dicta
-                quo
-                velit tempora et perferendis impedit. Est distinctio nihil quo molestiae exercitationem quo asperiores
-                eius
-                et
-                assumenda dolorum aut magnam rerum ea reprehenderit rerum ea dolores tempora. Est cupiditate cupiditate
-                aut
-                ipsam quia quo nihil eaque. Ex nostrum commodi qui fugiat illo non blanditiis fuga non odit perferendis
-                sed
-                earum quis! Et voluptatum dolores aut quaerat aperiam et cumque rerum sed facilis deserunt ut esse
-                voluptatem.
-                Et enim molestiae ut neque obcaecati eum delectus obcaecati. Qui placeat fuga sed tempora nesciunt et
-                deleniti
-                incidunt.
-
-                Est vero corporis aut quae deleniti aut maxime fugiat qui maxime quia et placeat error. Et molestiae
-                eveniet
-                est voluptatum galisum ut fuga soluta. Aut laboriosam esse aut galisum nihil et cupiditate galisum qui
-                quaerat
-                quia. Ut explicabo nisi ad omnis repellendus sit repellendus officiis 33 eius nemo et nulla deleniti aut
-                eius
-                magni nam voluptate natus. Est esse sint ad asperiores dolorem et ratione impedit est perspiciatis
-                cupiditate!
+                {{chambre.description}}
               </div>
             </div>
           </div>
@@ -541,7 +383,8 @@
           <h6>Où se situe le logement</h6>
 
           <div class="description" style="margin-top: 20px;">
-            Adresse exacte : 12 place Graslin, Nantes (44000)
+            Adresse exacte :   {{logement.localisation.num}} {{logement.localisation.voie}}, {{logement.localisation.ville}} 
+            ({{logement.localisation.codePostal}} {{logement.localisation.departement}})
           </div>
 
           <div class="map-main-container">
@@ -556,24 +399,5 @@
 
       </div>
     </div>
-
-    <footer>
-      <div class="fContent">
-        <div class="fLeft">
-          <img src="../img/logo/logoRoofBlack.svg" alt="logo LaColoc">
-          <span>&copy; 2021, LaColoc</span>
-        </div>
-
-        <div class="fRight">
-          <a target="_blank" href="https://www.facebook.com/La-Coloc-102882025547821"><img
-              src="../img/reseauxSociaux/facebookBlack.svg" alt=""></a>
-          <a target="_blank" href="https://twitter.com/"> <img src="../img/reseauxSociaux/twitterBlack.svg" alt=""></a>
-          <a target="_blank" href="https://www.instagram.com/"><img src="../img/reseauxSociaux/instagramBlack.svg"
-              alt=""></a>
-        </div>
-      </div>
-
-
-    </footer>
 
   </div>

@@ -34,6 +34,9 @@ import { MessagerieComponent } from './messagerie/messagerie.component';
 import { MessagerieService } from './messagerie/messagerie.service';
 import { MessagerieNouveauContactComponent } from './messagerie-nouveau-contact/messagerie-nouveau-contact.component';
 import { MessagerieNouveauContactService } from './messagerie-nouveau-contact/messagerie-nouveau-contact.service';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { DescriptionLogementService } from './description-logement/description-logement.service';
+import { ChambreComponent } from './chambre/chambre.component';
 
 
 @NgModule({
@@ -50,7 +53,9 @@ import { MessagerieNouveauContactService } from './messagerie-nouveau-contact/me
     AgePipe,
     ProprietaireComponent,
     LogementComponent,
+    DescriptionLogementComponent,
     AjoutLogementComponent,
+    ChambreComponent    
     DescriptionLogementComponent,
     HomePageComponent,
     MessagerieComponent,
@@ -63,9 +68,19 @@ import { MessagerieNouveauContactService } from './messagerie-nouveau-contact/me
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    IvyCarouselModule
     //NoopAnimationsModule
   ],
   providers: [AppConfigService, LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService, AjoutLogementHttpService, HomePageService, MessagerieService, MessagerieNouveauContactService],
+  providers: [
+    AppConfigService, 
+    LocataireHttpService, 
+    LogInService, 
+    InscriptionService, 
+    RechercheLocataireService, 
+    AjoutLogementHttpService,
+    DescriptionLogementService,
+    RechercheLogementComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

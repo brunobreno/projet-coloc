@@ -29,8 +29,8 @@ public abstract class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
-	@Version
-	private Integer version;
+//	@Version
+//	private Integer version;
 	private String username;
 	protected String nom;
 

@@ -39,6 +39,8 @@ public class Locataire extends Utilisateur {
 	private List<Candidature> candidatures = new ArrayList<Candidature>();
 	
 	public Locataire() {}
+	
+	
 
 	public Locataire(String username, String nom, String prenom, Civilite civ, String email, String tel, String password, boolean recherche,
 			String description, Situation situation, LocalDate dateDeNaissance, Dossier dossier, Chambre chambre) {

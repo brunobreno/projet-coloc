@@ -28,6 +28,7 @@ public class Logement {
 	private Long id;
 //	@Version
 //	private Integer version;
+	private String titre;
 	private String description;
 	private Integer surface;
 	private Integer nChambre;
@@ -39,7 +40,7 @@ public class Logement {
 	private LocalDate dateDeMiseEnLigne;
 	
 	@OneToMany(mappedBy = "logement")
-	@JsonView(Views.ViewLogementDetail.class)
+	@JsonView(Views.ViewLogementComplete.class)
 	private List<Photo> photos;
 	
 	@OneToMany(mappedBy = "logement")
@@ -52,7 +53,10 @@ public class Logement {
 	private Proprietaire proprietaire;
 	
 	@Embedded
+	@JsonView(Views.ViewLogementComplete.class)
 	private Localisation localisation;
+	
+	
 	@Enumerated(EnumType.STRING)
 	private TypeLogement typeLogement;
 	
@@ -65,7 +69,8 @@ public class Logement {
 	(
 		name="commodite_logement"
 	)
-	@JsonView(Views.ViewLogementCommodite.class)
+	//@JsonView(Views.ViewLogementCommodite.class)
+	@JsonView(Views.ViewLogementComplete.class)
 	private  List<Commodite> commodites = new ArrayList<Commodite>();
 	
 	@ManyToMany
@@ -73,17 +78,18 @@ public class Logement {
 	(
 		name="regle_logement"
 	)
-	@JsonView(Views.ViewLogementDetail.class)
+	@JsonView(Views.ViewLogementComplete.class)
 	private List<Regle> regles = new ArrayList<Regle>();
 	
 	public Logement() {
 		super();
 	}
 
-	public Logement(Proprietaire proprietaire, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
+	public Logement(Proprietaire proprietaire, String titre, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
 			Localisation localisation, TypeLogement typeLogement) {
 		super();
 		this.proprietaire = proprietaire;
+		this.titre = titre;
 		this.description = description;
 		this.surface = surface;
 		this.nChambre = nchambre;
@@ -97,10 +103,11 @@ public class Logement {
 		this.dateDeMiseEnLigne = LocalDate.now();
 	}
 
-	public Logement(Proprietaire proprietaire, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
+	public Logement(Proprietaire proprietaire, String titre, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
 			Localisation localisation, TypeLogement typeLogement, LocalDate dateDispo) {
 		super();
 		this.proprietaire = proprietaire;
+		this.titre = titre;
 		this.description = description;
 		this.surface = surface;
 		this.nChambre = nchambre;
@@ -115,11 +122,12 @@ public class Logement {
 		this.dateDeMiseEnLigne = LocalDate.now();
 	}
 	
-	public Logement(Proprietaire proprietaire, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
+	public Logement(Proprietaire proprietaire, String titre, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
 			Localisation localisation,TypeLogement typeLogement, List<Commodite> commodites,List<Regle> regles) {
 		super();
 		this.proprietaire = proprietaire;
 		this.description = description;
+		this.titre = titre;
 		this.surface = surface;
 		this.nChambre = nchambre;
 		this.nChambreOccup = nChambreOccup;
@@ -220,6 +228,16 @@ public class Logement {
 
 	public void setTypeLogement(TypeLogement typeLogement) {
 		this.typeLogement = typeLogement;
+	}
+	
+	
+
+	public String getTitre() {
+		return titre;
+	}
+
+	public void setTitre(String titre) {
+		this.titre = titre;
 	}
 
 	public String getDescription() {

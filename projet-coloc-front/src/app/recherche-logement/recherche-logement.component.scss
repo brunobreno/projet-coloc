@@ -32,8 +32,8 @@
   
   .dropdown-menu
   {
-    padding-left: 10px;
-    padding-right: 10px;
+    border: solid 1px lightgray;
+    padding: 10px;
   }
   
   .dropdown-menu .form-check
@@ -82,17 +82,15 @@
     border-left: solid 1px white;
   }
   
+  .modal-dialog {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
   
-  .modal-dialogue
-  {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .modal-content
-  {
-    max-width: 650px;
-  }
+.modal-content{
+  padding: 25px 30px;
+}
   
   .modal-subsection-container
   {
@@ -118,7 +116,14 @@
   {
     padding-top: 5px;
   }
-  
+
+  .form-check .form-check-input{
+    float: left;
+    border: solid 1px #7d7d7d;
+    margin: 4px 6px 2px 3px;
+  }
+
+
   .container-range
   {
     display: flex;
