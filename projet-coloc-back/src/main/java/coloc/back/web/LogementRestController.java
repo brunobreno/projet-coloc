@@ -1,5 +1,6 @@
 package coloc.back.web;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +21,14 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import coloc.back.model.Chambre;
+import coloc.back.model.Commodite;
+import coloc.back.model.Locataire;
 import coloc.back.model.Logement;
+import coloc.back.model.Regle;
 import coloc.back.model.Views;
+import coloc.back.repository.IChambreRepository;
+import coloc.back.repository.ILocataireRepository;
 import coloc.back.repository.ILogementRepository;
 
 
@@ -33,6 +40,10 @@ public class LogementRestController {
 
 	@Autowired
 	private ILogementRepository logementRepo;
+	@Autowired
+	private ILocataireRepository locataireRepo;
+	@Autowired
+	private IChambreRepository chambreRepo;
 
 	@GetMapping("")
 	@PreAuthorize("hasAnyRole('ADMIN','PROPRIETAIRE')")
@@ -62,13 +73,6 @@ public class LogementRestController {
 		return logements;
 	}
 	
-	@GetMapping("/by-ville/{ville}/with-commodite/order-by-price-asc")
-	@JsonView(Views.ViewLogementCommodite.class)
-	public List<Logement> findAllWithCommoditeByVilleOrderByPriceAsc(@PathVariable String ville) {
-		List<Logement> logements = logementRepo.findAllByVilleWithCom(ville);
-		return logements;
-	}
-	
 	
 	@GetMapping("/with-commodite/{id}")
 	@JsonView(Views.ViewLogementCommodite.class)
@@ -82,8 +86,21 @@ public class LogementRestController {
 		}
 	}
 	
-	@GetMapping("/with-commodite")
-	@JsonView(Views.ViewLogementCommodite.class)
+	@GetMapping("/complete/{id}")
+	@JsonView(Views.ViewLogementComplete.class)
+	public Logement findWithRegle(@PathVariable Long id) {
+		Optional<Logement> optLogement = logementRepo.findById(id);
+
+		if (optLogement.isPresent()) {
+			return optLogement.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Logement non trouvé");
+		}
+	}
+	
+	
+	@GetMapping("/complete")
+	@JsonView(Views.ViewLogementComplete.class)
 	public List<Logement> findAllWithCommodite() {
 		List<Logement> logements = logementRepo.findAllWithCommodite();
 		return logements;
@@ -97,8 +114,8 @@ public class LogementRestController {
 	}
 	
 	@GetMapping("/by-ville/{ville}")
-	@JsonView(Views.ViewCommon.class)
-	public List<Logement> findByVille(@PathVariable String ville) {
+	@JsonView(Views.ViewLogementComplete.class)
+	public List<Logement> findAllLogementByVille(@PathVariable String ville) {
 		List<Logement> logements = logementRepo.findAllLogementByVille(ville);
 
 		return logements;
@@ -113,7 +130,7 @@ public class LogementRestController {
 	}
 
 	@GetMapping("/by-proprietaire/{idProprietaire}")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewLogementComplete.class)
 	public List<Logement> findByIdProprietaire(@PathVariable("idProprietaire") Long id) {
 		List<Logement> logements = logementRepo.findAllLogementByIdProprietaire(id);
 
@@ -127,6 +144,21 @@ public class LogementRestController {
 
 		return logements;
 	}
+	
+	@GetMapping("/with-locataires/{idLogement}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Locataire> findAllByLogement(@PathVariable("idLogement") Long id) {
+		List<Chambre> chambres = chambreRepo.findAllByIdLogement(id);
+		List<Locataire> locataires = new ArrayList<Locataire>();
+		for(Chambre chambre : chambres) {
+			locataires.add(locataireRepo.findAllByIdChambre(chambre.getId()));
+		}
+		
+		return locataires;
+	}
+	
+	
+	
 	
 	
 	@PostMapping("")

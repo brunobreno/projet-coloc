@@ -5,7 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppConfigService } from './app-config.service';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatIconModule } from '@angular/material/icon'; 
+import {MatIconModule} from '@angular/material/icon'; 
+import {CrystalLightboxModule} from '@crystalui/angular-lightbox';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +35,12 @@ import { MessagerieComponent } from './messagerie/messagerie.component';
 import { MessagerieService } from './messagerie/messagerie.service';
 import { MessagerieNouveauContactComponent } from './messagerie-nouveau-contact/messagerie-nouveau-contact.component';
 import { MessagerieNouveauContactService } from './messagerie-nouveau-contact/messagerie-nouveau-contact.service';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { DescriptionLogementService } from './description-logement/description-logement.service';
+import { ChambreComponent } from './chambre/chambre.component';
+import { MapComponent } from './map/map.component';
+import { MarkerService } from './map/marker.service';
+import { MapHttpService } from './map/map-http.service';
 
 
 @NgModule({
@@ -50,11 +57,14 @@ import { MessagerieNouveauContactService } from './messagerie-nouveau-contact/me
     AgePipe,
     ProprietaireComponent,
     LogementComponent,
+    DescriptionLogementComponent,
     AjoutLogementComponent,
+    ChambreComponent,
     DescriptionLogementComponent,
     HomePageComponent,
     MessagerieComponent,
-    MessagerieNouveauContactComponent
+    MessagerieNouveauContactComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +73,25 @@ import { MessagerieNouveauContactService } from './messagerie-nouveau-contact/me
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    IvyCarouselModule,
+    CrystalLightboxModule
     //NoopAnimationsModule
   ],
-  providers: [AppConfigService, LocataireHttpService, LogInService, InscriptionService, RechercheLocataireService, AjoutLogementHttpService, HomePageService, MessagerieService, MessagerieNouveauContactService],
+ 
+  providers: [
+    AppConfigService, 
+    LocataireHttpService, 
+    LogInService, 
+    InscriptionService, 
+    RechercheLocataireService, 
+    AjoutLogementHttpService,
+    DescriptionLogementService,
+    RechercheLogementComponent,
+    HomePageService, 
+    MessagerieService, 
+    MessagerieNouveauContactService,
+    MapHttpService, 
+    MarkerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

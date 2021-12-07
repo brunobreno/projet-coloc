@@ -9,6 +9,8 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -27,18 +29,35 @@ public class Locataire extends Utilisateur {
 	private Situation situation;
 	
 	@Embedded
-//	@JsonView(Views.ViewLocataireDetail.class)
+	@JsonView(Views.ViewLocataireDetail.class)
 	private Dossier dossier;
+	
+	@OneToMany(mappedBy = "locataire")
+	@JsonView(Views.ViewLocataireDescription.class)
+	private List<Photo> photos;
+	
+	@ManyToMany
+	@JoinTable
+	(
+		name="hobby_locataire"
+	)
+	@JsonView(Views.ViewLocataireDescription.class)
+	private  List<Hobby> hobbies = new ArrayList<Hobby>();
+	
 	
 	@OneToOne
 	@JsonView(Views.ViewLocataireDetail.class)
 	private Chambre chambre;
-
+	
+	
+	
 	@OneToMany(mappedBy = "locataire")
 	@JsonView(Views.ViewLocataireDetail.class)
 	private List<Candidature> candidatures = new ArrayList<Candidature>();
 	
 	public Locataire() {}
+	
+	
 
 	public Locataire(String username, String nom, String prenom, Civilite civ, String email, String tel, String password, boolean recherche,
 			String description, Situation situation, LocalDate dateDeNaissance, Dossier dossier, Chambre chambre) {
@@ -84,6 +103,7 @@ public class Locataire extends Utilisateur {
 		this.chambre = chambre;
 	}
 
+
 	public boolean isRecherche() {
 		return recherche;
 	}
@@ -119,6 +139,32 @@ public class Locataire extends Utilisateur {
 	public void addCandidatures(Candidature candidature) {
 		this.candidatures.add(candidature);
 	}
+	
+	
+
+	public List<Hobby> getHobbies() {
+		return hobbies;
+	}
+
+
+
+	public void setHobbies(List<Hobby> hobbies) {
+		this.hobbies = hobbies;
+	}
+
+
+
+	public List<Photo> getPhotos() {
+		return photos;
+	}
+
+
+
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
+	}
+
+
 
 	@Override
 	public String toString() {

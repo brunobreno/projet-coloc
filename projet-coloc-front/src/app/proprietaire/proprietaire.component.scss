@@ -60,6 +60,27 @@ html * {
     padding:5px 5px 10px 5px;
 }
 
+.categorie-logements{
+    width:80%;
+    margin: 0 0 10% 10%;
+    padding:5px 5px 10px 5px;
+}
+
+.ligne{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.colonne{
+    display: flex;
+    flex-direction: column;
+}
+
+carousel{
+    z-index: 0;
+}
+
 
 .categorie-titre{
     font-weight: 600;
@@ -113,13 +134,16 @@ html * {
     color:gray;
 }
 
-.btn-enregistrer{
-    border:solid 1px black;
-    border-radius:8px;
-    padding:6px 5px 6px 5px;
-    background-color: RGB(0, 132, 137);
-    font-weight: 500;
-    letter-spacing: 0.05rem;
-    color: whitesmoke;
-    width:30%;
+.bouton{
+    margin-left: 15px;
+}
+
+.droite{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.centre{
+    display: flex;
+    justify-content: center;
 }

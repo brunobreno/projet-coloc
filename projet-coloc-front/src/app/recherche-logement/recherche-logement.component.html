@@ -1,12 +1,13 @@
-<body onload="init()">
-
+<body >
+  
   <div class="page-main-container">
 
     <div class="navigation-main-containter">
 
       <div class="map-main-container">
-        <div class="map" id=mapid>
-        </div>
+        <!-- <div class="map" id=mapid>
+        </div> -->
+        <app-map></app-map>
       </div>
 
 
@@ -14,7 +15,8 @@
       <div class="list-main-container">
 
         <div class="list-head">
-          <h4 class="">Colocation - Rennes </h4>
+          <h4 *ngIf="ville" class="">Colocation - {{ville}} </h4>
+          <h4 *ngIf="!ville" class="">Colocation partout en France </h4>
           <div class="filter-bar-container">
 
 
@@ -23,51 +25,70 @@
                 data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                 Types
               </button>
-              <ul class="dropdown-menu " aria-labelledby="drop-type-logement">
+              <ul class="dropdown-menu " aria-labelledby="drop-type-logement" ngDefaultControl
+                [ngModel]="filtreTypeLogement">
                 <li>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="flexCheckAppart">
-                    <label class="form-check-label" for="flexCheck0">Appartement</label>
+                    <input type="checkbox" class="form-check-input" id="flexCheckAppart" value="Appartement"
+                      (change)="onChangeFiltreType($event)">
+                    <label class="form-check-label" for="flexCheckAppart">Appartement</label>
                   </div>
                 </li>
                 <li>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="flexCheckMaison">
-                    <label class="form-check-label" for="flexCheck0">Maison</label>
+                    <input type="checkbox" class="form-check-input" id="flexCheckMaison" value="Maison"
+                      (change)="onChangeFiltreType($event)">
+                    <label class="form-check-label" for="flexCheckMaison">Maison</label>
                   </div>
                 </li>
                 <li>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="flexCheckStudio">
-                    <label class="form-check-label" for="flexCheck0">Studio</label>
+                    <input type="checkbox" class="form-check-input" id="flexCheckStudio" value="Studio"
+                      (change)="onChangeFiltreType($event)">
+                    <label class="form-check-label" for="flexCheckStudio">Studio</label>
                   </div>
                 </li>
-                <li>
+                <!-- <li>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="flexCheckDuplex">
-                    <label class="form-check-label" for="flexCheck0">Duplex</label>
+                    <input type="checkbox" class="form-check-input" id="flexCheckDuplex" >
+                    <label class="form-check-label" for="flexCheckDuplex">Duplex</label>
                   </div>
-                </li>
+                </li> -->
               </ul>
             </div>
 
+
             <div class="dropdown filter-dropdown">
               <button class="dropdown-toggle filter-button" type="button" id="drop-loyer" data-bs-toggle="dropdown"
-                data-bs-auto-close="outside" aria-expanded="false">
+                 aria-expanded="false">
                 Loyer
               </button>
-              <div class="dropdown-menu" aria-labelledby="drop-loyer">
-                <input type="range" class="form-range" id="customRange1">
+               <div class="dropdown-menu" aria-labelledby="drop-loyer" id="loyer">
+                <label for="">Max : </label>
+                <input type="number" class="form-range" id="dispoDatePicker" [(ngModel)]="filtreLoyer"   />
+                <p  data-bs-toggle="collapse" data-bs-target="#loyer" class="applyFilter"  (click)="filtreLogement()">Appliquer filtre</p>
               </div>
+              
             </div>
+
+            <!-- <div class="filter-dropdown" id="filter-dropdown-dispo">
+              <div class="filter-button" id="filter-loyer"> Loyer max : </div>
+              <div class="filter-button" id="dispoDatePicker-container">
+                <input type="number" class="filter-button" id="dispoDatePicker" [ngModel]="filtreLoyer"  (change)="filtreLogementLoyer($event)" />
+              </div>
+            </div> -->
+
 
             <div class="dropdown filter-dropdown">
               <button class="dropdown-toggle filter-button" type="button" id="drop-occupant" data-bs-toggle="dropdown"
-                data-bs-auto-close="outside" aria-expanded="false">
+                data-bs-auto-close="outside" aria-expanded="false"> 
                 Occupants
               </button>
-              <div class="dropdown-menu" aria-labelledby="drop-occupant">
-                <input type="range" class="form-range" id="customRange1">
+              <div class="dropdown-menu" aria-labelledby="drop-occupant"  id="nbOccupant">
+                <!-- <input type="range" class="form-range" id="customRange1" >  -->
+                <label for="">Max : </label>
+                <input type="number" class="form-range" id="dispoDatePicker" [(ngModel)]="filtreOccupant"   />
+                <p data-bs-toggle="collapse" data-bs-target="#nbOccupant" class="applyFilter" (click)="filtreLogement()">Appliquer filtre</p>
               </div>
             </div>
 
@@ -396,19 +417,15 @@
           </div>
           <div id="list-head-lastsection">
             <div id="lastsection-subtext">
-              xxx logements disponibles
+              {{ list().length }} logements disponibles
             </div>
             <div id="tri-container">
               <div>
                 Trier par :
               </div>
               <div>
-                <select class="form-select tri-select" aria-label="Default select example">
-                  <option selected> Plus récents </option>
-                  <option value="1"> <a href="#">Plus anciens</a> </option>
-                  <option value="2">Prix croissant</option>
-                  <option value="3">Prix décroissant</option>
-                  <option value="4">Disponibilité</option>
+                <select (change)="onChange($event)" class="form-select tri-select" aria-label="Default select example">
+                 <option *ngFor="let v of values" [value]="v.id">{{v.name}}</option>
                 </select>
               </div>
             </div>
@@ -420,74 +437,59 @@
         <div class="cards-container">
 
 
-          <div *ngFor="let logement of list()" class="card-container">
+          <div *ngFor="let logement of list()" class="card-container" >
             <div class="card-carousel-container">
-              <div id="car{{logement.id}}" class="carousel slide " data-bs-ride="carousel" data-interval="100">
-                <div class="carousel-indicators">
-                  <button type="button" attr.data-bs-target="#car{{logement.id}}" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" attr.data-bs-target="#car{{logement.id}}" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
+              <carousel lightbox-group objectFit="contain" [loop]="true" [dots]="true" [cellWidth]="'100%'" >
+                <div  class="carousel-cell" *ngFor="let photo of logement.photos" >
+                  <img src="../../assets/img/exempleLogement/{{photo.chemin}}" lightbox >
                 </div>
-                <div class="carousel-inner ">
-                  <div class="carousel-item active">
-                    <img src="../../assets/img/exempleLogement/logement1/logement1_1.png" class="d-block w-100"
-                      alt="...">
-                  </div>
-                  <div class="carousel-item ">
-                    <img src="../../assets/img/exempleLogement/logement1/logement1_1.png" class="d-block  w-100"
-                      alt="...">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" attr.data-bs-target="#car{{logement.id}}"
-                  data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" attr.data-bs-target="#car{{logement.id}}"
-                  data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
+              </carousel>
             </div>
 
-            <div class="card-content-main-container">
+            <div class="card-content-main-container" [routerLink]="['/descriptionLogement/',logement.id]" >
               <div class="card-title-container">
-                <h6 class="card-title">Colocation en centre ville</h6>
+                <h6 class="card-title"> {{logement.titre}}</h6>
                 <div class="card-title-spec">
-                  <span id="card-title-price"> {{logement.loyer}}€ </span>
+                  <span id="card-title-price"> {{logement.loyer + logement.charges}}€ </span>
                   <span id="card-title-line"></span>
                   <span id="card-title-surface"> {{logement.surface}}m²</span>
                 </div>
 
               </div>
-              <div class="card-content-description-main-container">
+              <div class="card-content-description-main-container" [routerLink]="['/descriptionLogement/',logement.id]" >
                 <ul>
-                  <li class="first-subsect">{{logement.typeLogement}}</li>
-                  <li> <i class="bi bi-people-fill"></i> 5 occupants</li>
-                  <li class="first-subsect caracteristiques">
+                  <li>
+                    <mat-icon *ngIf="logement.typeLogement == 'Maison'">house</mat-icon>
+                    <mat-icon *ngIf="logement.typeLogement == 'Appartement'">apartment</mat-icon>
+                    {{logement.typeLogement}}</li>
+                  <li> <i class="bi bi-people-fill"></i>  {{logement.nChambreOccup}} occupants</li>
+                  <li> <mat-icon> bed </mat-icon>  {{logement.nChambre - logement.nChambreOccup}} chambres libres</li>
+
+                  
+
+
+                  <li class="first-subsect caracteristiques" id="commodites">
                     <ul style="display: flex;">
-                      <li *ngFor="let com of logement.commodites"  >
-                         <img src="../../assets/img/icons/{{com.chemin}}" class="d-block w-100" alt="..."> 
+                      <li *ngFor="let com of logement.commodites">
+                        <img src="../../assets/img/icons/{{com.chemin}}" class="d-block w-100" alt="...">
                       </li>
                     </ul>
                   </li>
 
-                  <li style="display: flex;"><span class="ligne ligne-description"></span></li>
+                  
                   <li class="card-description-txt text-truncate text-truncate-3">
                     {{logement.description}}
                   </li>
                 </ul>
               </div>
 
-              <div class="card-content-link-main-container">
-                <a href="#" class="card-link">Découvrir les occupants</a>
-                <!--<a href="#" class="card-link">Contacter</a>-->
+              <div class="card-content-link-main-container" [routerLink]="['/descriptionLogement/',logement.id]"  >
+                <a class="card-link">En savoir plus</a>
+                <div class="card-content-update-main-container">
+                  <p class="card-text"><small class="text-muted">Posté le jj-mm-aaaa</small></p>
+                </div>
               </div>
-              <div class="card-content-update-main-container">
-                <p class="card-text"><small class="text-muted">Posté le jj-mm-aaaa</small></p>
-              </div>
+              
             </div>
           </div>
 
