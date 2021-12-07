@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MapHttpService } from './map/map-http.service';
 import { Logement, Proprietaire, Utilisateur } from './model';
 import { Locataire } from './model';
 import { RechercheLogementComponent } from './recherche-logement/recherche-logement.component';
@@ -17,12 +18,20 @@ export class AppComponent {
 
   filtre: string;
 
-  constructor(private rechercheLogementService: RechercheLogementService) {}
+  constructor(private rechercheLogementService: RechercheLogementService, private mapService:MapHttpService) {}
 
   search(ville:string) {
     console.log('passage par search')
     this.rechercheLogementService.findByVilleWithCom(ville);
     //return this.rechercheLogementService.findAll();
+
+    this.getCoordVille(); //Coordonnees pour centrer la map
+    
+  }
+
+  getCoordVille(){
+    
+    this.mapService.getCoordVille(this.filtre);
   }
  
 }

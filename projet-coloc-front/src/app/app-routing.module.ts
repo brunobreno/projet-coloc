@@ -9,17 +9,21 @@ import { LogInComponent } from './log-in/log-in.component';
 import { RechercheLocataireComponent } from './recherche-locataire/recherche-locataire.component';
 import { RedirectComponent } from './redirect/redirect.component';
 import { ProprietaireComponent } from './proprietaire/proprietaire.component';
+import { MapComponent } from './map/map.component';
 
 const routes: Routes = [
   { path: "login", component: LogInComponent},
   { path: "inscription", component: InscriptionComponent},
-  { path: "profilLocataire", component: ProfilLocataireComponent},
+  // { path: "profilLocataire", component: ProfilLocataireComponent},
+  { path: "locataire/:id", component: ProfilLocataireComponent},
   { path: "recherche", component: RechercheLogementComponent },
   { path: "rechercheLocataires", component: RechercheLocataireComponent },
   { path: "proprietaire/:id", component: ProprietaireComponent},
-  { path: "**", component: RedirectComponent},
   { path: "ajoutLogement", component: AjoutLogementComponent},
-  { path: "descriptionLogement", component: DescriptionLogementComponent}
+  { path: "descriptionLogement", component: DescriptionLogementComponent},
+  { path : "map", component : MapComponent},
+  { path: "**", component: RedirectComponent}
+  
 ];
 
 @NgModule({

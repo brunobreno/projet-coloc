@@ -2,7 +2,6 @@ import { PathLocationStrategy } from "@angular/common";
 
 export class Utilisateur {
   id: number;
-  version: number;
   nom: string;
   prenom: string;
   civ: string;
@@ -10,9 +9,8 @@ export class Utilisateur {
   tel: string;
   password: string;
 
-  constructor(id?: number, version?: number, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
+  constructor(id?: number, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
     this.id = id;
-    this.version = version;
     this.nom = nom;
     this.prenom = prenom;
     this.civ = civ;
@@ -130,11 +128,11 @@ export class Localisation {
     voie?: string,
     num?: number
   ) {
-    this.departement = departement
-    this.ville = ville
-    this.codePostal = codePostal
-    this.voie = voie
-    this.num = num
+    this.departement = departement;
+    this.ville = ville;
+    this.codePostal = codePostal;
+    this.voie = voie;
+    this.num = num;
   }
 
 }
@@ -152,7 +150,6 @@ export class Locataire extends Utilisateur {
 
   constructor(
     id?: number,
-    version?: number,
     nom?: string,
     prenom?: string,
     civ?: string,
@@ -167,7 +164,7 @@ export class Locataire extends Utilisateur {
     chambre?: Chambre,
     candidatures?: Array<Candidature>
   ) {
-    super(id, version, nom, prenom, civ, email, tel, password)
+    super(id, nom, prenom, civ, email, tel, password)
     this.recherche = recherche
     this.description = description
     this.situation = situation
@@ -300,8 +297,8 @@ export class Photo {
 export class Proprietaire extends Utilisateur {
   logements: Array<Logement> = new Array<Logement>();
 
-  constructor(id?: number, version?: number, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
-    super(id, version, nom, prenom, civ, email, tel, password);
+  constructor(id?: number, nom?: string, prenom?: string, civ?: string, email?: string, tel?: string, password?: string) {
+    super(id, nom, prenom, civ, email, tel, password);
   }
 }
 
@@ -419,4 +416,23 @@ export class ProprietaireDTOInscription {
     this.tel = tel;
     this.password = password;
   }
+}
+
+export class filtreLoyer {
+  max: number;
+  min: number;
+
+  constructor(max?:number, min?:number){
+    this.max = max;
+    this.min = min;
+  }
+}
+
+export class filtreTypeLogement {
+  typeLogement: string;
+}
+
+export class filtre {
+  filtreLoyer:filtreLoyer;
+  filtresTypeLogement: Array<filtreTypeLogement> = new Array<filtreTypeLogement>();
 }

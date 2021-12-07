@@ -122,6 +122,8 @@ public class LogementRestController {
 	}
 	
 	
+	
+	
 	@PostMapping("")
 	@JsonView(Views.ViewCommon.class)
 	public Logement create(@RequestBody Logement logement) {		
