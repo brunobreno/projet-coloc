@@ -41,7 +41,7 @@
                         <li class="list-group-item" *ngIf="(log.nChambre - log.nChambreOccup) == 1">{{log.nChambre - log.nChambreOccup}} chambre disponible</li>
                         <li class="list-group-item" *ngIf="(log.nChambre - log.nChambreOccup) != 1">{{log.nChambre - log.nChambreOccup}} chambres disponibles</li>
                         <li class="list-group-item">{{log.typeLogement}}</li>
-                        <li class="list-group-item">{{ log.localisation.codePostal}} {{log.localisation.ville}}</li>
+                        <li class="list-group-item">{{ log.localisation?.codePostal}} {{log.localisation?.ville}}</li>
                       </ul>
                       <!--Faire redirection vers la page du logement -->                   
                       <a class="btn btn-primary">Voir le détail</a>
