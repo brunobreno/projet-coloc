@@ -75,7 +75,20 @@ public class LocataireRestController {
 		}
 		
 		return locataires;
-
+	}
+	
+	@GetMapping("/by-logement/{idLogement}/description")
+	@JsonView(Views.ViewLocataireDescription.class)
+	public List<Locataire> findAllByLogementDescription(@PathVariable("idLogement") Long id) {
+		List<Chambre> chambres = chambreRepo.findAllByIdLogement(id);
+		
+		List<Locataire> locataires = new ArrayList<Locataire>();
+		
+		for(Chambre chambre : chambres) {
+			locataires.add(locataireRepo.findAllByIdChambre(chambre.getId()));
+		}
+		
+		return locataires;
 	}
 
 	@PostMapping("")

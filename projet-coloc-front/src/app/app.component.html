@@ -13,7 +13,8 @@
             placeholder="Dans quelle ville cherchez-vous une colocation ?" 
             id="barre-recherche"
             [(ngModel)]="filtre">
-            <button id="btn-recherche" (click)="search(filtre)"></button>
+            <button id="btn-recherche" (click)="search(filtre)" 
+            [routerLink]="['/rechercheLogement/',filtre]" ></button>
           </div>
         </div>
 

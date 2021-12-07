@@ -61,8 +61,8 @@ public class ChambreRestController {
 	}
 	
 
-	@GetMapping("/by-logement/with-commodite/{idLogement}")
-	@JsonView(Views.ViewChambreDetailDescription.class)
+	@GetMapping("/by-logement/with-detail/{idLogement}")
+	@JsonView(Views.ViewChambreDescription.class)
 	public List<Chambre> findByIdLogementWithCommodite(@PathVariable("idLogement") Long id) {
 		List<Chambre> chambres = chambreRepo.findAllByIdLogement(id);
 		return chambres;

@@ -99,8 +99,8 @@ public class LogementRestController {
 	}
 	
 	
-	@GetMapping("/with-commodite")
-	@JsonView(Views.ViewLogementCommodite.class)
+	@GetMapping("/complete")
+	@JsonView(Views.ViewLogementComplete.class)
 	public List<Logement> findAllWithCommodite() {
 		List<Logement> logements = logementRepo.findAllWithCommodite();
 		return logements;
@@ -114,8 +114,8 @@ public class LogementRestController {
 	}
 	
 	@GetMapping("/by-ville/{ville}")
-	@JsonView(Views.ViewCommon.class)
-	public List<Logement> findByVille(@PathVariable String ville) {
+	@JsonView(Views.ViewLogementComplete.class)
+	public List<Logement> findAllLogementByVille(@PathVariable String ville) {
 		List<Logement> logements = logementRepo.findAllLogementByVille(ville);
 
 		return logements;

@@ -38,6 +38,7 @@ public class Logement {
 	private Double charges;
 	private Double caution;
 	private LocalDate dateDeMiseEnLigne;
+	private boolean meuble;
 	
 	@OneToMany(mappedBy = "logement")
 	@JsonView(Views.ViewLogementComplete.class)
@@ -101,6 +102,24 @@ public class Logement {
 		this.localisation = localisation;
 		this.typeLogement = typeLogement;
 		this.dateDeMiseEnLigne = LocalDate.now();
+	}
+	
+	public Logement(Proprietaire proprietaire, String titre, String description, boolean meuble, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
+			Localisation localisation, TypeLogement typeLogement) {
+		super();
+		this.proprietaire = proprietaire;
+		this.titre = titre;
+		this.description = description;
+		this.surface = surface;
+		this.nChambre = nchambre;
+		this.nChambreOccup = nChambreOccup;
+		this.nSdb = nSdb;
+		this.loyer = loyer;
+		this.charges = charges;
+		this.caution = caution;
+		this.localisation = localisation;
+		this.typeLogement = typeLogement;
+		this.meuble = meuble;
 	}
 
 	public Logement(Proprietaire proprietaire, String titre, String description, Integer surface, Integer nchambre, Integer nChambreOccup, Integer nSdb, Double loyer, Double charges, Double caution,
@@ -204,6 +223,15 @@ public class Logement {
 
 	public void setCaution(Double caution) {
 		this.caution = caution;
+	}
+
+	
+	public boolean isMeuble() {
+		return meuble;
+	}
+
+	public void setMeuble(boolean meuble) {
+		this.meuble = meuble;
 	}
 
 	public LocalDate getDateDispo() {

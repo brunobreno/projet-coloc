@@ -10,6 +10,7 @@ import coloc.back.model.Chambre;
 import coloc.back.model.Civilite;
 import coloc.back.model.Commodite;
 import coloc.back.model.Dossier;
+import coloc.back.model.Hobby;
 import coloc.back.model.Localisation;
 import coloc.back.model.Locataire;
 import coloc.back.model.Logement;
@@ -22,6 +23,7 @@ import coloc.back.model.Situation;
 import coloc.back.model.TypeLogement;
 import coloc.back.repository.IChambreRepository;
 import coloc.back.repository.ICommoditeRepository;
+import coloc.back.repository.IHobbyRepository;
 import coloc.back.repository.ILocataireRepository;
 import coloc.back.repository.ILogementRepository;
 import coloc.back.repository.IMessageRepository;
@@ -51,6 +53,8 @@ class ProjetColocBackApplicationTests {
 	private ICommoditeRepository commoditeRepository;
 	@Autowired
 	private IPhotoRepository photoRepository;
+	@Autowired
+	private IHobbyRepository hobbyRepository;
 	
 	String Lorem ="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, ";
 
@@ -160,6 +164,60 @@ class ProjetColocBackApplicationTests {
 		passSanitaire = regleRepository.save(passSanitaire);
 		Regle salarie = new Regle("Pas d'étudiants","salarie.svg");
 		salarie = regleRepository.save(salarie);
+		
+		// Creation des Hobbies
+		Hobby art = new Hobby("Art","art.svg");
+		art = hobbyRepository.save(art);
+		Hobby dessin = new Hobby("Dessin","dessin.svg");
+		dessin = hobbyRepository.save(dessin);
+		Hobby photographie = new Hobby("Photographie","photographie.svg");
+		photographie = hobbyRepository.save(photographie);
+		Hobby lecture = new Hobby("Lecture","lecture.svg");
+		lecture = hobbyRepository.save(lecture);
+
+		
+		Hobby sport = new Hobby("Sport","sport.svg");
+		sport = hobbyRepository.save(sport);
+		Hobby sportEquipe = new Hobby("Sport d'équipe","sportEquipe.svg");
+		sportEquipe = hobbyRepository.save(sportEquipe);
+		
+		Hobby bars = new Hobby("Bars","bars.svg");
+		bars = hobbyRepository.save(bars);
+		Hobby nightLife = new Hobby("Night life","nightLife.svg");
+		nightLife = hobbyRepository.save(nightLife);
+
+		
+		Hobby cuisine = new Hobby("Cuisine","cuisine.svg");
+		cuisine = hobbyRepository.save(cuisine);
+		Hobby jardinage = new Hobby("Jardinage","jardinage.svg");
+		jardinage = hobbyRepository.save(jardinage);
+		Hobby jeuxVidéo = new Hobby("Jeux vidéo","jeuxVidéo.svg");
+		jeuxVidéo = hobbyRepository.save(jeuxVidéo);
+		Hobby jeuxSociete = new Hobby("Jeux de Societe","jeuxSociete.svg");
+		jeuxSociete = hobbyRepository.save(jeuxSociete);
+		
+		Hobby cinema = new Hobby("Cinema","cinema.svg");
+		cinema = hobbyRepository.save(cinema);
+		Hobby musique = new Hobby("Musique","musique.svg");
+		musique = hobbyRepository.save(musique);
+		Hobby guitare = new Hobby("Guitare","guitare.svg");
+		guitare = hobbyRepository.save(guitare);
+		
+		Hobby vegetarien = new Hobby("Vegetarien","vegetarien.svg");
+		vegetarien = hobbyRepository.save(vegetarien);
+		Hobby ecologie = new Hobby("Ecologie","ecologie.svg");
+		ecologie = hobbyRepository.save(ecologie);
+		
+		Hobby voyage = new Hobby("Voyage","voyage.svg");
+		voyage = hobbyRepository.save(voyage);
+		Hobby randonnée = new Hobby("Randonnée","randonnée.svg");
+		randonnée = hobbyRepository.save(randonnée);
+		Hobby pleinAir = new Hobby("Plein air","pleinAir.svg");
+		pleinAir = hobbyRepository.save(pleinAir);
+		
+		Hobby animaux = new Hobby("Animaux","animaux.svg");
+		animaux = hobbyRepository.save(animaux);
+
 
 		// Creation des Notation
 		Notation noteLoc1Lg1 = new Notation(log1, locataire1, 15.0, "commentaire note loc1 pour log1");
