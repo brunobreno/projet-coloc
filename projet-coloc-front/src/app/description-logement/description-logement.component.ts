@@ -5,6 +5,9 @@ import { Logement, Localisation, Locataire, Chambre, Photo } from '../model';
 import { DescriptionLogementService } from './description-logement.service';
 import { AppComponent } from '../app.component';
 import { ChambreService } from '../chambre/chambre.service';
+import { MapHttpService } from '../map/map-http.service';
+import { MarkerService } from '../map/marker.service';
+import { MapComponent } from '../map/map.component';
 import { LocataireHttpService } from '../locataire/locataire-http.service';
 
 
@@ -23,20 +26,19 @@ export class DescriptionLogementComponent implements OnInit {
   photos: Array<Photo> = new Array<Photo>();
   
 
+  faMoneyBill=this.appConfig.faMoneyBill;
+  faUsers=this.appConfig.faUsers;
+  faExpandAlt=this.appConfig.faExpandAlt;
+  faCommentAlt=this.appConfig.faCommentAlt;
+  faFileDownload=this.appConfig.faFileDownload;
+  faCouch=this.appConfig.faCouch;
+  faCalendar=this.appConfig.faCalendar;
 
-  faCalendar=this.appComponent.faCalendar;
-  faMoneyBill=this.appComponent.faMoneyBill;
-  faUsers=this.appComponent.faUsers;
-  faExpandAlt=this.appComponent.faExpandAlt;
-  faCommentAlt=this.appComponent.faCommentAlt;
-  faFileDownload=this.appComponent.faFileDownload;
-  faCouch=this.appComponent.faCouch;
 
   
 
   constructor(private appConfig: AppConfigService, private descriptionService: DescriptionLogementService, 
     private chambreService: ChambreService, private locataireService: LocataireHttpService, 
-    private appComponent: AppComponent, 
     private activatedRoute: ActivatedRoute) { 
      }
 
@@ -53,7 +55,8 @@ export class DescriptionLogementComponent implements OnInit {
         this.chambres = chambres;
       })
      
-  })
+    });
+    //this.mapComponent.getCoordLogement();
   }
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AppConfigService } from '../app-config.service';
 import { LogementHttpService } from '../logement/logement-http.service';
 import { Logement, Proprietaire, UtilisateurDTO } from '../model';
 import { ProprietaireHttpService } from '../proprietaire/proprietaire-http.service';
@@ -15,10 +16,10 @@ export class LogementProprietaireComponent implements OnInit {
   utilisateurConnecte= new UtilisateurDTO;
   proprietaire: Proprietaire;
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute, private appConfig: AppConfigService,
     private logementService: LogementHttpService,
     private proprietaireService : ProprietaireHttpService) {
-      this.utilisateurConnecte.id=1;
+      this.utilisateurConnecte.id= this.appConfig.utilisateurConnecte.id;
   }
 
   ngOnInit(): void {

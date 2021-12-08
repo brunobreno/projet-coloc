@@ -70,6 +70,7 @@ html * {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .colonne{
@@ -146,4 +147,9 @@ carousel{
 .centre{
     display: flex;
     justify-content: center;
+}
+
+.ajoutLogement{
+    display: flex;
+    justify-content: flex-end;
 }

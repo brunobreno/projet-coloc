@@ -3,11 +3,11 @@
         <div class="categorie-proprietaire">
             <p class="titre-info">Informations personnelles</p>
             <div class="head-categorie">
-                <p class="categorie-titre">{{proprietaire.civ}} {{proprietaire.nom}}
+                <p class="categorie-titre" *ngIf="proprietaire">{{proprietaire.civ}} {{proprietaire.nom}}
                     {{proprietaire.prenom}}</p>
                 <p>
-                    <button class="btn btn-primary" (click)="edit(proprietaire.id)" id="boutonAfficher-nomprenom" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#nomprenom" aria-expanded="false"
+                    <button class="btn btn-primary" (click)="edit(proprietaire.id)" id="boutonAfficher-nomprenom"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#nomprenom" aria-expanded="false"
                         aria-controls="nomprenom">Modifier</button>
                 </p>
             </div>
@@ -50,10 +50,11 @@
             </div>
 
             <div class="head-categorie">
-                <p class="categorie-titre">{{proprietaire.username}}</p>
+                <p class="categorie-titre" *ngIf="proprietaire">{{proprietaire.username}}</p>
                 <p>
-                    <button class="btn btn-primary" (click)="edit(proprietaire.id)" id="boutonAfficher-usermdp" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#usermdp" aria-expanded="false" aria-controls="usermdp">Modifier</button>
+                    <button class="btn btn-primary" (click)="edit(proprietaire.id)" id="boutonAfficher-usermdp"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#usermdp" aria-expanded="false"
+                        aria-controls="usermdp">Modifier</button>
                 </p>
             </div>
             <div class="collapse" id="usermdp">
@@ -86,10 +87,11 @@
             </div>
 
             <div class="head-categorie" *ngIf="proprietaireForm">
-                <p class="categorie-titre">{{proprietaire.email}} - {{proprietaire.tel}}</p>
+                <p class="categorie-titre" *ngIf="proprietaire">{{proprietaire.email}} - {{proprietaire.tel}}</p>
                 <p>
-                    <button class="btn btn-primary" (click)="edit(proprietaire.id)" id="boutonAfficher-mailnum" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#mailnum" aria-expanded="false" aria-controls="mailnum">Modifier</button>
+                    <button class="btn btn-primary" (click)="edit(proprietaire.id)" id="boutonAfficher-mailnum"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#mailnum" aria-expanded="false"
+                        aria-controls="mailnum">Modifier</button>
                 </p>
             </div>
             <div class="collapse" id="mailnum">
@@ -129,83 +131,103 @@
                 <div class="head-categorie">
                     <p class="categorie-titre">{{logement.titre}}</p>
                     <p>
-                        <button class="btn btn-primary" (click)="edit(proprietaire.id)"id="boutonAfficher-logement" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#logement" aria-expanded="false"
+                        <button class="btn btn-primary" (click)="editLogement(logement.id)" id="boutonAfficher-logement"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#logement" aria-expanded="false"
                             aria-controls="logement">Modifier </button>
                     </p>
                 </div>
-                <div class="collapse" id="logement">
+                <div class="collapse" id="logement" *ngIf="logement">
                     <div class="card card-body">
                         <div class="categorie-content">
                             <div class="content-first">
                                 <form>
                                     <div class="mb-3">
-                                        <carousel objectFit="contain">
+                                        <carousel objectFit="contain" lightbox-group [loop]=true>
                                             <div class="carousel-cell" *ngFor="let photo of logement.photos">
-                                                <img src="../../assets/img/exempleLogement/{{photo.chemin}}">
+                                                <img src="../../assets/img/exempleLogement/{{photo.chemin}}" lightbox>
                                             </div>
                                         </carousel>
                                     </div>
                                     <div class="mb-3">
                                         <label for="description" class="label-input">Description</label>
                                         <textarea type="text" class="form-control input-modifier" id="description"
-                                            [(ngModel)]="logement.description" name="description"></textarea>
+                                            [(ngModel)]="logementForm.description" name="description"></textarea>
                                     </div>
                                     <div class="mb-3 ligne">
                                         <div class="colonne">
                                             <label for="surface" class="label-input">Surface (m²)</label>
                                             <input type="number" class="form-control input-modifier" id="surface"
-                                                [(ngModel)]="logement.surface" name="surface">
+                                                [(ngModel)]="logementForm.surface" name="surface">
                                         </div>
                                         <div class="colonne">
                                             <label for="nChambre" class="label-input">Nombre de chambres</label>
                                             <input type="number" class="form-control input-modifier" id="nChambre"
-                                                [(ngModel)]="logement.nChambre" name="nChambre">
+                                                [(ngModel)]="logementForm.nChambre" name="nChambre">
                                         </div>
                                         <div class="colonne">
                                             <label for="nChambreOccup" class="label-input">Nombre de chambres
                                                 occupées</label>
                                             <input type="number" class="form-control input-modifier" id="nChambreOccup"
-                                                [(ngModel)]="logement.nChambreOccup" name="nChambreOccup">
+                                                [(ngModel)]="logementForm.nChambreOccup" name="nChambreOccup">
                                         </div>
                                         <div class="colonne">
                                             <label for="nSdb" class="label-input">Nombre de salles de bain</label>
                                             <input type="number" class="form-control input-modifier" id="nSdb"
-                                                [(ngModel)]="logement.nSdb" name="nSdb">
+                                                [(ngModel)]="logementForm.nSdb" name="nSdb">
                                         </div>
                                     </div>
                                     <div class=" mb-3 ligne">
                                         <div class="colonne">
                                             <label for="loyer" class="label-input">Loyer (€)</label>
                                             <input type="number" class="form-control input-modifier" id="loyer"
-                                                [(ngModel)]="logement.loyer" name="loyer">
+                                                [(ngModel)]="logementForm.loyer" name="loyer">
                                         </div>
                                         <div class="colonne">
                                             <label for="charges" class="label-input">Charges (€)</label>
                                             <input type="number" class="form-control input-modifier" id="charges"
-                                                [(ngModel)]="logement.charges" name="charges">
+                                                [(ngModel)]="logementForm.charges" name="charges">
                                         </div>
                                         <div class="colonne">
                                             <label for="caution" class="label-input">Caution (€)</label>
                                             <input type="number" class="form-control input-modifier" id="caution"
-                                                [(ngModel)]="logement.caution" name="caution">
+                                                [(ngModel)]="logementForm.caution" name="caution">
+                                        </div>
+                                    </div>
+                                    <div class="ligne">
+                                        <label class="label-input">Quelles commodités sont disponibles dans votre logement ? </label>
+                                        <div class="mb-3" *ngFor="let c of loadCommodites()" data-bs-toggle="tooltip" data-bs-placement="top" title="{{c.libelle}}">
+                                            <img src="../../assets/img/icons/{{c.chemin}}">
+                                            <input [id]="'commodite'+ c.id" type="checkbox">
+                                        </div>
+                                    </div>
+                                    <div class="ligne">
+                                        <label class="label-input">Quelles sont les règles en vigueur dans votre logement ? </label>
+                                        <div class="mb-3" *ngFor="let r of loadRegles()" data-bs-toggle="tooltip" data-bs-placement="top" title="{{r.libelle}}">
+                                            <img src="../../assets/img/icons/{{r.chemin}}">
+                                            <input [id]="'commodite'+ r.id" type="checkbox">
                                         </div>
                                     </div>
                                     <div class="centre">
-                                        <button (click)="save()" type="submit" class="btn btn-outline-dark bouton"
-                                            data-bs-toggle="collapse" data-bs-target="#logement" aria-expanded="false"
+                                        <button (click)="saveLogement()" type="submit"
+                                            class="btn btn-outline-dark bouton" data-bs-toggle="collapse"
+                                            data-bs-target="#logement" aria-expanded="false"
                                             aria-controls="logement">Enregistrer</button>
-                                        <button (click)="cancel()" type="submit" class="btn btn-outline-dark bouton"
-                                            data-bs-toggle="collapse" data-bs-target="#logement" aria-expanded="false"
+                                        <button (click)="cancelLogement()" type="submit"
+                                            class="btn btn-outline-dark bouton" data-bs-toggle="collapse"
+                                            data-bs-target="#logement" aria-expanded="false"
                                             aria-controls="logement">Annuler</button>
-                                        <button alert="" class="btn btn-outline-dark bouton"
-                                            data-bs-toggle="collapse"
-                                            aria-expanded="false">Supprimer le logement</button>
+                                        <button confirm="Vous êtes sur ?" class="btn btn-outline-dark bouton"
+                                            data-bs-toggle="collapse" aria-expanded="false">Supprimer le
+                                            logement</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="ajoutLogement">
+                    <button class="btn btn-primary" [routerLink]="['/ajout-logement']">Ajouter un logement <i
+                            class="bi bi-plus-lg"></i></button>
                 </div>
             </div>
         </div>

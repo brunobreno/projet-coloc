@@ -42,6 +42,7 @@ import { MapComponent } from './map/map.component';
 import { MarkerService } from './map/marker.service';
 import { MapHttpService } from './map/map-http.service';
 import { LogementProprietaireComponent } from './logement-proprietaire/logement-proprietaire.component';
+import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { LogementProprietaireComponent } from './logement-proprietaire/logement-
     MessagerieComponent,
     MessagerieNouveauContactComponent,
     MapComponent,
-    LogementProprietaireComponent
+    LogementProprietaireComponent,
+    DeconnexionComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +95,9 @@ import { LogementProprietaireComponent } from './logement-proprietaire/logement-
     MessagerieService, 
     MessagerieNouveauContactService,
     MapHttpService, 
-    MarkerService],
+    MarkerService,
+    DescriptionLogementComponent,
+    MapComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

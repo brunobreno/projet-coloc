@@ -12,7 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfilLocataireComponent implements OnInit {
 
-  locataireForm: Locataire = null;
+  locataireForm: Locataire;
+  locataire: Locataire;
   civilites: Array<string> = new Array<string>();
   situations: Array<string> = new Array<string>();
   // situationLoc: string;
@@ -20,16 +21,19 @@ export class ProfilLocataireComponent implements OnInit {
   constructor(private appConfig: AppConfigService, private locataireService: LocataireHttpService, private activatedRoute: ActivatedRoute) {
     this.loadCivilites();
     this.loadSituations();
-    
-    // this.loadTestLocataireForm(5);
+    // this.loadTestLocataireForm(6);
     // this.situationLoc = this.locataireForm.situation;
    }
 
   ngOnInit(): void {
+    this.locataireForm = new Locataire();
+    this.locataireForm.dossier = new Dossier();
     this.activatedRoute.params.subscribe(l => {
       const id = l['id'];
-      this.locataireService.findById(id).subscribe(locataire => {
-        this.locataireForm = locataire;
+      this.locataireService.findById(id).subscribe(loc => {
+      this.locataireForm = loc;
+      this.locataire=loc;
+      console.log(this.locataireForm);
       });
   })
 
@@ -57,6 +61,12 @@ export class ProfilLocataireComponent implements OnInit {
 
   save() {
     this.locataireService.modify(this.locataireForm); 
+  }
+
+  edit(id: number) {
+    this.locataireService.findById(id).subscribe(resp => {
+      this.locataireForm = resp;
+    }, err => console.log(err));
   }
 
 

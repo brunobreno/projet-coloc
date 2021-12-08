@@ -25,7 +25,7 @@ export class RechercheLocataireComponent implements OnInit {
     rechercheLocataireService.loadLocataires().subscribe(resp => {
       this.locataires = resp;
       if(this.appConfig.utilisateurConnecte){
-        this.locatairesFiltres = this.locataires.filter(loc => this.appConfig.utilisateurConnecte.id == loc.id);
+        this.locatairesFiltres = this.locataires.filter(loc => this.appConfig.utilisateurConnecte.id != loc.id);
       } else {
         this.locatairesFiltres = this.locataires;
       }
@@ -69,8 +69,7 @@ export class RechercheLocataireComponent implements OnInit {
     this.filtrer(null);
   }
 
-  /*contacter(id:number){
-    console.log("hello");
-    this.router.navigate(['messagerie-nouveau', id]);
-  }*/
+  nouveauMessage(id:number){
+    this.router.navigate(["./messagerie-nouveau/", id]);
+  }
 }

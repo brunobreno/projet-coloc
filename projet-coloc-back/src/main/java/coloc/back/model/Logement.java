@@ -54,7 +54,6 @@ public class Logement {
 	private Proprietaire proprietaire;
 	
 	@Embedded
-	@JsonView(Views.ViewLogementComplete.class)
 	private Localisation localisation;
 	
 	
