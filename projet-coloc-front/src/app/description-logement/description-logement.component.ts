@@ -26,22 +26,20 @@ export class DescriptionLogementComponent implements OnInit {
   photos: Array<Photo> = new Array<Photo>();
   
 
+  faMoneyBill=this.appConfig.faMoneyBill;
+  faUsers=this.appConfig.faUsers;
+  faExpandAlt=this.appConfig.faExpandAlt;
+  faCommentAlt=this.appConfig.faCommentAlt;
+  faFileDownload=this.appConfig.faFileDownload;
+  faCouch=this.appConfig.faCouch;
+  faCalendar=this.appConfig.faCalendar;
 
-  faCalendar=this.appComponent.faCalendar;
-  faMoneyBill=this.appComponent.faMoneyBill;
-  faUsers=this.appComponent.faUsers;
-  faExpandAlt=this.appComponent.faExpandAlt;
-  faCommentAlt=this.appComponent.faCommentAlt;
-  faFileDownload=this.appComponent.faFileDownload;
-  faCouch=this.appComponent.faCouch;
 
   
 
   constructor(private appConfig: AppConfigService, private descriptionService: DescriptionLogementService, 
     private chambreService: ChambreService, private locataireService: LocataireHttpService, 
-    private appComponent: AppComponent, 
-    private activatedRoute: ActivatedRoute,
-    private mapComponent:MapComponent) { 
+    private activatedRoute: ActivatedRoute) { 
      }
 
   ngOnInit(): void {
@@ -58,7 +56,7 @@ export class DescriptionLogementComponent implements OnInit {
       })
      
     });
-    this.mapComponent.getCoordLogement();
+    //this.mapComponent.getCoordLogement();
   }
 
 

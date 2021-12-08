@@ -6,13 +6,7 @@ import { RechercheLogementComponent } from './recherche-logement/recherche-logem
 import { RechercheLogementService } from './recherche-logement/recherche-logement.service';
 import { Router } from '@angular/router';
 
-// import des incons fontawesome
-import { faCalendarAlt, faCouch } from '@fortawesome/free-solid-svg-icons';
-import { faMoneyBill } from '@fortawesome/free-solid-svg-icons';
-import { faUsers } from '@fortawesome/free-solid-svg-icons';
-import { faExpandAlt } from '@fortawesome/free-solid-svg-icons';
-import { faCommentAlt } from '@fortawesome/free-solid-svg-icons';
-import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
+
 
 
 @Component({
@@ -22,22 +16,16 @@ import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppComponent {
   title = 'projet-coloc-front';
+
+
   utilisateurConnecte: UtilisateurDTO;
   
 
-  //icons fontawesome
-  faCalendar=faCalendarAlt;
-  faMoneyBill=faMoneyBill;
-  faUsers=faUsers;
-  faExpandAlt=faExpandAlt;
-  faCommentAlt=faCommentAlt;
-  faFileDownload=faFileDownload;
-  faCouch=faCouch;
 
 
   filtreVille: string;
 
-  constructor(private rechercheLogement: RechercheLogementComponent, private rechercheLogementService: RechercheLogementService, private mapService:MapHttpService,public router: Router) {
+  constructor(private rechercheLogementService: RechercheLogementService, public router: Router) {
    this.utilisateurConnecte = new UtilisateurDTO;
    //this.utilisateurConnecte.typeDeCompte="locataire";
    this.utilisateurConnecte.id=2;
@@ -45,17 +33,13 @@ export class AppComponent {
   }
 
   search(ville: string) {
-    this.rechercheLogement.search(ville);
-    //return this.rechercheLogementService.findAll();
-
-    this.getCoordVille(); //Coordonnees pour centrer la map
-    
+    this.rechercheLogementService.findByVille(ville);
+ 
   }
 
-  getCoordVille(){
-    
-    this.mapService.getCoordVille(this.filtreVille);
-  }
+  //getCoordVille(){
+  //  this.mapService.getCoordVille(this.filtreVille);
+  //}
 
   isHomeRoute() {
     return this.router.url === '/home';
