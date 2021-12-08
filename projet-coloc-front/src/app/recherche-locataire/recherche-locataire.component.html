@@ -55,11 +55,19 @@
   <div class="row justify-content-md-center">
     <div class="d-flex flex-wrap col-md-8">
       <div class="card flex-wrap" style="width: 17rem" *ngFor="let loc of locatairesFiltres">
-        <div class="card-img-container">
+        <div class="card-img-container" *ngIf="loc.photos[0]">
+          <div class="card-img-content" *ngFor="let photo of loc.photos">
+            <img  class="card-img-top" src="../../assets/img/exempleLogement/{{photo.chemin}}" lightbox alt="photo de profil locataire" />
+          </div>
+        </div>
+
+        <div class="card-img-container"  *ngIf="!loc.photos[0]">
           <div class="card-img-content">
             <img class="card-img-top" src="../assets/img/locataires/pikachu.jpg" alt="photo de profil locataire" />
           </div>
         </div>
+
+
         <div class="card-body" style="padding: 0px 15px;">
           <h5 class="card-title mt-3">
             {{loc?.prenom}} {{loc?.nom}}
@@ -78,11 +86,18 @@
         <ul class="list-group list-group-flush mt-2">
           <li class="list-group-item">{{loc?.situation}}</li>
           <li class="list-group-item">{{loc?.dateDeNaissance | age}} ans</li>
-          <li class="list-group-item d-flex justify-content-around" style="height: 40px;">
+          <li class="list-group-item d-flex justify-content-around" style="height: 40px;" *ngIf="!loc.hobbies[0]" >
             <span class="material-icons" >hiking</span>
             <span class="material-icons">explore</span>
-            <span class="material-icons">surf</span>
+            <span class="material-icons">sports_tennis</span>
           </li>
+
+            <li class="list-group-item d-flex justify-content-around" style="height: 40px;" *ngIf="loc.hobbies[0]" >
+            <div *ngFor="let hob of loc.hobbies" class="caracteristiques">
+              <img src="../../assets/img/icons/{{hob.chemin}}" class="" alt="..."> 
+            </div>
+          </li> 
+          
         </ul>
         <div class="card-bottom justify-content-around">
           <span (click)="nouveauMessage(loc.id)" class="material-icons" style="cursor: pointer;">email</span>

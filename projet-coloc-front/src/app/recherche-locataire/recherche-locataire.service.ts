@@ -12,7 +12,7 @@ export class RechercheLocataireService {
   locatairesUrl: string;
 
   constructor(private http:  HttpClient, private appConfing: AppConfigService) {
-    this.locatairesUrl = this.appConfing.backEndUrl + "locataires/";
+    this.locatairesUrl = this.appConfing.backEndUrl + "locataires/details";
    }
 
   loadLocataires() : Observable<Array<Locataire>>{

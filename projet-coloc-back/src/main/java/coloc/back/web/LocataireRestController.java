@@ -47,6 +47,14 @@ public class LocataireRestController {
 
 		return locataires;
 	}
+	
+	@GetMapping("/details")
+	@JsonView(Views.ViewLocataireDescription.class)
+	public List<Locataire> findAllWithDetails() {
+		List<Locataire> locataires = locataireRepo.findAll();
+
+		return locataires;
+	}
 
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewCommon.class)
@@ -59,6 +67,7 @@ public class LocataireRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Locataire non trouvé");
 		}
 	}
+	
 
 	@GetMapping("/by-chambre/{idChambre}")
 	@JsonView(Views.ViewCommon.class)
