@@ -12,6 +12,7 @@ import { MarkerService } from '../map/marker.service';
 import { MapComponent } from '../map/map.component';
 import { Observable, forkJoin } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -59,12 +60,17 @@ export class RechercheLogementComponent implements OnInit {
     { id: 3462, name: "Surface Décroissante" }
   ];
 
-  constructor(private rechercheLogementService: RechercheLogementService, private mapService: MapHttpService, private markerService: MarkerService, private mapComponent: MapComponent, private http: HttpClient) {
-
+  constructor(private route: ActivatedRoute, private rechercheLogementService: RechercheLogementService, private mapService: MapHttpService, private markerService: MarkerService, private mapComponent: MapComponent, private http: HttpClient) {
+    this.route.params.subscribe(params => {
+      if(params["ville"] != null){
+        this.ville = params["ville"];
+        this.rechercheLogementService.filtreVille = params["ville"];
+        this.search(this.rechercheLogementService.filtreVille);
+      }
+    })
   }
 
   ngOnInit(): void {
-    this.mapComponent.getCoordVille();
   }
 
   list(): Array<Logement> {
@@ -141,6 +147,7 @@ export class RechercheLogementComponent implements OnInit {
 
   search(ville: string) {
     this.ville = ville;
+    this.mapComponent.getCoordVille();
     console.log("passage par search (recherche logement)")
     this.rechercheLogementService.findByVille(ville);
   }
