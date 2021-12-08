@@ -25,7 +25,7 @@ export class RechercheLocataireComponent implements OnInit {
     rechercheLocataireService.loadLocataires().subscribe(resp => {
       this.locataires = resp;
       if(this.appConfig.utilisateurConnecte){
-        this.locatairesFiltres = this.locataires.filter(loc => this.appConfig.utilisateurConnecte.id == loc.id);
+        this.locatairesFiltres = this.locataires.filter(loc => this.appConfig.utilisateurConnecte.id != loc.id);
       } else {
         this.locatairesFiltres = this.locataires;
       }

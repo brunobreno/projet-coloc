@@ -19,16 +19,13 @@ export class MessagerieNouveauContactComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private messagerieNouveauContactService : MessagerieNouveauContactService, private appConfig: AppConfigService, private router: Router) {
     //A modifier suite à la connexion de l'utilisateur
-    //this.utilisateurConnecte = this.appConfig.utilisateurConnecte;
+    this.utilisateurConnecte = this.appConfig.utilisateurConnecte;
     this.route.params.subscribe(params => {
       this.destinataireId = params['id'];
       messagerieNouveauContactService.findUtilisateurById(this.destinataireId).subscribe(resp => {
         this.destinataire = resp;
-        console.log(this.destinataire.nom)
       }, err => console.log(err));
-      messagerieNouveauContactService.findUtilisateurById(6).subscribe(resp => {
-        this.utilisateurConnecte = resp;
-        console.log(this.utilisateurConnecte.nom)
+      messagerieNouveauContactService.findUtilisateurById(this.utilisateurConnecte.id).subscribe(resp => {
       }, err => console.log(err));
     });
    }
