@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConfigService } from './../app-config.service';
 import { Commodite, Locataire, Logement } from '../model';
-import { Observable } from 'rxjs';
+
+
 
 
 @Injectable({
@@ -16,12 +17,13 @@ export class RechercheLogementService {
   logementUrl: string;
   logement: Logement;
   locatairesLogement: Array<Locataire> = new Array<Locataire>();
-  filtreVille: string;
+  filtreVille: string ;
   
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) { 
     this.logementUrl = this.appConfig.backEndUrl + "logements/"
-    this.load();
+
+    this.load(); 
   }
 
   findAll(): Array<Logement> {
@@ -39,12 +41,17 @@ export class RechercheLogementService {
 
 
   findByVille(ville: string){
-    console.log("passage par findByVille (service)" + ville)
+    
     if (ville) {
       this.http.get<Array<Logement>>(this.logementUrl + "by-ville/" + ville ).subscribe(response => {
         this.logements = response;
+        this.logementsByVille = response;
+        this.filtreVille=ville;
+        console.log("passage par findByVille (service)" + this.filtreVille)
       }, error => console.log(error));
+
     } else {
+
       this.load();
     }
     

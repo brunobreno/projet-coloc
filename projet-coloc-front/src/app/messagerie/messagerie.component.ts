@@ -19,9 +19,8 @@ export class MessagerieComponent implements OnInit {
   destinataireId: number;
 
   constructor(private appConfig: AppConfigService, private messagerieService: MessagerieService) {
-    //A modifier quand l'utilisateur se connecte
-    //this.utilisateurConnecte = this.appConfig.utilisateurConnecte;
-    messagerieService.findUtilisateurById(6).subscribe(resp => {
+    this.utilisateurConnecte = this.appConfig.utilisateurConnecte;
+    messagerieService.findUtilisateurById(this.utilisateurConnecte.id).subscribe(resp => {
       this.utilisateurConnecte = resp;
       this.messageForm.emetteurId = this.utilisateurConnecte.id;
       this.loadConversations();
@@ -100,5 +99,9 @@ export class MessagerieComponent implements OnInit {
 
   afficherMessages(): Array<Message> {
     return this.conversation;
+  }
+
+  findLastMessages(): Message {
+    return this.conversation[this.conversation.length-1];
   }
 }

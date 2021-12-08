@@ -184,7 +184,7 @@ export class Locataire extends Utilisateur {
 
   constructor(
     id?: number,
-    version?: number,
+    version?:number,
     nom?: string,
     prenom?: string,
     civ?: string,

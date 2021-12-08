@@ -26,7 +26,10 @@ public class Views {
 	public static class ViewCommoditeLogement extends ViewCommon{
 	}
 	
-	public static class ViewHobbyLocataire extends ViewCommon{
+	public static class ViewHobby extends ViewCommon{
+	}
+	
+	public static class ViewHobbyDetail extends ViewHobby{
 	}
 	
 	public static class ViewLocataire extends ViewCommon{

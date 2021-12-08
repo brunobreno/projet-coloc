@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AppConfigService } from '../app-config.service';
 import { MapHttpService } from '../map/map-http.service';
 import { Logement } from '../model';
 import { RechercheLogementComponent } from '../recherche-logement/recherche-logement.component';
+import { RechercheLogementService } from '../recherche-logement/recherche-logement.service';
 import { HomePageService } from './home-page.service';
 
 @Component({
@@ -15,13 +17,19 @@ import { HomePageService } from './home-page.service';
 export class HomePageComponent implements OnInit {
 
   logementRecents = new Array<Logement>();
-
+  saisieVille: string;
   filtreVille: string;
 
-  constructor(private mapService:MapHttpService, private rechercheLogement: RechercheLogementComponent,private homeService: HomePageService, private appConfig: AppConfigService) { 
-     homeService.loadMostRecentLogements().subscribe(resp => {
-       this.logementRecents = resp;
-     }, err => console.log(err))
+  constructor(private homeService: HomePageService, private rechercheLogement: RechercheLogementComponent, private appConfig: AppConfigService, public router: Router) {
+    homeService.loadMostRecentLogements().subscribe(resp => {
+      this.logementRecents = resp;
+      this.logementRecents.forEach(log => {
+        this.homeService.loadPhotoByLogement(log.id).subscribe(resp => {
+          log.photos = resp;
+        }, err => console.log)
+      });
+    }, err => console.log(err))
+  
   }
 
   ngOnInit(): void {
@@ -32,14 +40,32 @@ export class HomePageComponent implements OnInit {
     this.rechercheLogement.search(ville);
     //return this.rechercheLogementService.findAll();
 
-    this.getCoordVille(); //Coordonnees pour centrer la map
+   // this.getCoordVille(); //Coordonnees pour centrer la map
     
   }
 
-  getCoordVille(){
-    
-    this.mapService.getCoordVille(this.filtreVille);
+  ///getCoordVille(){
+
+  //  this.mapService.getCoordVille(this.filtreVille);
+  //}
+
+
+  redirect(id: number) {
+    this.router.navigate(["./description-logement/", id]);
   }
 
+  redirectVille(ville: string) {
+    this.router.navigate(["./recherche-logement/", ville]);
+  }
 
+  rechercheVille() {
+    this.redirectVille(this.saisieVille);
+    this.saisieVille = null;
+  }
+
+  isEnter(event: any) {
+    if (event.keyCode == 13) {
+      this.rechercheVille();
+    }
+  }
 }

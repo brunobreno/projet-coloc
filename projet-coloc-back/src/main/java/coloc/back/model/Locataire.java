@@ -29,7 +29,6 @@ public class Locataire extends Utilisateur {
 	private Situation situation;
 	
 	@Embedded
-	@JsonView(Views.ViewLocataireDetail.class)
 	private Dossier dossier;
 	
 	@OneToMany(mappedBy = "locataire")
@@ -153,7 +152,10 @@ public class Locataire extends Utilisateur {
 	}
 
 
-
+	public void addHobby(Hobby hobby) {
+		this.hobbies.add(hobby);
+	}
+	
 	public List<Photo> getPhotos() {
 		return photos;
 	}

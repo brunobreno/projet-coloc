@@ -25,8 +25,9 @@ export class DescriptionLogementService {
   }
 
   findWithLocataire(id: number):  Observable<Array<Locataire>>  {
-    return this.http.get<Locataire[]>(this.descriptionLogementUrl + "with-locataires/" + id);
+    return this.http.get<Locataire[]>(this.descriptionLogementUrl + "locataires/" + id );
   }
+  
 
   /*findWithLocataire(id: number){
     console.log("passage par findLocatairesByLogement (service)")

@@ -8,6 +8,13 @@ import { faCat } from '@fortawesome/free-solid-svg-icons';
 import { faParking } from '@fortawesome/free-solid-svg-icons';
 import { Logement, Commodite, Locataire } from '../model';
 import { MapHttpService } from '../map/map-http.service';
+import { MarkerService } from '../map/marker.service';
+import { MapComponent } from '../map/map.component';
+import { Observable, forkJoin } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+
+
 
 
 
@@ -39,7 +46,7 @@ export class RechercheLogementComponent implements OnInit {
   ville: string;
   num: number;
   voie: string;
-  coordonneesAdresses: Array<Array<number>> = new Array<Array<number>>();
+
   logements: Array<Logement> = new Array<Logement>();
   locatairesLogement: Array<Locataire> = new Array<Locataire>();
 
@@ -53,19 +60,28 @@ export class RechercheLogementComponent implements OnInit {
     { id: 3462, name: "Surface Décroissante" }
   ];
 
-  constructor(private rechercheLogementService: RechercheLogementService, private mapService: MapHttpService) {
-
+  constructor(private route: ActivatedRoute, private rechercheLogementService: RechercheLogementService, private mapService: MapHttpService, private markerService: MarkerService, private mapComponent: MapComponent, private http: HttpClient) {
+    this.route.params.subscribe(params => {
+      if(params["ville"] != null){
+        this.ville = params["ville"];
+        this.rechercheLogementService.filtreVille = params["ville"];
+        this.search(this.rechercheLogementService.filtreVille);
+      }
+    })
   }
 
   ngOnInit(): void {
   }
 
   list(): Array<Logement> {
-    console.log("passage par list")
+    // console.log("passage par list")
     this.logements = this.rechercheLogementService.logements;
     this.trierLogement();
+
     return this.logements;
   }
+
+
 
 
   nbLocataires(id: number): number {
@@ -91,7 +107,7 @@ export class RechercheLogementComponent implements OnInit {
   }*/
 
   trierLogement() {
-    console.log("passage par trier")
+    // console.log("passage par trier")
     if (this.tri == 3442) {
       this.logements.sort(function (a, b) {
         return b.loyer - a.loyer;
@@ -116,7 +132,7 @@ export class RechercheLogementComponent implements OnInit {
     this.filtreLogementLoyer();
     this.filtreLogementOccupant();
     this.resetListeFiltre();
-    this.getCoordonnesLogements();
+
   }
 
 
@@ -124,18 +140,20 @@ export class RechercheLogementComponent implements OnInit {
   onChange($event: any) {
     this.tri = $event.target.value;
     console.log("passage par onChange")
-    // this.trierLogement();
+    this.trierLogement();
   }
 
 
 
   search(ville: string) {
     this.ville = ville;
+    this.mapComponent.getCoordVille();
     console.log("passage par search (recherche logement)")
     this.rechercheLogementService.findByVille(ville);
   }
 
   filtreLogementType() {
+    console.log("logementsByVile : " + this.rechercheLogementService.logementsByVille.length)
     this.logementsPourFiltre = this.rechercheLogementService.logementsByVille;
     if (this.listeFiltreTypeLogement.length == 0) {
       this.rechercheLogementService.logements = this.rechercheLogementService.logementsByVille;
@@ -151,11 +169,13 @@ export class RechercheLogementComponent implements OnInit {
       }
       this.rechercheLogementService.logements = this.logementsFiltreType;
       // console.log(this.logementsFiltreType);
+      // console.log(this.rechercheLogementService.logements);
     }
   }
 
 
   filtreLogementLoyer() {
+    //console.log(this.listeFiltreTypeLogement.length);
     if (this.listeFiltreTypeLogement.length > 0) {
       this.logementsPourFiltre = this.logementsFiltreType;
     } else {
@@ -215,19 +235,36 @@ export class RechercheLogementComponent implements OnInit {
   }
 
 
-  getCoordonnesLogements() {
-    for (let log of this.rechercheLogementService.logements) {
-      log.localisation.codePostal = this.cp;
-      log.localisation.ville = this.ville;
-      log.localisation.num = this.num;
-      log.localisation.voie = this.voie;
+  //***********  FONCTIONNEL POUR 1 ADRESSE *************//
 
-      console.log('boucle getCoordLogments ' + log);
-      // this.voie = this.voie.replace(/ /g, '+');
+  // log:Logement;
+  // resultat:any;
+  // getCoordonnesLogements(){
+  //    this.ville = this.rechercheLogementService.filtreVille;
+  //      let promise = new Promise<void>((resolve,reject) => {
+  //       // this.cp = this.log.localisation.codePostal;
+  //       // this.ville = this.log.localisation.ville;
+  //       // this.num = this.log.localisation.num;
+  //       // this.voie = this.log.localisation.voie;
+  //       // this.voie = this.voie.replace(/ /g, '+');
 
-      // this.mapService.getCoordLogements(this.num,this.voie,this.cp,this.ville);
-      // this.coordonneesAdresses.push(this.mapService.resultat.features[0].geometry.coordinates);
-      // console.log("boucle for" + this.coordonneesAdresses);
-    }
-  }
+  //       let apiUrl = `https://api-adresse.data.gouv.fr/search/?q=${this.ville}&limit=1`;
+  //       this.http.get(apiUrl)
+  //         .toPromise()
+  //         .then(
+  //           res => {
+  //             console.log('resultat api : ' +JSON.stringify(res));
+  //             this.resultat = res;
+  //             this.mapService.coordonneesAdresses.push(this.resultat.features[0].geometry.coordinates);
+  //             resolve(this.mapComponent.centerMap());
+  //           }
+  //         );
+
+  //     });
+  //     return promise;
+
+  // }
+
+
+
 }

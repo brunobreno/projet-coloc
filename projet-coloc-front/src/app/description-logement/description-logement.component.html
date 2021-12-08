@@ -5,20 +5,6 @@
     <h4> {{logement.titre}} </h4>
     <div class="subtitle">
       <div class="subtext">
-        <!-- <span class="subtext"> Logement :</span>
-          <span class="subtext"> Appartement</span>
-          <span class="subtext"> - </span>
-          <span class="subtext"> 120m²</span>
-          <span class="subtext"> - </span>
-          <span class="subtext"> 6 pièces</span>
-          <span class="subtext"> - </span>
-          <span class="subtext"> 3 occupants</span>
-          <span class="subtext"> | </span>
-          <span class="subtext"> Chambre :</span>
-          <span class="subtext"> 17m² </span>
-          <span class="subtext"> - </span>
-          <span class="subtext"> 425€ </span>
-          <span class="subtext"> | </span> -->
 
         {{logement.localisation.num}} {{logement.localisation.voie}}, {{logement.localisation.ville}}
         ({{logement.localisation.codePostal}} {{logement.localisation.departement}})
@@ -66,12 +52,16 @@
           <fa-icon [icon]="faUsers"></fa-icon> Nombre d'occupant : {{locataires.length}}
         </h5>
 
+        <h5 *ngIf="logement.meuble" ><fa-icon [icon]="faCouch"></fa-icon> Meublé : Oui</h5>
+        <h5 *ngIf="!logement.meuble" ><fa-icon [icon]="faCouch"></fa-icon> Meublé : Non</h5>
+
         <h5>
           <fa-icon [icon]="faExpandAlt"></fa-icon>
           Superficie : {{logement.surface}} m²
         </h5>
         <div style="display: flex;">
-          <button class="contact-button" id="envoi_message">
+          <button class="contact-button" id="envoi_message"
+          [routerLink]="['/messagerie-nouveau/',logement.proprietaire.id]" >
             <fa-icon [icon]="faCommentAlt"></fa-icon>
             Envoyer un Message
           </button>
@@ -99,18 +89,17 @@
           <div id="info-container">
 
 
-            <div class="card-style">
+            <div class="card-style" style="width: 55%;">
               <h5>Le logement</h5>
               <span>Type : {{logement.typeLogement}}</span>
               <span>Superficie : {{logement.surface}}m² </span>
               <span>Nombre de chambres : {{logement.nChambre}} </span>
-              <span>Nombre de chambre(s) occupée(s): {{logement.nChambreOccup}} </span>
+              <span>Nombre de chambre(s) libre(s): {{logement.nChambre - logement.nChambreOccup}} </span>
               <span>Nombre de sdb : {{logement.nSdb}} </span>
-              <span *ngIf="logement.meuble" >Meublé : Oui</span>
-              <span *ngIf="!logement.meuble" >Meublé : Non</span>
+              
             </div>
 
-            <div class="card-style">
+            <div class="card-style" style="width: 30%;">
               <h5>Les dépenses</h5>
               <span>Loyer : {{logement.loyer}}€ </span>
               <span>Charges : {{logement.charges}}€ </span>
@@ -146,10 +135,12 @@
               <div class="occupant-card-mini-content">
                 <span class="occupant-desc"> {{loc.prenom }}</span>
                 <span class="occupant-desc">{{loc.situation }}</span>
-                <div class="occupant-hobbies">
-                  <img src="../../assets/img/icons/cinema.svg" alt="">
-                  <img src="../../assets/img/icons/jeuxSociete.svg" alt="">
-                  <img src="../../assets/img/icons/cuisine.svg" alt="">
+               
+                <div class="occupant-hobbies" *ngIf="loc.hobbies">
+                    <div *ngFor="let hob of loc.hobbies" class="caracteristiques">
+                      <img src="../../assets/img/icons/{{hob.chemin}}" class="" alt="..."> 
+                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -201,7 +192,7 @@
         <div class="caracteristiques-container ">
 
           <h6>Les commodités proposées</h6>
-          <div class="caracteristiques-list card-style">
+          <div class="caracteristiques-list">
             <div *ngFor="let com of logement.commodites" class="caracteristiques">
               <img src="../../assets/img/icons/{{com.chemin}}" class="" alt="..."> {{com.libelle}}
             </div>
@@ -210,7 +201,7 @@
 
         <div class="caracteristiques-container">
           <h6>Les règles à respecter</h6>
-          <div class="caracteristiques-list card-style">
+          <div class="caracteristiques-list">
             <div *ngFor="let regle of logement.regles" class="caracteristiques">
               <img src="../../assets/img/icons/{{regle.chemin}}" class="" alt="..."> {{regle.libelle}}
             </div>
@@ -224,12 +215,15 @@
 
       <!-- Section Chambre -->
       <div class="section-container" id="chambre-section">
-        <h4>Les chambres (disponibles?)</h4>
+        <h4>Les chambres</h4>
         <div *ngFor="let chambre of chambres;let index=index;" style="display: flex;flex-direction: column;" >
           <div class="caracteristiques-container" >
-          <h5>Chambre {{index+1}}</h5>
-          <div style="display: flex;">
-            <div class="caracteristiques-container" style="height: 350px;" style="width: 50%;">
+            <div class="d-flex justify-content-between"> <h5>Chambre {{index+1}}</h5>  
+              <span class="statut-chambre" style="border-color: #9b0c0c;" *ngIf="chambre.locataire"> Occupée </span>
+              <span class="statut-chambre" style="border-color: #1d7108;" *ngIf="!chambre.locataire"> Libre </span>
+            </div>
+          
+            <div class="caracteristiques-container" style="height: 350px;">
               <h6>Les photos </h6>
               <div style="display: flex;align-items: center;height:100%;">
                 <carousel lightbox-group  objectFit="contain" [dots]="true" [loop]="true" [cellWidth]="'100%'">
@@ -238,22 +232,22 @@
                   </div>
                 </carousel>
               </div>
-            </div>
-  
-            <div class="caracteristiques-container" style="width: 50%;">
-              <h6>Description </h6>
-              <div class="description text-truncate text-truncate-12">
-                {{chambre.description}}
-              </div>
-            </div>
-
+           
           </div>
+
+          <div class="caracteristiques-container">
+            <h6>Description </h6>
+            <div class="description text-truncate text-truncate-12">
+              {{chambre.description}}
+            </div>
+          </div>
+
          
           <div class="caracteristiques-container" *ngIf="chambre.commodites.length > 0">
 
             <h6 >Proposé dans la chambre</h6>
             
-            <div class="caracteristiques-list card-style">
+            <div class="caracteristiques-list ">
               <div *ngFor="let com of chambre.commodites" class="caracteristiques">
                 <img src="../../assets/img/icons/{{com.chemin}}" class="" alt="..."> {{com.libelle}}
               </div>
@@ -291,8 +285,8 @@
         <h6> Sur une carte </h6>
         <div class="map-main-container">
           <div class="map-content-container">
-            <div class="map" id=mapid>
-            </div>
+            <app-map></app-map>
+            <!-- <div class="map" id=mapid></div> -->
           </div>
         </div>
       </div>
