@@ -508,7 +508,7 @@ class ProjetColocBackApplicationTests {
 				log8.addRegle(femmeUniquement);
 				log8 = logementRepository.save(log8);
 				
-				Locataire locataire1log5 = new Locataire("monica", "Geller", "Monica", Civilite.Mme, "monicageller@mail.com",
+				/*Locataire locataire1log5 = new Locataire("monica", "Geller", "Monica", Civilite.Mme, "monicageller@mail.com",
 						"0101010101", "monica", false, 
 						"Maniaque mais veut absolument organiser toutes les soirées chez elle. Cuisine hyper bien et nourrit tout le monde", 
 						Situation.Salarie,  LocalDate.parse("1969-03-09"));
@@ -533,7 +533,7 @@ class ProjetColocBackApplicationTests {
 				Locataire locataire1log8 = new Locataire("danielb", "Bilal", "Daniel", Civilite.Mr, "danielb@mail.com",
 						"0011000006", "danielb", true, "Apprécie de manière démesurée les voitures", Situation.Etudiant, LocalDate.parse("1997-02-09"));
 				locataire1log8 = locataireRepository.save(locataire1log8);
-				locataire1log8.setChambre(ch1Log8);
+				locataire1log8.setChambre(ch1Log8);*/
 				
 				
 	// MARSEILLE 
