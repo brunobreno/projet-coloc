@@ -47,7 +47,7 @@ export class AppComponent {
     //return this.rechercheLogementService.findAll();
 
     this.getCoordVille(); //Coordonnees pour centrer la map
-
+    
   }
 
   getCoordVille(){
