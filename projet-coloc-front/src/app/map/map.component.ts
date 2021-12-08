@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
+import { DescriptionLogementComponent } from '../description-logement/description-logement.component';
+import { Logement } from '../model';
+import { RechercheLogementService } from '../recherche-logement/recherche-logement.service';
 import { MapHttpService } from './map-http.service';
 import { MarkerService } from './marker.service';
 
@@ -28,23 +31,41 @@ L.Marker.prototype.options.icon = iconDefault;
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements AfterViewInit {
-  private map:any;
+  map: any;
 
-  
-  
 
-  constructor( private httpClient: HttpClient, private mapService: MapHttpService, private markerService: MarkerService) { }
 
-  
+  constructor(private http: HttpClient, private markerService: MarkerService, private recherLogementService: RechercheLogementService, private descriptionLogement:DescriptionLogementComponent) { }
 
-  private initMap(): void {
+
+  listeCoord: Array<number> = new Array<number>();
+  resultat: any;
+  lat: any;
+  lon: any;
+  log:Logement;
+  cp: string;
+  city:string;
+  voie:string;
+  num:number;
+
+  initMap(): void {
+
+    console.log("lat " + this.lat);
+    console.log("lon " + this.lon);
+
+    if(this.lat == undefined || this.lon == undefined){
+      this.map = L.map('map', {
+        center: [this.lat, this.lon],
+        zoom: 12
+      });
+    }else{
+      this.map = L.map('map', {
+        center: [46.227638, 2.213749],
+        zoom: 12
+      });
+    }
+
     
-
-    this.map = L.map('map', {
-      center: [40.712,-74.227],
-      zoom: 12
-
-    });
 
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
@@ -55,11 +76,65 @@ export class MapComponent implements AfterViewInit {
     tiles.addTo(this.map);
   }
 
+  getCoordLogement(){
+    let promise = new Promise<void>((resolve, reject) => {
+      this.log = this.descriptionLogement.logement;
+      this.cp = this.log.localisation.codePostal;
+      this.city = this.log.localisation.ville;
+      this.num = this.log.localisation.num;
+      this.voie = this.log.localisation.voie;
+      this.voie = this.voie.replace(/ /g, '+');
+      let apiUrl = `https://api-adresse.data.gouv.fr/search/?q=${this.num}+${this.voie}+${this.cp}+&city=${this.city}&limit=1`;
+      this.http.get(apiUrl)
+        .toPromise()
+        .then(
+          res => {
+            console.log('resultat api : ' + JSON.stringify(res));
+            this.resultat = res;
+            for (const c of this.resultat.features) {
+              this.lon = c.geometry.coordinates[0];
+              this.lat = c.geometry.coordinates[1];
+              console.log(this.lat)
+              console.log(this.lon)
+            }
+            resolve(this.initMap());
+            resolve(this.markerService.makeCapitalMarkers(this.map,this.lat,this.lon));
+          }
+        );
+
+    });
+    return promise;
+  }
+
+  
+  getCoordVille() {
+    let promise = new Promise<void>((resolve, reject) => {
+      let apiUrl = `https://api-adresse.data.gouv.fr/search/?q=${this.recherLogementService.filtreVille}&limit=1`;
+      this.http.get(apiUrl)
+        .toPromise()
+        .then(
+          res => {
+            console.log('resultat api : ' + JSON.stringify(res));
+            this.resultat = res;
+            for (const c of this.resultat.features) {
+              this.lon = c.geometry.coordinates[0];
+              this.lat = c.geometry.coordinates[1];
+              console.log(this.lat)
+              console.log(this.lon)
+
+            }
+            resolve(this.initMap());
+            resolve(this.markerService.makeCapitalMarkers(this.map,this.lat,this.lon));
+          }
+        );
+
+    });
+    return promise;
+  }
   
 
   ngAfterViewInit(): void {
-    this.initMap();
-    this.markerService.makeCapitalMarkers(this.map);
+    
   }
 
 }

@@ -91,7 +91,8 @@ import { MapHttpService } from './map/map-http.service';
     MessagerieService, 
     MessagerieNouveauContactService,
     MapHttpService, 
-    MarkerService],
+    MarkerService,
+    MapComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

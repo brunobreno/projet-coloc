@@ -40,14 +40,6 @@ export class AppComponent {
     console.log('passage par search')
     this.rechercheLogement.search(ville);
     //return this.rechercheLogementService.findAll();
-
-    this.getCoordVille(); //Coordonnees pour centrer la map
-    
   }
 
-  getCoordVille(){
-    
-    this.mapService.getCoordVille(this.filtre);
-  }
- 
 }
