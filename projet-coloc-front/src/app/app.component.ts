@@ -39,9 +39,9 @@ export class AppComponent {
 
   constructor(private rechercheLogement: RechercheLogementComponent, private rechercheLogementService: RechercheLogementService, private mapService:MapHttpService,public router: Router) {
    this.utilisateurConnecte = new UtilisateurDTO;
-   this.utilisateurConnecte.typeDeCompte="locataire";
-   this.utilisateurConnecte.id=1;
-  // this.utilisateurConnecte.typeDeCompte="proprietaire";
+   //this.utilisateurConnecte.typeDeCompte="locataire";
+   this.utilisateurConnecte.id=2;
+   this.utilisateurConnecte.typeDeCompte="proprietaire";
   }
 
   search(ville:string) {

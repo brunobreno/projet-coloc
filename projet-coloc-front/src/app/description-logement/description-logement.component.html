@@ -136,13 +136,10 @@
                 <span class="occupant-desc"> {{loc.prenom }}</span>
                 <span class="occupant-desc">{{loc.situation }}</span>
                
-                <div class="occupant-hobbies" >
-                  <!--<div *ngIf="loc.hobbies" >
+                <div class="occupant-hobbies" *ngIf="loc.hobbies">
                     <div *ngFor="let hob of loc.hobbies" class="caracteristiques">
                       <img src="../../assets/img/icons/{{hob.chemin}}" class="" alt="..."> 
-                      {{hob.libelle}}
-                    </div>
-                  </div>-->
+                  </div>
                   
                 </div>
               </div>

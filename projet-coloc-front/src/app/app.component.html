@@ -48,7 +48,8 @@
         <button  *ngIf= "utilisateurConnecte.typeDeCompte=='proprietaire'" type=button class="header-button-account button1 first-button" >
           Candidatures reçues
         </button>
-        <button  *ngIf= "utilisateurConnecte.typeDeCompte=='proprietaire'" type=button class="header-button-account button1 first-button" >
+        <button  *ngIf= "utilisateurConnecte.typeDeCompte=='proprietaire'" type=button class="header-button-account button1 first-button"
+        [routerLink]="['/logements-proprietaire/',utilisateurConnecte.id]" >
           Mes logements
         </button>
         <button type=button class="header-button-account button1 "

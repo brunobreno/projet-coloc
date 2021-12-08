@@ -25,7 +25,7 @@ public class Hobby {
 	
 	@ManyToMany(mappedBy = "hobbies")
 	@JsonView(Views.ViewHobbyDetail.class)
-	private List<Locataire> Locataires;
+	private List<Locataire> locataires;
 
 	
 	public Hobby() {
@@ -66,11 +66,11 @@ public class Hobby {
 
 
 	public List<Locataire> getLocataires() {
-		return Locataires;
+		return locataires;
 	}
 
 	public void setLocataires(List<Locataire> locataires) {
-		Locataires = locataires;
+		this.locataires = locataires;
 	}
 
 	@Override

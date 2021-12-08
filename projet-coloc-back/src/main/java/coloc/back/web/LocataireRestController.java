@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,15 +21,12 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import coloc.back.model.Chambre;
 import coloc.back.model.Locataire;
-import coloc.back.model.Logement;
 import coloc.back.model.Role;
 import coloc.back.model.UtilisateurRole;
 import coloc.back.model.Views;
 import coloc.back.repository.IChambreRepository;
 import coloc.back.repository.ILocataireRepository;
 import coloc.back.repository.IUtilisateurRoleRepository;
-
-
 
 @RestController
 @RequestMapping("/locataires")
@@ -63,39 +59,33 @@ public class LocataireRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Locataire non trouvé");
 		}
 	}
-	
+
 	@GetMapping("/by-chambre/{idChambre}")
 	@JsonView(Views.ViewCommon.class)
 	public Locataire findAllByChambre(@PathVariable("idChambre") Long id) {
 		Locataire locataire = locataireRepo.findAllByIdChambre(id);
 		return locataire;
 	}
-	
+
 	@GetMapping("/by-logement/{idLogement}")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewLocataireDescription.class)
 	public List<Locataire> findAllByLogement(@PathVariable("idLogement") Long id) {
-		List<Chambre> chambres = chambreRepo.findAllByIdLogement(id);
-		
-		List<Locataire> locataires = new ArrayList<Locataire>();
-		
-		for(Chambre chambre : chambres) {
-			locataires.add(locataireRepo.findAllByIdChambre(chambre.getId()));
-		}
-		
+		List<Locataire> locataires = locataireRepo.findAllByIdLogement(id);
+
 		return locataires;
 	}
-	
+
 	@GetMapping("/by-logement/{idLogement}/description")
 	@JsonView(Views.ViewLocataireDescription.class)
 	public List<Locataire> findAllByLogementDescription(@PathVariable("idLogement") Long id) {
 		List<Chambre> chambres = chambreRepo.findAllByIdLogement(id);
-		
+
 		List<Locataire> locataires = new ArrayList<Locataire>();
-		
-		for(Chambre chambre : chambres) {
+
+		for (Chambre chambre : chambres) {
 			locataires.add(locataireRepo.findAllByIdChambre(chambre.getId()));
 		}
-		
+
 		return locataires;
 	}
 
@@ -119,14 +109,14 @@ public class LocataireRestController {
 
 		return locataire;
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
 		if (!locataireRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Locataire non trouvé");
 		}
-		
+
 		locataireRepo.deleteById(id);
 	}
-	
+
 }
