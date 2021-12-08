@@ -39,6 +39,10 @@
       <!-- User connecté-->
       
        <div class="header-account-main-container" *ngIf="utilisateurConnecte">
+        <button  *ngIf= "utilisateurConnecte.typeDeCompte=='locataire'" type=button class="header-button-account button1 first-button" 
+        [routerLink]="['/recherche-locataires']" >
+          Recherche de colocataires
+        </button>
         <button  *ngIf= "utilisateurConnecte.typeDeCompte=='locataire'" type=button class="header-button-account button1 first-button" >
           Mes recherches
         </button>
@@ -59,6 +63,10 @@
         <button type=button class="header-button-account button1" style="padding-left:15px;padding-right:15px" 
         [routerLink]="['/',utilisateurConnecte.typeDeCompte,utilisateurConnecte.id]">
           Mon compte
+        </button>
+        <button type=button class="header-button-account button1" style="padding-left:15px;padding-right:15px" 
+        [routerLink]="['/deconnexion']">
+            Se déconnecter
         </button>
         <button type=button class="header-button-account button1 last-button">
           <i class="bi-globe"></i>

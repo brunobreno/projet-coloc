@@ -5,6 +5,7 @@ import { Locataire } from './model';
 import { RechercheLogementComponent } from './recherche-logement/recherche-logement.component';
 import { RechercheLogementService } from './recherche-logement/recherche-logement.service';
 import { Router } from '@angular/router';
+import { AppConfigService } from './app-config.service';
 
 
 
@@ -17,19 +18,16 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'projet-coloc-front';
 
-
-  utilisateurConnecte: UtilisateurDTO;
-  
-
-
+  utilisateurConnecte: UtilisateurDTO = new UtilisateurDTO();
 
   filtreVille: string;
 
-  constructor(private rechercheLogementService: RechercheLogementService, public router: Router) {
-   this.utilisateurConnecte = new UtilisateurDTO;
-   //this.utilisateurConnecte.typeDeCompte="locataire";
-   this.utilisateurConnecte.id=2;
-   this.utilisateurConnecte.typeDeCompte="proprietaire";
+  constructor(private appConfigService: AppConfigService, private rechercheLogementService: RechercheLogementService, public router: Router) {
+   this.utilisateurConnecte = appConfigService.utilisateurConnecte;
+   router.events.subscribe(val => {
+    this.utilisateurConnecte = appConfigService.utilisateurConnecte;
+    console.log(this.utilisateurConnecte.typeDeCompte)
+   })
   }
 
   search(ville: string) {

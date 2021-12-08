@@ -22,14 +22,21 @@ export class LogInComponent implements OnInit {
 
   login() {
     this.logInService.connexion(this.logInForm).subscribe(resp => {
-      this.appConfig.utilisateurConnecte = resp;
-      this.connexionEtablie = true;
-      this.errorLogIn = null;
-      setTimeout(() =>{
-        this.connexionEtablie = false;
-        this.logInForm = new ConnexionDTO();
-        this.router.navigate(['']);
-      }, 3000);
+      this.logInService.findUserById(resp.id).subscribe(userResp => {
+        this.appConfig.utilisateurConnecte = userResp;
+        if(userResp.description){
+          this.appConfig.utilisateurConnecte.typeDeCompte = "locataire"
+        } else {
+          this.appConfig.utilisateurConnecte.typeDeCompte = "proprietaire"
+        }
+        this.connexionEtablie = true;
+        this.errorLogIn = null;
+        setTimeout(() =>{
+          this.connexionEtablie = false;
+          this.logInForm = new ConnexionDTO();
+          this.router.navigate(['']);
+        }, 3000);
+      }, err => console.log(err))
     }, error => {
       console.log(error);
       if(error.status == 404) {
