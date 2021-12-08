@@ -228,6 +228,7 @@ export class Logement {
   charges: number;
   caution: number;
   dateDispo: string;
+  dateDeMiseEnLigne: string;
   typeLogement: string;
   photos: Array<Photo> = new Array<Photo>();
   //notations: Array<Notation> = new Array <Notation>();
@@ -260,6 +261,7 @@ export class Logement {
     chambres?: Array<Chambre>,
     commodites?: Array<Commodite>,
     regles?: Array<Regle>,
+    dateDeMiseEnLigne?: string,
     meuble?: boolean
   ) {
     this.id = id
@@ -283,6 +285,7 @@ export class Logement {
     this.commodites = commodites
     this.regles = regles
     this.meuble=meuble
+    this.dateDeMiseEnLigne=dateDeMiseEnLigne
   }
 
 }

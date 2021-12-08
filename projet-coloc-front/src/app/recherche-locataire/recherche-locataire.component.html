@@ -54,15 +54,15 @@
 
   <div class="row justify-content-md-center">
     <div class="d-flex flex-wrap col-md-8">
-      <div class="card flex-wrap" style="width: 18rem" *ngFor="let loc of locatairesFiltres">
+      <div class="card flex-wrap" style="width: 17rem" *ngFor="let loc of locatairesFiltres">
         <div class="card-img-container">
           <div class="card-img-content">
             <img class="card-img-top" src="../assets/img/locataires/pikachu.jpg" alt="photo de profil locataire" />
           </div>
         </div>
-        <div class="card-body">
+        <div class="card-body" style="padding: 0px 15px;">
           <h5 class="card-title mt-3">
-            {{loc?.prenom}}<br>{{loc?.nom}}
+            {{loc?.prenom}} {{loc?.nom}}
             <span>
               <!-- en fonction de civilite-->
               <i *ngIf="loc?.civ == 'Mme'" class="bi bi-gender-female float-end"></i>
@@ -71,21 +71,21 @@
               <img class="card-caract" src="../assets/img/locataires/france.png" alt="drapeau">
             </span>
           </h5>
-          <p class="card-text text-truncate mt-2">
+          <p class="card-text text-truncate text-truncate-3 mt-2">
             {{loc?.description}}
           </p>
         </div>
         <ul class="list-group list-group-flush mt-2">
           <li class="list-group-item">{{loc?.situation}}</li>
           <li class="list-group-item">{{loc?.dateDeNaissance | age}} ans</li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span class="material-icons">hiking</span>
+          <li class="list-group-item d-flex justify-content-around" style="height: 40px;">
+            <span class="material-icons" >hiking</span>
             <span class="material-icons">explore</span>
-            <span class="material-icons">sports_bar</span>
+            <span class="material-icons">surf</span>
           </li>
         </ul>
         <div class="card-bottom justify-content-around">
-          <span (click)="nouveauMessage(loc.id)" class="material-icons">email</span>
+          <span (click)="nouveauMessage(loc.id)" class="material-icons" style="cursor: pointer;">email</span>
           <span class="material-icons">favorite_border</span>
         </div>
       </div>

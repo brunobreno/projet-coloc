@@ -1,4 +1,4 @@
-<body >
+<body>
   
   <div class="page-main-container">
 
@@ -81,7 +81,7 @@
 
             <div class="dropdown filter-dropdown">
               <button class="dropdown-toggle filter-button" type="button" id="drop-occupant" data-bs-toggle="dropdown"
-                data-bs-auto-close="outside" aria-expanded="false"> 
+               aria-expanded="false"> 
                 Occupants
               </button>
               <div class="dropdown-menu" aria-labelledby="drop-occupant"  id="nbOccupant">
@@ -486,7 +486,7 @@
               <div class="card-content-link-main-container" [routerLink]="['/description-logement/',logement.id]"  >
                 <a class="card-link">En savoir plus</a>
                 <div class="card-content-update-main-container">
-                  <p class="card-text"><small class="text-muted">Posté le jj-mm-aaaa</small></p>
+                  <p class="card-text"><small class="text-muted">Posté le {{logement.dateDeMiseEnLigne}}</small></p>
                 </div>
               </div>
               
