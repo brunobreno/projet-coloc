@@ -5,6 +5,9 @@ import { Logement, Localisation, Locataire, Chambre, Photo } from '../model';
 import { DescriptionLogementService } from './description-logement.service';
 import { AppComponent } from '../app.component';
 import { ChambreService } from '../chambre/chambre.service';
+import { MapHttpService } from '../map/map-http.service';
+import { MarkerService } from '../map/marker.service';
+import { MapComponent } from '../map/map.component';
 
 
 
@@ -35,7 +38,8 @@ export class DescriptionLogementComponent implements OnInit {
   constructor(private appConfig: AppConfigService, private descriptionService: DescriptionLogementService, 
     private chambreService: ChambreService, 
     private appComponent: AppComponent, 
-    private activatedRoute: ActivatedRoute) { 
+    private activatedRoute: ActivatedRoute,
+    private mapComponent:MapComponent) { 
      }
 
   ngOnInit(): void {
@@ -51,8 +55,8 @@ export class DescriptionLogementComponent implements OnInit {
         this.chambres = chambres;
       })
      
-      
-  })
+    });
+    this.mapComponent.getCoordLogement();
   }
 
 

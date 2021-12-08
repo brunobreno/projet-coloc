@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConfigService } from './../app-config.service';
 import { Commodite, Locataire, Logement } from '../model';
-import { Observable } from 'rxjs';
+
+
 
 
 @Injectable({
@@ -21,7 +22,8 @@ export class RechercheLogementService {
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) { 
     this.logementUrl = this.appConfig.backEndUrl + "logements/"
-    this.load();
+
+    this.load(); 
   }
 
   findAll(): Array<Logement> {
@@ -43,8 +45,10 @@ export class RechercheLogementService {
     if (ville) {
       this.http.get<Array<Logement>>(this.logementUrl + "by-ville/" + ville ).subscribe(response => {
         this.logements = response;
+        this.logementsByVille = response;
       }, error => console.log(error));
     } else {
+
       this.load();
     }
     
@@ -83,7 +87,7 @@ export class RechercheLogementService {
     this.http.get<Array<Logement>>(this.logementUrl + "complete" ).subscribe(response => {
     console.log("passage par load (service)")
       this.logements = response;
-      console.log("load " + this.logements)
+      console.log("load " + JSON.stringify(this.logements))
     }, error => console.log(error));
   }
 

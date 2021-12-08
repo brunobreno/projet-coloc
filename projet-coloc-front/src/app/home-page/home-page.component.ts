@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AppConfigService } from '../app-config.service';
+import { MapHttpService } from '../map/map-http.service';
 import { Logement } from '../model';
+import { RechercheLogementComponent } from '../recherche-logement/recherche-logement.component';
 import { HomePageService } from './home-page.service';
 
 @Component({
@@ -25,10 +27,26 @@ export class HomePageComponent implements OnInit {
         }, err => console.log)
       });
     }, err => console.log(err))
+  filtreVille: string;
   }
 
   ngOnInit(): void {
   }
+
+  search(ville:string) {
+    console.log('passage par search')
+    this.rechercheLogement.search(ville);
+    //return this.rechercheLogementService.findAll();
+
+    this.getCoordVille(); //Coordonnees pour centrer la map
+    
+  }
+
+  getCoordVille(){
+    
+    this.mapService.getCoordVille(this.filtreVille);
+  }
+
 
   redirect(id: number) {
     this.router.navigate(["./description-logement/", id]);

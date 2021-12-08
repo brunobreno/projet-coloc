@@ -10,8 +10,8 @@ import coloc.back.model.*;
 
 public interface ICommoditeRepository extends JpaRepository<Commodite,Long>{
 	
-	//@Query("select c from Commodite c join c.logement l where l.id= :id")
-	//public List<Commodite> findAllCommoditeByIdLogement(@Param("id") Long id);
+//	@Query("select distinct c from Commodite c  where c.logement.id= :id")
+//	public List<Commodite> findAllCommoditesByIdLogement(@Param("id") Long id);
 	
 	
 	

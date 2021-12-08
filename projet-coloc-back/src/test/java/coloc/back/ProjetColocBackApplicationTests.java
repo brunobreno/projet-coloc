@@ -179,13 +179,13 @@ class ProjetColocBackApplicationTests {
 		salleDeSport = commoditeRepository.save(salleDeSport);
 		Commodite fibre = new Commodite("internet fibre","fibre.svg");
 		fibre = commoditeRepository.save(fibre);
-		Commodite climatisation = new Commodite("climatisation",".climatisation.svg");
+		Commodite climatisation = new Commodite("climatisation","climatisation.svg");
 		climatisation = commoditeRepository.save(climatisation);
 		Commodite television = new Commodite("television","television.svg");
 		television = commoditeRepository.save(television);
 		Commodite laveLinge = new Commodite("lave linge","lave-linge.svg");
 		laveLinge = commoditeRepository.save(laveLinge);
-		Commodite laveVaiselle = new Commodite("lave vaisselle","lave-vaiselle.svg");
+		Commodite laveVaiselle = new Commodite("lave vaisselle","lave-vaisselle.svg");
 		laveVaiselle = commoditeRepository.save(laveVaiselle);
 
 		// Creation des Regle
@@ -459,11 +459,33 @@ class ProjetColocBackApplicationTests {
 				TypeLogement.Appartement, LocalDate.now(), true);
 		log8 = logementRepository.save(log8);
 
-		// Creation des Chambre
-		Chambre ch1Log5 = new Chambre(log5, 12);
-		ch1Log5 = chambreRepository.save(ch1Log5);
-		Chambre ch2Log5 = new Chambre(log5, 13);
-		ch2Log5 = chambreRepository.save(ch2Log5);
+			
+				// Creation des Chambre
+				Chambre ch1Log5 = new Chambre(log5, 12, "super sympa mais pas très grande");
+				ch1Log5 = chambreRepository.save(ch1Log5);
+				Chambre ch2Log5 = new Chambre(log5, 13, "Donne sur cours c'est ouf y'a des canards");
+				ch2Log5 = chambreRepository.save(ch2Log5);
+				
+				Chambre ch1Log6 = new Chambre(log6, 15, "On entends les voitures mais y'a un bureau déjà c'est pas mal");
+				ch1Log6 = chambreRepository.save(ch1Log6);
+				Chambre ch2Log6 = new Chambre(log6, 15, "Joli tapis, mais on entends la chasse d'eau des toilettes");
+				ch2Log6 = chambreRepository.save(ch2Log6);
+				Chambre ch3Log6 = new Chambre(log6, 15, "l'ancien locataire a laissé des fringues mais ils sont jolis donc ça va");
+				ch3Log6 = chambreRepository.save(ch3Log6);
+				
+				Chambre ch1Log7 = new Chambre(log7, 10, "Un peu petite mais la plus isolée, on entends rien");
+				ch1Log7 = chambreRepository.save(ch1Log7);
+				Chambre ch2Log7 = new Chambre(log7, 12, "Y'a une petite odeur, mais c'est tranquille");
+				ch2Log7 = chambreRepository.save(ch2Log7);
+				Chambre ch3Log7 = new Chambre(log7, 14, "parfaite pour un couple");
+				ch3Log7 = chambreRepository.save(ch3Log7);
+				Chambre ch4Log7 = new Chambre(log7, 13, "Chambre à côté du couple, franchement c'est bof");
+				ch4Log7 = chambreRepository.save(ch4Log7);
+				
+				Chambre ch1Log8 = new Chambre(log8, 12, "La chambre est présente");
+				ch1Log8 = chambreRepository.save(ch1Log8);
+				Chambre ch2Log8 = new Chambre(log8, 16, "Le lit possède un matelas c'est pratique");
+				ch2Log8 = chambreRepository.save(ch2Log8);
 
 		Chambre ch1Log6 = new Chambre(log6, 15);
 		ch1Log6 = chambreRepository.save(ch1Log6);
@@ -481,46 +503,171 @@ class ProjetColocBackApplicationTests {
 		Chambre ch4Log7 = new Chambre(log7, 13);
 		ch4Log7 = chambreRepository.save(ch4Log7);
 
-		Chambre ch1Log8 = new Chambre(log8, 12);
-		ch1Log8 = chambreRepository.save(ch1Log8);
-		Chambre ch2Log8 = new Chambre(log8, 16);
-		ch2Log8 = chambreRepository.save(ch2Log8);
+				// Ajout de Regle a Logement
+				log5.addRegle(fumeurAutorise);
+				log5 = logementRepository.save(log5);
+				log6.addRegle(animauxAutorises);
+				log6 = logementRepository.save(log6);
+				log7.addRegle(animauxAutorises);
+				log7.addRegle(passSanitaire);
+				log7 = logementRepository.save(log7);
+				log8.addRegle(femmeUniquement);
+				log8 = logementRepository.save(log8);
+				
+				
+	// MARSEILLE 
+				
+				// Creation des Proprio
+				Proprietaire proprietaireMarseille1 = new Proprietaire("louised", "Desroches", "Louise", Civilite.Mme,
+						"louised@mail.com", "0458972567", "1234");
+				proprietaireMarseille1 = proprietaireRepository.save(proprietaireMarseille1);
+				Proprietaire proprietaireMarseille2 = new Proprietaire("gabrielp", "Poulin", "Gabriel", Civilite.Mme,
+						"gabrielp@mail.com", "05957582", "1234");
+				proprietaireMarseille2 = proprietaireRepository.save(proprietaireMarseille2);
+				Proprietaire proprietaireMarseille3 = new Proprietaire("felicienc", "Cloutier", "Felicien", Civilite.Mr,
+						"felicienc@mail.com", "0695851475", "1234");
+				proprietaireMarseille3 = proprietaireRepository.save(proprietaireMarseille3);
+				Proprietaire proprietaireMarseille4 = new Proprietaire("agnesa", "Arcouet", "Agnes", Civilite.Mme,
+						"agnesa@mail.com", "0695175825", "1234");
+				proprietaireMarseille4 = proprietaireRepository.save(proprietaireMarseille4);
 
-		// Ajout de Commodite a Logement
-		log5.addCommodite(balcon);
-		log5.addCommodite(parking);
-		log5.addCommodite(fibre);
-		log5 = logementRepository.save(log5);
-		log6.addCommodite(handicape);
-		log6.addCommodite(parking);
-		log6 = logementRepository.save(log6);
-		log7.addCommodite(jardin);
-		log7.addCommodite(parking);
-		log7.addCommodite(fibre);
-		log7 = logementRepository.save(log7);
-		log8.addCommodite(fibre);
-		log8.addCommodite(balcon);
-		log8.addCommodite(salleDeSport);
-		log8.addCommodite(handicape);
-		log8 = logementRepository.save(log8);
+				// Creation des Locataire
+				Locataire locataireMarseille1 = new Locataire("francish", "Hachee", "Francis", Civilite.Mr, "francish@mail.com",
+						"0428672527", "1234", false, 
+						"Maniaque mais veut absolument organiser toutes les soirées chez elle. Cuisine hyper bien et nourrit tout le monde", 
+						Situation.Salarie,  LocalDate.parse("1969-03-09"));
+				locataireMarseille1 = locataireRepository.save(locataireMarseille1);
+				
+				Locataire locataireMarseille2 = new Locataire("pierrer", "Rondin", "Pierre", Civilite.Mr, "pierrer@mail.com",
+						"0658957414", "1234", false, "Bordélique et enfant gâtée mais peut t'habiller comme personne", Situation.Autre, LocalDate.parse("1969-05-05"));
+				locataireMarseille2 = locataireRepository.save(locataireMarseille2);
+				
+				Locataire locataireMarseille3 = new Locataire("byronb", "Brisebois", "Byron", Civilite.Mr, "byronb@mail.com",
+						"06359517", "1234", false, "Peut hypnotiser le propriétaire pour avoir un appartement. C'est aussi bizarre qu'il ait les réfs de tous les jeux vidéos du monde nan ?", Situation.Salarie, LocalDate.parse("1992-02-09"));
+				locataireMarseille3 = locataireRepository.save(locataireMarseille3);
+				
+				Locataire locataireMarseille4 = new Locataire("arletteg", "Grondin", "Arlette", Civilite.Mme, "arletteg@mail.com",
+						"0535952417", "1234", false, "Maniaque mais veut absolument organiser toutes les soirées chez elle. Cuisine hyper bien et nourrit tout le monde", Situation.Retraite, LocalDate.parse("1992-02-09"));
+				locataireMarseille4 = locataireRepository.save(locataireMarseille4);
+				
+				Locataire locataireMarseille5 = new Locataire("daveta", "Adler", "Davet", Civilite.Mr, "daveta@mail.com",
+						"0635712574", "1234", false, "Bordélique et enfant gâtée mais peut t'habiller comme personne", Situation.Etudiant, LocalDate.parse("1999-05-09"));
+				locataireMarseille5 = locataireRepository.save(locataireMarseille5);
+				
+				Locataire locataireMarseille6 = new Locataire("delmara", "Aubin", "Delmar", Civilite.Mr, "delmara@mail.com",
+						"0635257489", "1234", false, "Peut hypnotiser le propriétaire pour avoir un appartement.", Situation.Etudiant, LocalDate.parse("1998-02-15"));
+				locataireMarseille6 = locataireRepository.save(locataireMarseille6);
+				
+				
 
-		// Ajout de Regle a Logement
-		log5.addRegle(fumeurAutorise);
-		log5 = logementRepository.save(log5);
-		log6.addRegle(animauxAutorises);
-		log6 = logementRepository.save(log6);
-		log7.addRegle(animauxAutorises);
-		log7.addRegle(passSanitaire);
-		log7 = logementRepository.save(log7);
-		log8.addRegle(femmeUniquement);
-		log8 = logementRepository.save(log8);
+				// Creation des Localisation
+				Localisation locLogMarseille1 = new Localisation("Bouches-du-Rhone", "Marseille", "13013", "boulevard de la Liberation", 61);
+				Localisation locLogMarseille2 = new Localisation("Bouches-du-Rhone", "Marseille", "13008", "cours Franklin Roosevelt", 29);
+				Localisation locLogMarseille3 = new Localisation("Bouches-du-Rhone", "Marseille", "13014", "boulevard de la Liberation", 50);
+				Localisation locLogMarseille4 = new Localisation("Bouches-du-Rhone", "Marseille", "13008", "cours Franklin Roosevelt", 83);
+				Localisation locLogMarseille5 = new Localisation("Bouches-du-Rhone", "Marseille", "13014", "boulevard de la Liberation", 32);
+				Localisation locLogMarseille6 = new Localisation("Bouches-du-Rhone", "Marseille", "13002", "rue Beauvau", 137);
 
+				// Creation des Logement
+				Logement logMarseille1 = new Logement(proprietaireMarseille1, "Grand appart central", "Beaucoup trop grand pour le prix et très bien agencé", 104, 2, 2, 1, 180.0, 50.0, 300.0, locLogMarseille1,
+						TypeLogement.Appartement, LocalDate.now(), false);
+				logMarseille1 = logementRepository.save(logMarseille1);
+				
+				Logement logMarseille2 = new Logement(proprietaireMarseille1,"Appartement pour 2 en colocation", "Bel appartement pour colocation" , 65, 2, 2, 1, 500.0, 50.0, 350.0, locLogMarseille2,
+						TypeLogement.Appartement, LocalDate.now(), true);
+				logMarseille2 = logementRepository.save(logMarseille2);
+				
+				Logement logMarseille3 = new Logement(proprietaireMarseille2,"Appartement exceptionnel centre ville", "En plein coeur du centre ville, proche toutes commoditées" , 110, 3, 2, 1, 375.0, 50.0, 375.0, locLogMarseille3,
+						TypeLogement.Appartement, LocalDate.now(), false);
+				logMarseille3 = logementRepository.save(logMarseille3);
+				
+				Logement logMarseille4 = new Logement(proprietaireMarseille2,"Maison recemment rénové pour 3", "Recemment renové et penser pour la vie en colocation. Dispose de 3 chambre et 1 salle de bain", 120, 3, 0, 1, 325.0, 50.0, 325.0, locLogMarseille4,
+						TypeLogement.Maison, LocalDate.now(), true);
+				logMarseille4 = logementRepository.save(logMarseille4);
+				
+				Logement logMarseille5 = new Logement(proprietaireMarseille3,"Maison avec emplacement exceptionnel", "Maison en colocation. Très bien placé, entièrement équipé", 110, 3, 0, 2, 600.0, 50.0, 600.0, locLogMarseille5,
+						TypeLogement.Maison, LocalDate.now(), true);
+				logMarseille5 = logementRepository.save(logMarseille5);
+				
+				Logement logMarseille6 = new Logement(proprietaireMarseille4,"Appartement pour 2 colocataire", "Très bel appartement avec 2 chambres, 1 salle de bain et grande pièce de vie" , 70, 2, 0, 1, 420.0, 50.0, 420.0, locLogMarseille6,
+						TypeLogement.Appartement, LocalDate.now(), true);
+				logMarseille6 = logementRepository.save(logMarseille6);
+				
+				
+				
+				Locataire locataire1log5 = new Locataire("monica", "Geller", "Monica", Civilite.Mme, "monicageller@mail.com",
+						"0101010101", "monica", false, 
+						"Maniaque mais veut absolument organiser toutes les soirées chez elle. Cuisine hyper bien et nourrit tout le monde", 
+						Situation.Salarie,  LocalDate.parse("1969-03-09"));
+				locataire1log5 = locataireRepository.save(locataire1log5);
+				locataire1log5.setChambre(ch2Log5);
+				Locataire locataire1log6 = new Locataire("anaisb", "Bruno", "Anais", Civilite.Mme, "anaisb@mail.com",
+						"0202020202", "anaisb", false, "Aussi belle qu'une princesse Disney", Situation.Salarie, LocalDate.parse("1992-05-05"));
+				locataire1log6 = locataireRepository.save(locataire1log6);
+				locataire1log6.setChambre(ch1Log6);
+				Locataire locataire2log6 = new Locataire("justinec", "Champagne", "Justine", Civilite.Mme, "justinec@mail.com",
+						"0303030303", "justinec", false, "Travaille à toute heure du jour ou de la nuit. CHAT TROP CHOUPI", Situation.Salarie, LocalDate.parse("1993-02-09"));
+				locataire2log6 = locataireRepository.save(locataire2log6);
+				locataire2log6.setChambre(ch2Log6);
+				Locataire locataire1log7 = new Locataire("emmaf", "Faurie", "Emma", Civilite.Mme, "emmaf@mail.com",
+						"0011000004", "emmaf", false, "Utilise beaucoup le mot 'fichtre' et fait des randonnées dans la neige", Situation.Retraite, LocalDate.parse("1995-09-13"));
+				locataire1log7 = locataireRepository.save(locataire1log7);
+				locataire1log7.setChambre(ch1Log7);
+				Locataire locataire2log7 = new Locataire("guillaumen", "Nguyen", "Guillaume", Civilite.Mr, "guillaumen@mail.com",
+						"0011000005", "guillaumen", false, "Il a pas voulu venir à l'ile de ré avec nous on est très déçus", Situation.Etudiant, LocalDate.parse("1995-02-09"));
+				locataire2log7 = locataireRepository.save(locataire2log7);
+				locataire2log7.setChambre(ch3Log7);
+				Locataire locataire1log8 = new Locataire("danielb", "Bilal", "Daniel", Civilite.Mr, "danielb@mail.com",
+						"0011000006", "danielb", true, "Apprécie de manière démesurée les voitures", Situation.Etudiant, LocalDate.parse("1997-02-09"));
+				locataire1log8 = locataireRepository.save(locataire1log8);
+				locataire1log8.setChambre(ch1Log8);
+				
+		
+				// Creation des Chambre
+				Chambre ch1Log1Marseille = new Chambre(logMarseille1, 12, "");
+				ch1Log1Marseille = chambreRepository.save(ch1Log1Marseille);
+				Chambre ch2Log1Marseille = new Chambre(logMarseille1, 13,  "");
+				ch2Log1Marseille = chambreRepository.save(ch2Log1Marseille);
+				
+				Chambre ch1Log2Marseille = new Chambre(logMarseille3, 12, "");
+				ch1Log2Marseille = chambreRepository.save(ch1Log2Marseille);
+				Chambre ch2Log2Marseille = new Chambre(logMarseille3, 13,  "");
+				ch2Log2Marseille = chambreRepository.save(ch2Log2Marseille);
+				
+				Chambre ch1Log3Marseille = new Chambre(logMarseille3, 12, "");
+				ch1Log2Marseille = chambreRepository.save(ch1Log3Marseille);
+				Chambre ch2Log3Marseille = new Chambre(logMarseille3, 13,  "");
+				ch2Log2Marseille = chambreRepository.save(ch2Log3Marseille);
+				Chambre ch3Log3Marseille = new Chambre(logMarseille3, 13,  "");
+				ch3Log3Marseille = chambreRepository.save(ch3Log3Marseille);
+				
+				Chambre ch1Log4Marseille = new Chambre(logMarseille3, 12, "");
+				ch1Log4Marseille = chambreRepository.save(ch1Log4Marseille);
+				Chambre ch2Log4Marseille = new Chambre(logMarseille3, 13,  "");
+				ch2Log4Marseille = chambreRepository.save(ch2Log4Marseille);
+				Chambre ch3Log4Marseille = new Chambre(logMarseille3, 13,  "");
+				ch3Log4Marseille = chambreRepository.save(ch3Log4Marseille);
+				
+				Chambre ch1Log5Marseille = new Chambre(logMarseille5, 12, "");
+				ch1Log5Marseille = chambreRepository.save(ch1Log5Marseille);
+				Chambre ch2Log5Marseille = new Chambre(logMarseille5, 13,  "");
+				ch2Log5Marseille = chambreRepository.save(ch2Log5Marseille);
+				Chambre ch3Log5Marseille = new Chambre(logMarseille5, 13,  "");
+				ch3Log5Marseille = chambreRepository.save(ch3Log5Marseille);
+				
+				Chambre ch1Log6Marseille = new Chambre(logMarseille6, 12, "");
+				ch1Log6Marseille = chambreRepository.save(ch1Log6Marseille);
+				Chambre ch2Log6Marseille = new Chambre(logMarseille6, 13,  "");
+				ch2Log6Marseille = chambreRepository.save(ch2Log6Marseille);
+				
+				
+		
 		// LYON
 	
 		// Creation des Localisation
 		Localisation locLogLyon1 = new Localisation("69", "Lyon", "69007", "Rue De Marseille", 38);
-		Localisation locLogLyon2 = new Localisation("69", "Lyon", "69001", "Place De La Comédie", 1);
 		Localisation locLogLyon3 = new Localisation("69", "Lyon", "69005", "Rue Pierre Marion", 8);
+		Localisation locLogLyon2 = new Localisation("69", "Lyon", "69001", "Place De La Comédie", 1);
 		Localisation locLogLyon4 = new Localisation("69", "Lyon", "69003", "Rue Moncey", 95);
 
 		// Creation des Logement
@@ -530,31 +677,31 @@ class ProjetColocBackApplicationTests {
 				TypeLogement.Appartement, LocalDate.parse("2021-11-03"), false);
 		log1Lyon = logementRepository.save(log1Lyon);
 		Logement log2Lyon = new Logement(proprietaire4, "Appartement rénové idéal coloc",
-				"Appartement recemment rénové avec 3 chambres, dédié et pensé pour la colocation !", 80, 3, 0, 1, 400.0,
 				40.0, 400.0, locLogLyon2,
+				"Appartement recemment rénové avec 3 chambres, dédié et pensé pour la colocation !", 80, 3, 0, 1, 400.0,
 				TypeLogement.Appartement, LocalDate.parse("2021-11-20"), true);
 		log2Lyon = logementRepository.save(log2Lyon);
 		Logement log3Lyon = new Logement(proprietaire5, "Maison très lumineuse",
 				"Grande maison avec 4 chambres et 2 salles de bain pour la colocation. Très lumineux et entièrement équipé !",
 				150, 4, 0, 2, 500.0, 25.0, 500.0, locLogLyon3,
-				TypeLogement.Maison, LocalDate.parse("2021-12-03"), true);
-		log3Lyon = logementRepository.save(log3Lyon);
 		Logement log4Lyon = new Logement(proprietaire5, "Appartement proche centre ville",
+		log3Lyon = logementRepository.save(log3Lyon);
+				TypeLogement.Maison, LocalDate.parse("2021-12-03"), true);
 				"Appartement pour colocation à rue Moncey. 2 chambres de disponibles.", 65, 2, 0, 1, 425.0, 45.0, 425.0,
 				locLogLyon4,
 				TypeLogement.Appartement, LocalDate.parse("2021-11-24"), true);
 		log4Lyon = logementRepository.save(log4Lyon);
 
-		// Creation des Chambre
 		Chambre lyonCh1Log1 = new Chambre(log1Lyon, 12);
 		lyonCh1Log1 = chambreRepository.save(lyonCh1Log1);
+		// Creation des Chambre
 		Chambre lyonCh2Log1 = new Chambre(log1Lyon, 13);
 		lyonCh2Log1 = chambreRepository.save(lyonCh2Log1);
 
 		Chambre lyonCh1Log2 = new Chambre(log2Lyon, 15);
 		lyonCh1Log2 = chambreRepository.save(lyonCh1Log2);
-		Chambre lyonCh2Log2 = new Chambre(log2Lyon, 15);
 		lyonCh2Log2 = chambreRepository.save(lyonCh2Log2);
+		Chambre lyonCh2Log2 = new Chambre(log2Lyon, 15);
 		Chambre lyonCh3Log2 = new Chambre(log2Lyon, 15);
 		lyonCh3Log2 = chambreRepository.save(lyonCh3Log2);
 
@@ -588,24 +735,24 @@ class ProjetColocBackApplicationTests {
 		log4Lyon.addCommodite(balcon);
 		log4Lyon.addCommodite(salleDeSport);
 		log4Lyon.addCommodite(handicape);
-		log4Lyon = logementRepository.save(log4Lyon);
-
 		// Ajout de Regle a Logement
+
+		log4Lyon = logementRepository.save(log4Lyon);
 		log1Lyon.addRegle(fumeurAutorise);
-		log1Lyon = logementRepository.save(log1Lyon);
 		log2Lyon.addRegle(animauxAutorises);
+		log1Lyon = logementRepository.save(log1Lyon);
 		log2Lyon = logementRepository.save(log2Lyon);
 		log3Lyon.addRegle(animauxAutorises);
 		log3Lyon.addRegle(passSanitaire);
 		log3Lyon = logementRepository.save(log3Lyon);
 		log4Lyon.addRegle(femmeUniquement);
-		log4Lyon = logementRepository.save(log4Lyon);
 
 		// Ajout Photos
+		log4Lyon = logementRepository.save(log4Lyon);
 		Photo lyonPhoto1Log1 = new Photo("lyonPhoto1Log1", "logement2_1.png", 1, log1Lyon);
 		lyonPhoto1Log1 = photoRepository.save(lyonPhoto1Log1);
-		Photo lyonPhoto2Log1 = new Photo("lyonPhoto2Log1", "logement2_2.png", 2, log1Lyon);
 		lyonPhoto2Log1 = photoRepository.save(lyonPhoto2Log1);
+		Photo lyonPhoto2Log1 = new Photo("lyonPhoto2Log1", "logement2_2.png", 2, log1Lyon);
 		Photo lyonPhoto3Log1 = new Photo("lyonPhoto3Log1", "logement2_3.jpg", 3, log1Lyon);
 		lyonPhoto3Log1 = photoRepository.save(lyonPhoto3Log1);
 		Photo lyonPhoto1Log2 = new Photo("lyonPhoto1Log2", "logement2_4.jpg", 4, log2Lyon);
@@ -613,8 +760,8 @@ class ProjetColocBackApplicationTests {
 		Photo lyonPhoto2Log2 = new Photo("lyonPhoto2Log2", "logement3_1.png", 1, log2Lyon);
 		lyonPhoto2Log2 = photoRepository.save(lyonPhoto2Log2);
 		Photo lyonPhoto3Log2 = new Photo("lyonPhoto3Log2", "logement3_2.png", 2, log2Lyon);
-		lyonPhoto3Log2 = photoRepository.save(lyonPhoto3Log2);
 		Photo lyonPhoto1Log3 = new Photo("lyonPhoto1Log3", "logement3_3.jpg", 3, log3Lyon);
+		lyonPhoto3Log2 = photoRepository.save(lyonPhoto3Log2);
 		lyonPhoto1Log3 = photoRepository.save(lyonPhoto1Log3);
 		Photo lyonPhoto2Log3 = new Photo("lyonPhoto2Log3", "logement3_4.jpg", 4, log3Lyon);
 		lyonPhoto2Log3 = photoRepository.save(lyonPhoto2Log3);
@@ -623,10 +770,73 @@ class ProjetColocBackApplicationTests {
 		Photo lyonPhoto1Log4 = new Photo("lyonPhoto1Log4", "logement4_2.jpg", 2, log4Lyon);
 		photo2Log4 = photoRepository.save(lyonPhoto1Log4);
 		Photo lyonPhoto2Log4 = new Photo("lyonPhoto2Log4", "logement4_3.jpg", 3, log4Lyon);
-		photo3Log4 = photoRepository.save(lyonPhoto2Log4);
-		Photo lyonPhoto3Log4 = new Photo("lyonPhoto3Log4", "logement4_4.png", 4, log4Lyon);
 		lyonPhoto3Log4 = photoRepository.save(lyonPhoto3Log4);
+		Photo lyonPhoto3Log4 = new Photo("lyonPhoto3Log4", "logement4_4.png", 4, log4Lyon);
+		photo3Log4 = photoRepository.save(lyonPhoto2Log4);
+				
+				// Creation des Dossier
+				Dossier dossierLocMarseille1 = new Dossier(1500.0, 2200.0, Situation.Salarie);
+				locataireMarseille1.setDossier(dossierLocMarseille1);
+				locataireMarseille1 = locataireRepository.save(locataireMarseille1);
+				Dossier dossierLocMarseille2 = new Dossier(1500.0, 2200.0, Situation.Retraite);
+				locataireMarseille2.setDossier(dossierLocMarseille2);
+				locataireMarseille2 = locataireRepository.save(locataireMarseille2);
+				Dossier dossierLocMarseille3 = new Dossier(0.0, 2500.0, Situation.Salarie);
+				locataireMarseille3.setDossier(dossierLocMarseille3);
+				locataireMarseille3 = locataireRepository.save(locataireMarseille3);
+				Dossier dossierLocMarseille4 = new Dossier(800.0, 1600.0, Situation.Salarie);
+				locataireMarseille4.setDossier(dossierLocMarseille4);
+				locataireMarseille4 = locataireRepository.save(locataireMarseille4);
+				Dossier dossierLocMarseille5 = new Dossier(1200.0, 1600.0, Situation.Salarie);
+				locataireMarseille5.setDossier(dossierLocMarseille5);
+				locataireMarseille5 = locataireRepository.save(locataireMarseille5);
+				Dossier dossierLocMarseille6 = new Dossier(1200.0, 1600.0, Situation.Salarie);
+				locataireMarseille6.setDossier(dossierLocMarseille6);
+				locataireMarseille6 = locataireRepository.save(locataireMarseille6);
+				
+				
+				
+				// Ajout de Commodite a Logement
+				log1.addCommodite(balcon);
+				log1.addCommodite(parking);
+				log1.addCommodite(fibre);
+				log1 = logementRepository.save(log1);
+				log2.addCommodite(handicape);
+				log2.addCommodite(parking);
+				log2 = logementRepository.save(log2);
+				log3.addCommodite(jardin);
+				log3.addCommodite(parking);
+				log3.addCommodite(fibre);
+				log3 = logementRepository.save(log3);
+				log4.addCommodite(fibre);
+				log4.addCommodite(balcon);
+				log4.addCommodite(salleDeSport);
+				log4.addCommodite(handicape);
+				log4 = logementRepository.save(log4);
+				log5.addCommodite(balcon);
+				log5.addCommodite(parking);
+				log5.addCommodite(fibre);
+				log5 = logementRepository.save(log5);
+				log6.addCommodite(jardin);
+				log6.addCommodite(parking);
+				log6.addCommodite(fibre);
+				log6 = logementRepository.save(log6);
 
+				// Ajout de Regle a Logement
+				log1.addRegle(fumeurAutorise);
+				log1 = logementRepository.save(log1);
+				log2.addRegle(animauxAutorises);
+				log2 = logementRepository.save(log2);
+				log3.addRegle(animauxAutorises);
+				log3.addRegle(passSanitaire);
+				log3 = logementRepository.save(log3);
+				log4.addRegle(femmeUniquement);
+				log4 = logementRepository.save(log4);
+				log5.addRegle(fumeurAutorise);
+				log5 = logementRepository.save(log5);
+				log6.addRegle(animauxAutorises);
+				log6.addRegle(passSanitaire);
+				log6 = logementRepository.save(log6);
 	}
 
 }

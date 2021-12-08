@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-
+import coloc.back.model.Commodite;
 import coloc.back.model.Regle;
 import coloc.back.model.Views;
 import coloc.back.repository.IRegleRepository;

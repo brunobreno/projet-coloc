@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfilLocataireComponent implements OnInit {
 
-  locataireForm: Locataire = null;
+  locataireForm: Locataire;
   civilites: Array<string> = new Array<string>();
   situations: Array<string> = new Array<string>();
   // situationLoc: string;
@@ -20,16 +20,18 @@ export class ProfilLocataireComponent implements OnInit {
   constructor(private appConfig: AppConfigService, private locataireService: LocataireHttpService, private activatedRoute: ActivatedRoute) {
     this.loadCivilites();
     this.loadSituations();
-    
-    // this.loadTestLocataireForm(5);
+    // this.loadTestLocataireForm(6);
     // this.situationLoc = this.locataireForm.situation;
    }
 
   ngOnInit(): void {
+    this.locataireForm = new Locataire();
+    this.locataireForm.dossier = new Dossier();
     this.activatedRoute.params.subscribe(l => {
       const id = l['id'];
       this.locataireService.findById(id).subscribe(locataire => {
-        this.locataireForm = locataire;
+      this.locataireForm = locataire;
+      console.log(this.locataireForm);
       });
   })
 
