@@ -24,8 +24,8 @@ public class Hobby {
 	private String chemin;
 	
 	@ManyToMany(mappedBy = "hobbies")
-	@JsonView(Views.ViewHobbyLocataire.class)
-	private List<Locataire> Locataires;
+	@JsonView(Views.ViewHobbyDetail.class)
+	private List<Locataire> locataires;
 
 	
 	public Hobby() {
@@ -66,11 +66,11 @@ public class Hobby {
 
 
 	public List<Locataire> getLocataires() {
-		return Locataires;
+		return locataires;
 	}
 
 	public void setLocataires(List<Locataire> locataires) {
-		Locataires = locataires;
+		this.locataires = locataires;
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import { ChambreService } from '../chambre/chambre.service';
 import { MapHttpService } from '../map/map-http.service';
 import { MarkerService } from '../map/marker.service';
 import { MapComponent } from '../map/map.component';
+import { LocataireHttpService } from '../locataire/locataire-http.service';
 
 
 
@@ -32,11 +33,12 @@ export class DescriptionLogementComponent implements OnInit {
   faExpandAlt=this.appComponent.faExpandAlt;
   faCommentAlt=this.appComponent.faCommentAlt;
   faFileDownload=this.appComponent.faFileDownload;
+  faCouch=this.appComponent.faCouch;
 
   
 
   constructor(private appConfig: AppConfigService, private descriptionService: DescriptionLogementService, 
-    private chambreService: ChambreService, 
+    private chambreService: ChambreService, private locataireService: LocataireHttpService, 
     private appComponent: AppComponent, 
     private activatedRoute: ActivatedRoute,
     private mapComponent:MapComponent) { 
@@ -48,7 +50,7 @@ export class DescriptionLogementComponent implements OnInit {
       this.descriptionService.findById(id).subscribe(logement => {
         this.logement = logement;
       })
-      this.descriptionService.findWithLocataire(id).subscribe(locataires => {
+      this.locataireService.findAllByIdLogement(id).subscribe(locataires => {
         this.locataires = locataires;
       })
       this.chambreService.findByLogement(id).subscribe(chambres => {

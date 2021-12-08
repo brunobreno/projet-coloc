@@ -13,8 +13,8 @@ public interface IChambreRepository extends JpaRepository<Chambre,Long>{
 	@Query("select c from Chambre c where c.logement.id= :idLogement")
 	public List<Chambre> findAllByIdLogement(Long idLogement);
 	
-	@Query("select c from Chambre c where c.logement.id= :idLogement")
-	public List<Chambre> findAllByIdLogementWithCommodite(Long idLogement);
+	@Query("select distinct c from Chambre c left join fetch c.locataire where c.logement.id= :idLogement")
+	public List<Chambre> findAllByIdLogementWithLocataire(Long idLogement);
 	
 	
 }

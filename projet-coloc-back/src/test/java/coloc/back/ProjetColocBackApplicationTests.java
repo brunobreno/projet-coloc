@@ -115,6 +115,8 @@ class ProjetColocBackApplicationTests {
 		Locataire locataire8 = new Locataire("julien", "Kerautret", "Julien", Civilite.NB, "julien@mail.com",
 				"0011000008", "julien", true, "Description Julien Kerautret", Situation.Salarie, LocalDate.parse("1990-10-01"));
 		locataire8 = locataireRepository.save(locataire8);
+		
+		
 
 
 		Locataire locataire9 = new Locataire("tony", "Stark", "Tony", Civilite.Mme, "tony@mail.com",
@@ -245,6 +247,11 @@ class ProjetColocBackApplicationTests {
 		pleinAir = hobbyRepository.save(pleinAir);
 		Hobby animaux = new Hobby("Animaux","animaux.svg");
 		animaux = hobbyRepository.save(animaux);
+		
+		locataire1.addHobby(cuisine);
+		locataire1.addHobby(musique);
+		locataire1.addHobby(lecture);
+		locataire1 = locataireRepository.save(locataire1);
 
 		// Creation des Notation
 		Notation noteLoc1Lg1 = new Notation(log1, locataire1, 15.0, "Hyper cool");
@@ -323,6 +330,8 @@ class ProjetColocBackApplicationTests {
 		Dossier dossierLoc7 = new Dossier(1000.0, 1800.0, Situation.Salarie);
 		locataire7.setDossier(dossierLoc7);
 		locataire7 = locataireRepository.save(locataire7);
+		
+		
 
 		// Ajout de Commodite a Logement
 		log1.addCommodite(balcon);

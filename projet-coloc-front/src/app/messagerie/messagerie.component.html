@@ -1,8 +1,7 @@
-<div>
-    <div class="row" style="height: 120px;"></div>
+<div class="page-main-container">
     <div class="row">
         <div class="col-1"></div>
-        <h3 class="col">Mes messages</h3>
+        <h3 class="col" style="margin-top: 30px;margin-bottom: 30px;">Mes messages</h3>
     </div>
     <div class="row">
         <div class="col-1"></div>
@@ -18,32 +17,43 @@
             </div>
         </div>
         <div class="col-1"></div>
-        <div class="col-7 cadre-messages overflow-auto" id="messages">
+        <div class="col-7 cadre-messages " id="messages">
+            <div class="overflow-auto ">
             <ng-container class="row cadre-message" *ngFor="let m of afficherMessages()">
-                <div class="row d-flex justify-content-between" *ngIf="m.emetteur.id != utilisateurConnecte.id">
-                    <div class="col-6 my-1 cadre-message-emetteur">
-                        <p>{{m.contenu}}</p>
-                        <p style="text-align: end;">Reçu le : {{m.date | date:'dd/MM/yyyy, HH:mm:ss'}}</p>
+               
+                    <div class=" w-100 row" *ngIf="m.emetteur.id != utilisateurConnecte.id">
+                        <div class="col-6 my-2 mx-3 message cadre-message-emetteur">
+                            <span class="contenu-message">{{m.contenu}}</span>
+                            <span class="time-envoi">Reçu le : {{m.date | date:'dd/MM/yyyy, HH:mm:ss'}}</span>
+                        </div>
                     </div>
-                </div>
-                <div class="row" *ngIf="m.emetteur.id == utilisateurConnecte.id">
-                    <div class="col"></div>
-                    <div class="col-6 my-1 justify-content-end cadre-message-destinataire">
-                        <p>{{m.contenu}}</p>
-                        <p style="text-align: end;">Envoyé le : {{m.date | date:'dd/MM/yyyy, HH:mm:ss'}}</p>
+                    <div class="row w-100" *ngIf="m.emetteur.id == utilisateurConnecte.id">
+                        <div class="col"></div>
+                        <div class="col-6 my-2 mx-3 message cadre-message-destinataire">
+                            <span class="contenu-message">{{m.contenu}}</span>
+                            <span  class="time-envoi">Envoyé le : {{m.date | date:'dd/MM/yyyy, HH:mm:ss'}}</span>
+                        </div>
                     </div>
-                </div>
+                
+                
             </ng-container>
-            <hr>
-            <div class="row cadre-saisie mt-5" id="saisie-message">
-                <div class="d-flex justify-content-between mb-5">
-                    <label for="messageContenu">Ecrire un nouveau message: </label>
-                    <button type="button" id="boutonEnvoyer" class="btn btn-success" (click)="envoyerMessage()">Envoyer</button>
+        </div>
+            <!--<hr-->
+            <div>
+                <div class="row cadre-saisie mt-2" id="saisie-message">
+                    <textarea class="form-control overflow-auto" id="messageContenu" rows="5" [(ngModel)]="messageForm.contenu"
+                    placeholder="Saisissez votre message" ></textarea>
+                    <div class="d-flex justify-content-end" style="width: 96%;">
+                        <!-- <label for="messageContenu">Ecrire un nouveau message: </label> -->
+                        <button type="button" id="boutonLogement" class="btn mb-3" style="margin-right: 450px;" [routerLink]="['/logements-proprietaire/',destinataireId]" >Voir les logements</button>
+                         <button type="button" id="boutonEnvoyer" class="btn mb-3" (click)="envoyerMessage()">Envoyer</button>
+                        
+                    </div>
                 </div>
-                <textarea class="form-control overflow-auto" id="messageContenu" rows="5" [(ngModel)]="messageForm.contenu"></textarea>
             </div>
+ 
         </div>
         <div class="col-1"></div>
     </div>
-    <div style="height:200px"></div>
+   <!--<div style="height:200px"></div>--> 
 </div>

@@ -8,11 +8,11 @@
         <div class="col-2"></div>
         <div class="col-8" id="messages">
             <div class="row cadre-saisie mt-5" id="saisie-message">
-                <div class="d-flex justify-content-between mb-5">
-                    <label for="messageContenu">Votre nouveau message: </label>
-                    <button type="button" id="boutonEnvoyer" class="btn btn-success" (click)="envoyerMessage()">Envoyer</button>
+                <textarea class="form-control overflow-auto" id="messageContenu" rows="10" [(ngModel)]="messageForm.contenu"
+                placeholder="Saisissez votre message...">  </textarea>
+                <div class="d-flex justify-content-end" style="width: 96%;">
+                    <button type="button" id="boutonEnvoyer" class="btn" (click)="envoyerMessage()">Envoyer</button>
                 </div>
-                <textarea class="form-control overflow-auto" id="messageContenu" rows="10" [(ngModel)]="messageForm.contenu"></textarea>
             </div>
         </div>
         <div class="col-1"></div>
