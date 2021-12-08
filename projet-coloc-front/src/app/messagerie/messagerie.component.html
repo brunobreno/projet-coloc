@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="col-1"></div>
-        <div class="col-7 cadre-messages " id="messages">
+        <div  class="col-7 cadre-messages " id="messages">
             <div class="overflow-auto ">
             <ng-container class="row cadre-message" *ngFor="let m of afficherMessages()">
                
@@ -39,18 +39,22 @@
             </ng-container>
         </div>
             <!--<hr-->
-            <div>
+            <div *ngIf="!destinataireId" id="message-conversation" > 
+                <span style ="color: gray;font-size: 25px;display: flex;">Selectionnez une conversation</span>
+            </div>
+            <div *ngIf="destinataireId" >
                 <div class="row cadre-saisie mt-2" id="saisie-message">
                     <textarea class="form-control overflow-auto" id="messageContenu" rows="5" [(ngModel)]="messageForm.contenu"
                     placeholder="Saisissez votre message" ></textarea>
                     <div class="d-flex justify-content-end" style="width: 96%;">
-                        <!-- <label for="messageContenu">Ecrire un nouveau message: </label> -->
-                        <button type="button" id="boutonLogement" class="btn mb-3" style="margin-right: 450px;" [routerLink]="['/logements-proprietaire/',destinataireId]" >Voir les logements</button>
-                         <button type="button" id="boutonEnvoyer" class="btn mb-3" (click)="envoyerMessage()">Envoyer</button>
+                        <!-- <label for="messageContenu">Ecrire un nouveau message: </label> "-->
+                        <button *ngIf="destinataire.typeDeCompte" type="button" id="boutonLogement" class="btn mb-3" style="margin-right: 450px;" >Voir les logements</button>
+                        <button type="button" id="boutonEnvoyer" class="btn mb-3" (click)="envoyerMessage()">Envoyer</button>
                         
                     </div>
                 </div>
             </div>
+          
  
         </div>
         <div class="col-1"></div>

@@ -45,7 +45,7 @@ public abstract class Utilisateur {
 	protected String tel;
 	@JsonView(Views.ViewPassword.class)
 	protected String password;
-	@JsonView(Views.ViewProprietaireDetail.class)
+	@JsonView(Views.ViewUtilisateurDetail.class)
 	@OneToMany(mappedBy = "user")
 	private Set<UtilisateurRole> roles;	
 

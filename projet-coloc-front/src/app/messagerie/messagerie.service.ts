@@ -18,7 +18,7 @@ export class MessagerieService {
    }
 
   findUtilisateurById(id: number): Observable<UtilisateurDTO>{
-    return this.http.get<UtilisateurDTO>(this.utilisateurUrl + id);
+    return this.http.get<UtilisateurDTO>(this.utilisateurUrl + "with-role" + id);
   }
 
   findMessagesById(id: number): Observable<Array<Message>>{

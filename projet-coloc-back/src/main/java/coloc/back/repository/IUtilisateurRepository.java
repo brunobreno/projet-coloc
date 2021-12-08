@@ -12,6 +12,9 @@ public interface IUtilisateurRepository extends JpaRepository<Utilisateur,Long>{
 
 	@Query("select distinct u from Utilisateur u left join fetch u.roles where u.username = :username")
 	Optional<Utilisateur> findByUsernameWithRoles(@Param("username") String username);
+	
+	@Query("select distinct u from Utilisateur u left join fetch u.roles  where u.id = :id")
+	Optional<Utilisateur> findByIdWithRole(@Param("id") Long id);
 
 	@Query("select distinct u from Utilisateur u where u.email = :email")
 	Optional<Utilisateur> findByEmail(@Param("email") String email);

@@ -17,6 +17,7 @@ export class MessagerieComponent implements OnInit {
   relations: Array<UtilisateurDTO> = new Array<UtilisateurDTO>();
   messageForm: MessageDTO = new MessageDTO();
   destinataireId: number;
+  destinataire: UtilisateurDTO;
 
   constructor(private appConfig: AppConfigService, private messagerieService: MessagerieService) {
     //A modifier quand l'utilisateur se connecte
@@ -63,10 +64,19 @@ export class MessagerieComponent implements OnInit {
     }
   }
 
+  findDestinataire(id: number){
+    // Trouve les utilisateur en fonction des id récupérés
+      this.messagerieService.findUtilisateurById(id).subscribe(dest => {
+        this.destinataire = dest;
+      }, err => console.log(err))
+  }
+
   findConversation(id: number){
     this.destinataireId = id;
     this.loadConversation();
     this.setMessageFormDestinataire(id);
+    this.findDestinataire(id);
+    console.log("destinataire:"+ JSON.stringify(this.destinataire))
   }
 
   setMessageFormDestinataire(id:number){

@@ -13,7 +13,14 @@
     border-color: #38677a;
 }
 
-
+#message-conversation{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px;
+}
 
 .cadre-exemple {
     height: 700px;
