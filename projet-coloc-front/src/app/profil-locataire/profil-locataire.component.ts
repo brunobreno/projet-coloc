@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfilLocataireComponent implements OnInit {
 
   locataireForm: Locataire;
+  locataire: Locataire;
   civilites: Array<string> = new Array<string>();
   situations: Array<string> = new Array<string>();
   // situationLoc: string;
@@ -29,8 +30,9 @@ export class ProfilLocataireComponent implements OnInit {
     this.locataireForm.dossier = new Dossier();
     this.activatedRoute.params.subscribe(l => {
       const id = l['id'];
-      this.locataireService.findById(id).subscribe(locataire => {
-      this.locataireForm = locataire;
+      this.locataireService.findById(id).subscribe(loc => {
+      this.locataireForm = loc;
+      this.locataire=loc;
       console.log(this.locataireForm);
       });
   })
@@ -59,6 +61,12 @@ export class ProfilLocataireComponent implements OnInit {
 
   save() {
     this.locataireService.modify(this.locataireForm); 
+  }
+
+  edit(id: number) {
+    this.locataireService.findById(id).subscribe(resp => {
+      this.locataireForm = resp;
+    }, err => console.log(err));
   }
 
 

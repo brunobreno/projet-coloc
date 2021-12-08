@@ -101,4 +101,8 @@ export class MessagerieComponent implements OnInit {
   afficherMessages(): Array<Message> {
     return this.conversation;
   }
+
+  findLastMessages(): Message {
+    return this.conversation[this.conversation.length-1];
+  }
 }

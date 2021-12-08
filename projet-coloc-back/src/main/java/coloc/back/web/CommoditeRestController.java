@@ -54,14 +54,6 @@ public class CommoditeRestController {
 		}
 	}
 	
-	/*@GetMapping("/by-logement/{idLogement}")
-	@JsonView(Views.ViewCommon.class)
-	public List<Commodite> findByIdLogement(@PathVariable("idLogement") Long id) {
-		List<Commodite> logements = commoditeRepo.findAllCommoditeByIdLogement(id);
-
-		return logements;
-	}*/
-	
 
 	@PostMapping("")
 	@JsonView(Views.ViewCommon.class)

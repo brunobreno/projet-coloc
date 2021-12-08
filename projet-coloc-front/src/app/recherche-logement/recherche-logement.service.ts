@@ -17,7 +17,7 @@ export class RechercheLogementService {
   logementUrl: string;
   logement: Logement;
   locatairesLogement: Array<Locataire> = new Array<Locataire>();
-  filtreVille: string;
+  filtreVille: string ;
   
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) { 
@@ -41,12 +41,15 @@ export class RechercheLogementService {
 
 
   findByVille(ville: string){
-    console.log("passage par findByVille (service)" + ville)
+    
     if (ville) {
       this.http.get<Array<Logement>>(this.logementUrl + "by-ville/" + ville ).subscribe(response => {
         this.logements = response;
         this.logementsByVille = response;
+        this.filtreVille=ville;
+        console.log("passage par findByVille (service)" + this.filtreVille)
       }, error => console.log(error));
+
     } else {
 
       this.load();
@@ -87,7 +90,7 @@ export class RechercheLogementService {
     this.http.get<Array<Logement>>(this.logementUrl + "complete" ).subscribe(response => {
     console.log("passage par load (service)")
       this.logements = response;
-      console.log("load " + this.logements)
+      console.log("load " + JSON.stringify(this.logements))
     }, error => console.log(error));
   }
 

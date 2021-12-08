@@ -1,0 +1,79 @@
+<div class="page-main-container">
+    <div>
+        <h4>Les logements de {{proprietaire.prenom}} {{proprietaire.nom}}</h4>
+        <!--<h4>Vos logements</h4>-->
+    </div>
+    <div class="cards-container">
+        <div *ngFor="let logement of list()" class="card-container">
+            <div class="card-carousel-container">
+                <carousel lightbox-group objectFit="cover" [loop]="true" [dots]="true" [cellWidth]="'100%'">
+                    <div class="carousel-cell" *ngFor="let photo of logement.photos">
+                        <img src="../../assets/img/exempleLogement/{{photo.chemin}}" lightbox>
+                    </div>
+                </carousel>
+            </div>
+
+            <div class="card-content-main-container">
+                <div class="card-title-container">
+                    <h6 class="card-title"> {{logement.titre}}</h6>
+                    <div class="card-title-spec">
+                        <span id="card-title-price"> {{logement.loyer + logement.charges}}€ </span>
+                        <span id="card-title-line"></span>
+                        <span id="card-title-surface"> {{logement.surface}}m²</span>
+                    </div>
+
+                </div>
+                <div class="card-content-description-main-container">
+                    <ul>
+                        <div style="display: flex;justify-content: space-between;">
+                            <li style="width: 150px">
+                                <mat-icon *ngIf="logement.typeLogement == 'Maison'">house</mat-icon>
+                                <mat-icon *ngIf="logement.typeLogement == 'Studio'">apartment</mat-icon>
+                                <mat-icon *ngIf="logement.typeLogement == 'Appartement'">apartment</mat-icon>
+                                {{logement.typeLogement}}
+                            </li>
+                            <li style="width: 150px"> <i class="bi bi-people-fill"></i> {{logement.nChambreOccup}} occupants</li>
+                            <li style="width: 150px">
+                                <mat-icon> bed </mat-icon> {{logement.nChambre - logement.nChambreOccup}} chambres
+                                libres
+                            </li>
+                        </div>
+<div class="commodites-container">
+    <li class="first-subsect caracteristiques" id="commodites">
+        <ul style="display: flex;">
+            <span style="color: black;font-size: 15px;width: 100px;">Commodités :</span> 
+            <li *ngFor="let com of logement.commodites">
+                <img src="../../assets/img/icons/{{com.chemin}}" class="d-block w-100" alt="...">
+            </li>
+        </ul>
+    </li>
+
+    <li class="first-subsect caracteristiques" id="regles">
+        <ul style="display: flex;">
+            <span style="color: black;font-size: 15px;width: 100px;">Règles :</span> 
+            <li *ngFor="let reg of logement.regles">
+                <img src="../../assets/img/icons/{{reg.chemin}}" class="d-block w-100" alt="...">
+            </li>
+        </ul>
+    </li>
+</div>
+                       
+
+                        <li class="card-description-txt text-truncate text-truncate-2" style="height: 56px;">
+                            {{logement.description}}
+                        </li>
+                    </ul>
+                </div>
+<div class="d-flex justify-content-around"> 
+    <div class="card-content-link-main-container" [routerLink]="['/description-logement/',logement.id]">
+        <a class="card-link">Voir la descrition complete</a>
+    </div>
+    <div *ngIf="utilisateurConnecte.id==1"  class="card-content-link-main-container" [routerLink]="['/proprietaire/',logement.id]">
+        <a class="card-link">Editer</a>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,17 +1,12 @@
 import { Component } from '@angular/core';
 import { MapHttpService } from './map/map-http.service';
-import { Logement, Proprietaire, Utilisateur } from './model';
+import { Logement, Proprietaire, Utilisateur, UtilisateurDTO } from './model';
 import { Locataire } from './model';
 import { RechercheLogementComponent } from './recherche-logement/recherche-logement.component';
 import { RechercheLogementService } from './recherche-logement/recherche-logement.service';
+import { Router } from '@angular/router';
 
-// import des incons fontawesome
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import { faMoneyBill } from '@fortawesome/free-solid-svg-icons';
-import { faUsers } from '@fortawesome/free-solid-svg-icons';
-import { faExpandAlt } from '@fortawesome/free-solid-svg-icons';
-import { faCommentAlt } from '@fortawesome/free-solid-svg-icons';
-import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
+
 
 
 @Component({
@@ -21,25 +16,33 @@ import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppComponent {
   title = 'projet-coloc-front';
-  userConnect:string = 'Locataire';
-
-  //icons fontawesome
-  faCalendar=faCalendarAlt;
-  faMoneyBill=faMoneyBill;
-  faUsers=faUsers;
-  faExpandAlt=faExpandAlt;
-  faCommentAlt=faCommentAlt;
-  faFileDownload=faFileDownload;
 
 
-  filtre: string;
+  utilisateurConnecte: UtilisateurDTO;
+  
 
-  constructor(private rechercheLogement: RechercheLogementComponent, private rechercheLogementService: RechercheLogementService, private mapService:MapHttpService) {}
 
-  search(ville:string) {
-    console.log('passage par search')
-    this.rechercheLogement.search(ville);
-    //return this.rechercheLogementService.findAll();
+
+  filtreVille: string;
+
+  constructor(private rechercheLogementService: RechercheLogementService, public router: Router) {
+   this.utilisateurConnecte = new UtilisateurDTO;
+   //this.utilisateurConnecte.typeDeCompte="locataire";
+   this.utilisateurConnecte.id=2;
+   this.utilisateurConnecte.typeDeCompte="proprietaire";
   }
 
+  search(ville: string) {
+    this.rechercheLogementService.findByVille(ville);
+ 
+  }
+
+  //getCoordVille(){
+  //  this.mapService.getCoordVille(this.filtreVille);
+  //}
+
+  isHomeRoute() {
+    return this.router.url === '/home';
+  }
+ 
 }

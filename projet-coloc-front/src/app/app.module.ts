@@ -41,6 +41,7 @@ import { ChambreComponent } from './chambre/chambre.component';
 import { MapComponent } from './map/map.component';
 import { MarkerService } from './map/marker.service';
 import { MapHttpService } from './map/map-http.service';
+import { LogementProprietaireComponent } from './logement-proprietaire/logement-proprietaire.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { MapHttpService } from './map/map-http.service';
     HomePageComponent,
     MessagerieComponent,
     MessagerieNouveauContactComponent,
-    MapComponent
+    MapComponent,
+    LogementProprietaireComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +94,7 @@ import { MapHttpService } from './map/map-http.service';
     MessagerieNouveauContactService,
     MapHttpService, 
     MarkerService,
+    DescriptionLogementComponent,
     MapComponent],
   bootstrap: [AppComponent]
 })
