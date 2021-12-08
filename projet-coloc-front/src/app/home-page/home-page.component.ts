@@ -6,6 +6,7 @@ import { AppConfigService } from '../app-config.service';
 import { MapHttpService } from '../map/map-http.service';
 import { Logement } from '../model';
 import { RechercheLogementComponent } from '../recherche-logement/recherche-logement.component';
+import { RechercheLogementService } from '../recherche-logement/recherche-logement.service';
 import { HomePageService } from './home-page.service';
 
 @Component({
@@ -17,8 +18,9 @@ export class HomePageComponent implements OnInit {
 
   logementRecents = new Array<Logement>();
   saisieVille: string;
+  filtreVille: string;
 
-  constructor(private homeService: HomePageService, private appConfig: AppConfigService, private router: Router) {
+  constructor(private homeService: HomePageService, private rechercheLogement: RechercheLogementComponent, private appConfig: AppConfigService, public router: Router) {
     homeService.loadMostRecentLogements().subscribe(resp => {
       this.logementRecents = resp;
       this.logementRecents.forEach(log => {
@@ -27,7 +29,7 @@ export class HomePageComponent implements OnInit {
         }, err => console.log)
       });
     }, err => console.log(err))
-  filtreVille: string;
+  
   }
 
   ngOnInit(): void {
@@ -38,14 +40,14 @@ export class HomePageComponent implements OnInit {
     this.rechercheLogement.search(ville);
     //return this.rechercheLogementService.findAll();
 
-    this.getCoordVille(); //Coordonnees pour centrer la map
+   // this.getCoordVille(); //Coordonnees pour centrer la map
     
   }
 
-  getCoordVille(){
-    
-    this.mapService.getCoordVille(this.filtreVille);
-  }
+  ///getCoordVille(){
+
+  //  this.mapService.getCoordVille(this.filtreVille);
+  //}
 
 
   redirect(id: number) {

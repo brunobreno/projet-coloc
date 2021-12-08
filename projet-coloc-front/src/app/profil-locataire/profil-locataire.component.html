@@ -14,20 +14,20 @@
                         <div class="head-categorie">
                             <p class="categorie-titre">Votre description</p>
                             <p>
-                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="false" aria-controls="description">
+                                <button (click)="edit(locataire.id)" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="false" aria-controls="description">
                                 Modifier
                                 </button>
                             </p>
                         </div>
 
-                        <p id="texte-description">{{locataireForm.description}}</p>
+                        <p id="texte-description">{{locataire.description}}</p>
 
                         <div class="collapse" id="description">
                             <div class="card card-body">
                                 <div class="categorie-content">
                                     <div class="content-first">
-                                        <label for="input-description" class="label-input">Votre description</label>
-                                        <textarea class="input-modifier" id="input-description" cols="30" rows="5" [(ngModel)]="locataireForm.description">{{locataireForm.description}}</textarea>
+                                       <!-- <label for="input-description" class="label-input">Votre description</label> -->
+                                        <textarea  class="input-modifier" id="input-description" cols="30" rows="5" [(ngModel)]="locataireForm.description">{{locataire.description}}</textarea>
                                     </div>
                                 </div>
                                 <button class="btn-enregistrer" type="button" data-bs-toggle="collapse" data-bs-target="#description" aria-expanded="false" aria-controls="description" (click)="save()">Enregistrer</button>

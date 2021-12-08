@@ -29,7 +29,6 @@ public class Locataire extends Utilisateur {
 	private Situation situation;
 	
 	@Embedded
-	@JsonView(Views.ViewLocataireDetail.class)
 	private Dossier dossier;
 	
 	@OneToMany(mappedBy = "locataire")

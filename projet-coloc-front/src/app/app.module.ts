@@ -94,6 +94,7 @@ import { LogementProprietaireComponent } from './logement-proprietaire/logement-
     MessagerieNouveauContactService,
     MapHttpService, 
     MarkerService,
+    DescriptionLogementComponent,
     MapComponent],
   bootstrap: [AppComponent]
 })
