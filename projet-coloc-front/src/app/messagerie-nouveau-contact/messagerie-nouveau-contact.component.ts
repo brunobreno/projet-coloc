@@ -45,7 +45,7 @@ export class MessagerieNouveauContactComponent implements OnInit {
         setTimeout(() =>{
           this.messageForm.contenu = "";
           this.messageEnvoye = false;
-          this.router.navigate(['./home']);
+          this.router.navigate(['./messagerie']);
         }, 3000);
       }, err => {
         console.log(err);

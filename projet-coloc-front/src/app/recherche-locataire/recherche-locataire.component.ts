@@ -69,8 +69,7 @@ export class RechercheLocataireComponent implements OnInit {
     this.filtrer(null);
   }
 
-  /*contacter(id:number){
-    console.log("hello");
-    this.router.navigate(['messagerie-nouveau', id]);
-  }*/
+  nouveauMessage(id:number){
+    this.router.navigate(["./messagerie-nouveau/", id]);
+  }
 }

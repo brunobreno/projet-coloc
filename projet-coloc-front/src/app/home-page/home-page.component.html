@@ -4,8 +4,8 @@
         </div>
         <div class="row barre-recherche">
             <!--Faire redirection vers les logements dans la ville -->
-            <button class="col-1" id="btn-recherche"></button>
-            <input class="col" id="recherche-input" placeholder="Dans quelle ville cherchez-vous une colocation ?">
+            <button class="col-1" id="btn-recherche" (click)="rechercheVille()"></button>
+            <input class="col" id="recherche-input" (keyup)="isEnter($event)" [(ngModel)]="saisieVille" placeholder="Dans quelle ville cherchez-vous une colocation ?">
         </div>
     </div>
     <div class="row" id="ville-populaires-container">
@@ -15,10 +15,10 @@
             <h2 class="row font-weight-bold my-5">Les villes populaires</h2>
             <div class="row d-flex justify-content-around">
                 <!--Faire redirection vers les logements dans la ville -->                   
-                <div class="ville-populaire-paris"></div>
-                <div class="ville-populaire-bordeaux"></div>
-                <div class="ville-populaire-marseille"></div>
-                <div class="ville-populaire-lyon"></div>
+                <div class="ville-populaire-paris" (click)="redirectVille('Paris')"></div>
+                <div class="ville-populaire-bordeaux" (click)="redirectVille('Bordeaux')"></div>
+                <div class="ville-populaire-marseille" (click)="redirectVille('Marseille')"></div>
+                <div class="ville-populaire-lyon" (click)="redirectVille('Lyon')"></div>
             </div>
         </div>
         <div class="col-1"> 
@@ -32,19 +32,19 @@
             <h2 class="row font-weight-bold my-5">Les dernières colocations disponibles</h2>
             <div class="row d-flex justify-content-around">
                 <div class="card" style="width: 18rem;" *ngFor="let log of logementRecents">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="../../assets/img/exempleLogement/{{log.photos[0]?.chemin}}" class="card-img-top" alt="Photo principale du logement">
                     <div class="card-body">
-                      <h5 class="card-title">Titre Logement</h5>
+                      <h5 class="card-title">{{log.titre}}</h5>
                       <p class="card-text">{{log.description}}</p>
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Loyer : {{log.loyer}}€</li>
+                        <li class="list-group-item">Loyer avec charges : {{log.loyer + log.charges}}€</li>
                         <li class="list-group-item" *ngIf="(log.nChambre - log.nChambreOccup) == 1">{{log.nChambre - log.nChambreOccup}} chambre disponible</li>
                         <li class="list-group-item" *ngIf="(log.nChambre - log.nChambreOccup) != 1">{{log.nChambre - log.nChambreOccup}} chambres disponibles</li>
                         <li class="list-group-item">{{log.typeLogement}}</li>
-                        <li class="list-group-item">{{ log.localisation.codePostal}} {{log.localisation.ville}}</li>
+                        <li class="list-group-item">{{log.localisation?.codePostal}} {{log.localisation?.ville}}</li>
                       </ul>
                       <!--Faire redirection vers la page du logement -->                   
-                      <a class="btn btn-primary">Voir le détail</a>
+                      <a class="btn btn-primary" (click)="redirect(log.id)">Voir le détail</a>
                     </div>
                 </div>
             </div>
@@ -52,5 +52,5 @@
         <div class="col-1"> 
         </div>
     </div>
-    <div class='row' style="height:225px">
+    <div class='row' style="height:200px">
 </div>
