@@ -55,12 +55,12 @@ export class MapComponent implements AfterViewInit {
 
     if(this.lat == undefined || this.lon == undefined){
       this.map = L.map('map', {
-        center: [this.lat, this.lon],
-        zoom: 12
+        center: [46.227638, 2.213749],
+        zoom: 6
       });
     }else{
       this.map = L.map('map', {
-        center: [46.227638, 2.213749],
+        center: [this.lat, this.lon],
         zoom: 12
       });
     }

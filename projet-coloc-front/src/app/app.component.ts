@@ -26,7 +26,6 @@ export class AppComponent {
    this.utilisateurConnecte = appConfigService.utilisateurConnecte;
    router.events.subscribe(val => {
     this.utilisateurConnecte = appConfigService.utilisateurConnecte;
-    console.log(this.utilisateurConnecte.typeDeCompte)
    })
   }
 
