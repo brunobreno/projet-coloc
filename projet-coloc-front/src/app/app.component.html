@@ -1,4 +1,4 @@
-<header class="row fixed-top mb-10">
+<header class="row fixed-top mb-10" [class.header-home]="isHomeRoute()">
   <div class="header-wrap">
     <div class="header-main-container">
 
@@ -12,21 +12,21 @@
             <input type="text" 
             placeholder="Dans quelle ville cherchez-vous une colocation ?" 
             id="barre-recherche"
-            [(ngModel)]="filtre">
-            <button id="btn-recherche" (click)="search(filtre)" 
-            [routerLink]="['/rechercheLogement/',filtre]" ></button>
+            [(ngModel)]="filtreVille">
+            <button id="btn-recherche" (click)="search(filtreVille)" 
+            [routerLink]="['/recherche-logement/',filtreVille]" ></button>
           </div>
         </div>
 
       </div> 
 
       <!-- User non connecté -->
-      <div class="header-account-main-container" *ngIf="!userConnect">
-        <button type=button class="header-button-account button1 ">
+      <div class="header-account-main-container" *ngIf="!utilisateurConnecte" style="margin-top: 30px;">
+        <button type=button class="header-button-account button1" style="font-size: 22px;height: 85%;">
           S'inscrire
         </button>
 
-        <button type=button class="header-button-account button1" style="padding-left:15px;padding-right:15px" >
+        <button type=button class="header-button-account button1" style="font-size: 22px;height: 85%;padding-left:15px;padding-right:15px" >
           Se connecter
         </button>
         <button type=button class="header-button-account button1 last-button">
@@ -34,15 +34,23 @@
         </button>
       </div> 
 
-      <!-- User connecté en tant que locataire-->
-       <div class="header-account-main-container" *ngIf= "userConnect=='Locataire'">
-        <button type=button class="header-button-account button1 first-button" >
+      <!-- User connecté-->
+      
+       <div class="header-account-main-container" *ngIf="utilisateurConnecte">
+        <button  *ngIf= "utilisateurConnecte.typeDeCompte=='locataire'" type=button class="header-button-account button1 first-button" >
           Mes recherches
         </button>
-        <button type=button class="header-button-account button1 ">
+        <button  *ngIf= "utilisateurConnecte.typeDeCompte=='locataire'" type=button class="header-button-account button1 ">
           Favoris
         </button>
-        <button type=button class="header-button-account button1 ">
+        <button  *ngIf= "utilisateurConnecte.typeDeCompte=='proprietaire'" type=button class="header-button-account button1 first-button" >
+          Candidatures reçues
+        </button>
+        <button  *ngIf= "utilisateurConnecte.typeDeCompte=='proprietaire'" type=button class="header-button-account button1 first-button" >
+          Mes logements
+        </button>
+        <button type=button class="header-button-account button1 "
+        [routerLink]="['/messagerie']">
           Messages
         </button>
         <button type=button class="header-button-account button1" style="padding-left:15px;padding-right:15px" >
@@ -53,24 +61,7 @@
         </button>
       </div>
 
-     <!-- User connecté en tant que propriétaire-->
-      <div class="header-account-main-container" *ngIf= "(userConnect | typeof) =='Propretaire'">
-      <button type=button class="header-button-account button1 first-button" >
-        Candidatures reçues
-      </button>
-      <button type=button class="header-button-account button1 first-button" >
-        Mes logements
-      </button>
-      <button type=button class="header-button-account button1 ">
-        Messages
-      </button>
-      <button type=button class="header-button-account button1" style="padding-left:15px;padding-right:15px" >
-        Mon compte
-      </button>
-      <button type=button class="header-button-account button1 last-button">
-        <i class="bi-globe"></i>
-      </button>
-    </div>
+     
     </div>
   </div>
 

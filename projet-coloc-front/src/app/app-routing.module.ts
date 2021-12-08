@@ -14,7 +14,7 @@ import { MessagerieComponent } from './messagerie/messagerie.component';
 import { MessagerieNouveauContactComponent } from './messagerie-nouveau-contact/messagerie-nouveau-contact.component';
 
 const routes: Routes = [
-  { path: "", component: HomePageComponent},
+  { path: "", redirectTo: '/home', pathMatch: 'full'},
   { path: "home", component: HomePageComponent},
   { path: "login", component: LogInComponent},
   { path: "inscription", component: InscriptionComponent},
