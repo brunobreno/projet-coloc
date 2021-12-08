@@ -527,7 +527,7 @@ class ProjetColocBackApplicationTests {
 				locataire1log7 = locataireRepository.save(locataire1log7);
 				locataire1log7.setChambre(ch1Log7);
 				Locataire locataire2log7 = new Locataire("guillaumen", "Nguyen", "Guillaume", Civilite.Mr, "guillaumen@mail.com",
-						"0011000005", "guillaumen", false, "Il a pas voulu venir à l'ile de ré avec nous on est très déçus", Situation.Etudiant, LocalDate.parse("1995-02-09"));
+					"0011000005", "guillaumen", false, "Il a pas voulu venir à l'ile de ré avec nous on est très déçus", Situation.Etudiant, LocalDate.parse("1995-02-09"));
 				locataire2log7 = locataireRepository.save(locataire2log7);
 				locataire2log7.setChambre(ch3Log7);
 				Locataire locataire1log8 = new Locataire("danielb", "Bilal", "Daniel", Civilite.Mr, "danielb@mail.com",
@@ -614,11 +614,53 @@ class ProjetColocBackApplicationTests {
 						TypeLogement.Appartement, LocalDate.now(), true);
 				logMarseille6 = logementRepository.save(logMarseille6);
 				
-				
-				
-				
-				
+				Photo photo1LogMarseille1 = new Photo("photo1LogMarseille1", "marseille1_1.png", 1, logMarseille1);
+				photo1LogMarseille1 = photoRepository.save(photo1LogMarseille1);
+				Photo photo2LogMarseille1 = new Photo("photo2LogMarseille1", "marseille1_2.png", 2, logMarseille1);
+				photo2LogMarseille1 = photoRepository.save(photo2LogMarseille1);
+				Photo photo3LogMarseille1 = new Photo("photo3LogMarseille1", "marseille1_3.png", 3, logMarseille1);
+				photo3LogMarseille1 = photoRepository.save(photo3LogMarseille1);
+				Photo photo1LogMarseille2 = new Photo("photo1LogMarseille2", "marseille2_1.png", 1, logMarseille2);
+				photo1LogMarseille2 = photoRepository.save(photo1LogMarseille2);
+				Photo photo2LogMarseille2 = new Photo("photo2LogMarseille2", "marseille2_2.png", 2, logMarseille2);
+				photo2LogMarseille2 = photoRepository.save(photo2LogMarseille2);
+				Photo photo3LogMarseille2 = new Photo("photo3LogMarseille2", "marseille2_3.png", 3, logMarseille2);
+				photo3LogMarseille2 = photoRepository.save(photo3LogMarseille2);
+				Photo photo4LogMarseille2 = new Photo("photo4LogMarseille2", "marseille2_4.png", 4, logMarseille2);
+				photo4LogMarseille2 = photoRepository.save(photo4LogMarseille2);
+				Photo photo5LogMarseille2 = new Photo("photo5LogMarseille2", "marseille2_5.png", 5, logMarseille2);
+				photo5LogMarseille2 = photoRepository.save(photo5LogMarseille2);
+				Photo photo1LogMarseille3 = new Photo("photo1LogMarseille3", "marseille3_1.png", 1, logMarseille3);
+				photo1LogMarseille3 = photoRepository.save(photo1LogMarseille3);
+				Photo photo2LogMarseille3 = new Photo("photo2LogMarseille3", "marseille3_2.png", 2, logMarseille3);
+				photo2LogMarseille3 = photoRepository.save(photo2LogMarseille3);
+				Photo photo3LogMarseille3 = new Photo("photo3LogMarseille3", "marseille3_3.png", 3, logMarseille3);
+				photo3LogMarseille3 = photoRepository.save(photo3LogMarseille3);
+				Photo photo4LogMarseille3 = new Photo("photo4LogMarseille3", "marseille3_4.png", 4, logMarseille3);
+				photo4LogMarseille3 = photoRepository.save(photo4LogMarseille3);
+				Photo photo1LogMarseille4 = new Photo("photo1LogMarseille4", "logement1_7.png", 1, logMarseille4);
+				photo1LogMarseille4 = photoRepository.save(photo1LogMarseille4);
+				Photo photo2LogMarseille4 = new Photo("photo2LogMarseille4", "logement1_8.png", 2, logMarseille4);
+				photo2LogMarseille4 = photoRepository.save(photo2LogMarseille4);
+				Photo photo3LogMarseille4 = new Photo("photo3LogMarseille4", "logement1_5.png", 3, logMarseille4);
+				photo3LogMarseille4 = photoRepository.save(photo3LogMarseille4);
 		
+				Photo photo1LogMarseille5 = new Photo("photo1LogMarseille5", "logement4_2.png", 1, logMarseille5);
+				photo1LogMarseille5 = photoRepository.save(photo1LogMarseille5);
+				Photo photo2LogMarseille5 = new Photo("photo2LogMarseille5", "logement3_2.png", 2, logMarseille5);
+				photo2LogMarseille5 = photoRepository.save(photo2LogMarseille5);
+				Photo photo3LogMarseille5 = new Photo("photo3LogMarseille5", "logement2_3.png", 3, logMarseille5);
+				photo3LogMarseille5 = photoRepository.save(photo3LogMarseille5);
+				Photo photo1LogMarseille6 = new Photo("photo1LogMarseille6", "logement3_1.png", 1, logMarseille6);
+				photo1LogMarseille6 = photoRepository.save(photo1LogMarseille6);
+				Photo photo2LogMarseille6 = new Photo("photo2LogMarseille6", "logement1_3.png", 2, logMarseille6);
+				photo2LogMarseille6 = photoRepository.save(photo2LogMarseille6);
+				Photo photo3LogMarseille6 = new Photo("photo3LogMarseille6", "logement1_6.png", 3, logMarseille6);
+				photo3LogMarseille6 = photoRepository.save(photo3LogMarseille6);
+				
+				
+				
+				
 				// Creation des Chambre
 				Chambre ch1Log1Marseille = new Chambre(logMarseille1, 12, "");
 				ch1Log1Marseille = chambreRepository.save(ch1Log1Marseille);
