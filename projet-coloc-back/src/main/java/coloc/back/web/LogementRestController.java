@@ -145,7 +145,7 @@ public class LogementRestController {
 		return logements;
 	}
 	
-	@GetMapping("/with-locataires/{idLogement}")
+	@GetMapping("/locataires/{idLogement}")
 	@JsonView(Views.ViewCommon.class)
 	public List<Locataire> findAllByLogement(@PathVariable("idLogement") Long id) {
 		List<Chambre> chambres = chambreRepo.findAllByIdLogement(id);
@@ -153,11 +153,11 @@ public class LogementRestController {
 		for(Chambre chambre : chambres) {
 			locataires.add(locataireRepo.findAllByIdChambre(chambre.getId()));
 		}
-		
 		return locataires;
 	}
 	
 	
+
 	
 	
 	

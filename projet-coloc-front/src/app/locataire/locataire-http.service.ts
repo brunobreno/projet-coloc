@@ -27,6 +27,10 @@ export class LocataireHttpService {
     return this.http.get<Locataire>(this.locataireUrl + id);
   }
 
+  findAllByIdLogement(id: number): Observable<Array<Locataire>> {
+    return this.http.get<Locataire[]>(this.locataireUrl + "by-logement/" + id);
+  }
+
   load() {
     this.http.get<Array<Locataire>>(this.locataireUrl).subscribe(response => {
       this.locataires = response;

@@ -47,7 +47,7 @@ public class Chambre {
 	private Logement logement;
 	
 	@OneToOne(mappedBy = "chambre" )
-	@JsonView(Views.ViewChambreDetail.class)
+	@JsonView(Views.ViewChambreDescription.class)
 	private Locataire locataire;
 	
 

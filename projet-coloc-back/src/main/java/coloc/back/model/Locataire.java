@@ -153,7 +153,10 @@ public class Locataire extends Utilisateur {
 	}
 
 
-
+	public void addHobby(Hobby hobby) {
+		this.hobbies.add(hobby);
+	}
+	
 	public List<Photo> getPhotos() {
 		return photos;
 	}

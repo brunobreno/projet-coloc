@@ -12,6 +12,7 @@ import { ProprietaireComponent } from './proprietaire/proprietaire.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
 import { MessagerieNouveauContactComponent } from './messagerie-nouveau-contact/messagerie-nouveau-contact.component';
+import { LogementProprietaireComponent } from './logement-proprietaire/logement-proprietaire.component';
 
 const routes: Routes = [
   { path: "", redirectTo: '/home', pathMatch: 'full'},
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: "description-logement/:id", component: DescriptionLogementComponent},
   { path: "messagerie", component: MessagerieComponent},
   { path: "messagerie-nouveau/:id", component: MessagerieNouveauContactComponent},
+  { path: "logements-proprietaire/:id", component: LogementProprietaireComponent},
   { path: "**", component: RedirectComponent},
 ];
 
