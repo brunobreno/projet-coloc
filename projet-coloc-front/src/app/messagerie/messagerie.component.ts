@@ -17,6 +17,7 @@ export class MessagerieComponent implements OnInit {
   relations: Array<UtilisateurDTO> = new Array<UtilisateurDTO>();
   messageForm: MessageDTO = new MessageDTO();
   destinataireId: number;
+  destinataireTypeDeCompte : string;
 
   constructor(private appConfig: AppConfigService, private messagerieService: MessagerieService) {
     this.utilisateurConnecte = this.appConfig.utilisateurConnecte;
@@ -71,6 +72,8 @@ export class MessagerieComponent implements OnInit {
   setMessageFormDestinataire(id:number){
     this.messagerieService.findUtilisateurById(id).subscribe(resp => {
       this.messageForm.destinataireId = resp.id;
+      this.destinataireTypeDeCompte = resp.description ? "locataire": "proprietaire"
+      console.log(this.destinataireTypeDeCompte);
     }, err => console.log(err))
   }
 
