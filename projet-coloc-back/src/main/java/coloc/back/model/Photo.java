@@ -39,6 +39,12 @@ public class Photo {
 		this.chemin = chemin;
 		this.ordre = ordre;
 	}
+	
+	public Photo(String libelle, String chemin, Locataire locataire) {
+		this.libelle = libelle;
+		this.chemin = chemin;
+		this.locataire = locataire;
+	}
 
 	public Photo(String libelle, String chemin, Integer ordre, Logement logement) {
 		this.libelle = libelle;

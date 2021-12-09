@@ -129,8 +129,8 @@
           <h6>Les occupants</h6>
           <div class="occupant-container">
             <div *ngFor="let loc of locataires" class="occupant-card-mini card-style">
-              <div class="occupant-card-mini-photo" style="outline: solid 2px #ed99a1;">
-                <img src="../img/occupants/occupant1-1.jpg" class="h-100" alt="...">
+              <div class="occupant-card-mini-photo" style="outline: solid 2px #ed99a1;" *ngFor="let photo of loc.photos">
+                <img src="../../assets/img/locataires/{{photo.chemin}}"  class="h-100" alt="...">
               </div>
               <div class="occupant-card-mini-content">
                 <span class="occupant-desc"> {{loc.prenom }}</span>

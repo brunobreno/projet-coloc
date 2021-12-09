@@ -57,7 +57,7 @@
       <div class="card flex-wrap" style="width: 17rem" *ngFor="let loc of locatairesFiltres">
         <div class="card-img-container" *ngIf="loc.photos[0]">
           <div class="card-img-content" *ngFor="let photo of loc.photos">
-            <img  class="card-img-top" src="../../assets/img/exempleLogement/{{photo.chemin}}" lightbox alt="photo de profil locataire" />
+            <img  class="card-img-top" src="../../assets/img/locataires/{{photo.chemin}}" lightbox alt="photo de profil locataire" />
           </div>
         </div>
 
@@ -94,7 +94,7 @@
 
             <li class="list-group-item d-flex justify-content-around" style="height: 40px;" *ngIf="loc.hobbies[0]" >
             <div *ngFor="let hob of loc.hobbies" class="caracteristiques">
-              <img src="../../assets/img/icons/{{hob.chemin}}" class="" alt="..."> 
+              <img src="../../assets/img/icons/{{hob.chemin}}" class="" alt="..." style="height : 20px;"> 
             </div>
           </li> 
           
